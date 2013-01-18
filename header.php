@@ -2,7 +2,7 @@
 /** header.php
  *
  * Doctype, opening HTML, everything located inside the <head> of your
- * website, and the opening <body>
+ * website, and the opening <body> tag can be found here.
  *
  * @package Volatyl
  * @since Volatyl 1.0
@@ -11,7 +11,7 @@
 global $page, $paged;
 $title = get_bloginfo( 'name' );
 $tagline = get_bloginfo( 'description' );
-$char = get_bloginfo( 'charset' );
+$char = get_bloginfo( 'description' );
 $ping = get_bloginfo( 'pingback_url' );
  
 echo 	"<!DOCTYPE html>\n",
@@ -19,23 +19,21 @@ echo 	"<!DOCTYPE html>\n",
 		"<head>\n",
 		"<meta charset=\"", $char, "\" />\n",
 		"<meta name=\"viewport\" content=\"width=device-width\" />\n",
-		"<title>"; 
+		"<title>",
 		
-			// Print the <title> tag based on what is being viewed
-			wp_title( '|', true, 'right' );
+			// Print the <title> tag based on what is being viewed.	 
+			wp_title( '|', false, 'right' ),
 	
 			// Add the blog name.
-			echo $title;
+			$title,
 	
-			// Add the blog description for the home/front page
-			if ( $tagline && ( is_home() || is_front_page() ) )
-				echo " | $tagline";
+			// Add the blog description for the home/front page.
+			( !empty( $tagline ) && ( is_home() || is_front_page() ) ? " | $tagline" : '' ),
 		
 			// Add a page number if necessary:
-			if ( $paged >= 2 || $page >= 2 )
-				echo ' | ' . sprintf( __( 'Page %s', 'volatyl' ), max( $paged, $page ) );
-			
-echo 	"</title>\n",
+			( $page >= 2 || $page >= 2 ? ' | ' . sprintf( __( 'Page %s', 'volatyl' ), max( $paged, $page ) ) : ''),
+
+		"</title>\n",
 		"<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n",
 		"<link rel=\"pingback\" href=\"", $ping, "\" />\n",
 
@@ -44,5 +42,4 @@ echo 	"</title>\n",
 
 // WordPress' <head> hook
 wp_head();
-
 echo "</head>\n<body ", body_class(), ">";
