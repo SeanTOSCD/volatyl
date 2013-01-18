@@ -92,6 +92,21 @@
 	font-style: italic;
 }
 
+.volatyl-options .instructions {
+	background: #fafafa;
+	border: 1px solid rgba(0,0,0,.1);
+	padding: 15px;
+	max-width: 700px;
+}
+
+.volatyl-options .instructions p {
+	margin: 0 0 1.5em;
+}
+
+.volatyl-options .instructions p:last-of-type {
+	margin-bottom: 0;
+}
+
 /* Hooks form formatting */
 .volatyl-options .hook-field {
 	margin-top: 5px;

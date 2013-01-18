@@ -27,5 +27,5 @@
 // We need this! Only if a child theme hasn't gotten to it first
 require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
-// License Key Setup
-require_once( dirname( __FILE__ ) . '/init-license.php' );
+// License key setup and Volatyl automatic updater
+require_once( dirname( __FILE__ ) . '/inc/updater.php' );

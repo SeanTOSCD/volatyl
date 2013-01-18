@@ -31,6 +31,8 @@ function vol_options_add_page() {
 	register_setting( 'volatyl_hooks_options', 'vol_hooks_options', 'vol_options_validate' );
 	// Init content options
 	register_setting( 'volatyl_content_options', 'vol_content_options', 'vol_options_validate' );
+	// Init license key
+	register_setting('volatyl_license_key', 'edd_sample_theme_license_key', 'vol_sanitize_license' );
 }
 add_action( 'admin_menu', 'vol_options_add_page' );
 
@@ -91,6 +93,8 @@ function vol_options_do_page() {
 				'nav-tab-active' : '', "\">" . __( 'Content', 'volatyl' ) . "</a>\n",
 			"{$url}hooks\" class=\"nav-tab ", $active_tab == 'hooks' ? 
 				'nav-tab-active' : '', "\">" . __( 'Hooks', 'volatyl' ) . "</a>\n",
+			"{$url}license\" class=\"nav-tab ", $active_tab == 'license' ? 
+				'nav-tab-active' : '', "\">" . __( 'License', 'volatyl' ) . "</a>\n",
 			"{$tab3}</h2>\n";
 	
 		
@@ -351,7 +355,9 @@ function vol_options_do_page() {
 		do_settings_sections( 'volatyl_hooks_options' );
 		
 		echo 	"\n{$tab3}\t<h3>", THEME_NAME . __( ' Hooks', 'volatyl' ), "</h3>\n",
-				"{$tab3}\t<p>", __( 'Hooks are areas of your website that can be “hooked” into at will. If you are familiar with WordPress core,<br>you probably already know about hooks like wp_head() and wp_footer(). You are <strong style="color: red">not</strong> allowed to use PHP<br>in these hooks! <a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">Write custom PHP functions</a> and place them inside of your child theme\'s functions file.', 'volatyl' ), "</p>\n";
+				"{$tab3}\t<div class=\"instructions radius\">\n",
+				"{$tab3}\t\t<p>", __( 'Hooks are areas of your website that can be “hooked” into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). You are <strong style="color: red">not</strong> allowed to use PHP in these hooks! <a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">Write custom PHP functions</a> and place them inside of your child theme\'s functions file.', 'volatyl' ), "</p>\n",
+				"{$tab3}\t</div>";
 	
 	
 		/** With the Volatyl hooks settings collected in the 
@@ -396,7 +402,67 @@ function vol_options_do_page() {
 		
 		echo 	"{$tab3}</form>\n",
 				"\t\t";
+		
+		
+	/* Tabbed - License Key Setup
+	 *
+	 * Activate and deactivate license key
+	 *
+ 	 * @since Volatyl 1.0
+	 */	
+	} elseif ( $active_tab == 'license' ) {
+		$license 	= get_option( 'edd_sample_theme_license_key' );
+		$status 	= get_option( 'edd_sample_theme_license_key_status' );
 	
+		echo "{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t";
+		
+		settings_fields( 'volatyl_license_key' );
+		do_settings_sections( 'volatyl_license_key' );
+		
+		// Start content options table
+		echo 	"\n{$tab3}\t<h3>", 
+				__( 'License Key Settings', 'volatyl' ), "</h3>\n",
+				"{$tab3}\t<div class=\"instructions radius\">\n",
+				"{$tab3}\t\t<p>", __( 'When you purchased Volatyl, you should have received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the Volatyl Framework. Enter your license key below and click the <strong>Save Changes</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl' ), "</p>\n",
+				"{$tab3}\t\t<p>", __( 'You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole Volatyl and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl' ), "</p>\n",
+				"{$tab3}\t</div>",
+				"{$tab3}<table class=\"form-table\">\n"; ?>
+		
+		<tr valign="top">	
+			<th scope="row" valign="top">
+				<?php _e('License Key'); ?>
+			</th>
+			<td>
+				<input id="edd_sample_theme_license_key" name="edd_sample_theme_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
+				<label class="description" for="edd_sample_theme_license_key"><?php _e('Enter your license key'); ?></label>
+			</td>
+		</tr>
+		<?php if( false !== $license ) { ?>
+			<tr valign="top">	
+				<th scope="row" valign="top">
+					<?php _e('Activate License'); ?>
+				</th>
+				<td>
+					<?php if( $status !== false && $status == 'valid' ) { ?>
+						<span style="color:green;"><?php _e('active'); ?></span>
+						<?php wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ); ?>
+						<input type="submit" class="button-secondary" name="edd_theme_license_deactivate" value="<?php _e('Deactivate License'); ?>"/>
+					<?php } else {
+						wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ); ?>
+						<input type="submit" class="button-secondary" name="edd_theme_license_activate" value="<?php _e('Activate License'); ?>"/>
+					<?php } ?>
+				</td>
+			</tr>
+		<?php }
+		
+		echo 	"{$tab3}\t</table>",
+				"<hr>\n",
+				"{$tab3}\t<p>\n";
+				submit_button();
+		echo 	"\n",
+				"{$tab3}\t</p>\n",
+				"{$tab3}</form>\n",
+				"\t\t";
 
 	// Tab checker - WTF? Settings
 	} else {
@@ -494,4 +560,15 @@ function vol_options_validate( $input ) {
 	}	
 	
 	return $input;
+}
+
+function vol_sanitize_license( $new ) {
+	$old = get_option( 'edd_sample_theme_license_key' );
+	
+	if( $old && $old != $new )
+	
+		// new license has been entered, so must reactivate
+		delete_option( 'edd_sample_theme_license_key_status' ); 
+		
+	return $new;
 }
