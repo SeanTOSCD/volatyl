@@ -28,4 +28,4 @@
 require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
 // License Key Setup
-require_once( dirname( __FILE__ ) . '/init-license.php' ); 
+require_once( dirname( __FILE__ ) . '/init-license.php' );
