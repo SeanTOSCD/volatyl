@@ -18,7 +18,7 @@ echo 	"<!DOCTYPE html>\n",
 		"<html ", language_attributes(), ">\n",
 		"<head>\n",
 		"<meta charset=\"", $char, "\" />\n",
-		"<meta name=\"viewport\" content=\"width=device-width\" />\n",
+		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n",
 		"<title>",
 		
 			// Print the <title> tag based on what is being viewed.	 
@@ -28,10 +28,10 @@ echo 	"<!DOCTYPE html>\n",
 			$title,
 	
 			// Add the blog description for the home/front page.
-			( !empty( $tagline ) && ( is_home() || is_front_page() ) ? " | $tagline" : '' ),
+			( ! empty( $tagline ) && ( is_home() || is_front_page() ) ? " | $tagline" : '' ),
 		
 			// Add a page number if necessary:
-			( $page >= 2 || $page >= 2 ? ' | ' . sprintf( __( 'Page %s', 'volatyl' ), max( $paged, $page ) ) : ''),
+			( $page >= 2 || $page >= 2 ? ' | ' . sprintf( __( 'Page %s', 'volatyl' ), max( $paged, $page ) ) : '' ),
 
 		"</title>\n",
 		"<link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n",
