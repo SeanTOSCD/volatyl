@@ -24,7 +24,6 @@ function show_vol_headliner() {
 		echo 	"<div id=\"headliner\">",
 				vol_headliner(),
 				"</div>";
-				
 }
 
 
@@ -42,5 +41,4 @@ function show_vol_footliner() {
 		echo 	"<div id=\"footliner\">",
 				vol_footliner(),
 				"</div>";
-				
 }
