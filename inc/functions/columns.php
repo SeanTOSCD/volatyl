@@ -176,7 +176,9 @@ function columns_singular() {
 function layout_class( $classes ) {
 	global $post;
 	$options = get_option( 'vol_structure_options' );
-	$single_layout = get_post_meta( $post->ID, '_singular-column', true);
+	
+	if ( ! is_404() )
+		$single_layout = get_post_meta( $post->ID, '_singular-column', true);
 	
 	// add class name to the $classes array based on conditions
 	if ( is_singular() ) {

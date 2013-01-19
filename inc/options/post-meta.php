@@ -60,7 +60,9 @@ function vol_meta_box( $post ) {
 // Body class based on custom CSS field
 function singular_body_class( $classes ) {
 	global $post;
-	$singular_body_class = get_post_meta( $post->ID, '_custom-class', true);
+	
+	if ( ! is_404() )
+		$singular_body_class = get_post_meta( $post->ID, '_custom-class', true);
 	
 	// add class name to the $classes array based on conditions
 	if ( is_singular() ) {
