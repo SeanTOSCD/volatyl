@@ -109,13 +109,13 @@ function vol_options_do_page() {
 		$options_general = get_option( 'vol_general_options' ); 
 		$vgeneral = volatyl_general();
 	
-		echo "{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t";
+		echo 	"{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t",
 		
-		settings_fields( 'volatyl_global_options' );
-		do_settings_sections( 'volatyl_global_options' ); 
+				settings_fields( 'volatyl_global_options' ),
+				do_settings_sections( 'volatyl_global_options' ),
 				
-		// Start structure options table
-		echo 	"\n{$tab3}\t<h3>", __( 'Structure Settings', 'volatyl' ), "</h3>\n",
+				// Start structure options table
+				"\n{$tab3}\t<h3>", __( 'Structure Settings', 'volatyl' ), "</h3>\n",
 				 "{$tab3}\t<table class=\"form-table\">\n",
 		
 				// Site structure option

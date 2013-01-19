@@ -22,8 +22,8 @@ function vol_meta_box( $post ) {
 	$the_id = get_post_custom( $post->ID );
 	$selected = isset( $the_id[ '_singular-column' ] ) ? esc_attr( $the_id[ '_singular-column' ][ 0 ] ) : ''; 
 	$custom_class = isset( $the_id[ '_custom-class' ] ) ? esc_attr( $the_id[ '_custom-class' ][ 0 ] ) : '' ;
+	
     wp_nonce_field( 'vol_meta_box_nonce', 'meta_box_nonce' );
-    
 
 	/** Select option input for singular layout choices
 	 * 
