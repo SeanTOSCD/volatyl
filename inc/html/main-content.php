@@ -29,13 +29,18 @@ function standard_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
 	if ( $options_structure[ 'wide' ] == 1 ) {
-		echo "<div id=\"main-content\" class=\"full clearfix\">\n\t<div class=\"main clearfix\">\n";
-		vol_columns(); 
-		echo "\t</div>\n</div>\n"; 
+	
+		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
+				"<div class=\"main clearfix\">";
+				vol_columns(); 
+		echo 	"</div></div>"; 
+		
 	} else {
-		echo "\t<div id=\"main-content\" class=\"clearfix\">\n";
-		vol_columns();
-		echo "\t</div>\n";
+	
+		echo 	"<div id=\"main-content\" class=\"clearfix\">";
+				vol_columns();
+		echo 	"</div>";
+		
 	}
 }
 add_action( 'main_content', 'standard_content' );
@@ -46,18 +51,24 @@ function singular_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
 	if ( $options_structure[ 'wide' ] == 1 ) {
-		echo "<div id=\"main-content\" class=\"full clearfix\">\n\t<div class=\"main clearfix\">\n";
-		columns_singular(); 
-		echo "\t</div>\n</div>\n"; 
+	
+		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
+				"<div class=\"main clearfix\">";
+				columns_singular(); 
+		echo 	"</div></div>"; 
+		
 	} else {
-		echo "\t<div id=\"main-content\" class=\"clearfix\">\n";
-		columns_singular();
-		echo "\t</div>\n";
+	
+		echo 	"\t<div id=\"main-content\" class=\"clearfix\">\n";
+				columns_singular();
+		echo 	"\t</div>\n";
+		
 	}
 }
 add_action( 'main_content_singular', 'singular_content' );
 
 function custom_content() {
+
 	// This is the blank canvas where developers can create their own layout
 }
 add_action( 'main_content_custom_layout', 'custom_content' );

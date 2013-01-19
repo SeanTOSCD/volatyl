@@ -32,8 +32,7 @@ function standard_menu_on() {
 // The standard menu itself... called above
 function standard_menu() {
 	echo 	"<nav role=\"navigation\" class=\"site-navigation full-menu standard-navigation\">",
-			( ( has_nav_menu( 'standard' ) ) ?
-			wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
+			( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
 			"</nav>";
 }
 
