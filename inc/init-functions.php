@@ -93,7 +93,6 @@ add_action( 'after_setup_theme', 'volatyl_setup' );
  */
 function volatyl_front_scripts() {
 	wp_enqueue_style( 'style', THEME_STYLESHEET );
-	wp_enqueue_script( 'vol-scripts', THEME_PATH_URI . '/inc/js/vol-scripts.js',	array( 'jquery' ) );
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
 	}
@@ -121,13 +120,6 @@ function volatyl_back_scripts() {
 	}
 }
 add_action('admin_enqueue_scripts', 'volatyl_back_scripts' );
-
-
-// Add items to the wp_head() hook
-function doc_head() { 
-	echo "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">";
-}
-add_action('wp_head','doc_head');
 
 
 // Tabs are so annoying sometimes
