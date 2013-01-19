@@ -420,7 +420,7 @@ function vol_options_do_page() {
 				"<th scope=\"row\" valign=\"top\">" .
 				__('Activate License') . "</th>" . "<td>" .
 				( ( $status !== false && $status == 'valid' ) ?
-				"<span style=\"color: green;\">" .
+				"<span style=\"color: green; margin-right:10px;\">" .
 				__('active') . "</span>" .
 				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
 				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_deactivate\" value=\"" .
@@ -488,13 +488,17 @@ function vol_options_validate( $input ) {
 		}
 	}
 	
+	// Delete uploaded logo
 	if ( $delete_logo ) {
 		vol_delete_image( $options_content[ 'logo' ] );
 		$input[ 'logo' ] = '';
 	}
 	
 	
-	// Validate and sanitize site structure options
+	
+	/** Validate and sanitize Volatyl structure options for
+	 * HTML framework and column layouts
+ 	 */
 	if ( ! isset( $input[ 'wide' ] ) )
 		$input[ 'wide' ] = null;
 	$input[ 'wide' ] = ( $input[ 'wide' ] == 1 ? 1 : 0 );
