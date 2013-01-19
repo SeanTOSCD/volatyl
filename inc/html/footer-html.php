@@ -51,9 +51,9 @@ function footer_element() {
 	( ( $options_general[ 'attribution' ] == 1 ) ? 
 
 		// DO NOT CHANGE text IF displayed
-		__( 'Built with ', 'volatyl' ) . 
+		__( '<p>Built with ', 'volatyl' ) . 
 		"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
-		__( ' for WordPress', 'volatyl' ) : '' );
+		__( ' for WordPress</p>', 'volatyl' ) : '' );
 				
 	// vol_site_info
 	echo ( ( $options_hooks[ 'switch_vol_site_info' ] == 0 ) ? vol_site_info() : '' ),
