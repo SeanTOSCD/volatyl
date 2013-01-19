@@ -177,7 +177,7 @@ function layout_class( $classes ) {
 	global $post;
 	$options = get_option( 'vol_structure_options' );
 	
-	if ( ! is_404() )
+	if ( ! is_404() && ! is_search() )
 		$single_layout = get_post_meta( $post->ID, '_singular-column', true);
 	
 	// add class name to the $classes array based on conditions

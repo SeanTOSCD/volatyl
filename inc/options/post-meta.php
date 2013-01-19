@@ -61,7 +61,7 @@ function vol_meta_box( $post ) {
 function singular_body_class( $classes ) {
 	global $post;
 	
-	if ( ! is_404() )
+	if ( ! is_404() && ! is_search() )
 		$singular_body_class = get_post_meta( $post->ID, '_custom-class', true);
 	
 	// add class name to the $classes array based on conditions
