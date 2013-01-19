@@ -68,12 +68,11 @@ function default_widget() {
 	$options_content = get_option( 'vol_content_options' );
 	
 	// Only show when selection is made in the options
-	if ( $options_content[ 'widgets' ] == 1 )
-		echo 	"\t<aside class=\"widget\">\n",
-				"\t\t<h3 class=\"widget-title\">\n",
-				__( 'Default Widget', 'volatyl' ),
-				"\t\t</h3>\n",
-				"\t\t<p>" . __( 'This is a widget placeholder because you have a widgetized area showing with no widgets assigned to it.', 'volatyl' ) . "</p>\n",
-				"\t</aside>\n";
-				
+	echo 	( ( $options_content[ 'widgets' ] == 1 ) ?
+			"\t<aside class=\"widget\">\n" .
+			"\t\t<h3 class=\"widget-title\">\n". 
+			__( 'Default Widget', 'volatyl' ). 
+			"\t\t</h3>\n" .
+			"\t\t<p>" . __( 'This is a widget placeholder because you have a widgetized area showing with no widgets assigned to it.', 'volatyl' ) . "</p>\n" .
+			"\t</aside>\n" : '' );
 }

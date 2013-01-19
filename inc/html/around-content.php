@@ -17,22 +17,20 @@ function before_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 
 	// vol_before_html
-	if ( $options[ 'switch_vol_before_html' ] == 0 )
-		vol_before_html();
+	echo ( ( $options[ 'switch_vol_before_html' ] == 0 ) ? vol_before_html() : '' ),
 
-	header_frame();
-	standard_menu_on();
+	header_frame(),
+	standard_menu_on(),
 
 	// vol_headliner
-	show_vol_headliner();
+	show_vol_headliner(),
 
 	// vol_before_content
-	if ( $options[ 'switch_vol_before_content' ] == 0 )
-		vol_before_content();
+	( ( $options[ 'switch_vol_before_content' ] == 0 ) ? vol_before_content() : '' ),
 
 	// vol_before_content_area
-	if ( $options[ 'switch_vol_before_content_area' ] == 0 )
-		vol_before_content_area();		
+	( ( $options[ 'switch_vol_before_content_area' ] == 0 ) ? vol_before_content_area() : '' );
+	
 }
 
 function after_content() {
@@ -42,20 +40,18 @@ function after_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
 	// vol_after_content_area
-	if ( $options[ 'switch_vol_after_content_area' ] == 0 )
-		vol_after_content_area();
+	echo ( ( $options[ 'switch_vol_after_content_area' ] == 0 ) ? vol_after_content_area() : '' ),
 
 	// vol_after_content
-	if ( $options[ 'switch_vol_after_content' ] == 0 )
-		vol_after_content();
+	( ( $options[ 'switch_vol_after_content' ] == 0 ) ? vol_after_content() : '' ),
 
 	// vol_footliner
-	show_vol_footliner();
+	show_vol_footliner(),
 	
-	footer_menu_on();
-	footer_frame();
+	footer_menu_on(),
+	footer_frame(),
 		
 	// vol_after_html
-	if ( $options[ 'switch_vol_after_html' ] == 0 )
-		vol_after_html();
+	( ( $options[ 'switch_vol_after_html' ] == 0 ) ? vol_after_html() : '' );
+	
 }

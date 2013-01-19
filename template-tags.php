@@ -47,8 +47,8 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 
 				echo "{$tab3}<div class=\"comment-meta commentmetadata\">\n{$tab3}\t";
 				printf( sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) );
-				echo "\n{$tab3}\t<div class=\"comment-date\">\n";
-				echo "{$tab3}\t\t<a href=\"", esc_url( get_comment_link( $comment->comment_ID ) ), "\"><time pubdate datetime=\"", comment_time( 'c' ), "\">";
+				echo 	"\n{$tab3}\t<div class=\"comment-date\">\n",
+						"{$tab3}\t\t<a href=\"", esc_url( get_comment_link( $comment->comment_ID ) ), "\"><time pubdate datetime=\"", comment_time( 'c' ), "\">";
 			
 				// translators: 1: date, 2: time
 				printf( __( '%1$s', 'volatyl' ), get_comment_date() );

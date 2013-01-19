@@ -974,7 +974,8 @@ object {
 
 @media screen and (max-width: 1024px) 
 {
-	.main {
+	.main,
+	#container {
 		width: 98%;
 	}
 }
@@ -987,11 +988,11 @@ object {
 		float: none;
 		width: 100%;
 	}
-	#header {
+	.site-header {
 		text-align: center;
 		padding-bottom: 15px;
 	}
-	#header .short-menu {
+	.site-header .short-menu {
 		position: static;
 		padding: 0;
 		margin-top: 15px;
@@ -1008,7 +1009,7 @@ object {
 	#content .pagination {
 		float: none;
 	}
-	#footer {
+	.site-footer {
 		text-align: center;
 	}
 	.footer-widget {

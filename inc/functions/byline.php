@@ -33,19 +33,13 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		}
 	
 		// Show post author
-		if ( $options_content[ 'by-author-post' ] == 1 ) {
-			_e( 'by ', 'volatyl' );
-			the_author();
-		}
+		( ( $options_content[ 'by-author-post' ] == 1 ) ? _e( 'by ', 'volatyl' ) . the_author() : '' );
 	
 		// Show post comment count
 		if ( $options_content[ 'by-comments-post' ] == 1 ) {
 	
-			// Only show dash before comments if other byline items are in front of it
-			if ( $options_content[ 'by-date-post' ] == 0 && $options_content[ 'by-author-post' ] == 0 )
-				echo "";
-			else
-				echo " - ";
+			// Only show dash before comments if byline items are in front of it
+			echo ( ( $options_content[ 'by-date-post' ] == 0 && $options_content[ 'by-author-post' ] == 0 ) ? "" : " - " );
 				
 			
 			// Only mark comments as closed in byline of comment count is 0	

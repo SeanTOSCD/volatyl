@@ -14,16 +14,14 @@
 function show_vol_headliner() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 )
-		echo 	"<div id=\"headliner-area\" class=\"full liner\"><div class=\"main\">",
-				"<div id=\"headliner\">",
-				vol_headliner(),
-				"</div></div></div>\n";
-				
-	else
-		echo 	"<div id=\"headliner\">",
-				vol_headliner(),
-				"</div>";
+	echo 	( ( $options_structure[ 'wide' ] == 1 ) ? 
+			"<div id=\"headliner-area\" class=\"full liner\"><div class=\"main\">" .
+			"<div id=\"headliner\">" .
+			vol_headliner(). 
+			"</div></div></div>\n" :
+			"<div id=\"headliner\">" .
+			vol_headliner() .
+			"</div>" );
 }
 
 
@@ -31,14 +29,12 @@ function show_vol_headliner() {
 function show_vol_footliner() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 )
-		echo 	"<div id=\"footliner-area\" class=\"full liner\"><div class=\"main\">",
-				"<div id=\"footliner\">",
-				vol_footliner(),
-				"</div></div></div>";
-				
-	else
-		echo 	"<div id=\"footliner\">",
-				vol_footliner(),
-				"</div>";
+	echo 	( $options_structure[ 'wide' ] == 1 ) ?
+			"<div id=\"footliner-area\" class=\"full liner\"><div class=\"main\">" .
+			"<div id=\"footliner\">" .
+			vol_footliner() .
+			"</div></div></div>" :
+			"<div id=\"footliner\">" .
+			vol_footliner() .
+			"</div>";
 }
