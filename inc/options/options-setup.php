@@ -7,7 +7,6 @@
  * @since Volatyl 1.0
  */
 
-
 /** General Settings of the "General" tab
  *
  * This array is used to set up the General Settings options. The array
