@@ -57,10 +57,10 @@ function vol_options_do_page() {
 	echo 	"<div class=\"wrap volatyl-options\">\n",
 			$tab3, screen_icon(), "\n",
 			"{$tab3}<h2>", THEME_NAME, THEME_VERSION, 
-			__( 'Options', 'volatyl' ), "</h2>\n";
+			__( 'Options', 'volatyl' ), "</h2>\n",
 	
-	// Warning: Save settings before switching tabs
-	echo 	"{$tab3}<div class=\"save-settings radius\">\n",
+			// Warning: Save settings before switching tabs
+			"{$tab3}<div class=\"save-settings radius\">\n",
 			"{$tab3}\t<p><strong>",  
 			__( 'Save changes before switching tabs!', 'volatyl' ), 
 			"</strong></p>\n",
@@ -116,30 +116,25 @@ function vol_options_do_page() {
 				
 		// Start structure options table
 		echo 	"\n{$tab3}\t<h3>", __( 'Structure Settings', 'volatyl' ), "</h3>\n",
-				 "{$tab3}\t<table class=\"form-table\">\n";
+				 "{$tab3}\t<table class=\"form-table\">\n",
 		
-		// Site structure option
-		echo 	"{$tab3}\t\t<tr>\n",
+				// Site structure option
+				"{$tab3}\t\t<tr>\n",
 				"{$tab6}<th scope=\"row\">", 
 				__( 'Wide (100%) HTML Structure', 'volatyl' ), 
 				"</th>\n",
 				"{$tab6}<td>\n",
-				"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_structure_options[wide]\" name=\"vol_structure_options[wide]\" type=\"checkbox\" value=\"1\"";
-		checked( '1', $options_structure[ 'wide' ] );
-		echo 	"/>\n",
+				"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_structure_options[wide]\" name=\"vol_structure_options[wide]\" type=\"checkbox\" value=\"1\"",
+				checked( '1', $options_structure[ 'wide' ] ), "/>\n",
 				"{$tab6}\t<label class=\"description\" for=\"vol_structure_options[wide]\">", 
 				__( 'Activate (Recommended - A narrow structure look can still be achieved with the <em>.main</em> class.)', 'volatyl' ), 
-				"</label>\n",
-				"{$tab6}</td>\n",
-				"{$tab3}\t\t</tr>\n"; 
+				"</label>\n", "{$tab6}</td>\n", "{$tab3}\t\t</tr>\n",
 		
-		// Site layout options
-		echo 	"{$tab3}\t\t<tr>\n",
+				// Site layout options
+				"{$tab3}\t\t<tr>\n",
 				"{$tab6}<th scope=\"row\">", 
 				__( 'Content and Sidebar Structure', 'volatyl' ), 
-				"</th>\n",
-				"{$tab6}<td>\n",
-				"{$tab6}\t<fieldset>\n";
+				"</th>\n", "{$tab6}<td>\n", "{$tab6}\t<fieldset>\n";
 		
 		if ( ! isset( $checked ) )
 			$checked = '';
@@ -157,12 +152,11 @@ function vol_options_do_page() {
 			
 			// Input and label for site layout options
 			echo 	"\n{$tab6}\t\t<label class=\"description layout-label\">\n",
-					"{$tab9}<input class=\"layout-radio\" type=\"radio\" name=\"vol_structure_options[column]\" value=\"";
-			esc_attr_e( $option[ 'value' ] );
-			echo 	"\" ", $checked, " />\n",
+					"{$tab9}<input class=\"layout-radio\" type=\"radio\" name=\"vol_structure_options[column]\" value=\"",
+					esc_attr_e( $option[ 'value' ] ),
+					"\" ", $checked, " />\n",
 					"{$tab9}", $option[ 'label' ], "\n",
 					"{$tab6}\t\t</label>\n";
-					
 		} 
 		
 		echo 	"{$tab6}\t</fieldset>\n",
@@ -182,41 +176,31 @@ function vol_options_do_page() {
 		 */
 		foreach ( $vgeneral as $vg ) {
 		
-			echo "{$tab3}\t";
-			
-			if ( isset( $vg[ 'table_name' ] ) )
-				echo $vg[ 'table_name' ], "\n{$tab3}\t";
-			
-			if ( isset( $vg[ 'table' ] ) )
-				echo $vg[ 'table' ], "\n{$tab3}\t\t";
-			
-			echo 	$vg[ 'tr' ], "\n{$tab6}",
-					$vg[ 'th' ], "\n{$tab6}",
-					$vg[ 'td' ], "\n";
-					
-			// Input and labels for general options		
-			echo 	"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_general_options[", 
+			echo 	"{$tab3}\t",
+					( isset( $vg[ 'table_name' ] ) ? $vg[ 'table_name' ] : '' ), 
+					"\n{$tab3}\t",
+					( isset( $vg[ 'table' ] ) ? $vg[ 'table' ] : '' ), 
+					"\n{$tab3}\t\t",
+					$vg[ 'tr' ], "\n{$tab6}", 
+					$vg[ 'th' ], "\n{$tab6}", 
+					$vg[ 'td' ], "\n",	
+					"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_general_options[", 
 					$vg[ 'title' ], "]\" name=\"vol_general_options[", 
-					$vg[ 'title' ], "]\" type=\"checkbox\" value=\"1\"";
-			checked( '1', $options_general[ $vg[ 'title' ] ] );
-			echo 	"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_general_options[", 
+					$vg[ 'title' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_general[ $vg[ 'title' ] ] ),
+			 	"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_general_options[", 
 					$vg[ 'title' ], "]\">", 
-					$vg[ 'label' ], "</label>\n{$tab6}\t\t";
-					
-			if ( isset( $vg[ 'notes' ] ) )
-				echo $vg[ 'notes' ], "\n{$tab6}";
-			
-			echo 	$vg[ 'td_end' ], "\n{$tab3}\t\t",
+					$vg[ 'label' ], "</label>\n{$tab6}\t\t",
+					( isset( $vg[ 'notes' ] ) ? $vg[ 'notes' ] : '' ), "\n{$tab6}",
+					$vg[ 'td_end' ], "\n{$tab3}\t\t",
 					$vg[ 'tr_end' ], "\n";
-					
 		}
 		
 		echo 	"{$tab3}\t</table>\n",
-				"{$tab3}\t<hr>\n{$tab3}\t<p>\n{$tab3}\t\t<input name=\"volatyl_global_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary\" value=\"";
-		esc_attr_e( 'Save Settings', 'volatyl' );
-		echo 	"\" />\n{$tab3}\t</p>\n",
-				"{$tab3}</form>\n",
-				"\t\t";
+				"{$tab3}\t<hr>\n{$tab3}\t<p>\n{$tab3}\t\t<input name=\"volatyl_global_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary\" value=\"",
+				esc_attr_e( 'Save Global Settings', 'volatyl' ),
+				"\" />\n{$tab3}\t</p>\n",
+				"{$tab3}</form>\n", "\t\t";
 		
 		
 	/* Tabbed - Content Settings
@@ -241,33 +225,32 @@ function vol_options_do_page() {
 		
 		// Start content options table
 		echo 	"\n{$tab3}\t<h3>", __( 'Logo Uploader', 'volatyl' ), "</h3>\n",
-				"{$tab3}\t<table class=\"form-table\">\n";
-		
-		// Options for uploading and deleting Site Logo
-		echo 	"{$tab3}\t\t<th scope=\"row\">", 
+				"{$tab3}\t<table class=\"form-table\">\n",
+				
+				// Options for uploading and deleting Site Logo
+				"{$tab3}\t\t<th scope=\"row\">", 
 				__ ( 'Upload Your Site Logo', 'volatyl' ), "</th>\n",
 				"{$tab3}\t\t<td>\n",
 				"{$tab6}<input type=\"hidden\" id=\"logo_url\" name=\"vol_content_options[logo]\" value=\"", 
 				esc_url( $options_content[ 'logo' ] ), "\" />\n",
 				"{$tab6}<input id=\"upload_logo_button\" type=\"button\" class=\"button logo-button\" value=\"", __( 'Upload Logo', 'volatyl' ), "\" />\n",
 				"{$tab6}<span class=\"description label-space\">", 
-				__( 'Upload a logo image.', 'volatyl' ), "</span>\n";
+				__( 'Upload a logo image.', 'volatyl' ), "</span>\n",
 				
-		if ( '' != $options_content[ 'logo' ] )
-		
-			echo 	"{$tab6}<input id=\"delete_logo_button\" name=\"vol_content_options[delete_logo]\" type=\"submit\" class=\"button\" value=\"", 
-					__( 'Delete Logo', 'volatyl' ), "\" />\n",
-					"{$tab3}\t\t</td>\n";
+				// Show delete button if logo exists
+				( ( '' != $options_content[ 'logo' ] ) ? 
+				"{$tab6}<input id=\"delete_logo_button\" name=\"vol_content_options[delete_logo]\" type=\"submit\" class=\"button\" value=\"" .  __( 'Delete Logo', 'volatyl' ) . 
+				"\" />\n" . "{$tab3}\t\t</td>\n" : '' ),
 	
 	
-		/** Logo Preview
-		 *
-		 * If header logo is uploaded through the Volatyl media
-		 * uploader, display logo
-		 *
- 		 * @since Volatyl 1.0
-		 */
-		echo 	"{$tab3}\t\t<tr>\n",
+				/** Logo Preview
+				 *
+				 * If header logo is uploaded through the Volatyl media
+				 * uploader, display logo
+				 *
+				 * @since Volatyl 1.0
+				 */
+				"{$tab3}\t\t<tr>\n",
 				"{$tab6}<th scope=\"row\">", 
 				__( 'Logo Preview', 'volatyl' ), "</th>\n",
 				"{$tab6}<td>\n",
@@ -291,52 +274,50 @@ function vol_options_do_page() {
 		 */
 		foreach ( $varrays as $va ) {
 		
-			echo "{$tab3}\t";
+			echo 	"{$tab3}\t",
 			
-			if ( isset( $va[ 'table_name' ] ) )
-				echo $va[ 'table_name' ], "\n{$tab3}\t";
+					( isset( $va[ 'table_name' ] ) ?
+						$va[ 'table_name' ] . "\n{$tab3}\t" : '' ),
 			
-			if ( isset( $va[ 'table' ] ) )
-				echo $va[ 'table' ], "\n{$tab3}\t\t";
+					( isset( $va[ 'table' ] ) ?
+						$va[ 'table' ] . "\n{$tab3}\t\t" : '' ),
 			
-			if ( isset( $va[ 'tr' ] ) )
-				echo $va[ 'tr' ], "\n{$tab6}";
+					( isset( $va[ 'tr' ] ) ?
+						$va[ 'tr' ] . "\n{$tab6}" : '' ),
 			
-			if ( isset( $va[ 'th' ] ) )
-				echo $va[ 'th' ], "\n{$tab6}";
+					( isset( $va[ 'th' ] ) ?
+						$va[ 'th' ] . "\n{$tab6}" : '' ),
 			
-			if ( isset( $va[ 'td' ] ) )
-				echo $va[ 'td' ], "\n";
+					( isset( $va[ 'td' ] ) ?
+						$va[ 'td' ] . "\n" : '' ),
 			
-			// Input and labels for content options
-			echo 	"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_content_options[", 
+					// Input and labels for content options
+					"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_content_options[", 
 					$va[ 'title' ], "]\" name=\"vol_content_options[", 
-					$va[ 'title' ], "]\" type=\"checkbox\" value=\"1\"";
-			checked( '1', $options_content[ $va[ 'title' ] ] );
-			echo 	"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_content_options[", 
+					$va[ 'title' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_content[ $va[ 'title' ] ] ),
+					"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_content_options[", 
 					$va[ 'title' ], "]\">", 
-					$va[ 'label' ], "</label>\n{$tab6}\t\t";
+					$va[ 'label' ], "</label>\n{$tab6}\t\t",
 					
-			if ( isset( $va[ 'notes' ] ) )
-				echo "<br>", $va[ 'notes' ], "\n{$tab6}";
+					( isset( $va[ 'notes' ] ) ?
+						"<br>" . $va[ 'notes' ] . "\n{$tab6}" : '' ),
 			
-			if ( isset( $va[ 'td_end' ] ) )
-				echo $va[ 'td_end' ], "\n{$tab3}\t\t";
+					( isset( $va[ 'td_end' ] ) ?
+						$va[ 'td_end' ] . "\n{$tab3}\t\t" : '' ),
 			
-			if ( isset( $va[ 'tr_end' ] ) )
-				echo $va[ 'tr_end' ], "\n{$tab3}";
-			
+					( isset( $va[ 'tr_end' ] ) ?
+						$va[ 'tr_end' ] . "\n{$tab3}" : '' );
 		}
 		
 		echo 	"{$tab3}\t</table>",
 				"<hr>\n",
 				"{$tab3}\t<p>\n",
-				"{$tab3}\t\t<input name=\"volatyl_content_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary\" value=\"";
-		esc_attr_e( 'Save Settings', 'volatyl' );
-		echo 	"\" />\n",
+				"{$tab3}\t\t<input name=\"volatyl_content_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary\" value=\"",
+				esc_attr_e( 'Save Content Settings', 'volatyl' ),
+				"\" />\n",
 				"{$tab3}\t</p>\n",
-				"{$tab3}</form>\n",
-				"\t\t";
+				"{$tab3}</form>\n", "\t\t";
 		
 		
 	/* Tabbed - Hooks Settings
@@ -349,12 +330,12 @@ function vol_options_do_page() {
 		$options_hooks = get_option( 'vol_hooks_options' );
 		$vhooks = volatyl_hooks();
 		
-		echo "{$tab3}<form method=\"post\" action=\"options.php\" class=\"hooks-form\">\n{$tab3}\t";
-		
-		settings_fields( 'volatyl_hooks_options' );
-		do_settings_sections( 'volatyl_hooks_options' );
-		
-		echo 	"\n{$tab3}\t<h3>", THEME_NAME . __( ' Hooks', 'volatyl' ), "</h3>\n",
+		echo 	"{$tab3}<form method=\"post\" action=\"options.php\" class=\"hooks-form\">\n{$tab3}\t",
+				settings_fields( 'volatyl_hooks_options' ),
+				do_settings_sections( 'volatyl_hooks_options' ),
+				
+				// Hooks intro
+				"\n{$tab3}\t<h3>", THEME_NAME . __( ' Hooks', 'volatyl' ), "</h3>\n",
 				"{$tab3}\t<div class=\"instructions radius\">\n",
 				"{$tab3}\t\t<p>", __( 'Hooks are areas of your website that can be “hooked” into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). You are <strong style="color: red">not</strong> allowed to use PHP in these hooks! <a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">Write custom PHP functions</a> and place them inside of your child theme\'s functions file.', 'volatyl' ), "</p>\n",
 				"{$tab3}\t</div>";
@@ -382,22 +363,21 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[", 
 					$hook[ 'name' ], "]\">", 
 					stripslashes( esc_textarea( $options_hooks[ $hook[ 'name' ] ] ) ), 
-					"</textarea><br>\n";
-			
-			// Disable hooks
-			echo 	"{$tab3}\t\t<input id=\"vol_hooks_options[switch_", 
-					$hook[ 'name' ], "]\" name=\"vol_hooks_options[switch_", 
-					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"";
-			checked( '1', $options_hooks[ 'switch_' . $hook[ 'name' ] ] );
-			echo 	" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[switch_", 
-					$hook[ 'name' ], "]\">", 
-					__( ' Disable hook ', 'volatyl' ) . "<span class=\"notes\">" . __( '(Your changes will be saved)', 'volatyl' ), 
-					"</span></label>\n";
+					"</textarea><br>\n",
 					
-			submit_hooks();
-			
-			echo "{$tab3}\t</div>\n";
-			
+					// Disable hooks
+					"{$tab3}\t\t<input id=\"vol_hooks_options[switch_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[switch_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'switch_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[switch_", 
+					$hook[ 'name' ], "]\">", 
+					__( ' Disable hook ', 'volatyl' ) . 
+					"<span class=\"notes\">" . 
+					__( '(Your changes will be saved)', 'volatyl' ), 
+					"</span></label>\n",
+					submit_hooks(),
+					"{$tab3}\t</div>\n";
 		}
 		
 		echo 	"{$tab3}</form>\n",
@@ -411,58 +391,52 @@ function vol_options_do_page() {
  	 * @since Volatyl 1.0
 	 */	
 	} elseif ( $active_tab == 'license' ) {
-		$license 	= get_option( 'edd_sample_theme_license_key' );
-		$status 	= get_option( 'edd_sample_theme_license_key_status' );
+		$license = get_option( 'edd_sample_theme_license_key' );
+		$status = get_option( 'edd_sample_theme_license_key_status' );
 	
-		echo "{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t";
+		echo 	"{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t",
 		
-		settings_fields( 'volatyl_license_key' );
-		do_settings_sections( 'volatyl_license_key' );
-		
-		// Start content options table
-		echo 	"\n{$tab3}\t<h3>", 
+				settings_fields( 'volatyl_license_key' ),
+				do_settings_sections( 'volatyl_license_key' ),
+				
+				// Start content options table
+				"\n{$tab3}\t<h3>", 
 				__( 'License Key Settings', 'volatyl' ), "</h3>\n",
 				"{$tab3}\t<div class=\"instructions radius\">\n",
-				"{$tab3}\t\t<p>", __( 'When you purchased Volatyl, you should have received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the Volatyl Framework. Enter your license key below and click the <strong>Save Changes</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl' ), "</p>\n",
+				"{$tab3}\t\t<p>", __( 'When you purchased Volatyl, you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the Volatyl Framework. Enter your license key below and click the <strong>Send License Key Changes to Database</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl' ), "</p>\n",
 				"{$tab3}\t\t<p>", __( 'You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole Volatyl and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl' ), "</p>\n",
 				"{$tab3}\t</div>",
-				"{$tab3}<table class=\"form-table\">\n"; ?>
-		
-		<tr valign="top">	
-			<th scope="row" valign="top">
-				<?php _e('License Key'); ?>
-			</th>
-			<td>
-				<input id="edd_sample_theme_license_key" name="edd_sample_theme_license_key" type="text" class="regular-text" value="<?php esc_attr_e( $license ); ?>" />
-				<label class="description" for="edd_sample_theme_license_key"><?php _e('Enter your license key'); ?></label>
-			</td>
-		</tr>
-		<?php if( false !== $license ) { ?>
-			<tr valign="top">	
-				<th scope="row" valign="top">
-					<?php _e('Activate License'); ?>
-				</th>
-				<td>
-					<?php if( $status !== false && $status == 'valid' ) { ?>
-						<span style="color:green;"><?php _e('active'); ?></span>
-						<?php wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ); ?>
-						<input type="submit" class="button-secondary" name="edd_theme_license_deactivate" value="<?php _e('Deactivate License'); ?>"/>
-					<?php } else {
-						wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ); ?>
-						<input type="submit" class="button-secondary" name="edd_theme_license_activate" value="<?php _e('Activate License'); ?>"/>
-					<?php } ?>
-				</td>
-			</tr>
-		<?php }
-		
-		echo 	"{$tab3}\t</table>",
+				"{$tab3}<table class=\"form-table\">\n",
+				"<tr valign=\"top\">",	
+				"<th scope=\"row\" valign=\"top\">",
+				__('License Key'), "</th>", "<td>",
+				"<input id=\"edd_sample_theme_license_key\" name=\"edd_sample_theme_license_key\" type=\"text\" class=\"regular-text\" value=\"",
+				esc_attr_e( $license ), "\" />",
+				"<label class=\"description\" for=\"edd_sample_theme_license_key\">",
+				__('Enter your license key'),
+				"</label>", "</td>", "</tr>",
+				( ( false !== $license ) ?
+				"<tr valign=\"top\">" .	
+				"<th scope=\"row\" valign=\"top\">" .
+				__('Activate License') . "</th>" . "<td>" .
+				( ( $status !== false && $status == 'valid' ) ?
+				"<span style=\"color: green;\">" .
+				__('active') . "</span>" .
+				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
+				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_deactivate\" value=\"" .
+				__('Deactivate License') .
+				"\"/>" : 
+				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
+				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_activate\" value=\"" .
+				__('Activate License') .
+				"\"/>" ) : '' ),
+				"</td>", "</tr>",
+				"{$tab3}\t</table>",
 				"<hr>\n",
-				"{$tab3}\t<p>\n";
-				submit_button();
-		echo 	"\n",
-				"{$tab3}\t</p>\n",
-				"{$tab3}</form>\n",
-				"\t\t";
+				"{$tab3}\t<p>\n",
+				"{$tab3}\t\t<input name=\"volatyl_license_key[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary\" value=\"",
+				esc_attr_e( 'Send License Key Changes to Database', 'volatyl' ),
+				"\" />\n", "{$tab3}\t</p>\n", "{$tab3}</form>\n", "\t\t";
 
 	// Tab checker - WTF? Settings
 	} else {
@@ -480,9 +454,9 @@ function submit_hooks() {
 	global $tab3, $tab6;
 	
 	echo 	"{$tab3}\t\t<p>\n",
-			"{$tab6}<input name=\"volatyl_hooks_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary submit-hooks\" value=\"";
-	esc_attr_e( 'Update Hooks', 'volatyl' );
-	echo 	"\" />\n",
+			"{$tab6}<input name=\"volatyl_hooks_options[submit]\" id=\"submit_options_form\" type=\"submit\" class=\"button-primary submit-hooks\" value=\"",
+			esc_attr_e( 'Update Hooks', 'volatyl' ),
+			"\" />\n",
 			"{$tab3}\t\t</p>";
 }
 
