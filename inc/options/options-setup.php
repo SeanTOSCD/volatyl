@@ -424,7 +424,7 @@ function vol_site_info() {
 }
 function vol_headliner() { 
 	global $options; 
-	echo stripslashes( $options[ 'vol_headliner' ] ); 
+	return stripslashes( $options[ 'vol_headliner' ] ); 
 	do_action( 'vol_headliner' ); 
 }
 function vol_footliner() { 
