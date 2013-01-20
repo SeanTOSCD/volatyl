@@ -64,13 +64,58 @@ function footer_element() {
 function footer_frame() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 )
+	if ( $options_structure[ 'wide' ] == 1 ) {
 	
 		echo 	"<div id=\"footer\" class=\"full\">\n\t<div class=\"main\">\n",
 				footer_element(),
 				"\t</div>\n</div>\n"; 
 		
-	else
+	} else {
 	
 		echo 	footer_element(), "</div>\n";
+		
+	}
+}
+
+
+// The landing page footer element
+function landing_footer_element() {
+	global $options;
+	$options = get_option( 'vol_hooks_options' );
+	$options_general = get_option( 'vol_general_options' );
+
+	echo 	"<footer class=\"site-footer\">\n",
+			"\t<div class=\"site-info\">",
+
+			// Footer attribution
+			( ( $options_general[ 'attribution' ] == 1 ) ? 
+
+				// DO NOT CHANGE text IF displayed
+				__( '<p>Built with ', 'volatyl' ) . 
+				"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
+				__( ' for WordPress</p>', 'volatyl' ) : '' );
+				
+	// vol_site_info
+	echo 	( ( $options[ 'switch_vol_site_info' ] == 0 ) ? vol_site_info() : '' ),
+			"</div>\n", 
+			"</footer>";
+}
+
+
+// The stripped footer for landing pages
+function landing_footer_frame() {
+	$options_structure = get_option( 'vol_structure_options' );
+	
+	if ( $options_structure[ 'wide' ] == 1 ) {
+	
+		echo 	"<div id=\"footer\" class=\"full\">\n\t<div class=\"main\">\n",
+				landing_footer_element(),
+				"\t</div>\n</div>\n"; 
+		
+	} else {
+	
+		echo 	landing_footer_element(), 
+				"</div>\n";
+		
+	}
 }

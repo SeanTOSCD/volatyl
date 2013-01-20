@@ -26,10 +26,10 @@ function before_content() {
 	show_vol_headliner(),
 
 	// vol_before_content
-	( ( $options[ 'switch_vol_before_content' ] == 0 ) ? vol_before_content() : '' ),
+	( ( $options[ 'switch_vol_before_content' ] == 0 && $options_structure[ 'wide' ] == 0 ) ? vol_before_content() : '' ),
 
 	// vol_before_content_area
-	( ( $options[ 'switch_vol_before_content_area' ] == 0 ) ? vol_before_content_area() : '' );
+	( ( $options[ 'switch_vol_before_content_area' ] == 0 && $options_structure[ 'wide' ] == 1 ) ? vol_before_content_area() : '' );
 	
 }
 
@@ -40,10 +40,10 @@ function after_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
 	// vol_after_content_area
-	echo ( ( $options[ 'switch_vol_after_content_area' ] == 0 ) ? vol_after_content_area() : '' ),
+	echo ( ( $options[ 'switch_vol_after_content_area' ] == 0 && $options_structure[ 'wide' ] == 1 ) ? vol_after_content_area() : '' ),
 
 	// vol_after_content
-	( ( $options[ 'switch_vol_after_content' ] == 0 ) ? vol_after_content() : '' ),
+	( ( $options[ 'switch_vol_after_content' ] == 0 && $options_structure[ 'wide' ] == 0 ) ? vol_after_content() : '' ),
 
 	// vol_footliner
 	show_vol_footliner(),

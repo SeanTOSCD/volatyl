@@ -10,6 +10,7 @@
  * @since Volatyl 1.0
  */
 
+// The standard header element
 function header_element() {
 	global $options;
 	$options_hooks = get_option( 'vol_hooks_options' );
@@ -72,20 +73,71 @@ function header_element() {
 	echo "</header>";
 }
 
+
 // The above <header> will display based on HTML structure options
 function header_frame() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
 	if ( $options_structure[ 'wide' ] == 1 ) { 
 	
-		echo "<div id=\"header\" class=\"full\">\n\t<div class=\"main\">\n";
-		header_element();
-		echo "\t</div>\n</div>\n";
+		echo 	"<div id=\"header\" class=\"full\">\n\t<div class=\"main\">\n",
+				header_element(),
+				"\t</div>\n</div>\n";
 		
 	} else {
 	
-		echo "<div id=\"container\">\n";
-		header_element();
+		echo 	"<div id=\"container\">\n",
+				header_element();
+		
+	}
+}
+
+
+// The landing page header element
+function landing_header_element() {
+	global $options;
+	$options_content = get_option( 'vol_content_options' );
+	$title = $options_content[ 'title' ];
+	$logo = $options_content[ 'logo' ];
+	
+	echo "<header class=\"site-header inner\">\n";
+		
+	// Show site title? This controls the text title AND logo			
+	if ( $title == 1 ) {
+		echo 	"\t\t<p class=\"site-title\">",
+				"<a href=\"",
+				home_url( '/' ), "\" title=\"",
+				esc_attr( get_bloginfo( 'name', 'display' ) ), 
+				"\" rel=\"home\">";
+	
+		// If a logo is uploaded, show it. If not, show the site title.
+		if ( $logo != '' )
+			echo "<img src=\"", $options_content[ 'logo' ], "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />";
+			
+		else		
+			echo bloginfo( 'name' );
+		
+		echo "</a></p>\n";
+	}
+	
+	echo "</header>";
+}
+
+
+// The stripped header for landing pages
+function landing_header_frame() {
+	$options_structure = get_option( 'vol_structure_options' );
+	
+	if ( $options_structure[ 'wide' ] == 1 ) { 
+	
+		echo 	"<div id=\"header\" class=\"full\">\n\t<div class=\"main\">\n",
+				landing_header_element(),
+				"\t</div>\n</div>\n";
+		
+	} else {
+	
+		echo 	"<div id=\"container\">\n",
+				landing_header_element();
 		
 	}
 }

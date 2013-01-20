@@ -45,6 +45,7 @@ require_once ( THEME_FUNCTIONS . '/widgets.php' );
 require_once ( THEME_FUNCTIONS . '/byline.php' );
 require_once ( THEME_FUNCTIONS . '/page-nav.php' );
 require_once ( THEME_FUNCTIONS . '/content.php' );
+require_once ( THEME_FUNCTIONS . '/body-class.php' );
 
 
 //  Sets up theme defaults and registers support for various WordPress features

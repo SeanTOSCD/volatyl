@@ -22,7 +22,8 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
- 
+
+// Full site content structure
 function standard_content() {
 
 	// Content
@@ -31,20 +32,22 @@ function standard_content() {
 	if ( $options_structure[ 'wide' ] == 1 ) {
 	
 		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
-				"<div class=\"main clearfix\">";
-				vol_columns(); 
-		echo 	"</div></div>"; 
+				"<div class=\"main clearfix\">",
+				vol_columns(),
+				"</div></div>"; 
 		
 	} else {
 	
-		echo 	"<div id=\"main-content\" class=\"clearfix\">";
-				vol_columns();
-		echo 	"</div>";
+		echo 	"<div id=\"main-content\" class=\"clearfix\">",
+				vol_columns(),
+				"</div>";
 		
 	}
 }
 add_action( 'main_content', 'standard_content' );
 
+
+// Singular option content structure
 function singular_content() {
 
 	// Content
@@ -53,9 +56,9 @@ function singular_content() {
 	if ( $options_structure[ 'wide' ] == 1 ) {
 	
 		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
-				"<div class=\"main clearfix\">";
-				columns_singular(); 
-		echo 	"</div></div>"; 
+				"<div class=\"main clearfix\">",
+				columns_singular(),
+				"</div></div>"; 
 		
 	} else {
 	
@@ -67,8 +70,9 @@ function singular_content() {
 }
 add_action( 'main_content_singular', 'singular_content' );
 
-function custom_content() {
 
+// Custom layout clean slate
+function custom_content() {
 	// This is the blank canvas where developers can create their own layout
 }
 add_action( 'main_content_custom_layout', 'custom_content' );
