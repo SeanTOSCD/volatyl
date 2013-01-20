@@ -51,15 +51,13 @@ function header_element() {
 		}
 	
 		// Show site tagline? Always hide on landing page		
-		if ( $tagline == 1 && ! is_page_template() )
-			echo "\t\t<{$seotagline} class=\"site-description\">", bloginfo( 'description' ), "</{$seotagline}>\n";
+		echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . bloginfo( 'description' ) . "</{$seotagline}>\n" : '' ),
 
 		// vol_header_bottom - Always hide on landing page	
-		if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template() )
-			vol_header_bottom();
+		( ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) ? vol_header_bottom() : '' );
 
 	// Show header menu? - Always hide on landing page	
-	if ( $options_content['headermenu'] == 1 && ! is_page_template() ) {
+	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {
 	
 		echo "\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
 		
