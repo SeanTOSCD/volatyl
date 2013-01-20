@@ -13,7 +13,7 @@
 // The standard header element
 function header_element() {
 	global $options;
-	$options_hooks = get_option( 'vol_hooks_options' );
+	$options = get_option( 'vol_hooks_options' );
 	$options_content = get_option( 'vol_content_options' );
 	$title = $options_content[ 'title' ];
 	$logo = $options_content[ 'logo' ];
@@ -27,11 +27,10 @@ function header_element() {
 		$seotagline = "p";
 	}
 	
-	echo "<header class=\"site-header inner\">\n";
+	echo "<header class=\"site-header inner\">\n",
 
 	// vol_header_top
-	if ( $options_hooks[ 'switch_vol_header_top' ] == 0 )
-		vol_header_top();
+	( ( $options[ 'switch_vol_header_top' ] == 0 ) ? vol_header_top() : '' );
 		
 		// Show site title? This controls the text title AND logo			
 		if ( $title == 1 ) {
@@ -51,16 +50,16 @@ function header_element() {
 			echo "</a></{$seotitle}>\n";
 		}
 	
-		// Show site tagline?			
-		if ( $tagline == 1 )
+		// Show site tagline? Always hide on landing page		
+		if ( $tagline == 1 && ! is_page_template() )
 			echo "\t\t<{$seotagline} class=\"site-description\">", bloginfo( 'description' ), "</{$seotagline}>\n";
 
-		// vol_header_bottom
-		if ( $options_hooks[ 'switch_vol_header_bottom' ] == 0 )
+		// vol_header_bottom - Always hide on landing page	
+		if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template() )
 			vol_header_bottom();
 
-	// Show header menu?
-	if ( $options_content['headermenu'] == 1 ) {
+	// Show header menu? - Always hide on landing page	
+	if ( $options_content['headermenu'] == 1 && ! is_page_template() ) {
 	
 		echo "\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
 		
@@ -88,56 +87,6 @@ function header_frame() {
 	
 		echo 	"<div id=\"container\">\n",
 				header_element();
-		
-	}
-}
-
-
-// The landing page header element
-function landing_header_element() {
-	global $options;
-	$options_content = get_option( 'vol_content_options' );
-	$title = $options_content[ 'title' ];
-	$logo = $options_content[ 'logo' ];
-	
-	echo "<header class=\"site-header inner\">\n";
-		
-	// Show site title? This controls the text title AND logo			
-	if ( $title == 1 ) {
-		echo 	"\t\t<p class=\"site-title\">",
-				"<a href=\"",
-				home_url( '/' ), "\" title=\"",
-				esc_attr( get_bloginfo( 'name', 'display' ) ), 
-				"\" rel=\"home\">";
-	
-		// If a logo is uploaded, show it. If not, show the site title.
-		if ( $logo != '' )
-			echo "<img src=\"", $options_content[ 'logo' ], "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />";
-			
-		else		
-			echo bloginfo( 'name' );
-		
-		echo "</a></p>\n";
-	}
-	
-	echo "</header>";
-}
-
-
-// The stripped header for landing pages
-function landing_header_frame() {
-	$options_structure = get_option( 'vol_structure_options' );
-	
-	if ( $options_structure[ 'wide' ] == 1 ) { 
-	
-		echo 	"<div id=\"header\" class=\"full\">\n\t<div class=\"main\">\n",
-				landing_header_element(),
-				"\t</div>\n</div>\n";
-		
-	} else {
-	
-		echo 	"<div id=\"container\">\n",
-				landing_header_element();
 		
 	}
 }
