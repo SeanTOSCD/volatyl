@@ -2,9 +2,9 @@
 /** around-content.php
  *
  * Dumb filename, huh? The two functions here, before_content() and
- * after_content() cover everything from the bottom of the <head> to
+ * after_content(), cover everything from the bottom of the <head> to
  * the top of the main content... and the bottom of the main content
- * to the top of the site footer. They actually are around the content...
+ * to the top of the site footer. They actually are "around the content."
  *
  * @package Volatyl
  * @since Volatyl 1.0
