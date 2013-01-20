@@ -20,13 +20,9 @@ function landing_body_class( $classes ) {
 	
 	// add class name to the $classes array based on conditions
 	if ( is_page_template( 'custom-landing.php' ) ) {
-		
 		$classes[] = "landing";
-				
 	} elseif ( is_page_template( 'custom-squeeze.php' ) ) {
-		
 		$classes[] = "squeeze";
-				
 	}
 	
 	// return the $classes array
@@ -54,16 +50,12 @@ function main_layout_class( $classes ) {
 	
 	// add class name to the $classes array based on conditions
 	if ( is_singular() ) {
-	
 		if ( 'default' == $single_layout || '' == $single_layout )
 			$classes[] = $options[ 'column' ];
 		else
 			$classes[] = $single_layout;
-		
 	} else {
-		
 		$classes[] = $options[ 'column' ];
-				
 	}
 	
 	// return the $classes array
