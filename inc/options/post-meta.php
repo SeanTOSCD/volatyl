@@ -57,27 +57,6 @@ function vol_meta_box( $post ) {
 }
 
 
-// Body class based on custom CSS field
-function singular_body_class( $classes ) {
-	global $post;
-	
-	if ( ! is_404() && ! is_search() )
-		$singular_body_class = get_post_meta( $post->ID, '_custom-class', true);
-	
-	// add class name to the $classes array based on conditions
-	if ( is_singular() ) {
-	
-		// Add the body class if it exists
-		if ( '' !== $singular_body_class )
-			$classes[] = $singular_body_class;
-	}
-	
-	// return the $classes array
-	return $classes;
-}
-add_filter( 'body_class', 'singular_body_class' );
-
-
 // Validate singular layout options
 function vol_meta_box_save( $post_id ) {
 	global $options;
