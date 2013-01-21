@@ -28,4 +28,4 @@
 require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
 // License key setup and Volatyl automatic updater
-require_once( dirname( __FILE__ ) . '/inc/updater.php' );
+require_once( dirname( __FILE__ ) . '/inc/updater.php' ); 
