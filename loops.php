@@ -8,7 +8,6 @@
  * is_single()
  * is_page()
  * is_archive()
- * is_404()
  * is_attachment()
  *
  * These loops are not included in template files for Volatyl because 
@@ -267,41 +266,6 @@ function vol_content() {
 			
 			pagination_type();
 	
-		// 404 error page
-		} elseif ( is_404() ) {
-	
-			echo 	"\t<article id=\"post-0\" class=\"post error404 not-found\">",
-					"\t\t<header class=\"entry-header\">\n",
-					"{$tab3}<h1 class=\"entry-title\">", 
-					__( 'Oops! That page can&rsquo;t be found.', 'volatyl' ), "</h1>",
-					"\t\t</header>\n",
-					"\t\t<div class=\"entry-content\">\n",
-					"{$tab3}<p>". __( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'volatyl' ), "</p>\n";
-				
-					get_search_form();
-				
-					the_widget( 'WP_Widget_Recent_Posts' );
-				
-			echo 	"{$tab3}<div class=\"widget\">\n",
-					"{$tab3}\t<h2 class=\"widgettitle\">", 
-					__( 'Most Used Categories', 'volatyl' ), "</h2>\n",
-					"{$tab3}\t<ul>\n";
-				
-					wp_list_categories( array( 'orderby' => 'count', 'order' => 'DESC', 'show_count' => 1, 'title_li' => '', 'number' => 10 ) );
-				
-			echo 	"{$tab3}\t</ul>\n",
-					"</div>";
-				
-			/* translators: %1$s: smilie */
-			$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'volatyl' ), convert_smilies( ':)' ) ) . '</p>';
-		
-			the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
-		
-			the_widget( 'WP_Widget_Tag_Cloud' );
-		
-			echo 	"\t\t</div>\n",
-					"\t</article>\n";
-	
 		// Attachment pages
 		} elseif ( is_attachment() ) {
 			global $post;
@@ -409,7 +373,6 @@ function vol_content() {
 				get_template_part( 'content', get_post_format() );
 			}
 		}	
-	
 	} else {
 		get_template_part( 'no-results', 'index' );
 	}
