@@ -10,7 +10,11 @@
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
 */
 
-.hook { background: red; margin: 10px 0; border: 1px solid rgba(0,0,0,.1); }
+/* 
+.hook { background: lightyellow; padding: 10px; margin: 10px 0; border: 1px solid rgba(0,0,0,.1); }
+.hook-x { margin: 0; }
+#main-content #sidebars { padding-top: 0 !important; }
+*/
 
 /* =Format
 -------------------------------------------------------------- */

@@ -97,6 +97,7 @@ function vol_content() {
 
 				// Show feed tags
 				$options_posts = get_option( 'vol_content_options' );
+				
 				if ( $options_posts[ 'singletags' ] == 1 ) {
 					echo "{$tab3}<div class=\"entry-meta tags post-meta-footer\">\n", 
 					the_tags( 'Tags: ', ', ', '<br />' );
@@ -255,9 +256,14 @@ function vol_content() {
 
 			// vol_after_content_column
 			$options_hooks = get_option( 'vol_hooks_options' );
-		
-			if ( $options_hooks[ 'switch_vol_after_content_column' ] == 0 )
-				vol_after_content_column();
+			
+			if ( $options_hooks[ 'switch_vol_after_content_column' ] == 0 ) {
+				if 	( is_archive() && $options_hooks[ 'archive_vol_after_content_column' ] == 0 ) {
+						vol_after_content_column();
+				} else {
+					do_action( 'vol_after_content_column' );
+				}
+			}
 			
 			pagination_type();
 	

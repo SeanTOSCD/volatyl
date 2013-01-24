@@ -365,15 +365,25 @@ function vol_options_do_page() {
 					stripslashes( esc_textarea( $options_hooks[ $hook[ 'name' ] ] ) ), 
 					"</textarea><br>\n",
 					
-					// Hide on home
-					__( ' <span style="margin-right: 10px;">Hide hook on:</span> ', 'volatyl' ),
+					// Hide on blog
+					__( ' <span style="margin-right: 10px;">Hide on:</span> ', 'volatyl' ),
 					"{$tab3}\t\t<input id=\"vol_hooks_options[home_", 
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[home_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ 'home_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[home_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[home_",
 					$hook[ 'name' ], "]\">", 
-					__( ' Home ', 'volatyl' ),
+					__( ' Blog ', 'volatyl' ),
+					"</label>\n",
+					
+					// Hide on front page
+					"{$tab3}\t\t<input id=\"vol_hooks_options[front_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[front_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'front_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[front_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Front Page ', 'volatyl' ),
 					"</label>\n",
 					
 					// Hide on posts
@@ -381,7 +391,7 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[posts_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ 'posts_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[posts_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[posts_",
 					$hook[ 'name' ], "]\">", 
 					__( ' Posts ', 'volatyl' ),
 					"</label>\n",
@@ -391,7 +401,7 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[pages_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ 'pages_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[pages_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[pages_",
 					$hook[ 'name' ], "]\">", 
 					__( ' Pages ', 'volatyl' ),
 					"</label>\n",
@@ -401,7 +411,7 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[archive_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ 'archive_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[archive_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[archive_",
 					$hook[ 'name' ], "]\">", 
 					__( ' Archives ', 'volatyl' ),
 					"</label>\n",
@@ -411,7 +421,7 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[search_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ 'search_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[search_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[search_",
 					$hook[ 'name' ], "]\">", 
 					__( ' Search ', 'volatyl' ),
 					"</label>\n",
@@ -421,7 +431,7 @@ function vol_options_do_page() {
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[404_", 
 					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
 					checked( '1', $options_hooks[ '404_' . $hook[ 'name' ] ] ),
-					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[404_",
+					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[404_",
 					$hook[ 'name' ], "]\">", 
 					__( ' 404 ', 'volatyl' ),
 					"</label><br>\n",
@@ -600,6 +610,10 @@ function vol_options_validate( $input ) {
 		if ( ! isset( $input[ 'home_' . $hook[ 'name' ] ] ) )
 			$input[ 'home_' . $hook[ 'name' ] ] = null;
 		$input[ 'home_' . $hook[ 'name' ] ] = ( $input[ 'home_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'front_' . $hook[ 'name' ] ] ) )
+			$input[ 'front_' . $hook[ 'name' ] ] = null;
+		$input[ 'front_' . $hook[ 'name' ] ] = ( $input[ 'front_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
 			
 		if ( ! isset( $input[ 'posts_' . $hook[ 'name' ] ] ) )
 			$input[ 'posts_' . $hook[ 'name' ] ] = null;
