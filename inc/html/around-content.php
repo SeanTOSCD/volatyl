@@ -17,8 +17,23 @@ function before_content() {
 	$options_structure = get_option( 'vol_structure_options' );
 
 	// vol_before_html
-	echo ( ( $options[ 'switch_vol_before_html' ] == 0 ) ? vol_before_html() : '' ),
+	if ( $options[ 'switch_vol_before_html' ] == 0 ) {
+		if ( is_home() && $options[ 'home_vol_before_html' ] == 0 ) {
+			vol_before_html();
+		} elseif ( is_single() && $options[ 'posts_vol_before_html' ] == 0 ) {
+			vol_before_html();
+		} elseif ( is_page() && $options[ 'pages_vol_before_html' ] == 0 ) {
+			vol_before_html();
+		} elseif ( is_archive() && $options[ 'archives_vol_before_html' ] == 0 ) {
+			vol_before_html();
+		} elseif ( is_search() && $options[ 'search_vol_before_html' ] == 0 ) {
+			vol_before_html();
+		} else {
+			do_action( 'vol_before_html' );
+		}
+	}
 
+	echo 
 	header_frame(),
 	standard_menu_on(),
 

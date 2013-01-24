@@ -32,29 +32,29 @@ function header_element() {
 	// vol_header_top
 	( ( $options[ 'switch_vol_header_top' ] == 0 ) ? vol_header_top() : '' );
 		
-		// Show site title? This controls the text title AND logo			
-		if ( $title == 1 ) {
-			echo 	"\t\t<{$seotitle} class=\"site-title\">",
-					"<a href=\"",
-					home_url( '/' ), "\" title=\"",
-					esc_attr( get_bloginfo( 'name', 'display' ) ), 
-					"\" rel=\"home\">";
-		
-			// If a logo is uploaded, show it. If not, show the site title.
-			if ( $logo != '' )
-				echo "<img src=\"", $options_content[ 'logo' ], "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />";
-				
-			else		
-				echo bloginfo( 'name' );
-			
-			echo "</a></{$seotitle}>\n";
-		}
+	// Show site title? This controls the text title AND logo			
+	if ( $title == 1 ) {
+		echo 	"\t\t<{$seotitle} class=\"site-title\">",
+				"<a href=\"",
+				home_url( '/' ), "\" title=\"",
+				esc_attr( get_bloginfo( 'name', 'display' ) ), 
+				"\" rel=\"home\">";
 	
-		// Show site tagline? Always hide on landing page		
-		echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . bloginfo( 'description' ) . "</{$seotagline}>\n" : '' ),
+		// If a logo is uploaded, show it. If not, show the site title.
+		if ( $logo != '' )
+			echo "<img src=\"", $options_content[ 'logo' ], "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />";
+			
+		else		
+			echo get_bloginfo( 'name' );
+		
+		echo "</a></{$seotitle}>\n";
+	}
 
-		// vol_header_bottom - Always hide on landing page	
-		( ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) ? vol_header_bottom() : '' );
+	// Show site tagline? Always hide on landing page		
+	echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' ),
+
+	// vol_header_bottom - Always hide on landing page	
+	( ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) ? vol_header_bottom() : '' );
 
 	// Show header menu? - Always hide on landing page	
 	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {

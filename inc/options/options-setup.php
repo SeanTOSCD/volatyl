@@ -7,51 +7,6 @@
  * @since Volatyl 1.0
  */
 
-/** General Settings of the "General" tab
- *
- * This array is used to set up the General Settings options. The array
- * fields are designed to build an HTML table and utilize the built-in
- * styling that WordPress provides for settings pages.
- *
- * The /inc/options/theme-options.php file uses the variables that hold
- * theses arrays and runs them through foreach loops to create the options
- * fields. Not every main array key holds the same type of values. Depending
- * on an option's placement in the table, it may opening the beginning or
- * closing HTML tags of certain <table> elements. 
- *
- * The foreach loops check first to see if the array items have a certain 
- * key in place before attempting to put it in the table. If that key doesn't
- * exist, the foreach will move on. It's pretty cool.
- * 
- * @since Volatyl 1.0
- */
-function volatyl_general() {
-	$vol_general = array( 
-		'Admin Menu' 		=> array( 
-			'table_name'	=> __( '<h3>General Settings</h3>', 'volatyl' ),
-			'table'			=> '<table class="form-table">',
-			'tr'			=> '<tr>',
-			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Toolbar</th>', 'volatyl' ),
-			'td'			=> '<td>',
-			
-			'title'			=> 'adminmenu',
-			'label'			=> __( 'This is the drop-down menu at the very top of your admin dashboard if enabled.', 'volatyl' ),
-			'td_end'		=> '</td>',
-			'tr_end'		=> '</tr>'
-		),
-		'Attribution' 		=> array( 
-			'tr'			=> '<tr>',
-			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Attribution</th>', 'volatyl' ),
-			'td'			=> '<td>',
-			'title'			=> 'attribution',
-			'label'			=> __( 'There\'s no fee to remove the ', 'volatyl' ) . THEME_NAME . __( ' attribution. ;)', 'volatyl' ),
-			'td_end'		=> '</td>',
-			'tr_end'		=> '</tr>',
-		),
-	);
-	return $vol_general;
-}
-
 
 /** Create arrays for column layout options
  *
@@ -99,6 +54,53 @@ $column_options = array(
 	)
 );
 return $column_options;
+
+
+/** General Settings of the "General" tab
+ *
+ * This array is used to set up the General Settings options. The array
+ * fields are designed to build an HTML table and utilize the built-in
+ * styling that WordPress provides for settings pages.
+ *
+ * The /inc/options/theme-options.php file uses the variables that hold
+ * theses arrays and runs them through foreach loops to create the options
+ * fields. Not every main array key holds the same type of values. Depending
+ * on an option's placement in the table, it may opening the beginning or
+ * closing HTML tags of certain <table> elements. 
+ *
+ * The foreach loops check first to see if the array items have a certain 
+ * key in place before attempting to put it in the table. If that key doesn't
+ * exist, the foreach will move on. It's pretty cool.
+ * 
+ * @since Volatyl 1.0
+ */
+function volatyl_general() {
+	$vol_general = array( 
+		'Admin Menu' 		=> array( 
+			'table_name'	=> __( '<h3>General Settings</h3>', 'volatyl' ),
+			'table'			=> '<table class="form-table">',
+			'tr'			=> '<tr>',
+			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Toolbar</th>', 'volatyl' ),
+			'td'			=> '<td>',
+			
+			'title'			=> 'adminmenu',
+			'label'			=> __( 'This is the drop-down menu at the very top of your admin dashboard if enabled.', 'volatyl' ),
+			'td_end'		=> '</td>',
+			'tr_end'		=> '</tr>'
+		),
+		'Attribution' 		=> array( 
+			'tr'			=> '<tr>',
+			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Attribution</th>', 'volatyl' ),
+			'td'			=> '<td>',
+			'title'			=> 'attribution',
+			'label'			=> __( 'There\'s no fee to remove the ', 'volatyl' ) . THEME_NAME . __( ' attribution. ;)', 'volatyl' ),
+			'td_end'		=> '</td>',
+			'tr_end'		=> '</tr>',
+		),
+	);
+	return $vol_general;
+}
+
 
 // Content Settings on the "Content" tab
 function volatyl_content() {
@@ -315,7 +317,7 @@ function volatyl_hooks() {
 		'vol_headliner' 		=> array( 
 			'name'				=> 'vol_headliner',
 			'title' 			=> __( 'Headliner', 'volatyl' ),
-			'description'		=> __( 'Better known as a "Feature Box" displaying beneath your header but above your content', 'volatyl' ) 
+			'description'		=> __( 'Better known as a "Feature Box" displaying beneath the header but above content', 'volatyl' ) 
 		),
 		'vol_footliner' 		=> array( 
 			'name'				=> 'vol_footliner',
@@ -345,12 +347,12 @@ function volatyl_hooks() {
 		'vol_before_content_column' 	=> array( 
 			'name'				=> 'vol_before_content_column',
 			'title' 			=> __( 'Before Content Column', 'volatyl' ),
-			'description'		=> __( 'Very top of the content column before article/feed (home, archive, & single posts only)', 'volatyl' ) 
+			'description'		=> __( 'Very top of the content column before article/feed<br>(home, archive, & single posts only)', 'volatyl' ) 
 		),
 		'vol_after_content_column' 	=> array( 
 			'name'				=> 'vol_after_content_column',
 			'title' 			=> __( 'After Content Column', 'volatyl' ),
-			'description'		=> __( 'Very bottom of the content column after article/feed (home, archive, & single posts only)', 'volatyl' ) 
+			'description'		=> __( 'Very bottom of the content column after article/feed<br>(home, archive, & single posts only)', 'volatyl' ) 
 		),
 		'vol_after_article_header' => array( 
 			'name'				=> 'vol_after_article_header',

@@ -365,6 +365,57 @@ function vol_options_do_page() {
 					stripslashes( esc_textarea( $options_hooks[ $hook[ 'name' ] ] ) ), 
 					"</textarea><br>\n",
 					
+					// Hide on home
+					__( ' <span style="margin-right: 10px;">Hide hook content on:</span> ', 'volatyl' ),
+					"{$tab3}\t\t<input id=\"vol_hooks_options[home_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[home_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'home_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[home_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Home ', 'volatyl' ),
+					"</label>\n",
+					
+					// Hide on posts
+					"{$tab3}\t\t<input id=\"vol_hooks_options[posts_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[posts_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'posts_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[posts_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Posts ', 'volatyl' ),
+					"</label>\n",
+					
+					// Hide on pages
+					"{$tab3}\t\t<input id=\"vol_hooks_options[pages_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[pages_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'pages_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[pages_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Pages ', 'volatyl' ),
+					"</label>\n",
+					
+					// Hide on archives
+					"{$tab3}\t\t<input id=\"vol_hooks_options[archives_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[archives_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'archives_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[archives_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Archives ', 'volatyl' ),
+					"</label>\n",
+					
+					// Hide on search
+					"{$tab3}\t\t<input id=\"vol_hooks_options[search_", 
+					$hook[ 'name' ], "]\" name=\"vol_hooks_options[search_", 
+					$hook[ 'name' ], "]\" type=\"checkbox\" value=\"1\"",
+					checked( '1', $options_hooks[ 'search_' . $hook[ 'name' ] ] ),
+					" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[search_",
+					$hook[ 'name' ], "]\">", 
+					__( ' Search ', 'volatyl' ),
+					"</label><br>\n",
+					
 					// Disable hooks
 					"{$tab3}\t\t<input id=\"vol_hooks_options[switch_", 
 					$hook[ 'name' ], "]\" name=\"vol_hooks_options[switch_", 
@@ -535,6 +586,26 @@ function vol_options_validate( $input ) {
 		if ( ! isset( $input[ 'switch_' . $hook[ 'name' ] ] ) )
 			$input[ 'switch_' . $hook[ 'name' ] ] = null;
 		$input[ 'switch_' . $hook[ 'name' ] ] = ( $input[ 'switch_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'home_' . $hook[ 'name' ] ] ) )
+			$input[ 'home_' . $hook[ 'name' ] ] = null;
+		$input[ 'home_' . $hook[ 'name' ] ] = ( $input[ 'home_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'posts_' . $hook[ 'name' ] ] ) )
+			$input[ 'posts_' . $hook[ 'name' ] ] = null;
+		$input[ 'posts_' . $hook[ 'name' ] ] = ( $input[ 'posts_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'pages_' . $hook[ 'name' ] ] ) )
+			$input[ 'pages_' . $hook[ 'name' ] ] = null;
+		$input[ 'pages_' . $hook[ 'name' ] ] = ( $input[ 'pages_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'archives_' . $hook[ 'name' ] ] ) )
+			$input[ 'archives_' . $hook[ 'name' ] ] = null;
+		$input[ 'archives_' . $hook[ 'name' ] ] = ( $input[ 'archives_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+			
+		if ( ! isset( $input[ 'search_' . $hook[ 'name' ] ] ) )
+			$input[ 'search_' . $hook[ 'name' ] ] = null;
+		$input[ 'search_' . $hook[ 'name' ] ] = ( $input[ 'search_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
 	}	
 	
 	return $input;
