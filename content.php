@@ -10,6 +10,7 @@
  */
 
 $options = get_option( 'vol_content_options' );	
+$options_hooks = get_option( 'vol_hooks_options' );	
 if ( is_home() || is_front_page() ) {
 	$article_headline = "h3";
 } else {
@@ -27,6 +28,15 @@ if ( 'post' == get_post_type() )
 			"\t\t</div>\n";
 
 echo "\t</header>";
+
+// vol_after_article_header
+if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
+	if 	( $options_hooks[ 'home_vol_after_article_header' ] == 0 ) {
+			vol_after_article_header();
+	} else {
+		do_action( 'vol_after_article_header' );
+	}
+}
 
 if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
 

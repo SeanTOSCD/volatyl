@@ -475,22 +475,22 @@ function vol_post_footer() {
 	do_action( 'vol_post_footer' ); 
 }
 function vol_before_sidebar_1() { 
-	global $options; 
-	echo stripslashes( $options[ 'vol_before_sidebar_1' ] ); 
+	global $options_hooks; 
+	echo stripslashes( $options_hooks[ 'vol_before_sidebar_1' ] ); 
 	do_action( 'vol_before_sidebar_1' ); 
 }
 function vol_after_sidebar_1() { 
-	global $options; 
-	echo stripslashes( $options[ 'vol_after_sidebar_1' ] ); 
+	global $options_hooks; 
+	echo stripslashes( $options_hooks[ 'vol_after_sidebar_1' ] ); 
 	do_action( 'vol_after_sidebar_1' ); 
 }
 function vol_before_sidebar_2() { 
-	global $options; 
-	echo stripslashes( $options[ 'vol_before_sidebar_2' ] ); 
+	global $options_hooks; 
+	echo stripslashes( $options_hooks[ 'vol_before_sidebar_2' ] ); 
 	do_action( 'vol_before_sidebar_2' ); 
 }
 function vol_after_sidebar_2() { 
-	global $options; 
-	echo stripslashes( $options[ 'vol_after_sidebar_2' ] ); 
+	global $options_hooks; 
+	echo stripslashes( $options_hooks[ 'vol_after_sidebar_2' ] ); 
 	do_action( 'vol_after_sidebar_2' ); 
 }

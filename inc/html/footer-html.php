@@ -11,15 +11,26 @@
  */
 
 function footer_element() {
-	global $tab3, $tab6;
+	global $options, $tab3, $tab6;
 	$options_hooks = get_option( 'vol_hooks_options' );
 	$options_content = get_option( 'vol_content_options' );
 	$options_general = get_option( 'vol_general_options' );
 
-	echo "<footer class=\"site-footer\">\n",
+	echo "<footer class=\"site-footer\">\n";
 
 	// vol_footer_top - Always hide on landing page
-	( ( $options_hooks[ 'switch_vol_footer_top' ] == 0 && ! is_page_template() ) ? vol_footer_top() : '' );
+	if ( $options[ 'switch_vol_footer_top' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
+		if 	( ( is_home() && $options[ 'home_vol_footer_top' ] == 0 ) ||
+			( is_single() && $options[ 'posts_vol_footer_top' ] == 0 ) ||
+			( is_page() && $options[ 'pages_vol_footer_top' ] == 0 ) ||
+			( is_archive() && $options[ 'archive_vol_footer_top' ] == 0 ) ||
+			( is_search() && $options[ 'search_vol_footer_top' ] == 0 ) ||
+			( is_404() && $options[ '404_vol_footer_top' ] == 0 ) ) {
+				vol_footer_top();
+		} else {
+			do_action( 'vol_footer_top' );
+		}
+	}
 		
 	/** Fat footer (widgetized)
 	 *
@@ -45,7 +56,18 @@ function footer_element() {
 				"\t\t</div>\n";
 
 	// vol_footer_bottom - Always hide on landing page
-	( ( $options_hooks[ 'switch_vol_footer_bottom' ] == 0 && ! is_page_template() ) ? vol_footer_bottom() : '' );
+	if ( $options[ 'switch_vol_footer_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
+		if 	( ( is_home() && $options[ 'home_vol_footer_bottom' ] == 0 ) ||
+			( is_single() && $options[ 'posts_vol_footer_bottom' ] == 0 ) ||
+			( is_page() && $options[ 'pages_vol_footer_bottom' ] == 0 ) ||
+			( is_archive() && $options[ 'archive_vol_footer_bottom' ] == 0 ) ||
+			( is_search() && $options[ 'search_vol_footer_bottom' ] == 0 ) ||
+			( is_404() && $options[ '404_vol_footer_bottom' ] == 0 ) ) {
+				vol_footer_bottom();
+		} else {
+			do_action( 'vol_footer_bottom' );
+		}
+	}
 	
 	echo "\t<div class=\"site-info\">",
 
@@ -56,11 +78,23 @@ function footer_element() {
 		__( '<p>Built with ', 'volatyl' ) . 
 		"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
 		__( ' for WordPress</p>', 'volatyl' ) : '' );
-				
+
 	// vol_site_info
-	echo ( ( $options_hooks[ 'switch_vol_site_info' ] == 0 ) ? vol_site_info() : '' ),
-	"</div>\n", 
-	"</footer>";
+	if ( $options[ 'switch_vol_site_info' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
+		if 	( ( is_home() && $options[ 'home_vol_site_info' ] == 0 ) ||
+			( is_single() && $options[ 'posts_vol_site_info' ] == 0 ) ||
+			( is_page() && $options[ 'pages_vol_site_info' ] == 0 ) ||
+			( is_archive() && $options[ 'archive_vol_site_info' ] == 0 ) ||
+			( is_search() && $options[ 'search_vol_site_info' ] == 0 ) ||
+			( is_404() && $options[ '404_vol_site_info' ] == 0 ) ) {
+				vol_site_info();
+		} else {
+			do_action( 'vol_site_info' );
+		}
+	}
+	
+	echo 	"</div>\n", 
+			"</footer>";
 }
 
 // The above <footer> will display based on HTML structure options

@@ -27,10 +27,21 @@ function header_element() {
 		$seotagline = "p";
 	}
 	
-	echo "<header class=\"site-header inner\">\n",
+	echo "<header class=\"site-header inner\">\n";
 
 	// vol_header_top
-	( ( $options[ 'switch_vol_header_top' ] == 0 ) ? vol_header_top() : '' );
+	if ( $options[ 'switch_vol_header_top' ] == 0 ) {
+		if 	( ( is_home() && $options[ 'home_vol_header_top' ] == 0 ) ||
+			( is_single() && $options[ 'posts_vol_header_top' ] == 0 ) ||
+			( is_page() && $options[ 'pages_vol_header_top' ] == 0 ) ||
+			( is_archive() && $options[ 'archive_vol_header_top' ] == 0 ) ||
+			( is_search() && $options[ 'search_vol_header_top' ] == 0 ) ||
+			( is_404() && $options[ '404_vol_header_top' ] == 0 ) ) {
+				vol_header_top();
+		} else {
+			do_action( 'vol_header_top' );
+		}
+	}
 		
 	// Show site title? This controls the text title AND logo			
 	if ( $title == 1 ) {
@@ -51,10 +62,21 @@ function header_element() {
 	}
 
 	// Show site tagline? Always hide on landing page		
-	echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' ),
+	echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' );
 
-	// vol_header_bottom - Always hide on landing page	
-	( ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) ? vol_header_bottom() : '' );
+	// vol_header_bottom - Always hide on landing page
+	if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
+		if 	( ( is_home() && $options[ 'home_vol_header_bottom' ] == 0 ) ||
+			( is_single() && $options[ 'posts_vol_header_bottom' ] == 0 ) ||
+			( is_page() && $options[ 'pages_vol_header_bottom' ] == 0 ) ||
+			( is_archive() && $options[ 'archive_vol_header_bottom' ] == 0 ) ||
+			( is_search() && $options[ 'search_vol_header_bottom' ] == 0 ) ||
+			( is_404() && $options[ '404_vol_header_bottom' ] == 0 ) ) {
+				vol_header_bottom();
+		} else {
+			do_action( 'vol_header_bottom' );
+		}
+	}
 
 	// Show header menu? - Always hide on landing page	
 	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {

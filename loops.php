@@ -24,18 +24,22 @@
  */
 
 function vol_content() {
-	global $tab3, $tab6;
+	global $options, $tab3, $tab6;
 	echo "<div id=\"content\" class=\"site-content border-box clearfix\">";
 	
 	if ( have_posts() ) {
 
 		// Blog home
 		if ( is_home() ) {
-			$options_hooks = get_option( 'vol_hooks_options' );
 
 			// vol_before_content_column
-			if ( $options_hooks[ 'switch_vol_before_content_column' ] == 0 )
-				vol_before_content_column();
+			if ( $options[ 'switch_vol_before_content_column' ] == 0 ) {
+				if 	( $options[ 'home_vol_before_content_column' ] == 0 ) {
+						vol_before_content_column();
+				} else {
+					do_action( 'vol_before_content_column' );
+				}
+			}
 		
 			// Da loop
 			while ( have_posts() ) { 
@@ -44,18 +48,27 @@ function vol_content() {
 			}
 
 			// vol_after_content_column
-			if ( $options_hooks[ 'switch_vol_after_content_column' ] == 0 )
-				vol_after_content_column();
+			if ( $options[ 'switch_vol_after_content_column' ] == 0 ) {
+				if 	( $options[ 'home_vol_after_content_column' ] == 0 ) {
+						vol_after_content_column();
+				} else {
+					do_action( 'vol_after_content_column' );
+				}
+			}
 			
 			pagination_type(); // /inc/functions/page-nav.php
 	
 		// Single posts
-		} elseif ( is_single() && !is_attachment() ) { 
-			$options_hooks = get_option( 'vol_hooks_options' );
+		} elseif ( is_single() && ! is_attachment() ) { 
 
 			// vol_before_content_column
-			if ( $options_hooks[ 'switch_vol_before_content_column' ] == 0 )
-				vol_before_content_column();
+			if ( $options[ 'switch_vol_before_content_column' ] == 0 ) {
+				if 	( $options[ 'posts_vol_before_content_column' ] == 0 ) {
+						vol_before_content_column();
+				} else {
+					do_action( 'vol_before_content_column' );
+				}
+			}
 		
 			// Da loop
 			while ( have_posts() ) { 
@@ -69,11 +82,16 @@ function vol_content() {
 						"{$tab3}<div class=\"entry-meta\">\n", 
 						volatyl_post_meta(),
 						"{$tab3}</div>\n",
-						"\t\t</header>\n";	
+						"\t\t</header>\n";
 
 				// vol_after_article_header
-				if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 )
-					vol_after_article_header();
+				if ( $options[ 'switch_vol_after_article_header' ] == 0 ) {
+					if 	( $options[ 'posts_vol_after_article_header' ] == 0 ) {
+							vol_after_article_header();
+					} else {
+						do_action( 'vol_after_article_header' );
+					}
+				}
 				
 				echo "\t\t<div class=\"entry-content\">\n",  the_content();
 
@@ -91,8 +109,13 @@ function vol_content() {
 						"\t</article>\n";
 
 				// vol_post_footer
-				if ( $options_hooks[ 'switch_vol_post_footer' ] == 0 )
-					vol_post_footer();
+				if ( $options[ 'switch_vol_post_footer' ] == 0 ) {
+					if 	( $options[ 'posts_vol_post_footer' ] == 0 ) {
+							vol_post_footer();
+					} else {
+						do_action( 'vol_post_footer' );
+					}
+				}
 			
 				if ( comments_open() || '0' != get_comments_number() )
 					comments_template( '', true );
@@ -101,9 +124,13 @@ function vol_content() {
 			}
 
 			// vol_after_content_column
-			$options_hooks = get_option( 'vol_hooks_options' );
-			if ( $options_hooks[ 'switch_vol_after_content_column' ] == 0 )
-				vol_after_content_column();
+			if ( $options[ 'switch_vol_after_content_column' ] == 0 ) {
+				if 	( $options[ 'posts_vol_after_content_column' ] == 0 ) {
+						vol_after_content_column();
+				} else {
+					do_action( 'vol_after_content_column' );
+				}
+			}
 	
 		// Pages
 		} elseif ( is_page() ) {
