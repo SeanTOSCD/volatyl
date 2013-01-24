@@ -9,12 +9,17 @@
  * @since Volatyl 1.0
  */
 
-$options = get_option( 'vol_content_options' );
+$options = get_option( 'vol_content_options' );	
+if ( is_home() || is_front_page() ) {
+	$article_headline = "h3";
+} else {
+	$article_headline = "h1";
+}
 
 echo 	"<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 		"\t<header class=\"entry-header\">\n",
-		"\t\t<h1 class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"",
-		esc_attr( sprintf( __( 'Permalink to "%s"', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></h1>\n";
+		"\t\t<{$article_headline} class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"",
+		esc_attr( sprintf( __( 'Permalink to "%s"', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
 
 if ( 'post' == get_post_type() )
 	echo 	"\t\t<div class=\"entry-meta\">\n", 
