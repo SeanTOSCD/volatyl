@@ -572,7 +572,7 @@ th {
 .site-content ul, 
 .site-content ol { 
 	padding-left: 0; 
-	margin-left: 30px; 
+	margin: 0 0 30px 30px; 
 }
 
 .site-content li { 
