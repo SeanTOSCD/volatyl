@@ -91,8 +91,8 @@ function header_element() {
 	
 		echo	"<div id=\"short-menu-toggle-open\" class=\"short-menu-wrap\">",
 				"<div class=\"short-menu-toggle\">",
-				"<a href=\"#short-menu-toggle-open\" class=\"open-short-menu\">Menu</a>",
-				"<a href=\"#\" class=\"close-short-menu\">Close Menu</a>",
+				"<a href=\"#short-menu-toggle-open\" class=\"open-short-menu menu-toggle\">Menu</a>",
+				"<a href=\"#\" class=\"close-short-menu menu-toggle\">Close Menu</a>",
 				"</div>",
 				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
 		

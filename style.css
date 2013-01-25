@@ -361,7 +361,7 @@ th {
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: normal;
-	margin: 0; 
+	margin: 0 0 10px; 
 }
 
 .header-navigation { 
@@ -1127,10 +1127,9 @@ select {
 	.widget .widget-title {
 		font-size: 24px;
 	}
-}
-
-@media screen and (max-width: 768px) 
-{
+	
+	/* =Responsive Menus and all that crap >:[
+	-------------------------------------------------------------- */
 	.short-menu-toggle,
 	.standard-menu-toggle,
 	.footer-menu-toggle,
@@ -1155,7 +1154,7 @@ select {
 	#footer-menu-toggle-open:target .open-footer-menu   {
 		display: none;
 	}
-	.short-menu-wrap {
+	#short-menu-toggle-open:target.short-menu-wrap {
 		margin: 15px 0;
 	}
 	.standard-menu-wrap,
@@ -1164,13 +1163,25 @@ select {
 		padding: 15px 0;
 	}
 	.short-menu,
+	.full-menu,
+	.menu > li > a,
+	.menu > li:last-of-type > a,
+	.short-menu .menu li ul a,
+	.full-menu .menu li ul li a,
+	.menu > li > .sub-menu > li:first-child {
+		border: 1px solid #aaa;
+	}
+	.short-menu,
 	.full-menu {
 		display: none;
-		background: #ccc;
+		background: #ddd;
 		padding: 0;
 		text-align: left;
 		width: 90%;
 		margin: 0 auto;
+	}
+	.menu > li > .sub-menu > li:first-child {
+		border-width: 1px 0 0;
 	}
 	.short-menu .menu ul,
 	.short-menu .menu li,
@@ -1198,11 +1209,11 @@ select {
 	}
 	.menu > li > a,
 	.menu > li:last-of-type > a {
-		background: #aaa;
-		border-top: 1px solid #999;
+		background: #ccc;
+		border-width: 1px 0 0;
 	}
 	.menu > li:first-child > a {
-		border-top: 0;
+		border-width: 0;
 	}
 	.short-menu .menu li > ul > li ul {
 		display: none;
@@ -1212,12 +1223,12 @@ select {
 		padding: 10px 10px 10px 20px;
 	}
 	.short-menu a:hover,
-	.full-menu a:hover {
+	.full-menu a:hover,
+	.short-menu .menu li ul a:hover,
+	.full-menu .menu li ul a:hover {
 		color: #666;
 	}
-	.short-menu .menu li ul a,
-	.full-menu .menu li ul li ul li,
-	.full-menu .menu li ul li a {
+	.full-menu .menu li ul li ul li{
 		margin-left: 20px;
 	}
 	.short-menu .menu li ul,
@@ -1229,12 +1240,14 @@ select {
 	.full-menu .menu li ul li a {
 		width: auto;
 		color: black;
-		border: 1px solid #aaa;
-		border-width: 0 0 0 1px;
+		border-width: 0 0 1px 1px;
 	}
-	.short-menu .menu li ul a:hover,
-	.full-menu .menu li ul a:hover {
-		color: #666;
+	.menu .sub-menu li:last-of-type a {
+		margin-bottom: -1px;
+	}
+	.short-menu .menu li ul a,
+	.full-menu .menu .sub-menu > li.menu-item > a {
+		margin-left: -1px;
 	}
 }
 
