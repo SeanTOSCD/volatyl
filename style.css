@@ -138,8 +138,13 @@ acronym {
 	margin: 0 auto;
 }
 
-#main-content {
+#main-content,
+#sidebars {
 	word-break: break-word;
+}
+
+#main-content pre {
+	word-break: normal;
 }
 
 .border-box {
@@ -210,6 +215,7 @@ pre {
 	padding: 15px;
 	overflow: auto;
 	max-width: 100%;
+	word-wrap: normal !important;
 }
 
 code, kbd, tt, var {
@@ -575,6 +581,13 @@ th {
 	margin: 0 0 30px 30px; 
 }
 
+.site-content ul ul, 
+.site-content ul ol,
+.site-content ol ul, 
+.site-content ol ol { 
+	margin-bottom: 0; 
+}
+
 .site-content li { 
 	border-bottom: 1px dashed #f1f1f1; 
 	padding: 8px 0; 
@@ -730,7 +743,7 @@ cite.fn {
 }
 
 .widget {
-	margin: 0 0 30px;
+	margin: 0 0 45px;
 }
 
 .widget h3 {
@@ -891,6 +904,10 @@ img.size-full {
 embed,
 iframe,
 object {
+	max-width: 100%;
+}
+
+select {
 	max-width: 100%;
 }
 
