@@ -80,15 +80,27 @@ function header_element() {
 		}
 	}
 
-	// Show header menu? - Always hide on landing page	
+	/** Show header menu? - Always hide on landing page	
+	 * 
+	 * The header menu is replaced with a link beneath a certain screen
+	 * width. At that point, the menu will show once the link is clicked.
+	 *
+	 * @since Volatyl 1.0
+	 */
 	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {
 	
-		echo "\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
+		echo	"<div id=\"short-menu-toggle-open\" class=\"short-menu-wrap\">",
+				"<div class=\"short-menu-toggle\">",
+				"<a href=\"#short-menu-toggle-open\" class=\"open-short-menu\">Menu</a>",
+				"<a href=\"#\" class=\"close-short-menu\">Close Menu</a>",
+				"</div>",
+				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
 		
 		if ( has_nav_menu( 'header' ) )
 			wp_nav_menu( array( 'theme_location' => 'header' ) );
 			
-		echo "\t</nav>\n";
+		echo 	"\t</nav>\n",
+				"</div>";
 	}
 	
 	echo "</header>";

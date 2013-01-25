@@ -31,9 +31,25 @@ function standard_menu_on() {
 
 // The standard menu itself... called above
 function standard_menu() {
-	echo 	"<nav role=\"navigation\" class=\"site-navigation full-menu standard-navigation\">",
+
+	/**
+	 * The header menu is replaced with a link beneath a certain screen
+	 * width. At that point, the menu will show once the link is clicked.
+	 *
+	 * @since Volatyl 1.0
+	 */
+	
+	echo	"<div id=\"standard-menu-toggle-open\" class=\"standard-menu-wrap\">",
+			"<div class=\"standard-menu-toggle\">",
+			"<a href=\"#standard-menu-toggle-open\" class=\"open-standard-menu\">Navigation</a>",
+			"<a href=\"#standard-menu-collapse\" class=\"close-standard-menu\" id=\"standard-menu-collapse\">Collapse</a>",
+			"</div>",
+			"\t<nav role=\"navigation\" class=\"site-navigation full-menu standard-navigation\">\n",
+	
 			( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
-			"</nav>";
+		
+			"\t</nav>\n",
+			"</div>";
 }
 
 
@@ -61,8 +77,24 @@ function footer_menu_on() {
 
 // The footer menu itself... called above
 function footer_menu() {
-	echo 	"<nav role=\"navigation\" class=\"site-navigation full-menu footer-navigation\">",
+
+	/**
+	 * The header menu is replaced with a link beneath a certain screen
+	 * width. At that point, the menu will show once the link is clicked.
+	 *
+	 * @since Volatyl 1.0
+	 */
+	
+	echo	"<div id=\"footer-menu-toggle-open\" class=\"footer-menu-wrap\">",
+			"<div class=\"footer-menu-toggle\">",
+			"<a href=\"#footer-menu-toggle-open\" class=\"open-footer-menu \">Navigation</a>",
+			"<a href=\"#footer-menu-collapse\" class=\"close-footer-menu \" id=\"footer-menu-collapse\">Collapse</a>",
+			"</div>",
+			"\t<nav role=\"navigation\" class=\"site-navigation full-menu footer-navigation\">\n",
+	
 			( ( has_nav_menu( 'footer' ) ) ?
 			wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),
-			"</nav>";
+		
+			"\t</nav>\n",
+			"</div>";
 }
