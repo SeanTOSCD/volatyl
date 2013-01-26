@@ -98,9 +98,8 @@ cite.fn {
 
 #header,
 #container > .site-header,
-#menu-area-header,
+#menu-area-standard,
 #menu-area-footer,
-#container > .site-navigation,
 .sticky,
 .sticky .entry-header,
 #comments > ol > li,
@@ -361,7 +360,7 @@ th {
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: normal;
-	margin: 0 0 10px; 
+	margin: 0; 
 }
 
 .header-navigation { 
@@ -375,20 +374,22 @@ th {
 -------------------------------------------------------------- */
 
 .short-menu-toggle,
-.standard-menu-toggle,
-.footer-menu-toggle,
 .close-short-menu,
+.standard-menu-toggle,
 .close-standard-menu,
+.footer-menu-toggle,
 .close-footer-menu {
 	display: none;
 }
 
-#menu-area-header,
-#menu-area-footer {
+#menu-area-standard,
+.standard-menu-wrap,
+#menu-area-footer,
+.footer-menu-wrap {
 	background: #fafafa;
 }
 
-#menu-area-header {
+#menu-area-standard {
 	border-width: 0 0 1px;
 }
 
@@ -431,15 +432,16 @@ th {
 	margin: 0;
 }
 
-#container > .site-navigation {
-	background: #fafafa;
+#container .standard-menu-wrap,
+#container .footer-menu-wrap {
+	border: 1px solid rgba(0,0,0,.1);
 }
 
-#container > .standard-navigation {
+#container .standard-menu-wrap {
 	border-width: 0 1px 1px;
 }
 
-#container > .footer-navigation {	
+#container .footer-menu-wrap {	
 	border-width: 1px 1px 0;
 }
 
@@ -1045,7 +1047,8 @@ select {
 	}
 	#container > .site-header,
 	#container > .site-footer,
-	#container .full-menu {
+	#container #standard-menu-toggle-open,
+	#container #footer-menu-toggle-open {
 		border-left: 0;
 		border-right: 0;
 	}
@@ -1078,6 +1081,9 @@ select {
 	.site-header {
 		text-align: center;
 		padding-bottom: 15px;
+	}
+	.site-description { 
+		margin-bottom: 10px; 
 	}
 	.site-header .short-menu {
 		position: static;
@@ -1168,7 +1174,8 @@ select {
 	.menu > li:last-of-type > a,
 	.short-menu .menu li ul a,
 	.full-menu .menu li ul li a,
-	.menu > li > .sub-menu > li:first-child {
+	.menu > li > .sub-menu > li:first-child,
+	#container .full-menu {
 		border: 1px solid #aaa;
 	}
 	.short-menu,

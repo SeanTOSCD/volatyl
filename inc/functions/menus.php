@@ -17,7 +17,7 @@ function standard_menu_on() {
 	if ( $options_structure[ 'wide' ] == 1 ) {
 	
 		if ( $options_content[ 'standardmenu' ] == 1 )
-			echo 	"<div id=\"menu-area-header\" class=\"full\">",
+			echo 	"<div id=\"menu-area-standard\" class=\"full\">",
 					"<div class=\"main\">",
 					standard_menu(),
 					"</div></div>";
