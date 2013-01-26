@@ -89,12 +89,12 @@ function header_element() {
 	 */
 	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {
 	
-		echo	"<div id=\"short-menu-toggle-open\" class=\"short-menu-wrap\">",
-				"<div class=\"short-menu-toggle\">",
-				"<a href=\"#short-menu-toggle-open\" class=\"open-short-menu menu-toggle\">Menu</a>",
-				"<a href=\"#\" class=\"close-short-menu menu-toggle\">Close Menu</a>",
+		echo	"<div id=\"header-menu-container\" class=\"header-menu-wrap\">",
+				"<div class=\"header-menu-toggle\">",
+				"<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">Menu</a>",
+				"<a href=\"#\" class=\"close-header-menu menu-toggle\">Close Menu</a>",
 				"</div>",
-				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation\">\n";
+				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation border-box\">\n";
 		
 		if ( has_nav_menu( 'header' ) )
 			wp_nav_menu( array( 'theme_location' => 'header' ) );

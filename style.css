@@ -373,8 +373,8 @@ th {
 /* =Menus
 -------------------------------------------------------------- */
 
-.short-menu-toggle,
-.close-short-menu,
+.header-menu-toggle,
+.close-header-menu,
 .standard-menu-toggle,
 .close-standard-menu,
 .footer-menu-toggle,
@@ -1047,8 +1047,8 @@ select {
 	}
 	#container > .site-header,
 	#container > .site-footer,
-	#container #standard-menu-toggle-open,
-	#container #footer-menu-toggle-open {
+	#container #standard-menu-container,
+	#container #footer-menu-container {
 		border-left: 0;
 		border-right: 0;
 	}
@@ -1136,32 +1136,40 @@ select {
 	
 	/* =Responsive Menus and all that crap >:[
 	-------------------------------------------------------------- */
-	.short-menu-toggle,
-	.standard-menu-toggle,
-	.footer-menu-toggle,
-	#short-menu-toggle-open:target .short-menu,
-	#short-menu-toggle-open:target .close-short-menu,
-	#standard-menu-toggle-open:target .full-menu,
-	#standard-menu-toggle-open:target .close-standard-menu,
-	#footer-menu-toggle-open:target .full-menu,
-	#footer-menu-toggle-open:target .close-footer-menu {
-		display: block;
-	}
-	#standard-menu-toggle-open:target .close-standard-menu,
-	#footer-menu-toggle-open:target .close-footer-menu,
-	#standard-menu-toggle-open:target .full-menu,
-	#footer-menu-toggle-open:target .full-menu {
-		margin-bottom: 15px;
-	}
+	
+	/***** Hide desktop menus *****/
 	.short-menu,
 	.full-menu,
-	#short-menu-toggle-open:target .open-short-menu,
-	#standard-menu-toggle-open:target .open-standard-menu,
-	#footer-menu-toggle-open:target .open-footer-menu   {
+	#header-menu-container:target .open-header-menu,
+	#standard-menu-container:target .open-standard-menu,
+	#footer-menu-container:target .open-footer-menu   {
 		display: none;
 	}
-	#short-menu-toggle-open:target.short-menu-wrap {
-		margin: 15px 0;
+	
+	/***** Show and style previously hidden menus and toggle links *****/
+	.header-menu-toggle,
+	.standard-menu-toggle,
+	.footer-menu-toggle,
+	#header-menu-container:target .short-menu,
+	#standard-menu-container:target .full-menu,
+	#footer-menu-container:target .full-menu {
+		display: block;
+	}
+	#header-menu-container:target .close-header-menu,
+	#standard-menu-container:target .close-standard-menu,
+	#footer-menu-container:target .close-footer-menu {
+		display: inline-block;
+	}
+	#header-menu-container:target .short-menu,
+	#standard-menu-container:target .close-standard-menu,
+	#footer-menu-container:target .close-footer-menu,
+	#standard-menu-container:target .full-menu,
+	#footer-menu-container:target .full-menu {
+		margin-bottom: 15px;
+	}
+	#standard-menu-container,
+	#footer-menu-container {
+		padding: 15px 25px;
 	}
 	.standard-menu-wrap,
 	.footer-menu-wrap {
@@ -1184,7 +1192,7 @@ select {
 		background: #ddd;
 		padding: 0;
 		text-align: left;
-		width: 90%;
+		width: 100%;
 		margin: 0 auto;
 	}
 	.menu > li > .sub-menu > li:first-child {

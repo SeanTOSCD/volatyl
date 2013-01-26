@@ -39,12 +39,12 @@ function standard_menu() {
 	 * @since Volatyl 1.0
 	 */
 	
-	echo	"<div id=\"standard-menu-toggle-open\" class=\"standard-menu-wrap\">",
+	echo	"<div id=\"standard-menu-container\" class=\"standard-menu-wrap border-box\">",
 			"<div class=\"standard-menu-toggle\">",
-			"<a href=\"#standard-menu-toggle-open\" class=\"open-standard-menu menu-toggle\">Navigation</a>",
+			"<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">Navigation</a>",
 			"<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">Collapse</a>",
 			"</div>",
-			"\t<nav role=\"navigation\" class=\"site-navigation full-menu standard-navigation\">\n",
+			"\t<nav role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
 	
 			( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
 		
@@ -85,12 +85,12 @@ function footer_menu() {
 	 * @since Volatyl 1.0
 	 */
 	
-	echo	"<div id=\"footer-menu-toggle-open\" class=\"footer-menu-wrap\">",
+	echo	"<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">",
 			"<div class=\"footer-menu-toggle\">",
-			"<a href=\"#footer-menu-toggle-open\" class=\"open-footer-menu menu-toggle \">Navigation</a>",
+			"<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">Navigation</a>",
 			"<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">Collapse</a>",
 			"</div>",
-			"\t<nav role=\"navigation\" class=\"site-navigation full-menu footer-navigation\">\n",
+			"\t<nav role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
 	
 			( ( has_nav_menu( 'footer' ) ) ?
 			wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),
