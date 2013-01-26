@@ -94,12 +94,11 @@ function header_element() {
 				"<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">Menu</a>",
 				"<a href=\"#\" class=\"close-header-menu menu-toggle\">Close Menu</a>",
 				"</div>",
-				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation border-box\">\n";
+				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation border-box\">\n",
 		
-		if ( has_nav_menu( 'header' ) )
-			wp_nav_menu( array( 'theme_location' => 'header' ) );
-			
-		echo 	"\t</nav>\n",
+				( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ),
+				
+				"\t</nav>\n",
 				"</div>";
 	}
 	
