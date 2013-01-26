@@ -9,9 +9,12 @@
  * @since Volatyl 1.0
  */
 
-$feed_tags_text = apply_filters( 'feed_tags_text', __( 'Tags: ', 'volatyl' ) );
 $options = get_option( 'vol_content_options' );	
 $options_hooks = get_option( 'vol_hooks_options' );	
+
+// Custom filters
+$feed_tags_text = apply_filters( 'feed_tags_text', 'Tags: ' );
+
 if ( is_home() || is_front_page() ) {
 	$article_headline = "h3";
 } else {
@@ -65,7 +68,7 @@ if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
 	// Show feed tags
 	if ( $options[ 'feedtags' ] == 1 )
 		echo 	"\t\t<div class=\"entry-meta tags\">\n",
-				the_tags( $feed_tags_text, ', ', '<br />' ),
+				the_tags( __( $feed_tags_text, 'volatyl' ), ', ', '<br />' ),
 				"\t\t</div>\n";
 	
 	// Navigate paginated posts

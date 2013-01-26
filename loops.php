@@ -96,17 +96,18 @@ function vol_content() {
 
 				// Show feed tags
 				$options_posts = get_option( 'vol_content_options' );
-				$article_tags_text = apply_filters( 'article_tags_text', __( 'Tags: ', 'volatyl' ) );
+				
+				$article_tags_text = apply_filters( 'article_tags_text', 'Tags: ' );
 				
 				if ( $options_posts[ 'singletags' ] == 1 ) {
 					echo "{$tab3}<div class=\"entry-meta tags post-meta-footer\">\n", 
-					the_tags( $article_tags_text, ', ', '<br />' );
+					the_tags( __( $article_tags_text, 'volatyl' ), ', ', '<br />' );
 					echo "{$tab3}</div>\n";
 				}
 				
-				$article_page_nav = apply_filters( 'article_page_nav', __( 'Pages:', 'volatyl' ) );
+				$post_page_nav = apply_filters( 'post_page_nav', 'Pages:' );
 			
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $article_page_nav, 'volatyl' ), 'after' => '</div>' ) );
+				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</div>' ) );
 			
 				echo 	"\t\t</div>\n",
 						"\t</article>\n";
@@ -153,9 +154,11 @@ function vol_content() {
 				$options = get_option( 'vol_content_options' );
 				if ( $options[ 'pagecomments' ] == 1 )
 					if ( comments_open() || '0' != get_comments_number() )
-						comments_template( '', true ); 
+						comments_template( '', true );
+				
+						$page_page_nav = apply_filters( 'page_page_nav', 'Pages:' ); 
 					
-						wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( 'Pages:', 'volatyl' ), 'after' => '</div>' ) );
+						wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</div>' ) );
 					
 				echo 	"\t\t</div>\n",
 						"\t</article>\n";
@@ -272,6 +275,10 @@ function vol_content() {
 		// Attachment pages
 		} elseif ( is_attachment() ) {
 			global $post;
+			
+			// Custom filters
+			$previous_image = apply_filters( 'previous_image', '&larr; Previous' );
+			$next_image = apply_filters( 'next_image', 'Next &rarr;' );
 		
 			// Da loop
 			while ( have_posts() ) {
@@ -353,15 +360,17 @@ function vol_content() {
 							"{$tab3}\t</div>\n";
 			
 				echo "{$tab3}</div>\n";
+				
+				$attachment_page_nav = apply_filters( 'attachment_page_nav', 'Pages:' );
 			
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( 'Pages:', 'volatyl' ), 'after' => '</div>' ) );
+				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $attachment_page_nav, 'volatyl' ), 'after' => '</div>' ) );
 			
 				echo 	"{$tab3}</div>\n",
 						"{$tab3}<nav class=\"site-navigation image-navigation\">",
 						"{$tab3}\t<span class=\"previous-image\">", 
-						previous_image_link( false, __( '&larr; Previous', 'volatyl' ) ), "</span>\n",
+						previous_image_link( false, __( $previous_image, 'volatyl' ) ), "</span>\n",
 						"{$tab3}\t<span class=\"next-image\">", 
-						next_image_link( false, __( 'Next &rarr;', 'volatyl' ) ), "</span>\n",
+						next_image_link( false, __( $next_image, 'volatyl' ) ), "</span>\n",
 						"{$tab3}</nav>\n",
 						"\t\t</div>\n",
 						"\t</article>";

@@ -18,13 +18,13 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
  
 	function volatyl_post_meta() {
 		global $count;
+		$options_content = get_option( 'vol_content_options' );
 		
 		// Custom filters
-		$options_content = get_option( 'vol_content_options' );
-		$publish_date = apply_filters( 'publish_date', __( 'on ', 'volatyl' ) );
-		$author_text = apply_filters( 'author_text', __( 'by ', 'volatyl' ) );
-		$comments_off = apply_filters( 'comments_off', __( 'Comments off ', 'volatyl' ) );
-		$category_text = apply_filters( 'category_text', __( 'Filed under: ', 'volatyl' ) );
+		$publish_date = apply_filters( 'publish_date', 'on ' );
+		$author_text = apply_filters( 'author_text', 'by ' );
+		$comments_off = apply_filters( 'comments_off', 'Comments off ' );
+		$category_text = apply_filters( 'category_text', 'Filed under: ' );
 
 		// Show post date
 		if ( $options_content[ 'by-date-post' ] == 1 ) {
@@ -55,7 +55,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 			if ( ! comments_open() && $response_count == 0 ) {
 		
 				// No need to show a count if comments are off and there are none!
-				$comments = $comments_off;
+				$comments = __( $comments_off, 'volatyl' );
 				
 			} else {
 			
@@ -105,7 +105,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 			if ( $options_content[ 'by-date-post' ] == 1 || $options_content[ 'by-author-post' ] == 1 || $options_content[ 'by-comments-post' ] == 1 )
 				echo "<br>";
 		
-			echo $category_text;
+			_e( $category_text, 'volatyl' );
 			the_category( ', ' );
 		}
 	}

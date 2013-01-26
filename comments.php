@@ -11,9 +11,14 @@ $options = get_option( 'vol_content_options' );
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
-$comments_closed = apply_filters( 'comments_closed', __( 'Comments are closed.', 'volatyl' ) );
-$older_comments = apply_filters( 'older_comments', __( '&larr; Older Comments', 'volatyl' ) );
-$newer_comments = apply_filters( 'newer_comments', __( 'Newer Comments &rarr;', 'volatyl' ) );
+
+// Custom filters
+$comments_title = apply_filters( 'comments_title', __( _n( '1 Comment:', '%1$s Comments:', comments_only_count( $count ), 'volatyl' ), 'volatyl' ) );
+$pings_title = apply_filters( 'pings_title', __( _n( '1 Ping:', '%1$s Pings:', get_comments_number() - comments_only_count( $count ), 'volatyl' ), 'volatyl' ) );
+$comments_closed = apply_filters( 'comments_closed', 'Comments are closed.' );
+$older_comments = apply_filters( 'older_comments', '&larr; Older Comments' );
+$newer_comments = apply_filters( 'newer_comments', 'Newer Comments &rarr;' );
+$comment_submit = apply_filters( 'comment_submit', 'Submit Comment' );
 
 /* If the current post is protected by a password and
  * the visitor has not yet entered the password, we will
@@ -28,7 +33,7 @@ if ( post_password_required() )
 	if ( have_comments() ) {
 	
 		echo "\t<span class=\"comments-title\">\n";
-		printf( _n( '1 Comment:', '%1$s Comments:', comments_only_count( $count ), 'volatyl' ), number_format_i18n( comments_only_count( $count ) ) );
+		printf( $comments_title, number_format_i18n( comments_only_count( $count ) ) );
 		echo "</span>\n";
 		
 		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { 
@@ -65,7 +70,7 @@ if ( post_password_required() )
 			
 				// Pings! Trackbacks and Pingbacks...
 				echo "\t<span class=\"comments-title\">\n";
-				printf( _n( '1 Ping:', '%1$s Pings:', get_comments_number() - comments_only_count( $count ), 'volatyl' ), number_format_i18n( get_comments_number() - comments_only_count( $count ) ) );
+				printf( $pings_title, number_format_i18n( get_comments_number() - comments_only_count( $count ) ) );
 				echo "</span>\n";
 			
 				// Here are the trackbacks and pingbacks
@@ -120,7 +125,7 @@ comment_form(
 		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" rows="8" aria-required="true"></textarea></p>',
 		'title_reply'			=> '',
 		'cancel_reply_link'		=> '<span class="cancel-reply">' . __( 'Cancel Reply', 'volatyl' ) . '</span>',
-		'label_submit'			=> __( 'Submit Comment', 'volatyl' ),
+		'label_submit'			=> __( $comment_submit, 'volatyl' ),
 		'fields'				=> apply_filters( 'comment_form_default_fields', 
 		
 			array(

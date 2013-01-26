@@ -12,10 +12,12 @@
 if ( ! function_exists( 'volatyl_content_nav' ) ) {
 	function volatyl_content_nav( $nav_id ) {
 		global $wp_query, $post;
-		$older_posts = apply_filters( 'older_posts', __( '<span class="meta-nav">&larr;</span> Older posts', 'volatyl' ) );
-		$newer_posts = apply_filters( 'newer_posts', __( 'Newer posts <span class="meta-nav">&rarr;</span>', 'volatyl' ) );
-		$previous_post = apply_filters( 'previous_post', __( 'Previous Article:', 'volatyl' ) );
-		$next_post = apply_filters( 'next_post', __( 'Next Article:', 'volatyl' ) );
+		
+		// Custom filters
+		$previous_post = apply_filters( 'previous_post', 'Previous Article:' );
+		$next_post = apply_filters( 'next_post', 'Next Article:' );
+		$older_posts = apply_filters( 'older_posts', '<span class="meta-nav">&larr;</span> Older posts' );
+		$newer_posts = apply_filters( 'newer_posts', 'Newer posts <span class="meta-nav">&rarr;</span>' );
 
 		// Don't print empty markup on single pages if there's nowhere to navigate.
 		if ( is_single() ) {
@@ -75,10 +77,10 @@ function vol_pagination( $pages = '', $range = 2 ) {
 	$showitems = ( $range * 2 )+1;
 	
 	// Custom Filters
-	$first_page = apply_filters( 'first_page', __( '&laquo;', 'volatyl' ) );
-	$previous_page = apply_filters( 'previous_page', __( '&lsaquo;', 'volatyl' ) );
-	$next_page = apply_filters( 'next_page', __( '&rsaquo;', 'volatyl' ) );
-	$last_page = apply_filters( 'last_page', __( '&raquo;', 'volatyl' ) );
+	$first_page = apply_filters( 'first_page', '&laquo;' );
+	$previous_page = apply_filters( 'previous_page', '&lsaquo;' );
+	$next_page = apply_filters( 'next_page', '&rsaquo;' );
+	$last_page = apply_filters( 'last_page', '&raquo;' );
  
 	if ( empty( $paged ) ) $paged = 1;
 
@@ -99,10 +101,10 @@ function vol_pagination( $pages = '', $range = 2 ) {
 	echo $pagination_text;
 
 	if ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) 
-	echo "<a href=\"" . get_pagenum_link( 1 ) . "\" title=\"" . __( $first_page, 'volatyl' ) . "\">" . $first_page . "</a>";
+	echo "<a href=\"" . get_pagenum_link( 1 ) . "\" title=\"" . __( $first_page, 'volatyl' ) . "\">" . __( $first_page, 'volatyl' ) . "</a>";
 
 	if ( $paged > 1 && $showitems < $pages ) 
-	echo "<a href=\"" . get_pagenum_link( $paged - 1 ) . "\" title=\"" . __( $previous_page, 'volatyl' ) . "\">" . $previous_page . "</a>";
+	echo "<a href=\"" . get_pagenum_link( $paged - 1 ) . "\" title=\"" . __( $previous_page, 'volatyl' ) . "\">" . __( $previous_page, 'volatyl' ) . "</a>";
 
 	for ( $i=1; $i <= $pages; $i++ ) {
 
@@ -112,10 +114,10 @@ function vol_pagination( $pages = '', $range = 2 ) {
 	}
 
 	if ( $paged < $pages && $showitems < $pages ) 
-	echo "<a href=\"" . get_pagenum_link( $paged + 1 ) . "\" title=\"" . __( $next_page, 'volatyl' ) . "\">" . $next_page . "</a>";  
+	echo "<a href=\"" . get_pagenum_link( $paged + 1 ) . "\" title=\"" . __( $next_page, 'volatyl' ) . "\">" . __( $next_page, 'volatyl' ) . "</a>";  
 
 	if ( $paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages ) 
-	echo "<a href=\"" . get_pagenum_link( $pages ) . "\" title=\"" . __( $last_page, 'volatyl' ) . "\">" . $last_page . "</a>";
+	echo "<a href=\"" . get_pagenum_link( $pages ) . "\" title=\"" . __( $last_page, 'volatyl' ) . "\">" . __( $last_page, 'volatyl' ) . "</a>";
 
 	echo "</div>\n";
 
