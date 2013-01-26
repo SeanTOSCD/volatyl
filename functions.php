@@ -29,3 +29,11 @@ require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
 // License key setup and Volatyl automatic updater
 require_once( dirname( __FILE__ ) . '/inc/updater.php' ); 
+
+
+
+function test_filter( $content ) {
+	$content = "Posted On ";
+	return $content;
+}
+add_filter( 'search_submit_text', 'test_filter' );

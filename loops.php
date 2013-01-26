@@ -96,14 +96,17 @@ function vol_content() {
 
 				// Show feed tags
 				$options_posts = get_option( 'vol_content_options' );
+				$article_tags_text = apply_filters( 'article_tags_text', __( 'Tags: ', 'volatyl' ) );
 				
 				if ( $options_posts[ 'singletags' ] == 1 ) {
 					echo "{$tab3}<div class=\"entry-meta tags post-meta-footer\">\n", 
-					the_tags( 'Tags: ', ', ', '<br />' );
+					the_tags( $article_tags_text, ', ', '<br />' );
 					echo "{$tab3}</div>\n";
 				}
+				
+				$article_page_nav = apply_filters( 'article_page_nav', __( 'Pages:', 'volatyl' ) );
 			
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( 'Pages:', 'volatyl' ), 'after' => '</div>' ) );
+				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $article_page_nav, 'volatyl' ), 'after' => '</div>' ) );
 			
 				echo 	"\t\t</div>\n",
 						"\t</article>\n";

@@ -11,6 +11,9 @@ $options = get_option( 'vol_content_options' );
 $commenter = wp_get_current_commenter();
 $req = get_option( 'require_name_email' );
 $aria_req = ( $req ? " aria-required='true'" : '' );
+$comments_closed = apply_filters( 'comments_closed', __( 'Comments are closed.', 'volatyl' ) );
+$older_comments = apply_filters( 'older_comments', __( '&larr; Older Comments', 'volatyl' ) );
+$newer_comments = apply_filters( 'newer_comments', __( 'Newer Comments &rarr;', 'volatyl' ) );
 
 /* If the current post is protected by a password and
  * the visitor has not yet entered the password, we will
@@ -32,8 +35,8 @@ if ( post_password_required() )
 		
 			// Are there comments to navigate through?
 			echo 	"\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation\">\n\t\t", 
-					previous_comments_link( __( '&larr; Older Comments', 'volatyl' ) ), " ",
-					next_comments_link( __( 'Newer Comments &rarr;', 'volatyl' ) ), "\t</nav>";
+					previous_comments_link( __( $older_comments, 'volatyl' ) ), " ",
+					next_comments_link( __( $newer_comments, 'volatyl' ) ), "\t</nav>";
 			
 		}
 		
@@ -95,7 +98,7 @@ if ( post_password_required() )
 if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) )
 
 	echo 	"\t\t<p class=\"nocomments\">", 
-			__( 'Comments are closed.', 'volatyl' ), 
+			__( $comments_closed, 'volatyl' ), 
 			"</p>\n";
 
 
