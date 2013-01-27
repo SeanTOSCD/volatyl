@@ -106,7 +106,7 @@ function footer_frame() {
 	
 	if ( $options_structure[ 'wide' ] == 1 ) {
 	
-		echo 	"<div id=\"footer\" class=\"full\">\n\t<div class=\"main\">\n",
+		echo 	"<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n",
 				footer_element(),
 				"\t</div>\n</div>\n"; 
 		

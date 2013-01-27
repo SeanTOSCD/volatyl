@@ -18,6 +18,8 @@ function header_element() {
 	$title = $options_content[ 'title' ];
 	$logo = $options_content[ 'logo' ];
 	$tagline = $options_content[ 'tagline' ];
+	$header_menu_open = apply_filters( 'header_menu_open', 'Menu' );
+	$header_menu_close = apply_filters( 'header_menu_close', 'Hide Menu' );
 	
 	if ( is_home() || is_front_page() ) {
 		$seotitle = "h1";
@@ -91,10 +93,10 @@ function header_element() {
 	
 		echo	"<div id=\"header-menu-container\" class=\"header-menu-wrap\">",
 				"<div class=\"header-menu-toggle\">",
-				"<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">Menu</a>",
-				"<a href=\"#\" class=\"close-header-menu menu-toggle\">Close Menu</a>",
+				"<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" . __( $header_menu_open, 'volatyl' ) . "</a>",
+				"<a href=\"#\" class=\"close-header-menu menu-toggle\">" . __( $header_menu_close, 'volatyl' ) . "</a>",
 				"</div>",
-				"\t<nav role=\"navigation\" class=\"site-navigation short-menu header-navigation border-box\">\n",
+				"\t<nav role=\"navigation\" id=\"short-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n",
 		
 				( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ),
 				
@@ -112,7 +114,7 @@ function header_frame() {
 	
 	if ( $options_structure[ 'wide' ] == 1 ) { 
 	
-		echo 	"<div id=\"header\" class=\"full\">\n\t<div class=\"main\">\n",
+		echo 	"<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n",
 				header_element(),
 				"\t</div>\n</div>\n";
 		

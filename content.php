@@ -24,7 +24,7 @@ if ( is_home() || is_front_page() ) {
 echo 	"<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 		"\t<header class=\"entry-header\">\n",
 		"\t\t<{$article_headline} class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"",
-		esc_attr( sprintf( __( 'Permalink to "%s"', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
+		esc_attr( sprintf( __( '%s', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
 
 if ( 'post' == get_post_type() )
 	echo 	"\t\t<div class=\"entry-meta\">\n", 
