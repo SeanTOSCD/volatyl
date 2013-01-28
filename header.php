@@ -11,7 +11,7 @@
 global $page, $paged;
 $title = get_bloginfo( 'name' );
 $tagline = get_bloginfo( 'description' );
-$char = get_bloginfo( 'description' );
+$char = get_bloginfo( 'charset' );
 $ping = get_bloginfo( 'pingback_url' );
  
 echo 	"<!DOCTYPE html>\n",
