@@ -36,7 +36,7 @@ if ( ! function_exists( 'volatyl_content_nav' ) ) {
 		$nav_class = 'site-navigation paging-navigation clearfix';
 		
 		if ( is_single() )
-			$nav_class = 'site-navigation post-navigation';
+			$nav_class = 'site-navigation post-navigation clearfix';
 
 			echo 	"<nav role=\"navigation\" id=\"", 
 					$nav_id, "\" class=\"", 
@@ -74,7 +74,8 @@ if ( ! function_exists( 'volatyl_content_nav' ) ) {
 // Pagination - only if standard page navigation is turned off
 function vol_pagination( $pages = '', $range = 2 ) {  
 	global $paged;
-	$showitems = ( $range * 2 )+1;
+	$pagination_range = apply_filters( 'pagination_range', 2 );
+	$showitems = ( $range * $pagination_range )+1;
 	
 	// Custom Filters
 	$first_page = apply_filters( 'first_page', '&laquo;' );

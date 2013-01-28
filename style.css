@@ -93,7 +93,6 @@ pre {
 
 .nav-previous,
 .nav-next,
-.site-content .post-navigation,
 .site-content .comment-navigation,
 .site-content .image-navigation {
 	padding: 20px 0;
@@ -546,9 +545,7 @@ th {
 -------------------------------------------------------------- */
 
 .post,
-.site-content li,
-.paging-navigation,
-.pagination { 
+.site-content li { 
 	border-bottom: 1px dashed rgba(0,0,0,.1);
 }
 
@@ -1024,6 +1021,7 @@ select {
 
 #main-content #content {
 	padding-top: 0;
+	padding-bottom: 0;
 }
 
 #main-content #sidebars {
