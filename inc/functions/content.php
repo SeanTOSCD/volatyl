@@ -76,7 +76,7 @@ if ( $options_content[ 'excerptlink' ] == 1 ) {
 	function vol_replace_excerpt( $content ) {
 		global $excerpt_link;
 		return str_replace( '[...]',
-			'<p><a class="read-more" href="' . get_permalink() . '">' . $excerpt_link . '</a></p>',
+			'<p><a class="read-more" href="' . get_permalink() . '">' . __( $excerpt_link, 'volatyl' ) . '</a></p>',
 			$content
 		);
 	}
