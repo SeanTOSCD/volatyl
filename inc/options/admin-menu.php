@@ -43,10 +43,20 @@ if ( $options[ 'adminmenu' ] == 1 ) {
 		$admin_bar->add_menu( array(
 			'id'    		=> 'volatyl-options-hooks',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'Hooks', 'volatyl' ),
+			'title' 		=> __( 'Custom Hooks', 'volatyl' ),
 			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=hooks' ),
 			'meta'  		=> array(
-				'title' 	=> __( 'Hooks', 'volatyl' ),
+				'title' 	=> __( 'Custom Hooks', 'volatyl' ),
+				'target' 	=> '_self'
+			),
+		));
+		$admin_bar->add_menu( array(
+			'id'    		=> 'volatyl-options-license',
+			'parent' 		=> 'volatyl',
+			'title' 		=> __( 'License Key', 'volatyl' ),
+			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=license' ),
+			'meta'  		=> array(
+				'title' 	=> __( 'License Key', 'volatyl' ),
 				'target' 	=> '_self'
 			),
 		));
