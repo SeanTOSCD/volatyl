@@ -7,6 +7,17 @@
  * @since Volatyl 1.0
  */
 
+// Add .top class to the first post in a loop
+function vol_first_post_class( $classes ) {
+	global $wp_query;
+	
+	if( 0 == $wp_query->current_post )
+		$classes[] = 'top';
+		return $classes;
+}
+add_filter( 'post_class', 'vol_first_post_class' );
+
+
 /** Separate comments and pings
  *
  * Comments are a collection of comments and pings (pingbacks and
