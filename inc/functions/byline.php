@@ -39,7 +39,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		}
 	
 		// Show post author
-		( ( $options_content[ 'by-author-post' ] == 1 ) ? _e( $author_text, 'volatyl' ) . the_author() : '' );
+		echo ( ( $options_content[ 'by-author-post' ] == 1 ) ? __( $author_text, 'volatyl' ) . '<a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a>' : '' );
 	
 		// Show post comment count
 		if ( $options_content[ 'by-comments-post' ] == 1 ) {
