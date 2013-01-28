@@ -33,7 +33,7 @@ if ( ! function_exists( 'volatyl_content_nav' ) ) {
 		if ( $wp_query->max_num_pages < 2 && ( is_home() || is_archive() || is_search() ) )
 			return;
 
-		$nav_class = 'site-navigation paging-navigation';
+		$nav_class = 'site-navigation paging-navigation clearfix';
 		
 		if ( is_single() )
 			$nav_class = 'site-navigation post-navigation';
@@ -44,9 +44,9 @@ if ( ! function_exists( 'volatyl_content_nav' ) ) {
 				
 		if ( is_single() ) {
 		
-			previous_post_link( __( $previous_post, 'volatyl' ) . '<div class="nav-previous post-nav">%link</div>', '<span class="meta-nav">' . _x( '', 'Previous post link', 'volatyl' ) . '</span> %title' );
+			previous_post_link( '<div class="nav-previous post-nav">' . __( $previous_post . '<br>', 'volatyl' ) . '%link</div>', '<span class="meta-nav">' . _x( '', 'Previous post link', 'volatyl' ) . '</span> %title' );
 			
-			next_post_link( '<br>' . __( $next_post, 'volatyl' ) . '<div class="nav-next post-nav">%link</div>', '%title <span class="meta-nav">' . _x( '', 'Next post link', 'volatyl' ) . '</span>' );
+			next_post_link( '<div class="nav-next post-nav">' . __( $next_post . '<br>', 'volatyl' ) . '%link</div>', '%title <span class="meta-nav">' . _x( '', 'Next post link', 'volatyl' ) . '</span>' );
 
 		} elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) {
 
@@ -94,7 +94,7 @@ function vol_pagination( $pages = '', $range = 2 ) {
 	}
 	
 	// Custom pagination text filter
-	$pagination_text = apply_filters( 'pagination_text', __( '<div class="pagination"><span>' . __( 'Page ', 'volatyl' ) . $paged . __( ' of ', 'volatyl' ) . $pages . '</span>', 'volatyl' ) );
+	$pagination_text = apply_filters( 'pagination_text', __( '<div class="pagination clearfix"><span>' . __( 'Page ', 'volatyl' ) . $paged . __( ' of ', 'volatyl' ) . $pages . '</span>', 'volatyl' ) );
 
 	if ( 1 != $pages ) {
 

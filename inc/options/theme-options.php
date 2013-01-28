@@ -480,26 +480,26 @@ function vol_options_do_page() {
 				"{$tab3}<table class=\"form-table\">\n",
 				"<tr valign=\"top\">",	
 				"<th scope=\"row\" valign=\"top\">",
-				__('License Key'), "</th>", "<td>",
+				__( 'License Key', 'volatyl' ), "</th>", "<td>",
 				"<input id=\"edd_sample_theme_license_key\" name=\"edd_sample_theme_license_key\" type=\"text\" class=\"regular-text\" value=\"",
-				esc_attr_e( $license ), "\" />",
+				esc_attr_e( $license, 'volatyl' ), "\" />",
 				"<label class=\"description\" for=\"edd_sample_theme_license_key\">",
-				__('Enter your license key'),
+				__( 'Enter your license key', 'volatyl' ),
 				"</label>", "</td>", "</tr>",
 				( ( false !== $license ) ?
 				"<tr valign=\"top\">" .	
 				"<th scope=\"row\" valign=\"top\">" .
-				__('Activate License') . "</th>" . "<td>" .
+				__( 'Activate License', 'volatyl' ) . "</th>" . "<td>" .
 				( ( $status !== false && $status == 'valid' ) ?
 				"<span style=\"color: green; margin-right:10px;\">" .
-				__('active') . "</span>" .
+				__( 'active', 'volatyl' ) . "</span>" .
 				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
 				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_deactivate\" value=\"" .
-				__('Deactivate License') .
+				__( 'Deactivate License', 'volatyl' ) .
 				"\"/>" : 
 				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
 				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_activate\" value=\"" .
-				__('Activate License') .
+				__( 'Activate License', 'volatyl' ) .
 				"\"/>" ) : '' ),
 				"</td>", "</tr>",
 				"{$tab3}\t</table>",

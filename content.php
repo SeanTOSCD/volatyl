@@ -64,8 +64,8 @@ if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
 if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
 
 	// Only display Excerpts for Search or Home if options is selected
-	echo 	"\t<div class=\"entry-summary\">\n",
-			"<p>", get_the_excerpt(), "</p>",
+	echo 	"\t<div class=\"entry-summary\">\n", 
+			the_excerpt(), 
 			"\t</div>";
 	
 } else { 

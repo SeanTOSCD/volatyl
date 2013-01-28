@@ -7,6 +7,11 @@
  * @since Volatyl 1.0
  */
 
+$options_content = get_option( 'vol_content_options' );
+
+// Custom filters
+$excerpt_link = apply_filters( 'excerpt_link', 'Read More &rarr;' );
+
 // Add .top class to the first post in a loop
 function vol_first_post_class( $classes ) {
 	global $wp_query;
@@ -54,13 +59,10 @@ function comments_only_count( $count ) {
 
 
 // Show 'Pages' in search results? 
-$options_content = get_option( 'vol_content_options' );
-
 if ( $options_content[ 'searchpages' ] == 0 ) { 
 	function vol_search_filter( $query ) {
 		if ( $query->is_search )
 			$query->set( 'post_type', 'post' );
-			
 		return $query;
 	}
 	add_filter( 'pre_get_posts','vol_search_filter' );
@@ -72,19 +74,11 @@ if ( $options_content[ 'excerptlink' ] == 1 ) {
 
 	//create a permalink after the excerpt
 	function vol_replace_excerpt( $content ) {
+		global $excerpt_link;
 		return str_replace( '[...]',
-			'<p><a class="read-more" href="' . get_permalink() . '">Read More &rarr;</a></p>',
+			'<p><a class="read-more" href="' . get_permalink() . '">' . $excerpt_link . '</a></p>',
 			$content
 		);
 	}
-	add_filter( 'the_excerpt', 'vol_replace_excerpt' );
+	add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
 }
-
-
-//custom excerpt length
-function vol_excerpt_length( $length ) {
-
-	//the amount of words to return
-	return 40;
-}
-add_filter( 'excerpt_length', 'vol_excerpt_length' );

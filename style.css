@@ -15,7 +15,7 @@
 .hook-x { margin: 0; }
 #main-content #sidebars { padding-top: 0 !important; }
 */
-
+.entry-summary p:empty { display: none; }
 /* =Shared Commonly Used Styles
 -------------------------------------------------------------- */
 
@@ -44,8 +44,8 @@ h6,
 .entry-title a,
 .comments-title,
 cite.fn { 
-	font-family: Tahoma, Geneva, sans-serif; 
-	margin: 0 0 25px;  
+	font-weight: normal;
+	margin: 0 0 20px;  
 }
 
 pre,
@@ -91,7 +91,8 @@ pre {
 	background: #f1f1f1;
 }
 
-.site-content .paging-navigation,
+.nav-previous,
+.nav-next,
 .site-content .post-navigation,
 .site-content .comment-navigation,
 .site-content .image-navigation {
@@ -105,7 +106,7 @@ pre,
 .wp-caption.alignleft,
 .wp-caption.alignright,
 .site-content .gallery { 
-	margin-bottom: 25px; 
+	margin-bottom: 20px; 
 }
 
 #menu-area-standard,
@@ -259,12 +260,12 @@ ol ol,
 ul ol, 
 ol ul {
 	margin-bottom: 0;
-	margin-left: 25px;
+	margin-left: 20px;
 }
 
 dd {
 	line-height: 25px;
-	margin: 10px 25px 25px;
+	margin: 10px 20px 20px;
 }
 
 dt, 
@@ -278,7 +279,7 @@ dfn, cite, em, i {
 }
 
 blockquote {
-	margin: 0 25px;
+	margin: 0 20px;
 }
 
 blockquote p {
@@ -287,7 +288,7 @@ blockquote p {
 }
 
 address {
-	margin: 0 0 25px;
+	margin: 0 0 20px;
 }
 
 pre {
@@ -346,7 +347,7 @@ figure {
 }
 
 table {
-	margin: 0 0 25px;
+	margin: 0 0 20px;
 	width: 100%;
 }
 
@@ -370,11 +371,11 @@ th {
 
 .inner {
 	position: relative; 
-	padding: 15px 25px; 
+	padding: 10px 20px; 
 }
 
 #main-content {
-	padding: 30px 0;
+	padding: 20px 0;
 }
 
 #footer-area {
@@ -390,7 +391,7 @@ th {
 }
 
 .site-footer { 
-	padding: 15px 25px; 
+	padding: 10px 20px; 
 }
 
 
@@ -400,7 +401,6 @@ th {
 .site-title { 
 	font-size: 40px;
 	line-height: 48px;
-	font-weight: bold;
 }
 
 .site-title a { 
@@ -418,8 +418,8 @@ th {
 
 .header-navigation { 
 	position: absolute; 
-	top: 25px; 
-	right: 25px; 
+	top: 20px; 
+	right: 20px; 
 }
 
 
@@ -437,6 +437,11 @@ th {
 
 #menu-area-footer {
 	border-width: 1px 0 0;
+}
+
+.short-menu,
+.full-menu {
+	padding: 0 10px;
 }
 
 .menu {
@@ -470,8 +475,6 @@ th {
 }
 
 .site-navigation {
-	padding: 0 15px;
-	margin: 0;
 }
 
 #container .standard-menu-wrap {
@@ -542,9 +545,15 @@ th {
 /* =Content
 -------------------------------------------------------------- */
 
-.post { 
+.post,
+.site-content li,
+.paging-navigation,
+.pagination { 
 	border-bottom: 1px dashed rgba(0,0,0,.1);
-	padding: 20px 0 30px;
+}
+
+.post {
+	padding: 20px 0;
 }
 
 .single .post {
@@ -575,7 +584,6 @@ th {
 	margin-bottom: -4px;
 }
 
-.post > .entry-content > p:last-of-type,
 .post > .entry-summary > p:last-of-type,
 .sticky.post > .entry-content > p:last-of-type,
 .sticky.post > .entry-summary > p:last-of-type {
@@ -588,7 +596,6 @@ th {
 }
 
 .entry-meta.tags,
-.pagination,
 .page-links {
 	padding: 20px 0 0;
 }
@@ -627,8 +634,7 @@ th {
 	margin: 0 0 30px 30px; 
 }
 
-.site-content li { 
-	border-bottom: 1px dashed #f1f1f1; 
+.site-content li {  
 	padding: 8px 0; 
 }
 
@@ -638,27 +644,35 @@ th {
 	
 .pagination {
 	position: relative;
-	clear: both;
+	padding: 20px 0;
 }
  
 .pagination span, 
 .pagination a {
 	float: left;
 	text-decoration: none;
-	background: none;
-	color: #000;
-	padding: 6px 9px 5px;
+	padding: 0 10px;
 	margin: 2px 2px 2px 0;
 	width: auto;
+}
+
+.pagination a:hover {
+	text-decoration: underline;
 }
 
 .pagination > span:first-child {
 	padding-left: 0;
 }
 
-.pagination a:hover,
-.pagination .current {
-	background: #f1f1f1;
+.nav-previous,
+.nav-next {
+	display: block;
+	float: left;
+	width: 50%;
+}
+
+.paging-navigation .nav-next {
+	text-align: right;
 }
 
 
@@ -677,7 +691,6 @@ th {
 
 .comments-title {
 	font-size: 18px;
-	font-weight: bold;
 	margin-bottom: 1em;
 }
 
@@ -758,7 +771,11 @@ cite.fn {
 }
 
 .widget {
-	margin: 0 0 45px;
+	margin: 0 0 40px;
+}
+
+.footer-widget .widget {
+	margin-bottom: 30px;
 }
 
 .widget,
@@ -935,7 +952,7 @@ select {
 .ssc .sidebar-1, 
 .ssc .sidebar-2 {
 	float: left;
-	padding: 25px;
+	padding: 20px;
 }
 
 .c2 .sidebar-2, 
@@ -947,13 +964,13 @@ select {
 .ssc .pagination, 
 .sc .pagination {
 	float: right;
-	padding: 25px;
+	padding: 20px;
 }
 
 .c1 #content, 
 .c2 #content { 
 	width: 100%; 
-	padding: 25px;
+	padding: 20px;
 }
 
 .c2 .sidebar-1, 
@@ -1110,12 +1127,12 @@ select {
 	}
 	#standard-menu-container,
 	#footer-menu-container {
-		padding: 15px 25px;
+		padding: 10px 20px;
 	}
 	.standard-menu-wrap,
 	.footer-menu-wrap {
 		text-align: center;
-		padding: 15px 0;
+		padding: 10px 0;
 	}
 	.short-menu,
 	.full-menu {
@@ -1197,7 +1214,8 @@ select {
 	}
 	.widget,
 	.widget p, 
-	.widget ul li {
+	.widget ul li,
+	.site-footer p {
 		font-size: 20px;
 		line-height: 30px;
 	}
@@ -1238,6 +1256,8 @@ select {
 	#comment,
 	.page-links,
 	.pagination,
+	.site-description,
+	.menu-toggle,
 	.site-navigation {
 		font-size: 20px;
 		line-height: 30px;
@@ -1274,6 +1294,8 @@ select {
 	#comment,
 	.page-links,
 	.pagination,
+	.site-description,
+	.menu-toggle,
 	.site-navigation {
 		font-size: 15px;
 		line-height: 25px;
@@ -1286,7 +1308,8 @@ select {
 	}
 	.widget,
 	.widget p, 
-	.widget ul li {
+	.widget ul li,
+	.site-footer p {
 		font-size: 14px;
 		line-height: 22px;
 	}
