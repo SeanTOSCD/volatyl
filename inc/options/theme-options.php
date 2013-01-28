@@ -482,7 +482,7 @@ function vol_options_do_page() {
 				"<th scope=\"row\" valign=\"top\">",
 				__( 'License Key', 'volatyl' ), "</th>", "<td>",
 				"<input id=\"edd_sample_theme_license_key\" name=\"edd_sample_theme_license_key\" type=\"text\" class=\"regular-text\" value=\"",
-				esc_attr_e( $license, 'volatyl' ), "\" />",
+				esc_attr_e( $license ), "\" />",
 				"<label class=\"description\" for=\"edd_sample_theme_license_key\">",
 				__( 'Enter your license key', 'volatyl' ),
 				"</label>", "</td>", "</tr>",
