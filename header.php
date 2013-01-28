@@ -17,7 +17,7 @@ $ping = get_bloginfo( 'pingback_url' );
 echo 	"<!DOCTYPE html>\n",
 		"<html ", language_attributes(), ">\n",
 		"<head>\n",
-		"<meta charset=\"", $char, "\" />\n",
+		"<meta charset=\"", $char, "\">\n",
 		"<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n",
 		"<title>",
 		
