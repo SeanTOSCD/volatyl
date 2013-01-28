@@ -16,7 +16,7 @@ if ( $options_hooks[ 'switch_vol_before_sidebar_1' ] == 0 ) {
 		( is_home() && ! is_front_page() && $options_hooks[ 'home_vol_before_sidebar_1' ] == 0 ) ||
 		( is_front_page() && ! is_home() && $options_hooks[ 'front_vol_before_sidebar_1' ] == 0 ) ||
 		( is_single() && $options_hooks[ 'posts_vol_before_sidebar_1' ] == 0 ) ||
-		( is_page() && ! is_front_page() && $options[ 'pages_vol_before_sidebar_1' ] == 0 ) ||
+		( is_page() && ! is_front_page() && $options_hooks[ 'pages_vol_before_sidebar_1' ] == 0 ) ||
 		( is_archive() && $options_hooks[ 'archive_vol_before_sidebar_1' ] == 0 ) ||
 		( is_search() && $options_hooks[ 'search_vol_before_sidebar_1' ] == 0 ) ||
 		( is_404() && $options_hooks[ '404_vol_before_sidebar_1' ] == 0 ) ) {
