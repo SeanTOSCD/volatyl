@@ -151,6 +151,7 @@ acronym,
 .aligncenter,
 .clearfix:after,
 .inner:after,
+.post:after,
 .short-menu .menu > li:hover > ul,
 .full-menu .menu li:hover > ul,
 .full-menu .menu li:hover ul li a,
@@ -246,7 +247,8 @@ input,
 }
 
 .clearfix:after,
-.inner:after {
+.inner:after,
+.post:after {
 	content: ".";
 	clear: both;
 	visibility: hidden;
@@ -364,7 +366,7 @@ th {
 
 .main,
 #container {
-	width: 1000px;
+	width: 960px;
 	margin: 0 auto;
 }
 
@@ -1065,7 +1067,7 @@ select {
 /* =Lightweight Responsiveness
 -------------------------------------------------------------- */
 
-@media screen and (max-width: 1024px) 
+@media screen and (max-width: 960px) 
 {
 	.main,
 	#container {

@@ -40,11 +40,10 @@ if ( $options[ 'featuredimage' ] == 1 ) {
 
 	// If Featured Image is set for a post, show thumbnail.
 	if ( has_post_thumbnail() )
-		echo "<a href=\"", the_permalink(), "\" title=\"", the_title_attribute(), "\" >", the_post_thumbnail( 'homepage-thumb', array( 
+		echo "<a href=\"", the_permalink(), "\" title=\"", the_title_attribute(), "\" >", the_post_thumbnail( 'post-thumbnail', array( 
 			'class'		=> 'featured-img', 
 			'alt'		=> the_title_attribute( 'echo=0' ) 
 			) ), "</a>";
-		
 }
 
 // vol_after_article_header
