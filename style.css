@@ -85,7 +85,9 @@ pre {
 #container > .site-footer,
 .sticky .entry-header,
 #comments > ol > li,
-.wp-caption {
+.wp-caption,
+.featured-img,
+.entry-content img {
 	background: #f1f1f1;
 }
 
@@ -133,7 +135,7 @@ acronym,
 }
 
 .sticky .entry-header,
-.sticky .entry-summary p,
+.sticky .featured-img,
 .site-content ul ul, 
 .site-content ul ol,
 .site-content ol ul, 
@@ -232,7 +234,12 @@ a,
 
 .border-box,
 input,
-#comment {
+#comment,
+.site-header img,
+.entry-content img,
+.featured-img,
+.comment-content img,
+.widget img {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing:    border-box;
 	box-sizing:         border-box;
@@ -546,8 +553,13 @@ th {
 	padding: 15px;
 }
 
+.sticky .featured-img {
+	border-width: 0 0 1px;
+	margin-bottom: -4px;
+}
+
 .post { 
-	margin-bottom: 45px; 
+	margin-bottom: 30px; 
 }
 
 .entry-meta { 
@@ -805,12 +817,14 @@ input[type="submit"]:hover,
 .site-header img,
 .entry-content img,
 .comment-content img,
-.widget img {
+.widget img,
+.featured-img {
 	max-width: 100%;
 }
 
 .site-header img,
 .entry-content img,
+.featured-img,
 img[class*="align"],
 img[class*="wp-image-"] {
 	height: auto; 
@@ -821,6 +835,14 @@ img[class*="wp-image-"] {
 img.size-full {
 	max-width: 100%;
 	width: auto; 
+}
+
+.entry-content img {
+	padding: 4px;
+}
+
+.featured-img {
+	margin-bottom: 15px;
 }
 
 .entry-content img.wp-smiley,

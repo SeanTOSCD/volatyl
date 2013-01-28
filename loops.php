@@ -45,7 +45,7 @@ function vol_content() {
 				the_post();
 				get_template_part( 'content', get_post_format() );
 			}
-
+			
 			// vol_after_content_column
 			if ( $options[ 'switch_vol_after_content_column' ] == 0 ) {
 				if 	( $options[ 'home_vol_after_content_column' ] == 0 ) {

@@ -39,7 +39,6 @@ require_once ( THEME_OPTIONS . '/post-meta.php' );
 
 // Various functions used around Volatyl
 require_once ( THEME_FUNCTIONS . '/menus.php' );
-require_once ( THEME_FUNCTIONS . '/liners.php' );
 require_once ( THEME_FUNCTIONS . '/columns.php' );
 require_once ( THEME_FUNCTIONS . '/widgets.php' );
 require_once ( THEME_FUNCTIONS . '/byline.php' );

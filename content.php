@@ -11,6 +11,7 @@
 
 $options = get_option( 'vol_content_options' );	
 $options_hooks = get_option( 'vol_hooks_options' );	
+$more_link_text = apply_filters( 'more_link_text', 'Read More &rarr;' );
 
 // Custom filters
 $feed_tags_text = apply_filters( 'feed_tags_text', 'Tags: ' );
@@ -21,8 +22,21 @@ if ( is_home() || is_front_page() ) {
 	$article_headline = "h1";
 }
 
-echo 	"<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
-		"\t<header class=\"entry-header\">\n",
+echo "<article id=\"post-", the_ID(), "\" ", post_class(), ">\n";
+	
+// Activate Featured Images
+if ( $options[ 'featuredimage' ] == 1 ) {
+
+	// If Featured Image is set for a post, show thumbnail.
+	if ( has_post_thumbnail() )
+		echo "<a href=\"", the_permalink(), "\" title=\"", the_title_attribute(), "\" >", the_post_thumbnail( 'homepage-thumb', array( 
+			'class'		=> 'featured-img', 
+			'alt'		=> the_title_attribute( 'echo=0' ) 
+			) ), "</a>";
+		
+}
+
+echo 	"\t<header class=\"entry-header\">\n",
 		"\t\t<{$article_headline} class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"",
 		esc_attr( sprintf( __( '%s', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
 
@@ -35,7 +49,12 @@ echo "\t</header>";
 
 // vol_after_article_header
 if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
-	if 	( $options_hooks[ 'home_vol_after_article_header' ] == 0 ) {
+	if 	( ( is_home() && is_front_page() && $options_hooks[ 'home_vol_after_article_header' ] == 0 && $options_hooks[ 'front_vol_after_article_header' ] == 0 ) ||
+		( is_home() && ! is_front_page() && $options_hooks[ 'home_vol_after_article_header' ] == 0 ) ||
+		( is_front_page() && ! is_home() && $options_hooks[ 'front_vol_after_article_header' ] == 0 ) ||
+		( is_archive() && $options_hooks[ 'archive_vol_after_article_header' ] == 0 ) ||
+		( is_search() && $options_hooks[ 'search_vol_after_article_header' ] == 0 ) ||
+		( is_404() && $options_hooks[ '404_vol_after_article_header' ] == 0 ) ) {
 			vol_after_article_header();
 	} else {
 		do_action( 'vol_after_article_header' );
@@ -45,25 +64,15 @@ if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
 if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
 
 	// Only display Excerpts for Search or Home if options is selected
-	echo 	"\t<div class=\"entry-summary\">\n", 
+	echo 	"\t<div class=\"entry-summary\">\n",
 			the_excerpt(),
 			"\t</div>";
 	
 } else { 
 
 	// Otherwise, show full article
-	echo "\t<div class=\"entry-content\">\n";
-	
-	// Activate Featured Images
-	if ( $options[ 'featuredimage' ] == 1 ) {
-	
-		// If Featured Image is set for a post, show thumbnail.
-		if ( has_post_thumbnail() )
-			echo "<a href=\"", the_permalink(), "\" title=\"", the_title_attribute(), "\" >", the_post_thumbnail(), "</a>";
-			
-	}
-
-	echo the_content( __( 'Read More &rarr;', 'volatyl' ) );
+	echo 	"\t<div class=\"entry-content\">\n",
+			the_content( __( $more_link_text, 'volatyl' ) );
 	
 	// Show feed tags
 	if ( $options[ 'feedtags' ] == 1 )
@@ -79,3 +88,16 @@ if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
 }
 
 echo "</article>";
+
+// vol_post_footer
+if ( $options[ 'switch_vol_post_footer' ] == 0 ) {
+	if 	( ( is_home() && is_front_page() && $options_hooks[ 'home_vol_post_footer' ] == 0 && $options_hooks[ 'front_vol_post_footer' ] == 0 ) ||
+		( is_home() && ! is_front_page() && $options_hooks[ 'home_vol_post_footer' ] == 0 ) ||
+		( is_front_page() && ! is_home() && $options_hooks[ 'front_vol_post_footer' ] == 0 ) ||
+		( is_archive() && $options_hooks[ 'archive_vol_post_footer' ] == 0 ) ||
+		( is_search() && $options_hooks[ 'search_vol_post_footer' ] == 0 ) ) {
+			vol_post_footer();
+	} else {
+		do_action( 'vol_post_footer' );
+	}
+}

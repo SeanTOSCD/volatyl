@@ -217,8 +217,7 @@ function volatyl_post() {
 			'th'			=> __( '<th scope="row">Display Featured Images</th>', 'volatyl' ),
 			'td'			=> '<td>',
 			'title'			=> 'featuredimage',
-			'label'			=> __( 'Display Featured Images that have been set in the Edit Post screen. *', 'volatyl' ),
-			'notes'			=> __( '<span class="notes">* Featured images do not display on excerpts.</span>', 'volatyl' ),
+			'label'			=> __( 'Display Featured Images that have been set in the Edit Post screen.', 'volatyl' ),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),

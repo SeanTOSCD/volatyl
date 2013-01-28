@@ -33,8 +33,9 @@ function header_element() {
 
 	// vol_header_top
 	if ( $options[ 'switch_vol_header_top' ] == 0 ) {
-		if 	( ( is_home() && $options[ 'home_vol_header_top' ] == 0 ) ||
-			( is_front_page() && $options[ 'front_vol_header_top' ] == 0 ) ||
+		if 	( ( is_home() && is_front_page() && $options[ 'home_vol_header_top' ] == 0 && $options[ 'front_vol_header_top' ] == 0 ) ||
+			( is_home() && ! is_front_page() && $options[ 'home_vol_header_top' ] == 0 ) ||
+			( is_front_page() && ! is_home() && $options[ 'front_vol_header_top' ] == 0 ) ||
 			( is_single() && $options[ 'posts_vol_header_top' ] == 0 ) ||
 			( is_page() && ! is_front_page() && $options[ 'pages_vol_header_top' ] == 0 ) ||
 			( is_archive() && $options[ 'archive_vol_header_top' ] == 0 ) ||
@@ -69,8 +70,9 @@ function header_element() {
 
 	// vol_header_bottom - Always hide on landing page
 	if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
-		if 	( ( is_home() && $options[ 'home_vol_header_bottom' ] == 0 ) ||
-			( is_front_page() && $options[ 'front_vol_header_bottom' ] == 0 ) ||
+		if 	( ( is_home() && is_front_page() && $options[ 'home_vol_header_bottom' ] == 0 && $options[ 'front_vol_header_bottom' ] == 0 ) ||
+			( is_home() && ! is_front_page() && $options[ 'home_vol_header_bottom' ] == 0 ) ||
+			( is_front_page() && ! is_home() && $options[ 'front_vol_header_bottom' ] == 0 ) ||
 			( is_single() && $options[ 'posts_vol_header_bottom' ] == 0 ) ||
 			( is_page() && ! is_front_page() && $options[ 'pages_vol_header_bottom' ] == 0 ) ||
 			( is_archive() && $options[ 'archive_vol_header_bottom' ] == 0 ) ||
