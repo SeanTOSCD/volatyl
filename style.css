@@ -69,6 +69,7 @@ pre,
 .full-menu .menu li ul li a,
 .sticky,
 .sticky .entry-header,
+.sticky .featured-img,
 #comments > ol > li,
 .children > li > .comment,
 .comment-avatar,
@@ -86,7 +87,6 @@ pre {
 .sticky .entry-header,
 #comments > ol > li,
 .wp-caption,
-.featured-img,
 .entry-content img {
 	background: #f1f1f1;
 }
@@ -95,7 +95,7 @@ pre {
 .site-content .post-navigation,
 .site-content .comment-navigation,
 .site-content .image-navigation {
-	padding: 15px 0;
+	padding: 20px 0;
 }
 
 pre,
@@ -173,7 +173,7 @@ body,
 }
 
 p { 
-	margin: 0 0 1.5em; 
+	margin: 0 0 20px; 
 }
 
 a {
@@ -381,11 +381,6 @@ th {
 	border-width: 1px 0 0;
 }
 
-#headliner,
-#footliner {
-	padding: 0 25px;
-}
-
 #container > .site-header { 
 	border-width: 0 1px 1px;
 }
@@ -547,6 +542,28 @@ th {
 /* =Content
 -------------------------------------------------------------- */
 
+.post { 
+	border-bottom: 1px dashed rgba(0,0,0,.1);
+	padding: 20px 0 30px;
+}
+
+.single .post {
+	border-bottom: 0;
+}
+
+.post.top { 
+	padding-top: 0;
+}
+
+.sticky { 
+	padding: 0;
+	border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.sticky + .sticky {
+	margin-top: 30px;
+}
+
 .sticky .entry-header,
 .sticky .entry-content,
 .sticky .entry-summary {
@@ -558,8 +575,11 @@ th {
 	margin-bottom: -4px;
 }
 
-.post { 
-	margin-bottom: 30px; 
+.post > .entry-content > p:last-of-type,
+.post > .entry-summary > p:last-of-type,
+.sticky.post > .entry-content > p:last-of-type,
+.sticky.post > .entry-summary > p:last-of-type {
+	margin-bottom: 0;
 }
 
 .entry-meta { 
@@ -567,9 +587,10 @@ th {
 	margin: 0; 
 }
 
-
-.entry-meta.tags {
-	margin-bottom: 15px;
+.entry-meta.tags,
+.pagination,
+.page-links {
+	padding: 20px 0 0;
 }
 
 .post-meta-footer {
@@ -867,7 +888,7 @@ img.size-full {
 }
 
 .wp-caption .wp-caption-text {
-	margin: .8em 0;
+	margin: 12px 0;
 }
 
 .gallery-caption {
@@ -1199,9 +1220,6 @@ select {
 	#content .pagination {
 		float: none;
 	}
-	.site-footer {
-		text-align: center;
-	}
 	.footer-widget {
 		float: none;
 		margin-right: 0;
@@ -1240,6 +1258,9 @@ select {
 	.full-menu {
 		width: 100%;
 	}
+	.site-footer {
+		text-align: center;
+	}
 	p, 
 	ul li, 
 	.site-content li, 
@@ -1257,6 +1278,12 @@ select {
 		font-size: 15px;
 		line-height: 25px;
 	}
+	.site-content h1, 
+	.site-content h2,
+	.entry-title a { 
+		font-size: 24px; 
+		line-height: 32px; 
+	}
 	.widget,
 	.widget p, 
 	.widget ul li {
@@ -1265,5 +1292,6 @@ select {
 	}
 	.entry-meta {
 		font-size: .8em;
+		line-height: 1.6em;
 	}
 }
