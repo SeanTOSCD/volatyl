@@ -80,7 +80,7 @@ function volatyl_general() {
 			'table_name'	=> __( '<h3>General Settings</h3>', 'volatyl' ),
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
-			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Toolbar</th>', 'volatyl' ),
+			'th'			=> __( '<th scope="row">Display ', 'volatyl' ) . THEME_NAME . __( ' Admin Toolbar</th>', 'volatyl' ),
 			'td'			=> '<td>',
 			
 			'title'			=> 'adminmenu',
@@ -223,7 +223,7 @@ function volatyl_post() {
 		),
 		'Tags Feed'			=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __( '<th scope="row">Display Tags Listings</th>', 'volatyl' ),
+			'th'			=> __( '<th scope="row">Display Tags List</th>', 'volatyl' ),
 			'td'			=> '<td>',
 			'title'			=> 'feedtags',
 			'label'			=> __( 'Post Feeds (home, search, archives, etc.)', 'volatyl' ),
