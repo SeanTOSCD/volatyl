@@ -94,7 +94,7 @@ function vol_pagination( $pages = '', $range = 2 ) {
  
 	}
 	
-	// Custom pagination text filter
+	// Pagination text custom filter
 	$pagination_text = apply_filters( 'pagination_text', __( '<div class="pagination clearfix"><span>' . __( 'Page ', 'volatyl' ) . $paged . __( ' of ', 'volatyl' ) . $pages . '</span>', 'volatyl' ) );
 
 	if ( 1 != $pages ) {
