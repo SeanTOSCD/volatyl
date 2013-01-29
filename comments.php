@@ -41,7 +41,8 @@ if ( post_password_required() )
 			// Are there comments to navigate through?
 			echo 	"\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation\">\n\t\t", 
 					previous_comments_link( __( $older_comments, 'volatyl' ) ), " ",
-					next_comments_link( __( $newer_comments, 'volatyl' ) ), "\t</nav>";
+					next_comments_link( __( $newer_comments, 'volatyl' ) ),
+					"\t</nav>";
 			
 		}
 		
