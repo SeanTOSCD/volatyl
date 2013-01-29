@@ -43,8 +43,8 @@ function standard_menu() {
 	
 	echo	"<div id=\"standard-menu-container\" class=\"standard-menu-wrap border-box\">",
 			"<div class=\"standard-menu-toggle\">",
-			"<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . $standard_menu_open . "</a>",
-			"<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . $standard_menu_close . "</a>",
+			"<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $standard_menu_open, 'volatyl' ) . "</a>",
+			"<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $standard_menu_close, 'volatyl' ) . "</a>",
 			"</div>",
 			"\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
 	
@@ -91,8 +91,8 @@ function footer_menu() {
 	
 	echo	"<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">",
 			"<div class=\"footer-menu-toggle\">",
-			"<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . $footer_menu_open . "</a>",
-			"<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . $footer_menu_close . "</a>",
+			"<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>",
+			"<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $footer_menu_close, 'volatyl' ) . "</a>",
 			"</div>",
 			"\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
 	
