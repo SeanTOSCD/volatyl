@@ -97,10 +97,10 @@ function vol_content() {
 				// Show feed tags
 				$options_posts = get_option( 'vol_content_options' );
 				
-				$article_tags_text = apply_filters( 'article_tags_text', 'Tags: ' );
+				$single_tags_text = apply_filters( 'single_tags_text', 'Tags: ' );
 				
 				if ( $options_posts[ 'singletags' ] == 1 )
-					the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $article_tags_text, 'volatyl' ), ', ', '<br /></div>' );
+					the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' );
 				
 				$post_page_nav = apply_filters( 'post_page_nav', 'Pages:' );
 			
@@ -188,12 +188,12 @@ function vol_content() {
 		} elseif ( is_archive() ) {
 		
 			// Custom filters
-			$cat_header = apply_filters( 'cat_header', 'Category Archives:' );
-			$tag_header = apply_filters( 'tag_header', 'Tag Archives:' );
-			$author_header = apply_filters( 'author_header', 'Author Archives:' );
-			$daily_header = apply_filters( 'daily_header', 'Daily Archives:' );
-			$monthly_header = apply_filters( 'monthly_header', 'Monthly Archives:' );
-			$yearly_header = apply_filters( 'yearly_header', 'Yearly Archives:' );
+			$cat_title = apply_filters( 'cat_title', 'Category Archives:' );
+			$tag_title = apply_filters( 'tag_title', 'Tag Archives:' );
+			$author_title = apply_filters( 'author_title', 'Author Archives:' );
+			$daily_title = apply_filters( 'daily_title', 'Daily Archives:' );
+			$monthly_title = apply_filters( 'monthly_title', 'Monthly Archives:' );
+			$yearly_title = apply_filters( 'yearly_title', 'Yearly Archives:' );
 
 			// vol_before_content_column
 			$options_hooks = get_option( 'vol_hooks_options' );
@@ -204,10 +204,10 @@ function vol_content() {
 					"\t\t<h1 class=\"page-title\">";
 				
 			if ( is_category() ) {
-				printf( __( $cat_header . ' %s', 'volatyl' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+				printf( __( $cat_title . ' %s', 'volatyl' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 
 			} elseif ( is_tag() ) {
-				printf( __( $tag_header . ' %s', 'volatyl' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+				printf( __( $tag_title . ' %s', 'volatyl' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 
 			} elseif ( is_author() ) {
 	
@@ -215,7 +215,7 @@ function vol_content() {
 				// what author we're dealing with (if that is the case)
 				the_post();
 			
-				printf( __( $author_header . ' %s', 'volatyl' ), '<span class="vcard"><a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a></span>' );
+				printf( __( $author_title . ' %s', 'volatyl' ), '<span class="vcard"><a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a></span>' );
 			
 				// Since we called the_post() above, we need to
 				// rewind the loop back to the beginning that way
@@ -223,13 +223,13 @@ function vol_content() {
 				rewind_posts();
 			
 			} elseif ( is_day() ) {
-				printf( __( $daily_header . ' %s', 'volatyl' ), '<span>' . get_the_date() . '</span>' );
+				printf( __( $daily_title . ' %s', 'volatyl' ), '<span>' . get_the_date() . '</span>' );
 
 			} elseif ( is_month() ) {
-				printf( __( $monthly_header . ' %s', 'volatyl' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+				printf( __( $monthly_title . ' %s', 'volatyl' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 
 			} elseif ( is_year() ) {
-				printf( __( $yearly_header . ' %s', 'volatyl' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+				printf( __( $yearly_title . ' %s', 'volatyl' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 
 			} else {
 				_e( 'Archives', 'volatyl' );
@@ -249,7 +249,7 @@ function vol_content() {
 			} elseif ( is_tag() ) {
 	
 				// show an optional tag description
-				$tag_description = tag_description();
+				$tag_description = tag_description(); 
 			
 				if ( ! empty( $tag_description ) )
 					echo apply_filters( 'tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>' );
