@@ -29,25 +29,22 @@ if ( post_password_required() )
 	
 	// Otherwise...
 	echo "<div id=\"comments\">\n";
-	
 	if ( have_comments() ) {
-	
-		echo "\t<span class=\"comments-title\">\n";
-		printf( $comments_title, number_format_i18n( comments_only_count( $count ) ) );
-		echo "</span>\n";
+		echo "\t<span class=\"comments-title\">\n", 
+		sprintf( $comments_title, number_format_i18n( comments_only_count( $count ) ) ), 
+		"</span>\n";
 		
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { 
-		
-			// Are there comments to navigate through?
-			echo 	"\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation\">\n\t\t", 
-					previous_comments_link( __( $older_comments, 'volatyl' ) ), " ",
-					next_comments_link( __( $newer_comments, 'volatyl' ) ),
-					"\t</nav>";
-			
-		}
-		
+		// Are there comments to navigate through?
+		( ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) ? 
+		printf( "\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation clearfix\">\n
+		\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
+		previous_comments_link( __( $older_comments, 'volatyl' ) ) .
+		printf( "\t\t</div>\n
+		\t\t<div class=\"nav-next comment-nav\">\n" ) . 
+		next_comments_link( __( $newer_comments, 'volatyl' ) ) .
+		printf( "\t\t</div>\n
+		\t</nav>" ) : '' );
 		echo "\t<ol class=\"commentlist\">\n";
-		
 
 		/* Loop through and list the comments. Tell wp_list_comments()
 		 * to use volatyl_comment() to format the comments.
@@ -58,54 +55,45 @@ if ( post_password_required() )
 		 */
 		wp_list_comments( 
 			array( 
-				'callback' => 'volatyl_comment',
-				'type' => 'comment', 
+				'callback'	=> 'volatyl_comment',
+				'type'		=> 'comment', 
 			) 
 		);
 		
 		// Only show pings if selected in the Volatyl options
 		if ( $options[ 'postpings' ] == 1 ) { 
 		
+			// Are there comments to navigate through?
+			( ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) ? 
+			printf( "\t<nav role=\"navigation\" id=\"comment-nav-below\" class=\"site-navigation comment-navigation clearfix\">\n
+			\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
+			previous_comments_link( __( $older_comments, 'volatyl' ) ) .
+			printf( "\t\t</div>\n
+			\t\t<div class=\"nav-next comment-nav\">\n" ) . 
+			next_comments_link( __( $newer_comments, 'volatyl' ) ) .
+			printf( "\t\t</div>\n
+			\t</nav>" ) : '' );
+		
 			// Only show pings header if there are pings to show
-			if ( (get_comments_number() - comments_only_count($count) ) > 0) {
+			( ( ( get_comments_number() - comments_only_count( $count ) ) > 0 ) ?
 			
-				// Pings! Trackbacks and Pingbacks...
-				echo "\t<span class=\"comments-title\">\n";
-				printf( $pings_title, number_format_i18n( get_comments_number() - comments_only_count( $count ) ) );
-				echo "</span>\n";
+			// Pings! Trackbacks and Pingbacks...
+			printf( "\t<span class=\"comments-title\">\n" ) .
+			printf( $pings_title, number_format_i18n( get_comments_number() - comments_only_count( $count ) ) ) . printf( "</span>\n" ) : '' );
 			
-				// Here are the trackbacks and pingbacks
-				wp_list_comments( 
-					array( 
-						'callback' => 'volatyl_comment',
-						'type' => 'pings', 
-					) 
-				);
-			}
+			// Here are the trackbacks and pingbacks
+			wp_list_comments( 
+				array( 
+					'callback'	=> 'volatyl_comment',
+					'type'		=> 'pings', 
+				) 
+			);
 		}
-		
 		echo "\t</ol>\n";
-		
-		if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { 
-		
-			// are there comments to navigate through
-			echo 	"\t\t<nav role=\"navigation\" id=\"comment-nav-below\" class=\"site-navigation comment-navigation\">\n",
-					"\t\t\t<div class=\"nav-previous\">\n", 
-					previous_comments_link( __( '&larr; Older Comments', 'volatyl' ) ), "\t\t\t</div>\n",
-					"\t\t\t<div class=\"nav-next\">\n", 
-					next_comments_link( __( 'Newer Comments &rarr;', 'volatyl' ) ), 
-					"\t\t\t</div>\n",
-					"\t\t</nav>\n";
-		
-		}
 	}
 
 // If comments are closed and there are comments, let's leave a little note.
-if ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) )
-
-	echo 	"\t\t<p class=\"nocomments\">", 
-			__( $comments_closed, 'volatyl' ), 
-			"</p>\n";
+echo ( ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) ? sprintf( "\t\t<p class=\"nocomments\">" ) . __( $comments_closed, 'volatyl' ) . sprintf( "</p>\n" ) : '' );
 
 
 /** Comment Form
@@ -139,5 +127,4 @@ comment_form(
 		)
 	) 
 );
-
 echo "</div>";

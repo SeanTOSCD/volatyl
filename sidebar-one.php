@@ -5,10 +5,9 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
- 
 $options_hooks = get_option( 'vol_hooks_options' );
 
-echo "<div id=\"sidebars\" class=\"widget-area sidebar-1 border-box\" role=\"complementary\">\n";
+echo "<div id=\"sidebars\" class=\"widget-area sidebar-1 border-box\">\n";
 
 // vol_before_sidebar_1
 if ( $options_hooks[ 'switch_vol_before_sidebar_1' ] == 0 ) {
@@ -25,9 +24,7 @@ if ( $options_hooks[ 'switch_vol_before_sidebar_1' ] == 0 ) {
 		do_action( 'vol_before_sidebar_1' );
 	}
 }
-
 do_action( 'before_sidebar' );
-
 echo ( ( ! dynamic_sidebar( 'sidebar-1' ) ) ? default_widget() : '' );
 
 // vol_after_sidebar_1

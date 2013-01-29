@@ -27,22 +27,18 @@ function volatyl() {
 	
 	get_header();
 	before_content();
-	
 	if ( is_page_template( 'custom-layout.php' ) )
 	
 		// Activated when the "Custom Layout" Template is used on a Page
 		do_action( 'main_content_custom_layout' );
-		
 	elseif ( is_singular() )
 		
 		// Set by the post meta layout selector on Pages and Posts
 		do_action( 'main_content_singular' );
-		
 	else
 		
 		// Used as the site's default layout set in the Structure Options
 		do_action( 'main_content' );
-	
 	after_content();
 	get_footer();
 }

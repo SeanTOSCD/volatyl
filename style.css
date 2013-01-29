@@ -92,9 +92,7 @@ pre {
 }
 
 .nav-previous,
-.nav-next,
-.site-content .comment-navigation,
-.site-content .image-navigation {
+.nav-next {
 	padding: 20px 0;
 }
 
@@ -168,7 +166,8 @@ acronym,
 -------------------------------------------------------------- */
 
 body,
-.site-description {
+.site-description,
+input {
 	font-family: Georgia, "Times New Roman", Times, serif;
 	margin: 0;
 }
@@ -555,7 +554,8 @@ th {
 	padding: 20px 0;
 }
 
-.single .post {
+.single .post,
+.post.no-results {
 	border-bottom: 0;
 }
 
@@ -670,7 +670,9 @@ th {
 	width: 50%;
 }
 
-.paging-navigation .nav-next {
+.paging-navigation .nav-next,
+.comment-navigation .nav-next,
+.image-navigation .nav-next {
 	text-align: right;
 }
 

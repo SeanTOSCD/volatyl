@@ -7,13 +7,12 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */ 
-
 global $page, $paged;
 $title = get_bloginfo( 'name' );
 $tagline = get_bloginfo( 'description' );
 $char = get_bloginfo( 'charset' );
 $ping = get_bloginfo( 'pingback_url' );
- 
+
 echo 	"<!DOCTYPE html>\n",
 		"<html ", language_attributes(), ">\n",
 		"<head>\n",

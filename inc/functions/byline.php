@@ -15,7 +15,6 @@
  * @since Volatyl 1.0
  */
 if ( ! function_exists( 'volatyl_post_meta' ) ) {
- 
 	function volatyl_post_meta() {
 		global $count;
 		$options_content = get_option( 'vol_content_options' );
@@ -28,14 +27,12 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 
 		// Show post date
 		if ( $options_content[ 'by-date-post' ] == 1 ) {
-
 			echo 	__( $publish_date, 'volatyl' ),
 					"<a href=\"", the_permalink(), "\" title=\"",
 					esc_attr( sprintf( __( 'Permalink', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), 
 					"\" rel=\"bookmark\">";
 			the_time( get_option( 'date_format' ) );
 			echo "</a> \n";
-		
 		}
 	
 		// Show post author
@@ -46,17 +43,14 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 	
 			// Only show dash before comments if byline items are in front of it
 			echo ( ( $options_content[ 'by-date-post' ] == 0 && $options_content[ 'by-author-post' ] == 0 ) ? "" : " - " );
-				
 			
 			// Only mark comments as closed in byline of comment count is 0	
 			$response_count = get_comments_number();
 			$comment_count = comments_only_count( $count );
-		
 			if ( ! comments_open() && $response_count == 0 ) {
 		
 				// No need to show a count if comments are off and there are none!
 				$comments = __( $comments_off, 'volatyl' );
-				
 			} else {
 			
 				/** Return "response" count with or without pings! ;)
@@ -68,35 +62,30 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		
 					// Get the total number of comments and pings
 					$num_comments = get_comments_number();
-			
 					if ( $num_comments == 0 )
 						$comments = __( '0 Responses', 'volatyl' );
 					elseif ( $num_comments > 1 )
 						$comments = $num_comments . __( ' Responses', 'volatyl' );
 					else
 						$comments = __( '1 Response', 'volatyl' );
-			
 				} else {
 		
 					// Only get the comments... no pings
 					$num_comments = comments_only_count( $count );
-			
 					if ( $num_comments == 0 )
 						$comments = __( '0 Comments', 'volatyl' );
 					elseif ( $num_comments > 1 )
 						$comments = $num_comments . __( ' Comments', 'volatyl' );
 					else
 						$comments = __( '1 Comment', 'volatyl' );
-			
 				}
-				
 			} 
 			echo $comments;
 		}
 	
 		// Show post edit link
 		if ( $options_content[ 'by-edit-post' ] == 1 )
-			edit_post_link( __( 'Edit', '_s' ), '<span class="edit-link"> ', '</span> ' );
+			edit_post_link( __( 'Edit', 'volatyl' ), '<span class="edit-link"> ', '</span> ' );
 	
 		// Show post categories
 		if ( $options_content[ 'by-cats' ] == 1 ) {
@@ -104,7 +93,6 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 			// Only place cats on new line if other byline items are removed
 			if ( $options_content[ 'by-date-post' ] == 1 || $options_content[ 'by-author-post' ] == 1 || $options_content[ 'by-comments-post' ] == 1 )
 				echo "<br>";
-		
 			_e( $category_text, 'volatyl' );
 			the_category( ', ' );
 		}

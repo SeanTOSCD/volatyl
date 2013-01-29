@@ -29,3 +29,10 @@ require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
 // License key setup and Volatyl automatic updater
 require_once( dirname( __FILE__ ) . '/inc/updater.php' );
+
+// Change publish date text
+function publish_date_text( $variable ) {
+    $variable = "Pages:";
+    return $variable;
+}
+add_filter( 'post_page_nav', 'publish_date_text' );
