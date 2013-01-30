@@ -19,6 +19,7 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 	function volatyl_comment( $comment, $args, $depth ) {
 		global $tab3;
 		$GLOBALS[ 'comment' ] = $comment;
+		
 		switch ( $comment->comment_type ) {
 	
 			// Pings format
@@ -30,20 +31,21 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 		
 			// Comments format	
 			default :
-				echo "<li ", comment_class(), " id=\"li-comment-", comment_ID(), "\">\n",
-				"\t<article id=\"comment-", comment_ID(), "\" class=\"comment\">\n",
-				"\t\t<footer>\n",
-				"{$tab3}<div class=\"comment-author vcard\">\n",
-				"{$tab3}\t<div class=\"comment-avatar\">\n",
+				echo "<li ", comment_class(), " id=\"li-comment-", comment_ID(), "\">\n
+				\t<article id=\"comment-", comment_ID(), "\" class=\"comment\">\n
+				\t\t<footer>\n
+				{$tab3}<div class=\"comment-author vcard\">\n
+				{$tab3}\t<div class=\"comment-avatar\">\n",
 				get_avatar( $comment, 50 ),
-				"{$tab3}\t</div>\n",
-				"{$tab3}</div>\n",
-						
-				( ( $comment->comment_approved == '0' ) ? sprintf( "{$tab3}<em>" ) . __( 'Your comment is awaiting moderation.', 'volatyl' ) . sprintf( "</em><br />\n" ) : '' ),
-				"{$tab3}<div class=\"comment-meta commentmetadata\">\n{$tab3}\t";
-				printf( sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) );
-				echo "\n{$tab3}\t<div class=\"comment-date\">\n",
-				"{$tab3}\t\t<a href=\"", esc_url( get_comment_link( $comment->comment_ID ) ), "\"><time pubdate datetime=\"", comment_time( 'c' ), "\">";
+				"{$tab3}\t</div>\n
+				{$tab3}</div>\n" .
+				( ( $comment->comment_approved == '0' ) ? 
+					sprintf( "{$tab3}<em>" ) . __( 'Your comment is awaiting moderation.', 'volatyl' ) . sprintf( "</em><br />\n" ) : 
+				'' ) .
+				"{$tab3}<div class=\"comment-meta commentmetadata\">\n{$tab3}\t" .
+				sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) .
+				"\n{$tab3}\t<div class=\"comment-date\">\n
+				{$tab3}\t\t<a href=\"", esc_url( get_comment_link( $comment->comment_ID ) ), "\"><time pubdate datetime=\"", comment_time( 'c' ), "\">";
 			
 				// translators: 1: date, 2: time
 				printf( __( '%1$s', 'volatyl' ), get_comment_date() );

@@ -24,6 +24,7 @@
 
 function vol_content() {
 	global $options, $tab3, $tab6;
+	
 	echo "<div id=\"content\" class=\"site-content border-box clearfix\">";
 	
 	if ( have_posts() ) {
@@ -66,13 +67,13 @@ function vol_content() {
 			// Da loop
 			while ( have_posts() ) { 
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n",
-				"\t\t<header class=\"entry-header\">\n",
-				"{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n",
-				"{$tab3}<div class=\"entry-meta\">\n", 
+				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n
+				\t\t<header class=\"entry-header\">\n
+				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
+				{$tab3}<div class=\"entry-meta\">\n", 
 				volatyl_post_meta(),
-				"{$tab3}</div>\n",
-				"\t\t</header>\n",
+				"{$tab3}</div>\n
+				\t\t</header>\n",
 
 				// vol_after_article_header
 				( ( $options[ 'switch_vol_after_article_header' ] == 0 ) ?
@@ -94,8 +95,8 @@ function vol_content() {
 				the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' );
 			
 				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-				echo "\t\t</div>\n",
-				"\t</article>\n";
+				echo "\t\t</div>\n
+				\t</article>\n";
 
 				// vol_post_footer
 				( ( $options[ 'switch_vol_post_footer' ] == 0 ) ?
@@ -124,31 +125,29 @@ function vol_content() {
 			while ( have_posts() ) {
 				the_post();
 				echo "\t<article id=\"post-", the_ID(), "\"",
-				post_class(), ">\n",
-				"\t\t<header class=\"entry-header\">\n",
-				"{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n",
-				"\t\t</header>\n",
-				"\t\t<div class=\"entry-content\">\n",  the_content();
+				post_class(), ">\n
+				\t\t<header class=\"entry-header\">\n
+				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
+				\t\t</header>\n
+				\t\t<div class=\"entry-content\">\n",  the_content();
 				( ( $options[ 'pagecomments' ] == 1 ) ?
-					( ( comments_open() || '0' != get_comments_number() ) ?
-						comments_template( '', true ) : 
-					'' ) : 
+					( ( comments_open() || '0' != get_comments_number() ) ? comments_template( '', true ) : '' ) : 
 				'' );
 					
 				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-				echo "\t\t</div>\n",
-				"\t</article>\n";
+				echo "\t\t</div>\n
+				\t</article>\n";
 			}
 	
 		// Search results
 		} elseif ( is_search() ) {
 			global $post;
 			
-			echo "\t<header class=\"page-header\">\n",
-			"\t\t<h1 class=\"page-title\">",
+			echo "\t<header class=\"page-header\">\n
+			\t\t<h1 class=\"page-title\">",
 			sprintf( __( 'Search Results for: %s', 'volatyl' ), '<span>' . get_search_query() . '</span>' ),
-			"</h1>\n",
-			"\t</header>";
+			"</h1>\n
+			\t</header>";
 		
 			// Da loop		
 			while ( have_posts() ) { 
@@ -173,8 +172,8 @@ function vol_content() {
 
 			// vol_before_content_column
 			( ( $options_hooks[ 'switch_vol_before_content_column' ] == 0 ) ? vol_before_content_column() : '' );
-			echo "\t<header class=\"page-header\">\n",
-			"\t\t<h1 class=\"page-title\">";
+			echo "\t<header class=\"page-header\">\n
+			\t\t<h1 class=\"page-title\">";
 			if ( is_category() ) {
 				printf( __( $cat_title . ' %s', 'volatyl' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 			} elseif ( is_tag() ) {
@@ -243,10 +242,10 @@ function vol_content() {
 			// Da loop
 			while ( have_posts() ) {
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n",
-				"\t\t<header class=\"entry-header\">\n",
-				"{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n",
-				"{$tab3}<div class=\"entry-meta\">\n";
+				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n
+				\t\t<header class=\"entry-header\">\n
+				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
+				{$tab3}<div class=\"entry-meta\">\n" .
 			
 				printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'volatyl' ),
 					esc_attr( get_the_date( 'c' ) ),
@@ -256,12 +255,12 @@ function vol_content() {
 					$metadata[ 'height' ],
 					get_permalink( $post->post_parent ),
 					get_the_title( $post->post_parent )
-				);
+				) .
 			
-				echo "\t\t</header>\n",
-				"\t\t<div class=\"entry-content\">\n",
-				"{$tab3}<div class=\"entry-attachment\">\n",
-				"{$tab3}\t<div class=\"attachment\">\n";
+				"\t\t</header>\n
+				\t\t<div class=\"entry-content\">\n
+				{$tab3}<div class=\"entry-attachment\">\n
+				{$tab3}\t<div class=\"attachment\">\n";
 
 				/** 
 				 * Grab the IDs of all the image attachments in a 
@@ -293,23 +292,22 @@ function vol_content() {
 				} else {
 					$next_attachment_url = wp_get_attachment_url();
 				}
-				echo "<a href=\"", $next_attachment_url, "\" title=\"", esc_attr( get_the_title() ), "\" rel=\"attachment\">";
-			
-				echo wp_get_attachment_image( $post->ID, $attachment_size ),
+				echo "<a href=\"", $next_attachment_url, "\" title=\"", esc_attr( get_the_title() ), "\" rel=\"attachment\">",
+				wp_get_attachment_image( $post->ID, $attachment_size ),
 				"</a>\n{$tab3}\t</div>\n",	
 				( ( ! empty( $post->post_excerpt ) ) ? sprintf( "{$tab3}\t<div class=\"entry-caption\">\n" ) . the_excerpt() .	sprintf( "{$tab3}\t</div>\n" ) : '' );
 				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $attachment_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-				echo "{$tab3}</div>\n",
-				"{$tab3}<nav class=\"site-navigation image-navigation clearfix\">",
-				"{$tab3}\t<div class=\"nav-previous image-nav\">", 
+				echo "{$tab3}</div>\n
+				{$tab3}<nav class=\"site-navigation image-navigation clearfix\">
+				{$tab3}\t<div class=\"nav-previous image-nav\">", 
 				previous_image_link( false, __( $previous_image, 'volatyl' ) ),
-				"{$tab3}\t</div>\n",
-				"{$tab3}\t<div class=\"nav-next image-nav\">", 
+				"{$tab3}\t</div>\n
+				{$tab3}\t<div class=\"nav-next image-nav\">", 
 				next_image_link( false, __( $next_image, 'volatyl' ) ), 
-				"{$tab3}\t</div>\n",
-				"{$tab3}</nav>\n",
-				"\t\t</div>\n",
-				"\t</article>";
+				"{$tab3}\t</div>\n
+				{$tab3}</nav>\n
+				\t\t</div>\n
+				\t</article>";
 			}
 	
 		// Stray template (can that even happen?) floating around? I got this.

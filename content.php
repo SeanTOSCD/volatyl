@@ -24,8 +24,11 @@ $feed_post_page_nav = apply_filters( 'feed_post_page_nav', 'Pages' );
 echo "<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 "\t<header class=\"entry-header\">\n",
 "\t\t<{$article_headline} class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"", esc_attr( sprintf( __( '%s', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
-
-( ( 'post' == get_post_type() ) ? printf( "\t\t<div class=\"entry-meta\">\n" ) . volatyl_post_meta() . printf( "\t\t</div>\n" ) : '' );
+( ( 'post' == get_post_type() ) ? 
+	printf( "\t\t<div class=\"entry-meta\">\n" ) . 
+	volatyl_post_meta() . 
+	printf( "\t\t</div>\n" ) : 
+'' );
 echo "\t</header>";
 	
 // Activate Featured Images
@@ -33,14 +36,15 @@ if ( $options[ 'featuredimage' ] == 1 ) {
 
 	// If Featured Image is set for a post, show thumbnail.
 	( ( has_post_thumbnail() ) ? 
-	printf( "<a href=\"" ) . the_permalink() . 
-	printf( "\" title=\"" ) . the_title_attribute() . 
-	printf( "\" >" ) . 
-	the_post_thumbnail( 'post-thumbnail', array( 
-		'class'	=> 'featured-img', 
-		'alt'	=> the_title_attribute( 'echo=0' ) 
+		printf( "<a href=\"" ) . the_permalink() . 
+		printf( "\" title=\"" ) . the_title_attribute() . 
+		printf( "\" >" ) . 
+		the_post_thumbnail( 'post-thumbnail', array( 
+			'class'	=> 'featured-img', 
+			'alt'	=> the_title_attribute( 'echo=0' ) 
 		) ) . 
-	printf( "</a>" ) : '' );
+		printf( "</a>" ) : 
+	'' );
 }
 
 // vol_after_article_header
@@ -58,22 +62,22 @@ if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
 }
 
 // Only display Excerpts for Search or Home if options is selected
-if ( is_search() || $options[ 'homeexcerpt' ] == 1 ) {
-	echo "\t<div class=\"entry-summary\">\n", the_excerpt(), "\t</div>";
-} else { 
-
+( ( is_search() || $options[ 'homeexcerpt' ] == 1 ) ?
+	printf( "\t<div class=\"entry-summary\">\n" ) . 
+	the_excerpt() . 
+	printf( "\t</div>" ) :
+	
 	// Otherwise, show full article
-	echo "\t<div class=\"entry-content\">\n", 
-	the_content( __( $more_link_text, 'volatyl' ) ),
+	printf( "\t<div class=\"entry-content\">\n" ) . 
+	the_content( __( $more_link_text, 'volatyl' ) ) .
 	
 	// Show feed tags
-	( ( $options[ 'feedtags' ] == 1 ) ?	the_tags( '<div class="entry-meta tags">' . __( $feed_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' );
+	( ( $options[ 'feedtags' ] == 1 ) ?	the_tags( '<div class="entry-meta tags">' . __( $feed_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' ) .
 	
 	// Navigate paginated posts
-	wp_link_pages( array( 'before' => '<div class="page-links">' . __( $feed_post_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-	echo "\t</div>\n";
-}
-
+	wp_link_pages( array( 'before' => '<div class="page-links">' . __( $feed_post_page_nav, 'volatyl' ), 'after' => '</div>' ) ) .
+	printf( "\t</div>\n" )
+);
 echo "</article>";
 
 // vol_post_footer

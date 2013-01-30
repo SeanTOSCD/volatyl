@@ -8,6 +8,7 @@
  * @since Volatyl 1.0
  */
 
+
 /** Column layouts
  *
  * Various column layouts are built into Volatyl and can be toggled
@@ -21,31 +22,31 @@ function vol_columns() {
 	
 	switch ( $options[ 'column' ] ) {
 		case 'c1':
-			echo vol_content();
+			vol_content();
 			break;
 		case 'c2':
-			echo vol_content(),
-			"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
-			get_sidebar( 'one' ), 
-			get_sidebar( 'two' ),
-			"\t\t</div>\n";
+			vol_content();
+			printf( "\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n" );
+			get_sidebar( 'one' ); 
+			get_sidebar( 'two' );
+			printf( "\t\t</div>\n" );
 			break;
 		case 'cs':
 		case 'sc':
-			echo vol_content(), 
+			vol_content();
 			get_sidebar( 'one' );
 			break;
 		case 'css':
 		case 'ssc':
-			echo vol_content(),
-			get_sidebar( 'one' ), 
+			vol_content();
+			get_sidebar( 'one' );
 			get_sidebar( 'two' );
 			break;
 		case 'scs':
-			echo "\t\t<div id=\"wrap\">\n",
-			vol_content(), 
-			get_sidebar( 'one' ),
-			"\t\t</div>\n",
+			printf( "\t\t<div id=\"wrap\">\n" );
+			vol_content(); 
+			get_sidebar( 'one' );
+			printf( "\t\t</div>\n" );
 			get_sidebar( 'two' );
 			break;
 		case '':
@@ -68,31 +69,31 @@ function columns_singular() {
 	
 	switch ( $single_layout ) {
 		case 'c1':
-			echo vol_content();
+			vol_content();
 			break;
 		case 'c2':
-			echo vol_content(),
-			"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
-			get_sidebar( 'one' ), 
-			get_sidebar( 'two' ),
-			"\t\t</div>\n";
+			vol_content();
+			printf( "\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n" );
+			get_sidebar( 'one' );
+			get_sidebar( 'two' );
+			printf( "\t\t</div>\n" );
 			break;
 		case 'cs':
 		case 'sc':
-			echo vol_content(), 
+			vol_content();
 			get_sidebar( 'one' );
 			break;
 		case 'css':
 		case 'ssc':
-			echo vol_content(), 
-			get_sidebar( 'one' ), 
+			vol_content(); 
+			get_sidebar( 'one' ); 
 			get_sidebar( 'two' );
 			break;
 		case 'scs':
-			echo "\t\t<div id=\"wrap\">\n",
-			vol_content(), 
-			get_sidebar( 'one' ),
-			"\t\t</div>\n",
+			printf( "\t\t<div id=\"wrap\">\n" );
+			vol_content();
+			get_sidebar( 'one' );
+			printf( "\t\t</div>\n" );
 			get_sidebar( 'two' );
 			break;
 		default:

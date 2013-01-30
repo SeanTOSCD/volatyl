@@ -36,14 +36,15 @@ if ( post_password_required() )
 		
 		// Are there comments to navigate through?
 		( ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) ? 
-		printf( "\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation clearfix\">\n
-		\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
-		previous_comments_link( __( $older_comments, 'volatyl' ) ) .
-		printf( "\t\t</div>\n
-		\t\t<div class=\"nav-next comment-nav\">\n" ) . 
-		next_comments_link( __( $newer_comments, 'volatyl' ) ) .
-		printf( "\t\t</div>\n
-		\t</nav>" ) : '' );
+			printf( "\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation clearfix\">\n
+			\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
+			previous_comments_link( __( $older_comments, 'volatyl' ) ) .
+			printf( "\t\t</div>\n
+			\t\t<div class=\"nav-next comment-nav\">\n" ) . 
+			next_comments_link( __( $newer_comments, 'volatyl' ) ) .
+			printf( "\t\t</div>\n
+			\t</nav>" ) : 
+		'' );
 		echo "\t<ol class=\"commentlist\">\n";
 
 		/* Loop through and list the comments. Tell wp_list_comments()
@@ -65,14 +66,15 @@ if ( post_password_required() )
 		
 			// Are there comments to navigate through?
 			( ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) ? 
-			printf( "\t<nav role=\"navigation\" id=\"comment-nav-below\" class=\"site-navigation comment-navigation clearfix\">\n
-			\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
-			previous_comments_link( __( $older_comments, 'volatyl' ) ) .
-			printf( "\t\t</div>\n
-			\t\t<div class=\"nav-next comment-nav\">\n" ) . 
-			next_comments_link( __( $newer_comments, 'volatyl' ) ) .
-			printf( "\t\t</div>\n
-			\t</nav>" ) : '' );
+				printf( "\t<nav role=\"navigation\" id=\"comment-nav-below\" class=\"site-navigation comment-navigation clearfix\">\n
+				\t\t<div class=\"nav-previous comment-nav\">\n" ) . 
+				previous_comments_link( __( $older_comments, 'volatyl' ) ) .
+				printf( "\t\t</div>\n
+				\t\t<div class=\"nav-next comment-nav\">\n" ) . 
+				next_comments_link( __( $newer_comments, 'volatyl' ) ) .
+				printf( "\t\t</div>\n
+				\t</nav>" ) : 
+			'' );
 		
 			// Only show pings header if there are pings to show
 			( ( ( get_comments_number() - comments_only_count( $count ) ) > 0 ) ?

@@ -559,7 +559,8 @@ th {
 	border-bottom: 0;
 }
 
-.post.top { 
+.post.top,
+.post.no-results { 
 	padding-top: 0;
 }
 

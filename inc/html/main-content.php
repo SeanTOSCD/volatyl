@@ -25,48 +25,32 @@
 
 // Full site content structure
 function standard_content() {
-
-	// Content
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 ) {
-	
-		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
-				"<div class=\"main clearfix\">",
-				vol_columns(),
-				"</div></div>"; 
-		
-	} else {
-	
-		echo 	"<div id=\"main-content\" class=\"clearfix\">",
-				vol_columns(),
-				"</div>";
-		
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ? 
+		printf( "<div id=\"main-content\" class=\"full clearfix\">
+		<div class=\"main clearfix\">" ) .
+		vol_columns() .
+		printf( "</div></div>" ) :
+		printf( "<div id=\"main-content\" class=\"clearfix\">" ) .
+		vol_columns() .
+		printf( "</div>" ) );
 }
 add_action( 'main_content', 'standard_content' );
 
 
 // Singular option content structure
 function singular_content() {
-
-	// Content
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 ) {
-	
-		echo 	"<div id=\"main-content\" class=\"full clearfix\">",
-				"<div class=\"main clearfix\">",
-				columns_singular(),
-				"</div></div>"; 
-		
-	} else {
-	
-		echo 	"\t<div id=\"main-content\" class=\"clearfix\">\n";
-				columns_singular();
-		echo 	"\t</div>\n";
-		
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ?
+		printf( "<div id=\"main-content\" class=\"full clearfix\">
+		<div class=\"main clearfix\">" ) .
+		columns_singular() .
+		printf( "</div></div>" ) :
+		printf( "\t<div id=\"main-content\" class=\"clearfix\">\n" ) .
+		columns_singular() .
+		printf( "\t</div>\n" ) );
 }
 add_action( 'main_content_singular', 'singular_content' );
 
