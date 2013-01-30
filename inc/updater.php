@@ -18,14 +18,13 @@
 define( 'VOL_STORE_URL', 'http://volatylthemes.com' );
 define( 'VOL_DOWNLOAD_NAME', 'Volatyl Framework' );
 
-
 /** The Volatyl updater
  *
  * @since Volatyl 1.0
  */
 $test_license = trim( get_option( 'vol_license_key' ) );
 
-$edd_updater = new VOL_Updater( array( 
+$vol_updater = new VOL_Updater( array( 
 		'remote_api_url' 	=> VOL_STORE_URL, 
 		'version' 			=> '1.0', 
 		'license' 			=> $test_license,
@@ -41,14 +40,12 @@ $edd_updater = new VOL_Updater( array(
  */
 function vol_activate_license() {
 
-	if( isset( $_POST['edd_theme_license_activate'] ) ) { 
-	 	if( ! check_admin_referer( 'edd_sample_nonce', 'edd_sample_nonce' ) ) 	
+	if( isset( $_POST['vol_license_activate'] ) ) { 
+	 	if( ! check_admin_referer( 'vol_nonce', 'vol_nonce' ) ) 	
 			return; // get out if we didn't click the Activate button
 
 		global $wp_version;
-
 		$license = trim( get_option( 'vol_license_key' ) );
-				
 		$api_params = array( 
 			'edd_action' => 'activate_license', 
 			'license' => $license, 
@@ -66,7 +63,6 @@ function vol_activate_license() {
 		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 		
 		// $license_data->license will be either "active" or "inactive"
-
 		update_option( 'vol_license_key_status', $license_data->license );
 
 	}
@@ -78,18 +74,17 @@ add_action('admin_init', 'vol_activate_license');
  *
  * @since Volatyl 1.0
  */
-function edd_sample_theme_deactivate_license() {
+function vol_deactivate_license() {
 
 	// listen for our activate button to be clicked
 	if( isset( $_POST['vol_license_deactivate'] ) ) {
 
 		// run a quick security check 
-	 	if( ! check_admin_referer( 'edd_sample_nonce', 'edd_sample_nonce' ) ) 	
+	 	if( ! check_admin_referer( 'vol_nonce', 'vol_nonce' ) ) 	
 			return; // get out if we didn't click the Activate button
 
 		// retrieve the license from the database
 		$license = trim( get_option( 'vol_license_key' ) );
-			
 
 		// data to send in our API request
 		$api_params = array( 
@@ -114,22 +109,18 @@ function edd_sample_theme_deactivate_license() {
 		// $license_data->license will be either "deactivated" or "failed"
 		if( $license_data->license == 'deactivated' )
 			delete_option( 'vol_license_key' );
-
 	}
 }
-add_action('admin_init', 'edd_sample_theme_deactivate_license');
+add_action('admin_init', 'vol_deactivate_license');
 
 
 /** Check to see if the license is valid
  *
  * @since Volatyl 1.0
  */
-function edd_sample_theme_check_license() {
-
+function vol_check_license() {
 	global $wp_version;
-
 	$license = trim( get_option( 'vol_license_key' ) );
-		
 	$api_params = array( 
 		'edd_action' => 'check_license', 
 		'license' => $license, 
@@ -143,9 +134,7 @@ function edd_sample_theme_check_license() {
 
 	if ( is_wp_error( $response ) )
 		return false;
-
 	$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-
 	if( $license_data->license == 'valid' ) {
 		echo 'valid'; 
 		exit;
@@ -191,7 +180,6 @@ class VOL_Updater {
 		$this->remote_api_url = $remote_api_url;
 		$this->response_key   = $this->theme_slug . '-update-response';
 
-
 		add_filter( 'site_transient_update_themes', array( &$this, 'theme_update_transient' ) );
 		add_filter( 'delete_site_transient_update_themes', array( &$this, 'delete_theme_update_transient' ) );
 		add_action( 'load-update-core.php', array( &$this, 'delete_theme_update_transient' ) );
@@ -218,7 +206,7 @@ class VOL_Updater {
 		if ( version_compare( $theme->get( 'Version' ), $api_response->new_version, '<' ) ) {
 
 			echo '<div id="update-nag">';
-				printf( '<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a>.',
+				printf( '<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a> (<strong>always</strong> backup first!).',
 					$theme->get( 'Name' ),
 					$api_response->new_version,
 					'#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',
@@ -246,9 +234,7 @@ class VOL_Updater {
 	}
 
 	function check_for_update() {
-
 		$theme = wp_get_theme( $this->theme_slug );
-
 		$update_data = get_transient( $this->response_key );
 		if ( false === $update_data ) {
 			$failed = false;
@@ -296,7 +282,6 @@ class VOL_Updater {
 		if ( version_compare( $theme->get( 'Version' ), $update_data->new_version, '>=' ) ) {
 			return false;
 		}
-
 		return (array) $update_data;
 	}
 }

@@ -968,6 +968,11 @@ select {
 .sc .pagination {
 	float: right;
 	padding: 20px;
+} 
+
+.ssc .pagination, 
+.sc .pagination {
+	padding: 20px 0;
 }
 
 .c1 #content, 
@@ -1007,9 +1012,7 @@ select {
 	width: 75%; 
 }
 
-.scs #wrap, 
-.ssc .pagination, 
-.sc .pagination { 
+.scs #wrap { 
 	padding: 0; 
 }
 

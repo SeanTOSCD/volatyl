@@ -15,7 +15,6 @@ function vol_add_meta_box() {
 } 
 add_action( 'add_meta_boxes', 'vol_add_meta_box' ); 
 
-
 // Callback for the above meta boxes. Posts and Pages share the same function.
 function vol_meta_box( $post ) {  
 	global $post, $column_options;
@@ -30,32 +29,24 @@ function vol_meta_box( $post ) {
 	 * The first options is a standalone option - Site Default. It is not 
 	 * included in the $column_options array and will only be used here.
 	 */
-    echo 	"<p><label for=\"_singular-column\">Select Column Layout: </label>",
-    		"<select name=\"_singular-column\" id=\"_singular-column\">",
-    		"<option value=\"default\""; 
+    echo "<p><label for=\"_singular-column\">Select Column Layout: </label>
+    <select name=\"_singular-column\" id=\"_singular-column\">
+    <option value=\"default\"";
     selected( $selected, 'default' );
-    echo 	">Site Default</option>"; 
+    echo ">Site Default</option>"; 
     
     // Create an option for each layout choice in the $column_options array
     foreach ( $column_options as $key ) {
-    
-		echo 	"<option value=\"", 
-				$key[ 'value' ], "\""; 
+		echo "<option value=\"", $key[ 'value' ], "\"";
 		selected( $selected, $key[ 'value' ] );
-		echo	 ">", 
-				$key[ 'description' ], 
-				"</option>"; 
+		echo ">", $key[ 'description' ], "</option>"; 
     }   
     
-    echo 	"</select></p>",
-    		"<p><label for=\"_custom-class\">",
-    		"CSS Class: </label>",
-    		"<input id=\"_custom-class\" name=\"_custom-class\" ",
-    		"value=\"", $custom_class, "\" size=\"30\" ",
-    		"type=\"text\" ",
-    		"placeholder=\"No Periods! Separate Classes by a Space\"></p>";
+    echo "</select></p>
+    <p><label for=\"_custom-class\">CSS Class: </label>
+    <input id=\"_custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"No Periods! Separate Classes by a Space\">
+    </p>";
 }
-
 
 // Validate singular layout options
 function vol_meta_box_save( $post_id ) {
@@ -82,6 +73,5 @@ function vol_meta_box_save( $post_id ) {
 		
 	if ( isset( $_POST['_custom-class'] ) )  
         update_post_meta( $post_id, '_custom-class', wp_kses( $_POST[ '_custom-class' ], $allowed ) );  
-		
 }
 add_action( 'save_post', 'vol_meta_box_save' );
