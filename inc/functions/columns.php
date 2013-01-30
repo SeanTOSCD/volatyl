@@ -21,47 +21,35 @@ function vol_columns() {
 	
 	switch ( $options[ 'column' ] ) {
 		case 'c1':
-		
-			echo 	vol_content();
+			echo vol_content();
 			break;
-			
 		case 'c2':
-		
-			echo 	vol_content(),
-					"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
-					get_sidebar( 'one' ), 
-					get_sidebar( 'two' ),
-					"\t\t</div>\n";
+			echo vol_content(),
+			"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
+			get_sidebar( 'one' ), 
+			get_sidebar( 'two' ),
+			"\t\t</div>\n";
 			break;
-			
 		case 'cs':
 		case 'sc':
-		
-			echo 	vol_content(), 
-					get_sidebar( 'one' );
+			echo vol_content(), 
+			get_sidebar( 'one' );
 			break;
-			
 		case 'css':
 		case 'ssc':
-		
-			echo 	vol_content(), 
-					get_sidebar( 'one' ), 
-					get_sidebar( 'two' );
+			echo vol_content(),
+			get_sidebar( 'one' ), 
+			get_sidebar( 'two' );
 			break;
-			
 		case 'scs':
-		
-			echo 	"\t\t<div id=\"wrap\">\n",
-					vol_content(), 
-					get_sidebar( 'one' ),
-					"\t\t</div>\n",
-					get_sidebar( 'two' );
+			echo "\t\t<div id=\"wrap\">\n",
+			vol_content(), 
+			get_sidebar( 'one' ),
+			"\t\t</div>\n",
+			get_sidebar( 'two' );
 			break;
-			
 		case '':
-		
 			echo __( 'Error: Please select a column structure in the ', 'volatyl' ) . THEME_NAME .  __( ' Options.', 'volatyl' );
-			
 	}
 }
 
@@ -80,84 +68,36 @@ function columns_singular() {
 	
 	switch ( $single_layout ) {
 		case 'c1':
-		
-			echo 	vol_content();
+			echo vol_content();
 			break;
-			
 		case 'c2':
-		
-			echo 	vol_content(),
-					"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
-					get_sidebar( 'one' ), 
-					get_sidebar( 'two' ),
-					"\t\t</div>\n";
+			echo vol_content(),
+			"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
+			get_sidebar( 'one' ), 
+			get_sidebar( 'two' ),
+			"\t\t</div>\n";
 			break;
-			
 		case 'cs':
 		case 'sc':
-		
-			echo 	vol_content(), 
-					get_sidebar( 'one' );
+			echo vol_content(), 
+			get_sidebar( 'one' );
 			break;
-			
 		case 'css':
 		case 'ssc':
-		
-			echo 	vol_content(), 
-					get_sidebar( 'one' ), 
-					get_sidebar( 'two' );
+			echo vol_content(), 
+			get_sidebar( 'one' ), 
+			get_sidebar( 'two' );
 			break;
-			
 		case 'scs':
-		
-			echo 	"\t\t<div id=\"wrap\">\n",
-					vol_content(), 
-					get_sidebar( 'one' ),
-					"\t\t</div>\n",
-					get_sidebar( 'two' );
+			echo "\t\t<div id=\"wrap\">\n",
+			vol_content(), 
+			get_sidebar( 'one' ),
+			"\t\t</div>\n",
+			get_sidebar( 'two' );
 			break;
-			
 		default:
-			$options = get_option( 'vol_structure_options' );
 			
-			switch ( $options[ 'column' ] ) {
-				case 'c1':
-				
-					echo 	vol_content();
-					break;
-			
-				case 'c2':
-				
-					echo 	vol_content(),
-							"\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n",
-							get_sidebar( 'one' ), 
-							get_sidebar( 'two' ),
-							"\t\t</div>\n";
-					break;
-			
-				case 'cs':
-				case 'sc':
-				
-					echo 	vol_content(), 
-							get_sidebar( 'one' );
-					break;
-			
-				case 'css':
-				case 'ssc':
-				
-					echo 	vol_content(), 
-							get_sidebar( 'one' ), 
-							get_sidebar( 'two' );
-					break;
-			
-				case 'scs':
-				
-					echo 	"\t\t<div id=\"wrap\">\n",
-							vol_content(), 
-							get_sidebar( 'one' ),
-							"\t\t</div>\n",
-							get_sidebar( 'two' );
-					break;
-			}
+			// Back to main site layout options			
+			vol_columns();
 	}
 }

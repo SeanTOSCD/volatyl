@@ -26,23 +26,24 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		$category_text = apply_filters( 'category_text', 'Filed under: ' );
 
 		// Show post date
-		if ( $options_content[ 'by-date-post' ] == 1 ) {
-			echo 	__( $publish_date, 'volatyl' ),
-					"<a href=\"", the_permalink(), "\" title=\"",
-					esc_attr( sprintf( __( 'Permalink', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), 
-					"\" rel=\"bookmark\">";
-			the_time( get_option( 'date_format' ) );
-			echo "</a> \n";
-		}
+		( ( $options_content[ 'by-date-post' ] == 1 ) ?
+			printf( __( $publish_date, 'volatyl' ) .
+			"<a href=\"" ) . the_permalink() . printf( "\" title=\"" ) . esc_attr( sprintf( __( 'Permalink', 'volatyl' ) . the_title_attribute( 'echo=0' ) ) ) . printf( "\" rel=\"bookmark\">" ) . 
+			the_time( get_option( 'date_format' ) ) .
+			printf( "</a> \n" ) :
+		'' );
 	
 		// Show post author
-		echo ( ( $options_content[ 'by-author-post' ] == 1 ) ? __( $author_text, 'volatyl' ) . '<a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a>' : '' );
+		( ( $options_content[ 'by-author-post' ] == 1 ) ? 
+			printf( __( $author_text, 'volatyl' ) . 
+			"<a class=\"fn\" href=\"" ) . get_author_posts_url( get_the_author_meta( 'ID' ) ) . printf( "\" title=\"" ) . esc_attr( get_the_author() ) . printf( '">' ) . the_author() . printf( "</a>" ) : 
+		'' );
 	
 		// Show post comment count
 		if ( $options_content[ 'by-comments-post' ] == 1 ) {
 	
 			// Only show dash before comments if byline items are in front of it
-			echo ( ( $options_content[ 'by-date-post' ] == 0 && $options_content[ 'by-author-post' ] == 0 ) ? "" : " - " );
+			( ( $options_content[ 'by-date-post' ] == 0 && $options_content[ 'by-author-post' ] == 0 ) ? "" : printf( " - " ) );
 			
 			// Only mark comments as closed in byline of comment count is 0	
 			$response_count = get_comments_number();
@@ -84,15 +85,13 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		}
 	
 		// Show post edit link
-		if ( $options_content[ 'by-edit-post' ] == 1 )
-			edit_post_link( __( 'Edit', 'volatyl' ), '<span class="edit-link"> ', '</span> ' );
+		( ( $options_content[ 'by-edit-post' ] == 1 ) ? edit_post_link( __( 'Edit', 'volatyl' ), '<span class="edit-link"> ', '</span> ' ) : '' );
 	
 		// Show post categories
 		if ( $options_content[ 'by-cats' ] == 1 ) {
 	
 			// Only place cats on new line if other byline items are removed
-			if ( $options_content[ 'by-date-post' ] == 1 || $options_content[ 'by-author-post' ] == 1 || $options_content[ 'by-comments-post' ] == 1 )
-				echo "<br>";
+			( ( $options_content[ 'by-date-post' ] == 1 || $options_content[ 'by-author-post' ] == 1 || $options_content[ 'by-comments-post' ] == 1 ) ? printf( "<br>" ) : '' );
 			_e( $category_text, 'volatyl' );
 			the_category( ', ' );
 		}

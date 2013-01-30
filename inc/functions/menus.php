@@ -14,19 +14,17 @@ function standard_menu_on() {
 	$options_content = get_option( 'vol_content_options' );
 	
 	// Wide Structure?
-	if ( $options_structure[ 'wide' ] == 1 ) {
-	
-		if ( $options_content[ 'standardmenu' ] == 1 )
-			echo 	"<div id=\"menu-area-standard\" class=\"full\">",
-					"<div class=\"main\">",
-					standard_menu(),
-					"</div></div>";
-				
-	} else {
-	
-		( ( $options_content[ 'standardmenu' ] == 1 ) ? standard_menu() : '' );
-			
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ?
+		( ( $options_content[ 'standardmenu' ] == 1 ) ?
+			printf( "<div id=\"menu-area-standard\" class=\"full\">
+			<div class=\"main\">" ) .
+			standard_menu() .
+			printf( "</div></div>" ) : 
+		'' ) :
+		( ( $options_content[ 'standardmenu' ] == 1 ) ? 
+			standard_menu() : 
+		'' )
+	);
 }
 
 // The standard menu itself... called above
@@ -40,18 +38,15 @@ function standard_menu() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	
-	echo	"<div id=\"standard-menu-container\" class=\"standard-menu-wrap border-box\">",
-			"<div class=\"standard-menu-toggle\">",
-			"<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $standard_menu_open, 'volatyl' ) . "</a>",
-			"<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $standard_menu_close, 'volatyl' ) . "</a>",
-			"</div>",
-			"\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
-	
-			( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
-		
-			"\t</nav>\n",
-			"</div>";
+	echo "<div id=\"standard-menu-container\" class=\"standard-menu-wrap border-box\">
+	<div class=\"standard-menu-toggle\">
+	<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $standard_menu_open, 'volatyl' ) . "</a>
+	<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $standard_menu_close, 'volatyl' ) . "</a>
+	</div>
+	\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
+	( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
+	"\t</nav>\n
+	</div>";
 }
 
 
@@ -61,19 +56,17 @@ function footer_menu_on() {
 	$options_content = get_option( 'vol_content_options' );
 	
 	// Wide Structure?
-	if ( $options_structure[ 'wide' ] == 1 ) {
-	
-		if ( $options_content[ 'footermenu' ] == 1 )
-			echo 	"<div id=\"menu-area-footer\" class=\"full\">",
-					"<div class=\"main\">",
-					footer_menu(),
-					"</div></div>";
-				
-	} else {
-	
-		( ( $options_content[ 'footermenu' ] == 1 ) ? footer_menu() : '' );
-			
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ?
+		( ( $options_content[ 'footermenu' ] == 1 ) ?
+			printf( "<div id=\"menu-area-footer\" class=\"full\">
+			<div class=\"main\">" ) .
+			footer_menu() .
+			printf( "</div></div>" ) : 
+		'' ) :
+		( ( $options_content[ 'footermenu' ] == 1 ) ? 
+			footer_menu() : 
+		'' )
+	);
 }
 
 
@@ -89,16 +82,13 @@ function footer_menu() {
 	 * @since Volatyl 1.0
 	 */
 	
-	echo	"<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">",
-			"<div class=\"footer-menu-toggle\">",
-			"<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>",
-			"<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $footer_menu_close, 'volatyl' ) . "</a>",
-			"</div>",
-			"\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
-	
-			( ( has_nav_menu( 'footer' ) ) ?
-			wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),
-		
-			"\t</nav>\n",
-			"</div>";
+	echo "<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">
+	<div class=\"footer-menu-toggle\">
+	<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>
+	<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $footer_menu_close, 'volatyl' ) . "</a>
+	</div>
+	\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
+	( ( has_nav_menu( 'footer' ) ) ? wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),
+	"\t</nav>\n
+	</div>";
 }

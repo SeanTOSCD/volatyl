@@ -43,19 +43,19 @@ function footer_element() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	if ( $options_content[ 'fatfooter' ] == 1 && ! is_page_template() )
-			
-		echo 	"\t\t<div id=\"fat-footer\" class=\"clearfix\">\n",
-				"{$tab3}<div class=\"footer-widget border-box\">\n",
-				( ( ! dynamic_sidebar( 'footer-left' ) ) ? default_widget() : '' ),
-				"{$tab3}</div>\n",
-				"{$tab3}<div class=\"footer-widget border-box\">\n",
-				( ( ! dynamic_sidebar( 'footer-middle' ) ) ? default_widget() : '' ),
-				"{$tab3}</div>\n",
-				"{$tab3}<div class=\"footer-widget border-box\">\n",
-				( ( ! dynamic_sidebar( 'footer-right' ) ) ? default_widget() : '' ),
-				"{$tab3}</div>\n",
-				"\t\t</div>\n";
+	( ( $options_content[ 'fatfooter' ] == 1 && ! is_page_template() ) ?
+		printf( "\t\t<div id=\"fat-footer\" class=\"clearfix\">\n
+		{$tab3}<div class=\"footer-widget border-box\">\n" ) .
+		( ( ! dynamic_sidebar( 'footer-left' ) ) ? default_widget() : '' ) .
+		printf( "{$tab3}</div>\n
+		{$tab3}<div class=\"footer-widget border-box\">\n" ) .
+		( ( ! dynamic_sidebar( 'footer-middle' ) ) ? default_widget() : '' ) .
+		printf( "{$tab3}</div>\n
+		{$tab3}<div class=\"footer-widget border-box\">\n" ) .
+		( ( ! dynamic_sidebar( 'footer-right' ) ) ? default_widget() : '' ) .
+		printf( "{$tab3}</div>\n
+		\t\t</div>\n" ) : 
+	'' );
 
 	// vol_footer_bottom - Always hide on landing page
 	if ( $options[ 'switch_vol_footer_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
@@ -72,7 +72,6 @@ function footer_element() {
 			do_action( 'vol_footer_bottom' );
 		}
 	}
-	
 	echo "\t<div class=\"site-info\">",
 
 	// Footer attribution
@@ -81,7 +80,8 @@ function footer_element() {
 		// DO NOT CHANGE text IF displayed
 		__( '<p>Built with ', 'volatyl' ) . 
 		"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
-		__( ' for WordPress</p>', 'volatyl' ) : '' );
+		__( ' for WordPress</p>', 'volatyl' ) : 
+	'' );
 
 	// vol_site_info
 	if ( $options[ 'switch_vol_site_info' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
@@ -99,24 +99,18 @@ function footer_element() {
 		}
 	}
 	
-	echo 	"</div>\n", 
-			"</footer>";
+	echo "</div>\n
+	</footer>";
 }
 
 // The above <footer> will display based on HTML structure options
 function footer_frame() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 ) {
-	
-		echo 	"<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n",
-				footer_element(),
-				"\t</div>\n</div>\n"; 
-		
-	} else {
-	
-		echo 	footer_element(), 
-				"</div>\n";
-		
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ? 
+		printf( "\t<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n" ) . 
+		footer_element() . 
+		printf( "\t</div>\n</div>\n" ) : 
+		footer_element() . 
+		printf( "</div>\n" ) );
 }

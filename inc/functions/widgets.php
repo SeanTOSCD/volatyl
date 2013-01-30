@@ -69,10 +69,10 @@ function default_widget() {
 	
 	// Only show when selection is made in the options
 	echo 	( ( $options_content[ 'widgets' ] == 1 ) ?
-			"\t<aside class=\"widget\">\n" .
-			"\t\t<h3 class=\"widget-title\">\n". 
+			"\t<aside class=\"widget\">\n
+			\t\t<h3 class=\"widget-title\">\n". 
 			__( 'Default Widget', 'volatyl' ). 
-			"\t\t</h3>\n" .
-			"\t\t<p>" . __( 'This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="wp-admin/widgets.php">widgets page</a> of your WordPress dashboard.', 'volatyl' ) . "</p>\n" .
-			"\t</aside>\n" : '' );
+			"\t\t</h3>\n
+			\t\t<p>" . __( 'This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="wp-admin/widgets.php">widgets page</a> of your WordPress dashboard.', 'volatyl' ) . "</p>\n
+			\t</aside>\n" : '' );
 }

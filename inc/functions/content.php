@@ -6,7 +6,6 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-
 $options_content = get_option( 'vol_content_options' );
 
 // Custom filters
@@ -15,8 +14,7 @@ $excerpt_link = apply_filters( 'excerpt_link', 'Read More &rarr;' );
 // Add .top class to the first post in a loop
 function vol_first_post_class( $classes ) {
 	global $wp_query;
-	
-	if( 0 == $wp_query->current_post )
+	if ( 0 == $wp_query->current_post )
 		$classes[] = 'top';
 		return $classes;
 }
@@ -47,7 +45,6 @@ function comments_only_count( $count ) {
     if ( ! is_admin() ) {
         global $id;
         $comments_by_type = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
-        
         return count( $comments_by_type['comment'] );
     }
     

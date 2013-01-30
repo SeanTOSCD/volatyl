@@ -48,25 +48,13 @@ function header_element() {
 	}
 		
 	// Show site title? This controls the text title AND logo			
-	if ( $title == 1 ) {
-		echo 	"\t\t<{$seotitle} class=\"site-title\">",
-				"<a href=\"",
-				home_url( '/' ), "\" title=\"",
-				esc_attr( get_bloginfo( 'name', 'display' ) ), 
-				"\" rel=\"home\">";
+	echo ( ( $title == 1 ) ? "\t\t<{$seotitle} class=\"site-title\"><a href=\"" . home_url( '/' ) . "\" title=\"" . esc_attr( get_bloginfo( 'name', 'display' ) ) . "\" rel=\"home\">" .
 	
-		// If a logo is uploaded, show it. If not, show the site title.
-		if ( $logo != '' )
-			echo "<img src=\"", $options_content[ 'logo' ], "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />";
-			
-		else		
-			echo get_bloginfo( 'name' );
-		
-		echo "</a></{$seotitle}>\n";
-	}
+	// If a logo is uploaded, show it. If not, show the site title.
+	( ( $logo != '' ) ? "<img src=\"" . $options_content[ 'logo' ] . "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />" : get_bloginfo( 'name' ) ) . "</a></{$seotitle}>\n" : '' ),
 
 	// Show site tagline? Always hide on landing page		
-	echo ( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' );
+	( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' );
 
 	// vol_header_bottom - Always hide on landing page
 	if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
@@ -91,21 +79,17 @@ function header_element() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	if ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) {
-	
-		echo	"<div id=\"header-menu-container\" class=\"header-menu-wrap\">",
-				"<div class=\"header-menu-toggle\">",
-				"<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" . __( $header_menu_open, 'volatyl' ) . "</a>",
-				"<a href=\"#\" class=\"close-header-menu menu-toggle\">" . __( $header_menu_close, 'volatyl' ) . "</a>",
-				"</div>",
-				"\t<nav role=\"navigation\" id=\"short-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n",
-		
-				( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ),
-				
-				"\t</nav>\n",
-				"</div>";
-	}
-	
+	( ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) ?
+		printf( "<div id=\"header-menu-container\" class=\"header-menu-wrap\">
+		<div class=\"header-menu-toggle\">
+		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" ) . printf( __( $header_menu_open, 'volatyl' ) ) . printf( "</a>
+		<a href=\"#\" class=\"close-header-menu menu-toggle\">" ) . printf( __( $header_menu_close, 'volatyl' ) ) . printf( "</a>
+		</div>
+		\t<nav role=\"navigation\" id=\"short-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n" ) .
+		( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ) .
+		printf( "\t</nav>\n
+		</div>" ) : 
+	'' );	
 	echo "</header>";
 }
 
@@ -114,16 +98,10 @@ function header_element() {
 function header_frame() {
 	$options_structure = get_option( 'vol_structure_options' );
 	
-	if ( $options_structure[ 'wide' ] == 1 ) { 
-	
-		echo 	"<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n",
-				header_element(),
-				"\t</div>\n</div>\n";
-		
-	} else {
-	
-		echo 	"<div id=\"container\">\n",
-				header_element();
-		
-	}
+	( ( $options_structure[ 'wide' ] == 1 ) ?
+		printf( "<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n" ) .
+		header_element() . 
+		printf( "\t</div>\n</div>\n" ) :
+		printf( "<div id=\"container\">\n" ) . 
+		header_element() );
 }
