@@ -71,16 +71,18 @@ if ( ! function_exists( 'volatyl_setup' ) ) {
 		// Register wp_nav_menu() below header (standard menu) if selected
 		$options = get_option( 'vol_content_options' );
 		
-		if ( $options[ 'standardmenu' ] == 1 )	 
+		( ( $options[ 'standardmenu' ] == 1 ) ? 
 			register_nav_menus( array(
 				'standard' => __( 'Standard Menu (unlimited drop-downs)', 'volatyl' )
-			) );
+			) ) : 
+		'' );
 	
 		// Register wp_nav_menu() above footer (footer menu) if selected	
-		if ( $options[ 'footermenu' ] == 1 )
+		( ( $options[ 'footermenu' ] == 1 ) ?
 			register_nav_menus( array(
 				'footer' => __( 'Footer Menu (unlimited drop-downs)', 'volatyl' )
-			) );
+			) ) :
+		'' );
 			
 	}
 }
