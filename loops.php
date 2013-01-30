@@ -1,6 +1,11 @@
 <?php
 /** loops.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Loops, and loops, and loops! This file is one big conditional that
  * handles the WordPress loop for:
  *
@@ -142,10 +147,11 @@ function vol_content() {
 		// Search results
 		} elseif ( is_search() ) {
 			global $post;
+			$search_title = apply_filters( 'search_title', 'Search Results for:' );
 			
 			echo "\t<header class=\"page-header\">\n
 			\t\t<h1 class=\"page-title\">",
-			sprintf( __( 'Search Results for: %s', 'volatyl' ), '<span>' . get_search_query() . '</span>' ),
+			sprintf( __( $search_title . ' %s', 'volatyl' ), '<span>' . get_search_query() . '</span>' ),
 			"</h1>\n
 			\t</header>";
 		
@@ -171,7 +177,11 @@ function vol_content() {
 			$yearly_title = apply_filters( 'yearly_title', 'Yearly Archives:' );
 
 			// vol_before_content_column
-			( ( $options_hooks[ 'switch_vol_before_content_column' ] == 0 ) ? vol_before_content_column() : '' );
+			( ( $options[ 'switch_vol_before_content_column' ] == 0 ) ?
+				( ( $options[ 'archive_vol_before_content_column' ] == 0 ) ?
+					vol_before_content_column() :
+					do_action( 'vol_before_content_column' ) ) :
+			'' );
 			echo "\t<header class=\"page-header\">\n
 			\t\t<h1 class=\"page-title\">";
 			if ( is_category() ) {

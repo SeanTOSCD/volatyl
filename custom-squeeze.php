@@ -1,6 +1,11 @@
 <?php
 /** Template Name: Squeeze Page
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * This template is almost pointless... except that it's not.
  * A squeeze page typically serves ONE purpose. That purpose
  * is whatever you want it to be. Most people collect email

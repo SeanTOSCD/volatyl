@@ -1,6 +1,11 @@
 <?php
 /** updater.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Handle the license key activation and deactivation remotely
  *
  * Also perform automatic updates on installs with valid licenses

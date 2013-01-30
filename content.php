@@ -1,5 +1,10 @@
 <?php
 /** content.php
+ *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
  * 
  * Most of the templates for the various WordPress webpages are located
  * in the templates.php file. A few of the generic webpages call to this
@@ -36,29 +41,12 @@ if ( $options[ 'featuredimage' ] == 1 ) {
 
 	// If Featured Image is set for a post, show thumbnail.
 	( ( has_post_thumbnail() ) ? 
-		printf( "<a href=\"" ) . the_permalink() . 
-		printf( "\" title=\"" ) . the_title_attribute() . 
-		printf( "\" >" ) . 
-		the_post_thumbnail( 'post-thumbnail', array( 
+		printf( "<a href=\"" ) . the_permalink() . printf( "\" title=\"" ) . the_title_attribute() . printf( "\" >" ) . the_post_thumbnail( 'post-thumbnail', array( 
 			'class'	=> 'featured-img', 
 			'alt'	=> the_title_attribute( 'echo=0' ) 
 		) ) . 
 		printf( "</a>" ) : 
 	'' );
-}
-
-// vol_after_article_header
-if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
-	if 	( ( is_home() && is_front_page() && $options_hooks[ 'home_vol_after_article_header' ] == 0 && $options_hooks[ 'front_vol_after_article_header' ] == 0 ) ||
-		( is_home() && ! is_front_page() && $options_hooks[ 'home_vol_after_article_header' ] == 0 ) ||
-		( is_front_page() && ! is_home() && $options_hooks[ 'front_vol_after_article_header' ] == 0 ) ||
-		( is_archive() && $options_hooks[ 'archive_vol_after_article_header' ] == 0 ) ||
-		( is_search() && $options_hooks[ 'search_vol_after_article_header' ] == 0 ) ||
-		( is_404() && $options_hooks[ '404_vol_after_article_header' ] == 0 ) ) {
-			vol_after_article_header();
-	} else {
-		do_action( 'vol_after_article_header' );
-	}
 }
 
 // Only display Excerpts for Search or Home if options is selected
@@ -79,16 +67,3 @@ if ( $options_hooks[ 'switch_vol_after_article_header' ] == 0 ) {
 	printf( "\t</div>\n" )
 );
 echo "</article>";
-
-// vol_post_footer
-if ( $options[ 'switch_vol_post_footer' ] == 0 ) {
-	if 	( ( is_home() && is_front_page() && $options_hooks[ 'home_vol_post_footer' ] == 0 && $options_hooks[ 'front_vol_post_footer' ] == 0 ) ||
-		( is_home() && ! is_front_page() && $options_hooks[ 'home_vol_post_footer' ] == 0 ) ||
-		( is_front_page() && ! is_home() && $options_hooks[ 'front_vol_post_footer' ] == 0 ) ||
-		( is_archive() && $options_hooks[ 'archive_vol_post_footer' ] == 0 ) ||
-		( is_search() && $options_hooks[ 'search_vol_post_footer' ] == 0 ) ) {
-			vol_post_footer();
-	} else {
-		do_action( 'vol_post_footer' );
-	}
-}

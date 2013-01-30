@@ -1,6 +1,11 @@
 <?php
 /** Template Name: Landing Page
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * This is a custom landing page template. In conjunction with
  * the code in the header-html.php file, the entire .site-header
  * is stripped of everything BUT the logo and the vol_header_top

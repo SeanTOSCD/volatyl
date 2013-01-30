@@ -1,6 +1,11 @@
 <?php
 /** Template Name: Custom Layout
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * The purpose of this template is to provide a blank canvas for you
  * to build a custom layout. It calls to the volatyl() function just
  * like every other template.; that way you can grab the header, footer,

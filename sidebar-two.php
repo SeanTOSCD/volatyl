@@ -1,5 +1,11 @@
 <?php
-/**
+/** sidebar-two.php
+ *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Sidebar 2 containing widget area and hooks
  *
  * @package Volatyl

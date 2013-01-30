@@ -1,6 +1,11 @@
 <?php
 /** body-class.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * On various pages of your site, different body classes are needed
  * for styling purposes. That happens here. 
  *

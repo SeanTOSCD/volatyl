@@ -1,6 +1,11 @@
 <?php
 /** byline.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * So many byline (meta data) options! 
  *
  * @package Volatyl
@@ -36,7 +41,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		// Show post author
 		( ( $options_content[ 'by-author-post' ] == 1 ) ? 
 			printf( __( $author_text, 'volatyl' ) . 
-			"<a class=\"fn\" href=\"" ) . get_author_posts_url( get_the_author_meta( 'ID' ) ) . printf( "\" title=\"" ) . esc_attr( get_the_author() ) . printf( '">' ) . the_author() . printf( "</a>" ) : 
+			"<a class=\"fn\" href=\"" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "\" title=\"" ) . esc_attr( get_the_author() ) . printf( '">' ) . the_author_meta('display_name') . printf( "</a>" ) : 
 		'' );
 	
 		// Show post comment count

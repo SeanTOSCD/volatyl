@@ -1,6 +1,11 @@
 <?php 
 /** columns.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Depending on the site layout selected, different elements need to
  * be loaded. The magic happens here. 
  *

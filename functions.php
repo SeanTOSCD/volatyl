@@ -1,6 +1,11 @@
 <?php
 /** functions.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * This file calls directly to another file that has what you're 
  * used to seeing in a functions.php file. Based on the way a child 
  * theme's functions.php file is ran BEFORE the parent theme's
@@ -29,10 +34,3 @@ require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
 
 // License key setup and Volatyl automatic updater
 require_once( dirname( __FILE__ ) . '/inc/updater.php' );
-
-// Change publish date text
-function publish_date_text( $variable ) {
-    $variable = "Pages:";
-    return $variable;
-}
-add_filter( 'post_page_nav', 'publish_date_text' );

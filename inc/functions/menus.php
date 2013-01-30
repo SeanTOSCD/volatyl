@@ -1,6 +1,11 @@
 <?php
 /** menus.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Volatyl supports multiple menus. If the additional menus are turned on, 
  * their structures are determined here and called from the structure.php file.
  * 

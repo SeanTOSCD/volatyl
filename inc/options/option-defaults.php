@@ -1,6 +1,11 @@
 <?php 
 /** option-defaults.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * This chunk of awesome code sets the default Volatyl Options.
  * It checks to see if the database field for each particular
  * option is empty and if it is, it calls to the corresponding

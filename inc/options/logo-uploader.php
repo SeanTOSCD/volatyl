@@ -1,6 +1,11 @@
 <?php
 /** logo-uploader.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Use the built-in WordPress media uploader in the Volatyl content
  * settings to upload a header logo.
  *

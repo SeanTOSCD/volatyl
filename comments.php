@@ -1,5 +1,11 @@
 <?php
-/**
+/** comments.php
+ *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * The template for displaying Comments.
  *
  * @package Volatyl
@@ -79,9 +85,10 @@ if ( post_password_required() )
 			// Only show pings header if there are pings to show
 			( ( ( get_comments_number() - comments_only_count( $count ) ) > 0 ) ?
 			
-			// Pings! Trackbacks and Pingbacks...
-			printf( "\t<span class=\"comments-title\">\n" ) .
-			printf( $pings_title, number_format_i18n( get_comments_number() - comments_only_count( $count ) ) ) . printf( "</span>\n" ) : '' );
+				// Pings! Trackbacks and Pingbacks...
+				printf( "\t<span class=\"comments-title\">\n" ) .
+				printf( $pings_title, number_format_i18n( get_comments_number() - comments_only_count( $count ) ) ) . printf( "</span>\n" ) : 
+			'' );
 			
 			// Here are the trackbacks and pingbacks
 			wp_list_comments( 
@@ -95,7 +102,11 @@ if ( post_password_required() )
 	}
 
 // If comments are closed and there are comments, let's leave a little note.
-echo ( ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) ? sprintf( "\t\t<p class=\"nocomments\">" ) . __( $comments_closed, 'volatyl' ) . sprintf( "</p>\n" ) : '' );
+echo ( ( ! comments_open() && '0' != get_comments_number() && post_type_supports( get_post_type(), 'comments' ) ) ? 
+	sprintf( "\t\t<p class=\"nocomments\">" ) . 
+	__( $comments_closed, 'volatyl' ) . 
+	sprintf( "</p>\n" ) : 
+'' );
 
 
 /** Comment Form
@@ -120,11 +131,11 @@ comment_form(
 		'fields'				=> apply_filters( 'comment_form_default_fields', 
 		
 			array(
-				'author' 		=> '<p class="comment-form-author">' . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="20"' . $aria_req . ' /><label for="author">' . __( 'Name', 'volatyl' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '</p>',
+				'author'	=> '<p class="comment-form-author">' . '<input id="author" name="author" type="text" value="' . esc_attr( $commenter[ 'comment_author' ] ) . '" size="20"' . $aria_req . ' /><label for="author">' . __( 'Name', 'volatyl' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '</p>',
 				
-				'email' 		=> '<p class="comment-form-email">' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter[ 'comment_author_email' ] ) . '" size="20"' . $aria_req . ' /><label for="email">' . __( 'Email', 'volatyl' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '</p>',
+				'email'		=> '<p class="comment-form-email">' . '<input id="email" name="email" type="text" value="' . esc_attr(  $commenter[ 'comment_author_email' ] ) . '" size="20"' . $aria_req . ' /><label for="email">' . __( 'Email', 'volatyl' ) . '</label> ' . ( $req ? '<span class="required">*</span>' : '' ) . '</p>',
 				
-				'url' 			=> '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter[ 'comment_author_url' ] ) . '" size="20" /><label for="url">' . __( 'Website', 'volatyl' ) . '</label></p>'
+				'url'		=> '<p class="comment-form-url"><input id="url" name="url" type="text" value="' . esc_attr( $commenter[ 'comment_author_url' ] ) . '" size="20" /><label for="url">' . __( 'Website', 'volatyl' ) . '</label></p>'
 			)
 		)
 	) 

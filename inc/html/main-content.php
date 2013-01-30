@@ -1,5 +1,10 @@
 <?php
 /** main-content.php
+ *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
  * 
  * I did this for YOU! So that you are not stuck with one site
  * layout all across your site, I modularized everything in order

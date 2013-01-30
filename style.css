@@ -419,7 +419,7 @@ th {
 .header-navigation { 
 	position: absolute; 
 	top: 25px; 
-	right: 20px; 
+	right: 0; 
 }
 
 
@@ -1173,9 +1173,8 @@ select {
 	.menu li + li {
 		margin: 0;
 	}
-	.menu > li > a,
-	.menu > li:last-of-type > a {
-		background: #ccc;
+	.menu > li > a {
+		background: rgba(0,0,0,.08);
 	}
 	#short-menu-wrap.short-menu a,
 	#full-menu-wrap.full-menu .menu a {

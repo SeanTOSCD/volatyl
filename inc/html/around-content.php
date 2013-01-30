@@ -1,6 +1,11 @@
 <?php
 /** around-content.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Dumb filename, huh? The two functions here, before_content() and
  * after_content(), cover everything from the bottom of the <head> to
  * the top of the main content... and the bottom of the main content

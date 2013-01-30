@@ -1,6 +1,11 @@
 <?php
 /** header.php
  *
+ ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
+ ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
+ ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
+ *******************************************************************
+ *
  * Doctype, opening HTML, everything located inside the <head> of your
  * website, and the opening <body> tag can be found here.
  *
@@ -22,8 +27,6 @@ echo "<!DOCTYPE html>\n
 
 // Print the <title> tag based on what is being viewed.	 
 wp_title( '|', false, 'right' ),
-
-// Add the blog name
 $title,
 
 // Add the blog description for the home/front page.
