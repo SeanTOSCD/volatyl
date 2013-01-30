@@ -584,6 +584,7 @@ th {
 	margin-bottom: -4px;
 }
 
+.post > .entry-content > p:last-of-type,
 .post > .entry-summary > p:last-of-type,
 .sticky.post > .entry-content > p:last-of-type,
 .sticky.post > .entry-summary > p:last-of-type {

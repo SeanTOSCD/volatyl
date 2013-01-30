@@ -23,9 +23,9 @@ define( 'VOL_DOWNLOAD_NAME', 'Volatyl Framework' );
  *
  * @since Volatyl 1.0
  */
-$test_license = trim( get_option( 'edd_sample_theme_license_key' ) );
+$test_license = trim( get_option( 'vol_license_key' ) );
 
-$edd_updater = new EDD_SL_Theme_Updater( array( 
+$edd_updater = new VOL_Updater( array( 
 		'remote_api_url' 	=> VOL_STORE_URL, 
 		'version' 			=> '1.0', 
 		'license' 			=> $test_license,
@@ -39,7 +39,7 @@ $edd_updater = new EDD_SL_Theme_Updater( array(
  *
  * @since Volatyl 1.0
  */
-function edd_sample_theme_activate_license() {
+function vol_activate_license() {
 
 	if( isset( $_POST['edd_theme_license_activate'] ) ) { 
 	 	if( ! check_admin_referer( 'edd_sample_nonce', 'edd_sample_nonce' ) ) 	
@@ -47,7 +47,7 @@ function edd_sample_theme_activate_license() {
 
 		global $wp_version;
 
-		$license = trim( get_option( 'edd_sample_theme_license_key' ) );
+		$license = trim( get_option( 'vol_license_key' ) );
 				
 		$api_params = array( 
 			'edd_action' => 'activate_license', 
@@ -55,7 +55,10 @@ function edd_sample_theme_activate_license() {
 			'item_name' => urlencode( VOL_DOWNLOAD_NAME ) 
 		);
 		
-		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+			'timeout' => 15, 
+			'sslverify' => false 
+		) );
 
 		if ( is_wp_error( $response ) )
 			return false;
@@ -64,11 +67,11 @@ function edd_sample_theme_activate_license() {
 		
 		// $license_data->license will be either "active" or "inactive"
 
-		update_option( 'edd_sample_theme_license_key_status', $license_data->license );
+		update_option( 'vol_license_key_status', $license_data->license );
 
 	}
 }
-add_action('admin_init', 'edd_sample_theme_activate_license');
+add_action('admin_init', 'vol_activate_license');
 
 
 /** Deactivate the license key
@@ -78,25 +81,28 @@ add_action('admin_init', 'edd_sample_theme_activate_license');
 function edd_sample_theme_deactivate_license() {
 
 	// listen for our activate button to be clicked
-	if( isset( $_POST['edd_theme_license_deactivate'] ) ) {
+	if( isset( $_POST['vol_license_deactivate'] ) ) {
 
 		// run a quick security check 
 	 	if( ! check_admin_referer( 'edd_sample_nonce', 'edd_sample_nonce' ) ) 	
 			return; // get out if we didn't click the Activate button
 
 		// retrieve the license from the database
-		$license = trim( get_option( 'edd_sample_theme_license_key' ) );
+		$license = trim( get_option( 'vol_license_key' ) );
 			
 
 		// data to send in our API request
 		$api_params = array( 
 			'edd_action'=> 'deactivate_license', 
 			'license' 	=> $license, 
-			'item_name' => urlencode( VOL_DOWNLOAD_NAME ) // the name of our product in EDD
+			'item_name' => urlencode( VOL_DOWNLOAD_NAME )
 		);
 		
 		// Call the custom API.
-		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+			'timeout' => 15, 
+			'sslverify' => false 
+		) );
 
 		// make sure the response came back okay
 		if ( is_wp_error( $response ) )
@@ -107,7 +113,7 @@ function edd_sample_theme_deactivate_license() {
 		
 		// $license_data->license will be either "deactivated" or "failed"
 		if( $license_data->license == 'deactivated' )
-			delete_option( 'edd_sample_theme_license_key' );
+			delete_option( 'vol_license_key' );
 
 	}
 }
@@ -122,7 +128,7 @@ function edd_sample_theme_check_license() {
 
 	global $wp_version;
 
-	$license = trim( get_option( 'edd_sample_theme_license_key' ) );
+	$license = trim( get_option( 'vol_license_key' ) );
 		
 	$api_params = array( 
 		'edd_action' => 'check_license', 
@@ -130,7 +136,10 @@ function edd_sample_theme_check_license() {
 		'item_name' => urlencode( VOL_DOWNLOAD_NAME ) 
 	);
 	
-	$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 'timeout' => 15, 'sslverify' => false ) );
+	$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+		'timeout' => 15, 
+		'sslverify' => false 
+	) );
 
 	if ( is_wp_error( $response ) )
 		return false;
@@ -138,10 +147,12 @@ function edd_sample_theme_check_license() {
 	$license_data = json_decode( wp_remote_retrieve_body( $response ) );
 
 	if( $license_data->license == 'valid' ) {
-		echo 'valid'; exit;
+		echo 'valid'; 
+		exit;
 		// this license is still valid
 	} else {
-		echo 'invalid'; exit;
+		echo 'invalid'; 
+		exit;
 		// this license is no longer valid
 	}
 }
@@ -151,7 +162,7 @@ function edd_sample_theme_check_license() {
  *
  * @since Volatyl 1.0
  */
-class EDD_SL_Theme_Updater {
+class VOL_Updater {
 	private $remote_api_url;
 	private $request_data;
 	private $response_key;
@@ -250,7 +261,11 @@ class EDD_SL_Theme_Updater {
 				'author'		=> $this->author
 			);
 
-			$response = wp_remote_post( $this->remote_api_url, array( 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ) );
+			$response = wp_remote_post( $this->remote_api_url, array( 
+				'timeout' => 15, 
+				'sslverify' => false, 
+				'body' => $api_params 
+			) );
 
 			// make sure the response was successful
 			if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {

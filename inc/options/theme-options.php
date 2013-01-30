@@ -32,7 +32,7 @@ function vol_options_add_page() {
 	// Init content options
 	register_setting( 'volatyl_content_options', 'vol_content_options', 'vol_options_validate' );
 	// Init license key
-	register_setting('volatyl_license_key', 'edd_sample_theme_license_key', 'vol_sanitize_license' );
+	register_setting('volatyl_license_key', 'vol_license_key', 'vol_sanitize_license' );
 }
 add_action( 'admin_menu', 'vol_options_add_page' );
 
@@ -462,8 +462,8 @@ function vol_options_do_page() {
  	 * @since Volatyl 1.0
 	 */	
 	} elseif ( $active_tab == 'license' ) {
-		$license = get_option( 'edd_sample_theme_license_key' );
-		$status = get_option( 'edd_sample_theme_license_key_status' );
+		$license = get_option( 'vol_license_key' );
+		$status = get_option( 'vol_license_key_status' );
 	
 		echo 	"{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t",
 		
@@ -481,9 +481,9 @@ function vol_options_do_page() {
 				"<tr valign=\"top\">",	
 				"<th scope=\"row\" valign=\"top\">",
 				__( 'License Key', 'volatyl' ), "</th>", "<td>",
-				"<input id=\"edd_sample_theme_license_key\" name=\"edd_sample_theme_license_key\" type=\"text\" class=\"regular-text\" value=\"",
+				"<input id=\"vol_license_key\" name=\"vol_license_key\" type=\"text\" class=\"regular-text\" value=\"",
 				esc_attr_e( $license ), "\" />",
-				"<label class=\"description\" for=\"edd_sample_theme_license_key\">",
+				"<label class=\"description\" for=\"vol_license_key\">",
 				__( ' Enter your license key', 'volatyl' ),
 				"</label>", "</td>", "</tr>",
 				( ( false !== $license ) ?
@@ -493,12 +493,12 @@ function vol_options_do_page() {
 				( ( $status !== false && $status == 'valid' ) ?
 				"<span style=\"color: green;\">" .
 				__( 'active ', 'volatyl' ) . "</span>" .
-				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
-				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_deactivate\" value=\"" .
+				wp_nonce_field( 'vol_nonce', 'vol_nonce' ) .
+				"<input type=\"submit\" class=\"button-secondary\" name=\"vol_license_deactivate\" value=\"" .
 				__( 'Deactivate License', 'volatyl' ) .
 				"\"/>" : 
-				wp_nonce_field( 'edd_sample_nonce', 'edd_sample_nonce' ) .
-				"<input type=\"submit\" class=\"button-secondary\" name=\"edd_theme_license_activate\" value=\"" .
+				wp_nonce_field( 'vol_nonce', 'vol_nonce' ) .
+				"<input type=\"submit\" class=\"button-secondary\" name=\"vol_license_activate\" value=\"" .
 				__( 'Activate License', 'volatyl' ) .
 				"\"/>" ) : '' ),
 				"</td>", "</tr>",
@@ -517,7 +517,6 @@ function vol_options_do_page() {
 	}
 			
 	echo "</div>";
-	
 }
 
 // Submit button specifically for hooks
@@ -640,12 +639,12 @@ function vol_options_validate( $input ) {
 }
 
 function vol_sanitize_license( $new ) {
-	$old = get_option( 'edd_sample_theme_license_key' );
+	$old = get_option( 'vol_license_key' );
 	
 	if( $old && $old != $new )
 	
 		// new license has been entered, so must reactivate
-		delete_option( 'edd_sample_theme_license_key_status' ); 
+		delete_option( 'vol_license_key_status' ); 
 		
 	return $new;
 }
