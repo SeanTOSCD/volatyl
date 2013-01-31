@@ -74,7 +74,7 @@ function default_widget() {
 	
 	// Only show when selection is made in the options
 	echo 	( ( $options_content[ 'widgets' ] == 1 ) ?
-			"\t<aside class=\"widget\">\n
+			"\t<aside class=\"widget default-widget\">\n
 			\t\t<h3 class=\"widget-title\">\n". 
 			__( 'Default Widget', 'volatyl' ). 
 			"\t\t</h3>\n

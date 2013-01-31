@@ -88,7 +88,8 @@ pre,
 abbr, 
 acronym,
 pre,
-.form-allowed-tags {
+.form-allowed-tags,
+.default-widget {
 	border: 1px solid rgba(0,0,0,.1);
 }
 
@@ -100,7 +101,8 @@ pre,
 #comments > ol > li,
 .wp-caption,
 .entry-content img,
-.form-allowed-tags {
+.form-allowed-tags,
+.default-widget {
 	background: #f1f1f1;
 }
 
@@ -798,6 +800,14 @@ cite.fn {
 
 .widget li {
 	margin-bottom: 10px;
+}
+
+.default-widget {
+	padding: 15px;
+}
+
+#fat-footer .default-widget {
+	background: #fff;
 }
 
 
