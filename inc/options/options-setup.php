@@ -433,7 +433,7 @@ function vol_headliner() {
 	echo stripslashes( $options[ 'vol_headliner' ] ); 
 	do_action( 'vol_headliner' ); 
 }
-function vol_footliner() { 
+function vol_footliner() {
 	global $options; 
 	echo stripslashes( $options[ 'vol_footliner' ] ); 
 	do_action( 'vol_footliner' ); 

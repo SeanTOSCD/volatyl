@@ -48,11 +48,22 @@ cite.fn {
 	margin: 0 0 20px;  
 }
 
+.site-description,
+.entry-meta,
+.site-content h5, 
+.site-content h6,
+.comment-date,
+.comment-date a { 
+	color: #666; 
+}
+
 pre,
 .entry-meta,
 .comment-date,
 .comment-reply-link,
-.wp-caption p {
+.wp-caption p,
+.form-allowed-tags, 
+.form-allowed-tags code {
 	font-size: .8em; 
 	line-height: 1.6em; 
 }
@@ -76,7 +87,8 @@ pre,
 .wp-caption,
 abbr, 
 acronym,
-pre {
+pre,
+.form-allowed-tags {
 	border: 1px solid rgba(0,0,0,.1);
 }
 
@@ -87,7 +99,8 @@ pre {
 .sticky .entry-header,
 #comments > ol > li,
 .wp-caption,
-.entry-content img {
+.entry-content img,
+.form-allowed-tags {
 	background: #f1f1f1;
 }
 
@@ -102,7 +115,8 @@ pre,
 .wp-caption.aligncenter,
 .wp-caption.alignleft,
 .wp-caption.alignright,
-.site-content .gallery { 
+.site-content .gallery,
+#content .form-allowed-tags { 
 	margin-bottom: 20px; 
 }
 
@@ -409,7 +423,6 @@ th {
 }
 
 .site-description { 
-	color: #666; 
 	font-size: 16px;
 	line-height: 24px;
 	font-weight: normal;
@@ -592,7 +605,6 @@ th {
 }
 
 .entry-meta { 
-	color: #666;
 	margin: 0; 
 }
 
@@ -622,11 +634,6 @@ th {
 .site-content h6 { 
 	font-size: 18px; 
 	line-height: 27px; 
-}
-
-.site-content h5, 
-.site-content h6 { 
-	color: #666; 
 }
 
 .site-content ul, 
@@ -682,7 +689,8 @@ th {
 /* =Comments & Pings
 -------------------------------------------------------------- */
 
-#comments > ol > li {
+#comments > ol > li,
+.form-allowed-tags {
 	padding: 15px;
 	margin: 1em 0;
 }
@@ -724,12 +732,7 @@ th {
 
 .comment-date {
 	display: inline;
-	color: #666; 
 	margin: 0 0 0 1em; 
-}
-
-.comment-date a {
-	color: #666;
 }
 
 cite.fn {

@@ -371,6 +371,7 @@ function vol_options_do_page() {
 			switch ( $hook[ 'name' ] ) {
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:
@@ -386,7 +387,7 @@ function vol_options_do_page() {
 			}
 			
 			switch ( $hook[ 'name' ] ) {
-				case '':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:
@@ -406,6 +407,7 @@ function vol_options_do_page() {
 				case 'vol_after_content_column':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:
@@ -423,6 +425,7 @@ function vol_options_do_page() {
 			switch ( $hook[ 'name' ] ) {
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:
@@ -442,6 +445,7 @@ function vol_options_do_page() {
 				case 'vol_after_content_column':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:
@@ -461,6 +465,7 @@ function vol_options_do_page() {
 				case 'vol_after_content_column':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
+				case 'vol_below_first_post':
 					echo '';
 					break;
 				default:

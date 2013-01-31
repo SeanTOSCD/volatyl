@@ -29,6 +29,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		$author_text = apply_filters( 'author_text', 'by ' );
 		$comments_off = apply_filters( 'comments_off', 'Comments off ' );
 		$category_text = apply_filters( 'category_text', 'Filed under: ' );
+		$custom_byline = apply_filters( 'custom_byline', '' );
 
 		// Show post date
 		( ( $options_content[ 'by-date-post' ] == 1 ) ?
@@ -69,25 +70,28 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 					// Get the total number of comments and pings
 					$num_comments = get_comments_number();
 					if ( $num_comments == 0 )
-						$comments = __( '0 Responses', 'volatyl' );
+						$comments = __( '0 Responses ', 'volatyl' );
 					elseif ( $num_comments > 1 )
-						$comments = $num_comments . __( ' Responses', 'volatyl' );
+						$comments = $num_comments . __( ' Responses ', 'volatyl' );
 					else
-						$comments = __( '1 Response', 'volatyl' );
+						$comments = __( '1 Response ', 'volatyl' );
 				} else {
 		
 					// Only get the comments... no pings
 					$num_comments = comments_only_count( $count );
 					if ( $num_comments == 0 )
-						$comments = __( '0 Comments', 'volatyl' );
+						$comments = __( '0 Comments ', 'volatyl' );
 					elseif ( $num_comments > 1 )
-						$comments = $num_comments . __( ' Comments', 'volatyl' );
+						$comments = $num_comments . __( ' Comments ', 'volatyl' );
 					else
-						$comments = __( '1 Comment', 'volatyl' );
+						$comments = __( '1 Comment ', 'volatyl' );
 				}
 			} 
 			echo $comments;
 		}
+	
+		// Custom byline item
+		_e( $custom_byline, 'volatyl' );
 	
 		// Show post edit link
 		( ( $options_content[ 'by-edit-post' ] == 1 ) ? edit_post_link( __( 'Edit', 'volatyl' ), '<span class="edit-link"> ', '</span> ' ) : '' );

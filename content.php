@@ -24,7 +24,7 @@ else
 // Custom filters
 $feed_tags_text = apply_filters( 'feed_tags_text', 'Tags: ' );
 $more_link_text = apply_filters( 'more_link_text', 'Read More &rarr;' );
-$feed_post_page_nav = apply_filters( 'feed_post_page_nav', 'Pages' );
+$feed_post_page_nav = apply_filters( 'feed_post_page_nav', 'Pages: ' );
 
 echo "<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 "\t<header class=\"entry-header\">\n",

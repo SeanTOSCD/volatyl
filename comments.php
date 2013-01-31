@@ -24,6 +24,7 @@ $pings_title = apply_filters( 'pings_title', __( _n( '1 Ping:', '%1$s Pings:', g
 $comments_closed = apply_filters( 'comments_closed', 'Comments are closed.' );
 $older_comments = apply_filters( 'older_comments', '&larr; Older Comments' );
 $newer_comments = apply_filters( 'newer_comments', 'Newer Comments &rarr;' );
+$comment_reply_title = apply_filters( 'comment_reply_title', 'Leave a Reply ' );
 $comment_submit = apply_filters( 'comment_submit', 'Submit Comment' );
 
 /* If the current post is protected by a password and
@@ -123,9 +124,8 @@ echo ( ( ! comments_open() && '0' != get_comments_number() && post_type_supports
  */
 comment_form( 
 	array( 
-		'comment_notes_after'	=> '',
 		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" rows="8" aria-required="true"></textarea></p>',
-		'title_reply'			=> '',
+		'title_reply'			=> '<h3 id="reply-title">' . __( $comment_reply_title, 'volatyl' ) . '</h3>',
 		'cancel_reply_link'		=> '<span class="cancel-reply">' . __( 'Cancel Reply', 'volatyl' ) . '</span>',
 		'label_submit'			=> __( $comment_submit, 'volatyl' ),
 		'fields'				=> apply_filters( 'comment_form_default_fields', 
