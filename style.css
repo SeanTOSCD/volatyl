@@ -569,8 +569,7 @@ th {
 	padding: 20px 0;
 }
 
-.single .post,
-.post.no-results {
+.post:last-of-type {
 	border-bottom: 0;
 }
 
@@ -650,6 +649,10 @@ th {
 
 .site-content li:last-child { 
 	border: none; 
+}
+
+.paging-navigation {
+	border-top: 1px dashed rgba(0,0,0,.1);
 }
 	
 .pagination {
@@ -807,7 +810,7 @@ cite.fn {
 }
 
 #fat-footer .default-widget {
-	background: #fff;
+	background: #fafafa;
 }
 
 
@@ -976,9 +979,7 @@ select {
 .sc #content, 
 .scs #content, 
 .scs .sidebar-2, 
-.ssc #content, 
-.ssc .pagination, 
-.sc .pagination {
+.ssc #content {
 	float: right;
 	padding: 20px;
 } 
