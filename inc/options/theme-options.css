@@ -30,6 +30,10 @@
 	clear: both;
 }
 
+h2 .nav-tab {
+	text-transform: capitalize;
+}
+
 /* Form content formattings */
 .volatyl-options form h3 {
 	background: #F1F1F1;
