@@ -48,7 +48,7 @@ function standard_menu() {
 	<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $standard_menu_open, 'volatyl' ) . "</a>
 	<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $standard_menu_close, 'volatyl' ) . "</a>
 	</div>
-	\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
+	\t<nav id=\"standard-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
 	( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
 	"\t</nav>\n
 	</div>";
@@ -92,7 +92,7 @@ function footer_menu() {
 	<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>
 	<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $footer_menu_close, 'volatyl' ) . "</a>
 	</div>
-	\t<nav id=\"full-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
+	\t<nav id=\"footer-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
 	( ( has_nav_menu( 'footer' ) ) ? wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),
 	"\t</nav>\n
 	</div>";
