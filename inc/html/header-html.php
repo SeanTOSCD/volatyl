@@ -90,7 +90,7 @@ function header_element() {
 		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" ) . printf( __( $header_menu_open, 'volatyl' ) ) . printf( "</a>
 		<a href=\"#\" class=\"close-header-menu menu-toggle\">" ) . printf( __( $header_menu_close, 'volatyl' ) ) . printf( "</a>
 		</div>
-		\t<nav role=\"navigation\" id=\"short-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n" ) .
+		\t<nav role=\"navigation\" id=\"header-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n" ) .
 		( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ) .
 		printf( "\t</nav>\n
 		</div>" ) : 
