@@ -72,7 +72,7 @@ function vol_content() {
 			// Da loop
 			while ( have_posts() ) { 
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n
+				echo "\t<article id=\"post-", the_ID(), "\" ", post_class(), ">\n
 				\t\t<header class=\"entry-header\">\n
 				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
 				{$tab3}<div class=\"entry-meta\">\n", 
@@ -86,7 +86,7 @@ function vol_content() {
 						vol_after_article_header() :
 						do_action( 'vol_after_article_header' ) ) :
 				'' ),
-				"\t\t<div class=\"entry-content\">\n",
+				"\t\t<section class=\"entry-content\">\n",
 				the_content();
 
 				// Show feed tags
@@ -99,8 +99,8 @@ function vol_content() {
 				( ( $options_posts[ 'singletags' ] == 1 ) ?
 				the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' );
 			
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-				echo "\t\t</div>\n
+				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
+				echo "\t\t</section>\n
 				\t</article>\n";
 
 				// vol_post_footer
@@ -134,13 +134,13 @@ function vol_content() {
 				\t\t<header class=\"entry-header\">\n
 				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
 				\t\t</header>\n
-				\t\t<div class=\"entry-content\">\n",  the_content();
+				\t\t<section class=\"entry-content\">\n",  the_content();
 				( ( $options[ 'pagecomments' ] == 1 ) ?
 					( ( comments_open() || '0' != get_comments_number() ) ? comments_template( '', true ) : '' ) : 
 				'' );
 					
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</div>' ) );
-				echo "\t\t</div>\n
+				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
+				echo "\t\t</section>\n
 				\t</article>\n";
 			}
 	
@@ -268,7 +268,7 @@ function vol_content() {
 				) .
 			
 				"\t\t</header>\n
-				\t\t<div class=\"entry-content\">\n
+				\t\t<section class=\"entry-content\">\n
 				{$tab3}<div class=\"entry-attachment\">\n
 				{$tab3}\t<div class=\"attachment\">\n";
 
@@ -306,7 +306,7 @@ function vol_content() {
 				wp_get_attachment_image( $post->ID, $attachment_size ),
 				"</a>\n{$tab3}\t</div>\n",	
 				( ( ! empty( $post->post_excerpt ) ) ? sprintf( "{$tab3}\t<div class=\"entry-caption\">\n" ) . the_excerpt() .	sprintf( "{$tab3}\t</div>\n" ) : '' );
-				wp_link_pages( array( 'before' => '<div class="page-links post-meta-footer">' . __( $attachment_page_nav, 'volatyl' ), 'after' => '</div>' ) );
+				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $attachment_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
 				echo "{$tab3}</div>\n
 				{$tab3}<nav class=\"site-navigation image-navigation clearfix\">
 				{$tab3}\t<div class=\"nav-previous image-nav\">", 
@@ -316,7 +316,7 @@ function vol_content() {
 				next_image_link( false, __( $next_image, 'volatyl' ) ), 
 				"{$tab3}\t</div>\n
 				{$tab3}</nav>\n
-				\t\t</div>\n
+				\t\t</section>\n
 				\t</article>";
 			}
 	

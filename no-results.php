@@ -20,7 +20,7 @@ if ( is_404() ) {
 	\t\t<header class=\"entry-header\">\n
 	{$tab3}<h1 class=\"entry-title\">", __( '404, eh? Well that\'s no good.', 'volatyl' ), "</h1>
 	\t\t</header>\n
-	\t\t<div class=\"entry-content\">\n
+	\t\t<section class=\"entry-content\">\n
 	{$tab3}<p>". __( 'We can\'t change the past but let\'s try to make things right for the future. Use the search form and other tools below to find what you were looking for.', 'volatyl' ), "</p>\n";
 	get_search_form();
 	the_widget( 'WP_Widget_Recent_Posts' );
@@ -35,7 +35,7 @@ if ( is_404() ) {
 		'depth' => -1, 
 	) );
 	echo "{$tab3}\t</ul>\n
-	</div>";
+	</section>";
 
 	// translators: %1$s: smilie
 	$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'volatyl' ), convert_smilies( ':)' ) ) . '</p>';
@@ -48,7 +48,7 @@ if ( is_404() ) {
 	\t<header class=\"entry-header\">\n
 	\t\t<h1 class=\"entry-title\">", __( 'Nothing Found', 'volatyl' ), "</h1>\n
 	\t</header>\n
-	\t<div class=\"entry-content\">\n";
+	\t<section class=\"entry-content\">\n";
 
 	// Zero posts the viewer can create posts
 	if ( is_home() && current_user_can( 'publish_posts' ) ) {
@@ -66,6 +66,6 @@ if ( is_404() ) {
 		echo "\t\t<p>", __( 'It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps searching can help.', 'volatyl' ), "</p>\n";
 		get_search_form();
 	}
-	echo "\t</div>\n
+	echo "\t</section>\n
 	</article>";
 }
