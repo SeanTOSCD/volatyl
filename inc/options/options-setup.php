@@ -6,7 +6,7 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * Set up arrays with theme options
+ * Set up arrays for theme options - theme-options.php
  *
  * @package Volatyl
  * @since Volatyl 1.0
