@@ -15,11 +15,7 @@
  */
 
 $options = get_option( 'vol_content_options' );	
-$options_hooks = get_option( 'vol_hooks_options' );	
-if ( is_home() || is_front_page() )
-	$article_headline = "h3";
-else
-	$article_headline = "h1";
+$options_hooks = get_option( 'vol_hooks_options' );
 
 // Custom filters
 $feed_tags_text = apply_filters( 'feed_tags_text', 'Tags: ' );
@@ -28,7 +24,7 @@ $feed_post_page_nav = apply_filters( 'feed_post_page_nav', 'Pages: ' );
 
 echo "<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 "\t<header class=\"entry-header\">\n",
-"\t\t<{$article_headline} class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"", esc_attr( sprintf( __( '%s', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></{$article_headline}>\n";
+"\t\t<h1 class=\"entry-title\"><a href=\"", the_permalink(), "\" title=\"", esc_attr( sprintf( __( '%s', 'volatyl' ), the_title_attribute( 'echo=0' ) ) ), "\" rel=\"bookmark\">", __( the_title(), 'volatyl' ), "</a></h1>\n";
 ( ( 'post' == get_post_type() ) ? 
 	printf( "\t\t<div class=\"entry-meta\">\n" ) . 
 	volatyl_post_meta() . 
@@ -51,19 +47,19 @@ if ( $options[ 'featuredimage' ] == 1 ) {
 
 // Only display Excerpts for Search or Home if options is selected
 ( ( is_search() || $options[ 'homeexcerpt' ] == 1 ) ?
-	printf( "\t<div class=\"entry-summary\">\n" ) . 
+	printf( "\t<section class=\"entry-summary\">\n" ) . 
 	the_excerpt() . 
-	printf( "\t</div>" ) :
+	printf( "\t</section>" ) :
 	
 	// Otherwise, show full article
-	printf( "\t<div class=\"entry-content\">\n" ) . 
+	printf( "\t<section class=\"entry-content\">\n" ) . 
 	the_content( __( $more_link_text, 'volatyl' ) ) .
 	
 	// Show feed tags
 	( ( $options[ 'feedtags' ] == 1 ) ?	the_tags( '<div class="entry-meta tags">' . __( $feed_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' ) .
 	
 	// Navigate paginated posts
-	wp_link_pages( array( 'before' => '<div class="page-links">' . __( $feed_post_page_nav, 'volatyl' ), 'after' => '</div>' ) ) .
-	printf( "\t</div>\n" )
+	wp_link_pages( array( 'before' => '<nav class="page-links">' . __( $feed_post_page_nav, 'volatyl' ), 'after' => '</nav>' ) ) .
+	printf( "\t</section>\n" )
 );
 echo "</article>";
