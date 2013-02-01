@@ -21,7 +21,7 @@ function volatyl_structure_default_settings() {
 	global $structure_options;
 	$structure_options = array(
 		'wide'					=> 1,
-		'column'				=> 'cs',
+		'column'				=> 'sc',
 	);
 	return $structure_options;
 }
