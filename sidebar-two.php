@@ -29,6 +29,7 @@ if ( $options_hooks[ 'switch_vol_before_sidebar_2' ] == 0 ) {
 		do_action( 'vol_before_sidebar_2' );
 	}
 }
+
 do_action( 'before_sidebar' );
 ( ( ! dynamic_sidebar( 'sidebar-2' ) ) ? default_widget() : '' );
 
