@@ -20,8 +20,8 @@ function volatyl_widgets_init() {
 		'description'   => __( 'Primary sidebar: On 1-column layouts, this sidebar will show. On 2-column layouts, this sidebar will be furthest to the left.', 'volatyl' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> '</aside>',
-		'before_title' 	=> '<h3 class="widget-title">',
-		'after_title' 	=> '</h3>',
+		'before_title' 	=> '<h4 class="widget-title">',
+		'after_title' 	=> '</h4>',
 	) );
 	register_sidebar( array(
 		'name' 			=> __( 'Sidebar 2', 'volatyl' ),
@@ -29,8 +29,8 @@ function volatyl_widgets_init() {
 		'description'   => __( 'Secondary sidebar: On 1-column layouts, this sidebar will not show. On 2-column layouts, this sidebar will be furthest to the right.', 'volatyl' ),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> '</aside>',
-		'before_title' 	=> '<h3 class="widget-title">',
-		'after_title' 	=> '</h3>',
+		'before_title' 	=> '<h4 class="widget-title">',
+		'after_title' 	=> '</h4>',
 	) );
 		
 	// Fat footer (widgetized)
@@ -42,8 +42,8 @@ function volatyl_widgets_init() {
 			'description'   => __( 'Far left footer widget', 'volatyl' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 	=> '</aside>',
-			'before_title' 	=> '<h3 class="widget-title">',
-			'after_title' 	=> '</h3>',
+			'before_title' 	=> '<h4 class="widget-title">',
+			'after_title' 	=> '</h4>',
 		) );
 		register_sidebar( array(
 			'name' 			=> __( 'Footer Middle', 'volatyl' ),
@@ -51,8 +51,8 @@ function volatyl_widgets_init() {
 			'description'   => __( 'Middle footer widget', 'volatyl' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 	=> '</aside>',
-			'before_title' 	=> '<h3 class="widget-title">',
-			'after_title' 	=> '</h3>',
+			'before_title' 	=> '<h4 class="widget-title">',
+			'after_title' 	=> '</h4>',
 		) );
 		register_sidebar( array(
 			'name' 			=> __( 'Footer Right', 'volatyl' ),
@@ -60,8 +60,8 @@ function volatyl_widgets_init() {
 			'description'   => __( 'Far right footer widget', 'volatyl' ),
 			'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 	=> '</aside>',
-			'before_title' 	=> '<h3 class="widget-title">',
-			'after_title' 	=> '</h3>',
+			'before_title' 	=> '<h4 class="widget-title">',
+			'after_title' 	=> '</h4>',
 		) );
 	}
 }
@@ -73,11 +73,12 @@ function default_widget() {
 	$options_content = get_option( 'vol_content_options' );
 	
 	// Only show when selection is made in the options
-	echo 	( ( $options_content[ 'widgets' ] == 1 ) ?
-			"\t<aside class=\"widget default-widget\">\n
-			\t\t<h3 class=\"widget-title\">\n". 
-			__( 'Default Widget', 'volatyl' ). 
-			"\t\t</h3>\n
-			\t\t<p>" . __( 'This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="wp-admin/widgets.php">widgets page</a> of your WordPress dashboard.', 'volatyl' ) . "</p>\n
-			\t</aside>\n" : '' );
+	echo ( ( $options_content[ 'widgets' ] == 1 ) ?
+		"\t<aside class=\"widget default-widget\">\n
+		\t\t<h4 class=\"widget-title\">\n" .
+		__( 'Default Widget', 'volatyl' ) . 
+		"\t\t</h4>\n
+		\t\t<p>" . __( 'This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="wp-admin/widgets.php">widgets page</a> of your WordPress dashboard.', 'volatyl' ) . "</p>\n
+		\t</aside>\n" : 
+	'' );
 }
