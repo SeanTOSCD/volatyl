@@ -87,19 +87,18 @@ function vol_options_do_page() {
 	 *
  	 * @since Volatyl 1.0
 	 */
-	$url = "{$tab3}\t<a href=\"?page=volatyl_options&tab=";
 	$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'global';
+	$add_tab = array( 'global', 'content', 'hooks', 'license' );
 	
-	echo "{$tab3}<h2 class=\"nav-tab-wrapper\">\n
-	{$url}global\" class=\"nav-tab ", $active_tab == 'global' ? 
-		'nav-tab-active' : '', "\">" . __( 'Global', 'volatyl' ) . "</a>\n
-	{$url}content\" class=\"nav-tab ", $active_tab == 'content' ? 
-		'nav-tab-active' : '', "\">" . __( 'Content', 'volatyl' ) . "</a>\n
-	{$url}hooks\" class=\"nav-tab ", $active_tab == 'hooks' ? 
-		'nav-tab-active' : '', "\">" . __( 'Hooks', 'volatyl' ) . "</a>\n
-	{$url}license\" class=\"nav-tab ", $active_tab == 'license' ? 
-		'nav-tab-active' : '', "\">" . __( 'License', 'volatyl' ) . "</a>\n
-	{$tab3}</h2>\n";
+	echo "{$tab3}<h2 class=\"nav-tab-wrapper\">\n";
+	
+	// Add Volatyl Options tabs
+	foreach ( $add_tab as $tab ) {
+		echo "{$tab3}\t<a href=\"?page=volatyl_options&tab=" . $tab . "\" class=\"nav-tab ", 
+		( $active_tab == $tab ? 'nav-tab-active' : '' ), "\">" . 
+		__( $tab, 'volatyl' ) . "</a>\n";
+	}
+	echo "{$tab3}</h2>\n";
 	
 		
 	/* Tabbed - Global Settings (default)
@@ -607,7 +606,6 @@ function vol_options_validate( $input ) {
 	}
 	
 	
-	
 	/** Validate and sanitize Volatyl structure options for
 	 * HTML framework and column layouts
  	 */
@@ -640,41 +638,18 @@ function vol_options_validate( $input ) {
 	 *  volatyl_hooks() array
  	 */
 	$vhooks = volatyl_hooks();
+	$hook_conditions = array( 'switch_', 'home_', 'front_', 'posts_', 'pages_', 'archive_', 'search_', '404_' );
+	
 	foreach ( $vhooks as $hook ) { 
 		if ( isset ( $input[ $hook[ 'name' ] ] ) )
 			$input[ $hook[ 'name' ] ] = stripslashes( $input[ $hook[ 'name' ] ] );
-			
-		if ( ! isset( $input[ 'switch_' . $hook[ 'name' ] ] ) )
-			$input[ 'switch_' . $hook[ 'name' ] ] = null;
-		$input[ 'switch_' . $hook[ 'name' ] ] = ( $input[ 'switch_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'home_' . $hook[ 'name' ] ] ) )
-			$input[ 'home_' . $hook[ 'name' ] ] = null;
-		$input[ 'home_' . $hook[ 'name' ] ] = ( $input[ 'home_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'front_' . $hook[ 'name' ] ] ) )
-			$input[ 'front_' . $hook[ 'name' ] ] = null;
-		$input[ 'front_' . $hook[ 'name' ] ] = ( $input[ 'front_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'posts_' . $hook[ 'name' ] ] ) )
-			$input[ 'posts_' . $hook[ 'name' ] ] = null;
-		$input[ 'posts_' . $hook[ 'name' ] ] = ( $input[ 'posts_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'pages_' . $hook[ 'name' ] ] ) )
-			$input[ 'pages_' . $hook[ 'name' ] ] = null;
-		$input[ 'pages_' . $hook[ 'name' ] ] = ( $input[ 'pages_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'archive_' . $hook[ 'name' ] ] ) )
-			$input[ 'archive_' . $hook[ 'name' ] ] = null;
-		$input[ 'archive_' . $hook[ 'name' ] ] = ( $input[ 'archive_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ 'search_' . $hook[ 'name' ] ] ) )
-			$input[ 'search_' . $hook[ 'name' ] ] = null;
-		$input[ 'search_' . $hook[ 'name' ] ] = ( $input[ 'search_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
-			
-		if ( ! isset( $input[ '404_' . $hook[ 'name' ] ] ) )
-			$input[ '404_' . $hook[ 'name' ] ] = null;
-		$input[ '404_' . $hook[ 'name' ] ] = ( $input[ '404_' . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+		
+		// Conditionals and disable option for each hook
+		foreach ( $hook_conditions as $hc ) {
+			if ( ! isset( $input[ $hc . $hook[ 'name' ] ] ) )
+				$input[ $hc . $hook[ 'name' ] ] = null;
+			$input[ $hc . $hook[ 'name' ] ] = ( $input[ $hc . $hook[ 'name' ] ] == 1 ? 1 : 0 );
+		}
 	}
 	return $input;
 }
