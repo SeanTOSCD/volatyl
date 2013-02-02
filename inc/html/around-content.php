@@ -37,7 +37,7 @@ function before_content() {
 		}
 	}
 
-	echo 
+	echo
 	header_frame(),
 	standard_menu_on();
 

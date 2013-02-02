@@ -920,7 +920,8 @@ img.size-full {
 	height: auto;
 }
 
-.wp-caption-text {
+.wp-caption-text,
+#wp-calendar td {
 	text-align: center;
 }
 

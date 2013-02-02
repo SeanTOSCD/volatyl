@@ -35,13 +35,13 @@ if ( is_404() ) {
 		'depth' => -1, 
 	) );
 	echo "{$tab3}\t</ul>\n
-	</section>";
+	</div>";
 
 	// translators: %1$s: smilie
 	$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'volatyl' ), convert_smilies( ':)' ) ) . '</p>';
 	the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 	the_widget( 'WP_Widget_Tag_Cloud' );
-	echo "\t\t</div>\n
+	echo "\t\t</section>\n
 	\t</article>\n";
 } else {
 	echo "<article id=\"post-0\" class=\"post no-results not-found\">\n
