@@ -23,11 +23,10 @@
 function landing_body_class( $classes ) {
 	
 	// add class name to the $classes array based on conditions
-	if ( is_page_template( 'custom-landing.php' ) ) {
+	if ( is_page_template( 'custom-landing.php' ) )
 		$classes[] = "landing";
-	} elseif ( is_page_template( 'custom-squeeze.php' ) ) {
+	elseif ( is_page_template( 'custom-squeeze.php' ) )
 		$classes[] = "squeeze";
-	}
 	
 	// return the $classes array
 	return $classes;

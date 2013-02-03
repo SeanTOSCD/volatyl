@@ -97,7 +97,8 @@ function vol_content() {
 				$post_page_nav = apply_filters( 'post_page_nav', 'Pages:' );
 				
 				( ( $options_posts[ 'singletags' ] == 1 ) ?
-				the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : '' );
+					the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : 
+				'' );
 			
 				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
 				echo "\t\t</section>\n
@@ -136,7 +137,9 @@ function vol_content() {
 				\t\t</header>\n
 				\t\t<section class=\"entry-content\">\n",  the_content();
 				( ( $options[ 'pagecomments' ] == 1 ) ?
-					( ( comments_open() || '0' != get_comments_number() ) ? comments_template( '', true ) : '' ) : 
+					( ( comments_open() || '0' != get_comments_number() ) ? 
+						comments_template( '', true ) : 
+					'' ) : 
 				'' );
 					
 				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</nav>' ) );

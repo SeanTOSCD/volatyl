@@ -28,11 +28,11 @@ if ( is_404() ) {
 	{$tab3}\t<h2 class=\"widgettitle\">", __( 'Most Used Categories', 'volatyl' ), "</h2>\n
 	{$tab3}\t<ul>\n";
 	wp_list_categories( array( 
-		'orderby' => 'count', 
-		'order' => 'DESC', 
-		'title_li' => '', 
-		'number' => 10, 
-		'depth' => -1, 
+		'orderby' 	=> 'count', 
+		'order' 	=> 'DESC', 
+		'title_li' 	=> '', 
+		'number' 	=> 10, 
+		'depth' 	=> -1, 
 	) );
 	echo "{$tab3}\t</ul>\n
 	</div>";
@@ -41,7 +41,7 @@ if ( is_404() ) {
 	$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'volatyl' ), convert_smilies( ':)' ) ) . '</p>';
 	the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" );
 	the_widget( 'WP_Widget_Tag_Cloud' );
-	echo "\t\t</section>\n
+	echo "\t\t</section	>\n
 	\t</article>\n";
 } else {
 	echo "<article id=\"post-0\" class=\"post no-results not-found\">\n

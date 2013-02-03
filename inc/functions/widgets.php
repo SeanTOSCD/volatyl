@@ -12,7 +12,7 @@
  * @since Volatyl 1.0
  */
 
-// Register widgetized areas and update sidebar with default widgets
+// Register widgetized areas
 function volatyl_widgets_init() {
 	register_sidebar( array(
 		'name' 			=> __( 'Sidebar 1', 'volatyl' ),
@@ -33,7 +33,7 @@ function volatyl_widgets_init() {
 		'after_title' 	=> '</h4>',
 	) );
 		
-	// Fat footer (widgetized)
+	// Fat (widgetized) footer
 	$options = get_option( 'vol_content_options' );
 	if ( $options[ 'fatfooter' ] == 1 ) {
 		register_sidebar( array(

@@ -13,7 +13,6 @@
  * @since Volatyl 1.0
  */
 
-
 /** Column layouts
  *
  * Various column layouts are built into Volatyl and can be toggled
