@@ -59,7 +59,6 @@ function comments_only_count( $count ) {
     }
 }
 
-
 // Show 'Pages' in search results? 
 if ( $options_content[ 'searchpages' ] == 0 ) { 
 	function vol_search_filter( $query ) {
@@ -69,7 +68,6 @@ if ( $options_content[ 'searchpages' ] == 0 ) {
 	}
 	add_filter( 'pre_get_posts','vol_search_filter' );
 }
-
 
 // Show excerpt/post link instead of [...]
 if ( $options_content[ 'excerptlink' ] == 1 ) {

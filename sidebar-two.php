@@ -12,6 +12,7 @@
  * @since Volatyl 1.0
  */
 $options_hooks = get_option( 'vol_hooks_options' );
+
 echo "<div id=\"sidebars\" class=\"widget-area sidebar-2 border-box\">\n";
 
 // vol_before_sidebar_2

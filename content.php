@@ -13,7 +13,6 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-
 $options = get_option( 'vol_content_options' );	
 $options_hooks = get_option( 'vol_hooks_options' );
 

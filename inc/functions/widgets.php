@@ -67,7 +67,6 @@ function volatyl_widgets_init() {
 }
 add_action( 'widgets_init', 'volatyl_widgets_init' );
 
-
 // Default widget when no widgets are present in a widgetized area
 function default_widget() {
 	$options_content = get_option( 'vol_content_options' );

@@ -13,8 +13,8 @@
  *
  * @since Volatyl 1.0
  */
- 
 $options = get_option( 'vol_general_options' );
+
 if ( $options[ 'adminmenu' ] == 1 ) {
 
 	function volatyl_toolbar( $admin_bar ) {

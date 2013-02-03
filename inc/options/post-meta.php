@@ -28,6 +28,7 @@ function vol_meta_box( $post ) {
 	$custom_class = isset( $the_id[ '_custom-class' ] ) ? esc_attr( $the_id[ '_custom-class' ][ 0 ] ) : '' ;
 	
     wp_nonce_field( 'vol_meta_box_nonce', 'meta_box_nonce' );
+    
 
 	/** Select option input for singular layout choices
 	 * 

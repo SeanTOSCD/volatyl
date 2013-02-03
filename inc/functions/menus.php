@@ -54,7 +54,6 @@ function standard_menu() {
 	</div>";
 }
 
-
 // Footer Menu
 function footer_menu_on() {
 	$options_structure = get_option( 'vol_structure_options' );
@@ -74,7 +73,6 @@ function footer_menu_on() {
 	);
 }
 
-
 // The footer menu itself... called above
 function footer_menu() {
 	$footer_menu_open = apply_filters( 'footer_menu_open', 'Navigation' );
@@ -86,7 +84,6 @@ function footer_menu() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	
 	echo "<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">
 	<div class=\"footer-menu-toggle\">
 	<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>

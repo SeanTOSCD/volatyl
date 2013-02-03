@@ -6,7 +6,8 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * The template part for displaying a message that posts cannot be found
+ * template part for displaying a message that posts cannot be found
+ * or a 404 error page
  *
  * @package Volatyl
  * @since Volatyl 1.0

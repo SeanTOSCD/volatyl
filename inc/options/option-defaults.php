@@ -65,7 +65,6 @@ function volatyl_general_settings_init() {
 }
 add_action( 'after_setup_theme','volatyl_general_settings_init' );
 
-
 // Content settings
 function volatyl_content_default_settings() {
 	global $content_options;

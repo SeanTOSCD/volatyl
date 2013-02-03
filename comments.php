@@ -11,7 +11,6 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-
 global $count;
 $options = get_option( 'vol_content_options' );
 $commenter = wp_get_current_commenter();
@@ -26,6 +25,7 @@ $older_comments = apply_filters( 'older_comments', '&larr; Older Comments' );
 $newer_comments = apply_filters( 'newer_comments', 'Newer Comments &rarr;' );
 $comment_reply_title = apply_filters( 'comment_reply_title', 'Leave a Reply ' );
 $comment_submit = apply_filters( 'comment_submit', 'Submit Comment' );
+
 
 /* If the current post is protected by a password and
  * the visitor has not yet entered the password, we will
@@ -53,6 +53,7 @@ if ( post_password_required() )
 			\t</nav>" ) : 
 		'' );
 		echo "\t<ol class=\"commentlist\">\n";
+		
 
 		/* Loop through and list the comments. Tell wp_list_comments()
 		 * to use volatyl_comment() to format the comments.

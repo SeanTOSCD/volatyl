@@ -14,7 +14,6 @@
  * @since Volatyl 1.0
  */ 
 
-
 /** Load the Volatyl Options page 
  *
  * Creates the Volatyl Options page located in the 'Appearance'

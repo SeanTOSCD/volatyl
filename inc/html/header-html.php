@@ -25,7 +25,6 @@ function header_element() {
 	$tagline = $options_content[ 'tagline' ];
 	$header_menu_open = apply_filters( 'header_menu_open', 'Menu' );
 	$header_menu_close = apply_filters( 'header_menu_close', 'Hide Menu' );
-	
 	if ( is_home() || is_front_page() ) {
 		$seotitle = "h1";
 		$seotagline = "h2";
@@ -76,6 +75,7 @@ function header_element() {
 			do_action( 'vol_header_bottom' );
 		}
 	}
+	
 
 	/** Show header menu? - Always hide on landing page	
 	 * 
@@ -97,7 +97,6 @@ function header_element() {
 	'' );	
 	echo "</header>";
 }
-
 
 // The above <header> will display based on HTML structure options
 function header_frame() {

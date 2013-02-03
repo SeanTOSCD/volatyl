@@ -15,6 +15,7 @@
  * @since Volatyl 1.0
  */
 
+// The standard footer element
 function footer_element() {
 	global $options, $tab3, $tab6;
 	$options_hooks = get_option( 'vol_hooks_options' );
