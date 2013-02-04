@@ -88,7 +88,6 @@ if ( ! function_exists( 'volatyl_setup' ) ) {
 				'footer' => __( 'Footer Menu (unlimited drop-downs)', 'volatyl' )
 			) ) :
 		'' );
-			
 	}
 }
 add_action( 'after_setup_theme', 'volatyl_setup' );
