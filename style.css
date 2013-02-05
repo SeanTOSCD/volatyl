@@ -100,7 +100,6 @@ pre,
 .sticky .entry-header,
 #comments > ol > li,
 .wp-caption,
-.entry-content img,
 .form-allowed-tags,
 .default-widget {
 	background: #f1f1f1;
@@ -872,8 +871,6 @@ input[type="submit"]:hover,
 /* =Media
 -------------------------------------------------------------- */
 
-.site-header img,
-.entry-content img,
 .comment-content img,
 .widget img,
 .featured-img {
@@ -893,10 +890,6 @@ img[class*="wp-image-"] {
 img.size-full {
 	max-width: 100%;
 	width: auto; 
-}
-
-.entry-content img {
-	padding: 4px;
 }
 
 .featured-img {
