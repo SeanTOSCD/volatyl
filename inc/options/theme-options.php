@@ -63,7 +63,7 @@ function vol_options_do_page() {
 	{$tab3}<h2>", THEME_NAME, THEME_VERSION, __( 'Options', 'volatyl' ), "</h2>\n",
 	
 	// Warning: Save settings before switching tabs
-	"{$tab3}<div class=\"save-settings radius\">\n
+	"{$tab3}<div class=\"save-settings half radius\">\n
 	{$tab3}\t<p><strong>",  
 	__( 'Save changes before switching tabs!', 'volatyl' ), 
 	"</strong></p>\n
@@ -71,7 +71,7 @@ function vol_options_do_page() {
 
 	// Indicator: "Options Saved" message
 	( ( false !== $_REQUEST[ 'settings-updated' ] ) ?
-		printf( "{$tab3}<div class=\"updated fade radius\">\n
+		printf( "{$tab3}<div class=\"updated half fade radius\">\n
 		{$tab3}\t<p><strong>" . 
 		__( 'Your settings have been updated. Nice.', 'volatyl' ) . 
 		"</strong></p>\n

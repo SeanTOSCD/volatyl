@@ -1,6 +1,6 @@
 /* Save changes and changes saved alert boxes */
-.wrap.volatyl-options .updated,
-.wrap.volatyl-options .save-settings {
+.wrap.volatyl-options .half.updated,
+.wrap.volatyl-options .half.save-settings {
 	float: left;
 	width: 35%;
 	min-width: 240px;
