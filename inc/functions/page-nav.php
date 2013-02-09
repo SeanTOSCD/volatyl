@@ -77,10 +77,10 @@ function vol_pagination( $pages = '', $range = 2 ) {
 	}
 	
 	// Pagination text custom filter
-	$pagination_text = apply_filters( 'pagination_text', __( '<div class="pagination clearfix"><span>' . __( 'Page ', 'volatyl' ) . $paged . __( ' of ', 'volatyl' ) . $pages . '</span>', 'volatyl' ) );
+	$pagination_text = apply_filters( 'pagination_text', __( '<span>' . __( 'Page ', 'volatyl' ) . $paged . __( ' of ', 'volatyl' ) . $pages . '</span>', 'volatyl' ) );
 
 	if ( 1 != $pages ) {
-		echo $pagination_text,
+		echo "<div class=\"pagination clearfix\">", $pagination_text,
 		( ( $paged > 2 && $paged > $range+1 && $showitems < $pages ) ? sprintf( "<a href=\"" ) . get_pagenum_link( 1 ) .  sprintf( "\" title=\"" ) . __( $first_page, 'volatyl' ) .  sprintf( "\">" ) . __( $first_page, 'volatyl' ) .  sprintf( "</a>" ) : '' ),
 		( ( $paged > 1 && $showitems < $pages ) ? sprintf( "<a href=\"" ) . get_pagenum_link( $paged - 1 ) .  sprintf( "\" title=\"" ) . __( $previous_page, 'volatyl' ) . sprintf( "\">" ) . __( $previous_page, 'volatyl' ) . sprintf( "</a>" ) : '' );
 		for ( $i=1; $i <= $pages; $i++ ) {
