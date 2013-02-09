@@ -107,7 +107,7 @@ pre,
 
 .nav-previous,
 .nav-next {
-	padding: 20px 0;
+	padding: 10px 0;
 }
 
 pre,
@@ -680,8 +680,6 @@ th {
 .nav-previous,
 .nav-next {
 	display: block;
-	float: left;
-	width: 50%;
 }
 
 .paging-navigation .nav-next,
@@ -731,8 +729,9 @@ th {
 .comment-avatar {
 	float: right;
 	background: white;
-	padding: 6px;
 	line-height: 0;
+	padding: 6px;
+	margin: 0 0 10px 10px;
 }
 
 .comment-date {
@@ -1039,7 +1038,7 @@ select {
 
 #main-content #content {
 	padding-top: 0;
-	padding-bottom: 0;
+	padding-bottom: 20px;
 }
 
 #main-content #sidebars {
@@ -1179,7 +1178,8 @@ select {
 	.full-menu a {
 		background: none;
 	}
-	.menu li + li {
+	.full-menu .menu li + li,
+	.short-menu .menu li + li {
 		margin: 0;
 	}
 	.menu > li > a {
@@ -1224,7 +1224,9 @@ select {
 	}
 	#main-content #content,
 	#main-content #sidebars,
-	.scs #wrap {
+	.scs #wrap,
+	.nav-previous, 
+	.nav-next {
 		float: none;
 		width: 100%;
 	}
