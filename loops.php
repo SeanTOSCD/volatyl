@@ -170,14 +170,15 @@ function vol_content() {
 		// Archives including categories, tags, authors, dates, and bears. Oh my!
 		} elseif ( is_archive() ) {
 			$options_hooks = get_option( 'vol_hooks_options' );
-		
-			// Custom filters
-			$cat_title = apply_filters( 'cat_title', 'Category Archives:' );
-			$tag_title = apply_filters( 'tag_title', 'Tag Archives:' );
-			$author_title = apply_filters( 'author_title', 'Author Archives:' );
-			$daily_title = apply_filters( 'daily_title', 'Daily Archives:' );
-			$monthly_title = apply_filters( 'monthly_title', 'Monthly Archives:' );
-			$yearly_title = apply_filters( 'yearly_title', 'Yearly Archives:' );
+			$archive_title = apply_filters( 'archive_title', array(
+				'cat_title'			=> 'Category Archives:',
+				'tag_title'			=> 'Tag Archives:',
+				'author_title'		=> 'Author Archives:',
+				'daily_title'		=> 'Daily Archives:',
+				'monthly_title'		=> 'Monthly Archives:',
+				'yearly_title'		=> 'Yearly Archives:'
+				)
+			);
 
 			// vol_before_content_column
 			( ( $options[ 'switch_vol_before_content_column' ] == 0 ) ?
@@ -188,26 +189,26 @@ function vol_content() {
 			echo "\t<header class=\"page-header\">\n
 			\t\t<h1 class=\"page-title\">";
 			if ( is_category() ) {
-				printf( __( $cat_title . ' %s', 'volatyl' ), '<span>' . single_cat_title( '', false ) . '</span>' );
+				printf( __( $archive_title[ 'cat_title' ] . ' %s', 'volatyl' ), '<span>' . single_cat_title( '', false ) . '</span>' );
 			} elseif ( is_tag() ) {
-				printf( __( $tag_title . ' %s', 'volatyl' ), '<span>' . single_tag_title( '', false ) . '</span>' );
+				printf( __( $archive_title[ 'tag_title' ] . ' %s', 'volatyl' ), '<span>' . single_tag_title( '', false ) . '</span>' );
 			} elseif ( is_author() ) {
 	
 				// Queue the first post, that way we know
 				// what author we're dealing with (if that is the case)
 				the_post();
-				printf( __( $author_title . ' %s', 'volatyl' ), '<span class="vcard"><a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a></span>' );
+				printf( __( $archive_title[ 'author_title' ] . ' %s', 'volatyl' ), '<span class="vcard"><a class="fn" href="' . get_author_posts_url( get_the_author_meta( "ID" ) ) . '" title="' . esc_attr( get_the_author() ) . '">' . get_the_author() . '</a></span>' );
 			
 				// Since we called the_post() above, we need to
 				// rewind the loop back to the beginning that way
 				// we can run the loop properly, in full.
 				rewind_posts();
 			} elseif ( is_day() ) {
-				printf( __( $daily_title . ' %s', 'volatyl' ), '<span>' . get_the_date() . '</span>' );
+				printf( __( $archive_title[ 'daily_title' ] . ' %s', 'volatyl' ), '<span>' . get_the_date() . '</span>' );
 			} elseif ( is_month() ) {
-				printf( __( $monthly_title . ' %s', 'volatyl' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
+				printf( __( $archive_title[ 'monthly_title' ] . ' %s', 'volatyl' ), '<span>' . get_the_date( 'F Y' ) . '</span>' );
 			} elseif ( is_year() ) {
-				printf( __( $yearly_title . ' %s', 'volatyl' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
+				printf( __( $archive_title[ 'yearly_title' ] . ' %s', 'volatyl' ), '<span>' . get_the_date( 'Y' ) . '</span>' );
 			} else {
 				_e( 'Archives', 'volatyl' );
 			}
@@ -246,11 +247,14 @@ function vol_content() {
 			global $post;
 			$metadata = wp_get_attachment_metadata();
 			$attachment_size = apply_filters( 'volatyl_attachment_size', array( 1200, 1200 ) );
+			$attachment_page_nav = apply_filters( 'attachment_page_nav', 'Pages:' );
 			
 			// Custom filters
-			$previous_image = apply_filters( 'previous_image', '&larr; Previous' );
-			$next_image = apply_filters( 'next_image', 'Next &rarr;' );
-			$attachment_page_nav = apply_filters( 'attachment_page_nav', 'Pages:' );
+			$attachment_navigation = apply_filters( 'attachment_navigation', array( 
+				'previous_image'	=> '&larr; Previous',
+				'next_image'		=> 'Next &rarr;'
+				) 
+			);
 		
 			// Da loop
 			while ( have_posts() ) {
@@ -313,10 +317,10 @@ function vol_content() {
 				echo "{$tab3}</div>\n
 				{$tab3}<nav class=\"site-navigation image-navigation clearfix\">
 				{$tab3}\t<div class=\"nav-previous image-nav\">", 
-				previous_image_link( false, __( $previous_image, 'volatyl' ) ),
+				previous_image_link( false, __( $attachment_navigation[ 'previous_image' ], 'volatyl' ) ),
 				"{$tab3}\t</div>\n
 				{$tab3}\t<div class=\"nav-next image-nav\">", 
-				next_image_link( false, __( $next_image, 'volatyl' ) ), 
+				next_image_link( false, __( $attachment_navigation[ 'next_image' ], 'volatyl' ) ), 
 				"{$tab3}\t</div>\n
 				{$tab3}</nav>\n
 				\t\t</section>\n

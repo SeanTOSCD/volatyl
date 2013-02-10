@@ -23,17 +23,18 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 	function volatyl_post_meta() {
 		global $count;
 		$options_content = get_option( 'vol_content_options' );
-		
-		// Custom filters
-		$publish_date = apply_filters( 'publish_date', 'on ' );
-		$author_text = apply_filters( 'author_text', 'by ' );
-		$comments_off = apply_filters( 'comments_off', 'Comments off ' );
-		$category_text = apply_filters( 'category_text', 'Filed under: ' );
-		$custom_byline = apply_filters( 'custom_byline', '' );
+		$byline_text = apply_filters( 'byline_text', array( 
+			'publish_date'		=> 'on ',	
+			'author_text'		=> 'by ',	
+			'comments_off'		=> 'Comments off ',	
+			'category_text'		=> 'Filed under: ',	
+			'custom_byline'		=> '&nbsp;'
+			) 
+		);
 
 		// Show post date
 		( ( $options_content[ 'by-date-post' ] == 1 ) ?
-			printf( __( $publish_date, 'volatyl' ) .
+			printf( __( $byline_text[ 'publish_date' ], 'volatyl' ) .
 			"<a href=\"" ) . the_permalink() . printf( "\" title=\"" ) . esc_attr( sprintf( __( 'Permalink', 'volatyl' ) . the_title_attribute( 'echo=0' ) ) ) . printf( "\" rel=\"bookmark\">" ) . 
 			the_time( get_option( 'date_format' ) ) .
 			printf( "</a> \n" ) :
@@ -41,7 +42,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 	
 		// Show post author
 		( ( $options_content[ 'by-author-post' ] == 1 ) ? 
-			printf( __( $author_text, 'volatyl' ) . 
+			printf( __( $byline_text[ 'author_text' ], 'volatyl' ) . 
 			"<a class=\"fn\" href=\"" . get_author_posts_url( get_the_author_meta( 'ID' ) ) . "\" title=\"" ) . esc_attr( get_the_author() ) . printf( '">' ) . the_author_meta('display_name') . printf( "</a>" ) : 
 		'' );
 	
@@ -57,7 +58,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 			if ( ! comments_open() && $response_count == 0 ) {
 		
 				// No need to show a count if comments are off and there are none!
-				$comments = __( $comments_off, 'volatyl' );
+				$comments = __( $byline_text[ 'comments_off' ], 'volatyl' );
 			} else {
 			
 				/** Return "response" count with or without pings! ;)
@@ -91,7 +92,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 		}
 	
 		// Custom byline item
-		_e( $custom_byline, 'volatyl' );
+		_e( $byline_text[ 'custom_byline' ], 'volatyl' );
 	
 		// Show post edit link
 		( ( $options_content[ 'by-edit-post' ] == 1 ) ? edit_post_link( __( 'Edit', 'volatyl' ), '<span class="edit-link"> ', '</span> ' ) : '' );
@@ -101,7 +102,7 @@ if ( ! function_exists( 'volatyl_post_meta' ) ) {
 	
 			// Only place cats on new line if other byline items are removed
 			( ( $options_content[ 'by-date-post' ] == 1 || $options_content[ 'by-author-post' ] == 1 || $options_content[ 'by-comments-post' ] == 1 ) ? printf( "<br>" ) : '' );
-			_e( $category_text, 'volatyl' );
+			_e( $byline_text[ 'category_text' ], 'volatyl' );
 			the_category( ', ' );
 		}
 	}

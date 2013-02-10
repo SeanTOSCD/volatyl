@@ -11,7 +11,36 @@
  * 
  * @package Volatyl
  * @since Volatyl 1.0
- */
+ */	
+
+function header_menu() {
+	$menu_toggle = apply_filters( 'menu_toggle', array(
+		'header_open'		=> '<span class="header-open">Menu</span>',
+		'header_close'		=> '<span class="header-close">Hide Menu</span>'
+		)
+	);
+	$options_content = get_option( 'vol_content_options' );
+
+	/** Show header menu? - Always hide on landing page	
+	 * 
+	 * The header menu is replaced with a link beneath a certain screen
+	 * width. At that point, the menu will show once the link is clicked.
+	 *
+	 * @since Volatyl 1.0
+	 */
+	( ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) ?
+		printf( "<div id=\"header-menu-container\" class=\"header-menu-wrap\">
+		<div class=\"header-menu-toggle\">
+		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" ) . printf( __( $menu_toggle[ 'header_open' ], 'volatyl' ) ) . printf( "</a>
+		<a href=\"#\" class=\"close-header-menu menu-toggle\">" ) . printf( __( $menu_toggle[ 'header_close' ], 'volatyl' ) ) . printf( "</a>
+		</div>
+		\t<nav role=\"navigation\" id=\"header-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n" ) .
+		( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ) .
+		printf( "\t</nav>\n
+		</div>" ) : 
+	'' );	
+	echo "</header>";
+}
  
 // Standard Menu
 function standard_menu_on() {
@@ -33,9 +62,12 @@ function standard_menu_on() {
 }
 
 // The standard menu itself... called above
-function standard_menu() {
-	$standard_menu_open = apply_filters( 'standard_menu_open', 'Navigation' );
-	$standard_menu_close = apply_filters( 'standard_menu_close', 'Hide Navigation' );
+function standard_menu() {	
+	$menu_toggle = apply_filters( 'menu_toggle', array(
+		'standard_open'		=> '<span class="standard-open">Navigation</span>',
+		'standard_close'	=> '<span class="standard-close">Hide Navigation</span>'
+		)
+	);
 
 	/**
 	 * The header menu is replaced with a link beneath a certain screen
@@ -45,8 +77,8 @@ function standard_menu() {
 	 */
 	echo "<div id=\"standard-menu-container\" class=\"standard-menu-wrap border-box\">
 	<div class=\"standard-menu-toggle\">
-	<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $standard_menu_open, 'volatyl' ) . "</a>
-	<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $standard_menu_close, 'volatyl' ) . "</a>
+	<a href=\"#standard-menu-container\" class=\"open-standard-menu menu-toggle\">" . __( $menu_toggle[ 'standard_open' ], 'volatyl' ) . "</a>
+	<a href=\"#standard-menu-collapse\" class=\"close-standard-menu menu-toggle\" id=\"standard-menu-collapse\">" . __( $menu_toggle[ 'standard_close' ], 'volatyl' ) . "</a>
 	</div>
 	\t<nav id=\"standard-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu standard-navigation border-box\">\n",
 	( ( has_nav_menu( 'standard' ) ) ? wp_nav_menu( array( 'theme_location' => 'standard' ) ) : '' ),
@@ -75,8 +107,11 @@ function footer_menu_on() {
 
 // The footer menu itself... called above
 function footer_menu() {
-	$footer_menu_open = apply_filters( 'footer_menu_open', 'Navigation' );
-	$footer_menu_close = apply_filters( 'footer_menu_close', 'Hide Navigation' );
+	$menu_toggle = apply_filters( 'menu_toggle', array(
+		'footer_open'		=> '<span class="footer-open">Navigation</span>',
+		'footer_close'		=> '<span class="footer-close">Hide Navigation</span>'
+		)
+	);
 
 	/**
 	 * The header menu is replaced with a link beneath a certain screen
@@ -86,8 +121,8 @@ function footer_menu() {
 	 */
 	echo "<div id=\"footer-menu-container\" class=\"footer-menu-wrap border-box\">
 	<div class=\"footer-menu-toggle\">
-	<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $footer_menu_open, 'volatyl' ) . "</a>
-	<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $footer_menu_close, 'volatyl' ) . "</a>
+	<a href=\"#footer-menu-container\" class=\"open-footer-menu menu-toggle \">" . __( $menu_toggle[ 'footer_open' ], 'volatyl' ) . "</a>
+	<a href=\"#footer-menu-collapse\" class=\"close-footer-menu menu-toggle\" id=\"footer-menu-collapse\">" . __( $menu_toggle[ 'footer_close' ], 'volatyl' ) . "</a>
 	</div>
 	\t<nav id=\"footer-menu-wrap\" role=\"navigation\" class=\"site-navigation full-menu footer-navigation border-box\">\n",
 	( ( has_nav_menu( 'footer' ) ) ? wp_nav_menu( array( 'theme_location' => 'footer' ) ) : '' ),

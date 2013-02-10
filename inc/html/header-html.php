@@ -23,8 +23,6 @@ function header_element() {
 	$title = $options_content[ 'title' ];
 	$logo = $options_content[ 'logo' ];
 	$tagline = $options_content[ 'tagline' ];
-	$header_menu_open = apply_filters( 'header_menu_open', 'Menu' );
-	$header_menu_close = apply_filters( 'header_menu_close', 'Hide Menu' );
 	if ( is_home() || is_front_page() ) {
 		$seotitle = "h1";
 		$seotagline = "h2";
@@ -75,27 +73,7 @@ function header_element() {
 			do_action( 'vol_header_bottom' );
 		}
 	}
-	
-
-	/** Show header menu? - Always hide on landing page	
-	 * 
-	 * The header menu is replaced with a link beneath a certain screen
-	 * width. At that point, the menu will show once the link is clicked.
-	 *
-	 * @since Volatyl 1.0
-	 */
-	( ( $options_content['headermenu'] == 1 && ! is_page_template( 'custom-landing.php' ) ) ?
-		printf( "<div id=\"header-menu-container\" class=\"header-menu-wrap\">
-		<div class=\"header-menu-toggle\">
-		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\">" ) . printf( __( $header_menu_open, 'volatyl' ) ) . printf( "</a>
-		<a href=\"#\" class=\"close-header-menu menu-toggle\">" ) . printf( __( $header_menu_close, 'volatyl' ) ) . printf( "</a>
-		</div>
-		\t<nav role=\"navigation\" id=\"header-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n" ) .
-		( ( has_nav_menu( 'header' ) ) ? wp_nav_menu( array( 'theme_location' => 'header' ) ) : '' ) .
-		printf( "\t</nav>\n
-		</div>" ) : 
-	'' );	
-	echo "</header>";
+	header_menu();
 }
 
 // The above <header> will display based on HTML structure options

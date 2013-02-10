@@ -107,7 +107,7 @@ pre,
 
 .nav-previous,
 .nav-next {
-	padding: 10px 0;
+	padding: 20px 0;
 }
 
 pre,
@@ -680,6 +680,20 @@ th {
 .nav-previous,
 .nav-next {
 	display: block;
+}
+
+.nav-previous, 
+.nav-next {
+	float: none;
+	width: 50%;
+}
+
+.nav-previous {
+	float: left;
+}
+ 
+.nav-next {
+	float: right;
 }
 
 .paging-navigation .nav-next,
