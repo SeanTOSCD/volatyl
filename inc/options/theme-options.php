@@ -350,6 +350,7 @@ function vol_options_do_page() {
 			__( ' <span style="margin-right: 10px;">Hide on:</span> ', 'volatyl' );
 			
 			switch ( $hook[ 'name' ] ) {
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 					echo '';
@@ -367,6 +368,7 @@ function vol_options_do_page() {
 			}
 			
 			switch ( $hook[ 'name' ] ) {
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
@@ -403,6 +405,7 @@ function vol_options_do_page() {
 			switch ( $hook[ 'name' ] ) {
 				case 'vol_before_content_column':
 				case 'vol_after_content_column':
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
@@ -421,6 +424,7 @@ function vol_options_do_page() {
 			}
 			
 			switch ( $hook[ 'name' ] ) {
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
@@ -441,6 +445,7 @@ function vol_options_do_page() {
 			switch ( $hook[ 'name' ] ) {
 				case 'vol_before_content_column':
 				case 'vol_after_content_column':
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
@@ -461,6 +466,7 @@ function vol_options_do_page() {
 			switch ( $hook[ 'name' ] ) {
 				case 'vol_before_content_column':
 				case 'vol_after_content_column':
+				case 'vol_before_article_header':
 				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
