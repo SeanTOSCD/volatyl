@@ -15,13 +15,13 @@
  * is_archive()
  * is_attachment()
  *
- * These loops are not included in template files for Volatyl because 
- * there's a lot of site structure work done before getting to the loops.
+ * These loops call to respective template files for Volatyl.
  * 
- * Any of these loops can be overwritten by simply creating the actual
+ * Certain templates can be overwritten by simply creating the actual
  * template file responsible for that particular template. For example,
- * creating a single.php file in a child theme (or in the core... but 
- * don't) will override the is_single() argument in this conditional.
+ * creating a content-single.php file in a child theme (or in the core... 
+ * but don't) will override the get_template_part( 'content', 'single' ) 
+ * function in the is_single() condition of this statement.
  *
  * @package Volatyl
  * @since Volatyl 1.0
@@ -72,46 +72,7 @@ function vol_content() {
 			// Da loop
 			while ( have_posts() ) { 
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\" ", post_class(), ">\n
-				\t\t<header class=\"entry-header\">\n
-				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
-				{$tab3}<div class=\"entry-meta\">\n", 
-				volatyl_post_meta(),
-				"{$tab3}</div>\n
-				\t\t</header>\n",
-
-				// vol_after_article_header
-				( ( $options[ 'switch_vol_after_article_header' ] == 0 ) ?
-					( ( $options[ 'posts_vol_after_article_header' ] == 0 ) ?
-						vol_after_article_header() :
-						do_action( 'vol_after_article_header' ) ) :
-				'' ),
-				"\t\t<section class=\"entry-content\">\n",
-				the_content();
-
-				// Show feed tags
-				$options_posts = get_option( 'vol_content_options' );
-				
-				// Custom filters
-				$single_tags_text = apply_filters( 'single_tags_text', 'Tags: ' );
-				$post_page_nav = apply_filters( 'post_page_nav', 'Pages:' );
-				
-				( ( $options_posts[ 'singletags' ] == 1 ) ?
-					the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) : 
-				'' );
-			
-				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
-				echo "\t\t</section>\n
-				\t</article>\n";
-
-				// vol_post_footer
-				( ( $options[ 'switch_vol_post_footer' ] == 0 ) ?
-					( ( $options[ 'posts_vol_post_footer' ] == 0 ) ?
-						vol_post_footer() :
-						do_action( 'vol_post_footer' ) ) :
-				'' );
-				( ( comments_open() || '0' != get_comments_number() ) ? comments_template( '', true ) : '' );
-				volatyl_content_nav( 'nav-below' );
+				get_template_part( 'content', 'single' );
 			}
 
 			// vol_after_content_column
@@ -120,31 +81,14 @@ function vol_content() {
 					vol_after_content_column() :
 					do_action( 'vol_after_content_column' ) ) :
 			'' );
+			
 		// Pages
 		} elseif ( is_page() ) {
-			$options = get_option( 'vol_content_options' );
-			
-			// Custom filter
-			$page_page_nav = apply_filters( 'page_page_nav', 'Pages:' ); 
 	
 			// Da loop
 			while ( have_posts() ) {
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\"",
-				post_class(), ">\n
-				\t\t<header class=\"entry-header\">\n
-				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
-				\t\t</header>\n
-				\t\t<section class=\"entry-content\">\n",  the_content();
-				( ( $options[ 'pagecomments' ] == 1 ) ?
-					( ( comments_open() || '0' != get_comments_number() ) ? 
-						comments_template( '', true ) : 
-					'' ) : 
-				'' );
-					
-				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $page_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
-				echo "\t\t</section>\n
-				\t</article>\n";
+				get_template_part( 'content', 'page' );
 			}
 	
 		// Search results
@@ -244,87 +188,11 @@ function vol_content() {
 	
 		// Attachment pages
 		} elseif ( is_attachment() ) {
-			global $post;
-			$metadata = wp_get_attachment_metadata();
-			$attachment_size = apply_filters( 'volatyl_attachment_size', array( 1200, 1200 ) );
-			$attachment_page_nav = apply_filters( 'attachment_page_nav', 'Pages:' );
-			
-			// Custom filters
-			$attachment_navigation = apply_filters( 'attachment_navigation', array( 
-				'previous_image'	=> '&larr; Previous',
-				'next_image'		=> 'Next &rarr;'
-				) 
-			);
 		
 			// Da loop
 			while ( have_posts() ) {
 				the_post();
-				echo "\t<article id=\"post-", the_ID(), "\"", post_class(), ">\n
-				\t\t<header class=\"entry-header\">\n
-				{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
-				{$tab3}<div class=\"entry-meta\">\n" .
-			
-				printf( __( 'Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'volatyl' ),
-					esc_attr( get_the_date( 'c' ) ),
-					esc_html( get_the_date() ),
-					wp_get_attachment_url(),
-					$metadata[ 'width' ],
-					$metadata[ 'height' ],
-					get_permalink( $post->post_parent ),
-					get_the_title( $post->post_parent )
-				) .
-			
-				"\t\t</header>\n
-				\t\t<section class=\"entry-content\">\n
-				{$tab3}<div class=\"entry-attachment\">\n
-				{$tab3}\t<div class=\"attachment\">\n";
-
-				/** 
-				 * Grab the IDs of all the image attachments in a 
-				 * gallery so we can get the URL of the next adjacent 
-				 * image in a gallery, or the first image (if we're 
-				 * looking at the last image in a gallery), or, in a 
-				 * gallery of one, just the link to that image file 
-				 */
-				$attachments = array_values( get_children( array( 
-					'post_parent'		=> $post->post_parent, 
-					'post_status' 		=> 'inherit', 
-					'post_type' 		=> 'attachment', 
-					'post_mime_type' 	=> 'image', 
-					'order' 			=> 'ASC', 
-					'orderby' 			=> 'menu_order ID'
-					) 
-				) );
-				foreach ( $attachments as $k => $attachment ) {
-					if ( $attachment->ID == $post->ID )
-						break;
-				}
-				$k++;
-			
-				// If there is more than 1 attachment in a gallery
-				if ( count( $attachments ) > 1 ) {
-					( ( isset( $attachments[ $k ] ) ) ?
-						$next_attachment_url = get_attachment_link( $attachments[ $k ]->ID ) :
-						$next_attachment_url = get_attachment_link( $attachments[ 0 ]->ID ) );
-				} else {
-					$next_attachment_url = wp_get_attachment_url();
-				}
-				echo "<a href=\"", $next_attachment_url, "\" title=\"", esc_attr( get_the_title() ), "\" rel=\"attachment\">",
-				wp_get_attachment_image( $post->ID, $attachment_size ),
-				"</a>\n{$tab3}\t</div>\n",	
-				( ( ! empty( $post->post_excerpt ) ) ? sprintf( "{$tab3}\t<div class=\"entry-caption\">\n" ) . the_excerpt() .	sprintf( "{$tab3}\t</div>\n" ) : '' );
-				wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $attachment_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
-				echo "{$tab3}</div>\n
-				{$tab3}<nav class=\"site-navigation image-navigation clearfix\">
-				{$tab3}\t<div class=\"nav-previous image-nav\">", 
-				previous_image_link( false, __( $attachment_navigation[ 'previous_image' ], 'volatyl' ) ),
-				"{$tab3}\t</div>\n
-				{$tab3}\t<div class=\"nav-next image-nav\">", 
-				next_image_link( false, __( $attachment_navigation[ 'next_image' ], 'volatyl' ) ), 
-				"{$tab3}\t</div>\n
-				{$tab3}</nav>\n
-				\t\t</section>\n
-				\t</article>";
+				get_template_part( 'content', 'attachment' );
 			}
 	
 		// Stray template (can that even happen?) floating around? I got this.

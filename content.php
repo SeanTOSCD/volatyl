@@ -6,9 +6,12 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  * 
- * Most of the templates for the various WordPress webpages are located
- * in the templates.php file. A few of the generic webpages call to this
- * file to format the content for that particular template.
+ * Generic template for basic Volatyl pages that haven't been targeted
+ * by another template already. 
+ * 
+ * To override this template in a child theme, copy this file into the 
+ * root of your child theme folder and make ADJUSTMENTS there. Use this
+ * file as a starting point so you don't lose any variables, constants, etc.
  *
  * @package Volatyl
  * @since Volatyl 1.0
