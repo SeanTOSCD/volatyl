@@ -358,6 +358,11 @@ function volatyl_hooks() {
 			'title' 			=> __( 'After Content Column', 'volatyl' ),
 			'description'		=> __( 'Very bottom of the content column after article/feed<br>(home, archive, & single posts only)', 'volatyl' ) 
 		),
+		'vol_before_article_header' => array( 
+			'name'				=> 'vol_before_article_header',
+			'title' 			=> __( 'Before Article Header', 'volatyl' ),
+			'description'		=> __( 'Displays above article headline and byline .<br>Suggestion: Many bloggers place ads in this area.', 'volatyl' ) 
+		),
 		'vol_after_article_header' => array( 
 			'name'				=> 'vol_after_article_header',
 			'title' 			=> __( 'After Article Header', 'volatyl' ),
@@ -467,6 +472,11 @@ function vol_after_content_column() {
 	global $options; 
 	echo stripslashes( $options[ 'vol_after_content_column' ] ); 
 	do_action( 'vol_after_content_column' ); 
+}
+function vol_before_article_header() {
+	global $options; 
+	echo stripslashes( $options[ 'vol_before_article_header' ] ); 
+	do_action( 'vol_before_article_header' ); 
 }
 function vol_after_article_header() {
 	global $options; 
