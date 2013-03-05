@@ -528,7 +528,7 @@ function vol_options_do_page() {
 		<th scope=\"row\" valign=\"top\">",
 		__( 'License Key', 'volatyl' ), "</th>", "<td>",
 		"<input id=\"vol_license_key\" name=\"vol_license_key\" type=\"text\" class=\"regular-text\" value=\"",
-		esc_attr_e( $license ), "\" />",
+		esc_attr( $license, 'volatyl' ), "\" />",
 		"<label class=\"description\" for=\"vol_license_key\">",
 		__( ' Enter your license key', 'volatyl' ),
 		"</label>", "</td>", "</tr>",
