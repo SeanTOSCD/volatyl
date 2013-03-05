@@ -10,6 +10,7 @@
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
 */
 
+.entry-summary p:empty { display: none; }
 
 /* =Shared Commonly Used Styles
 -------------------------------------------------------------- */
