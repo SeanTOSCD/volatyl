@@ -18,7 +18,7 @@
 // The standard footer element
 function footer_element() {
 	global $options, $tab3, $tab6;
-	$options_hooks = get_option( 'vol_hooks_options' );
+	$options = get_option( 'vol_hooks_options' );
 	$options_content = get_option( 'vol_content_options' );
 	$options_general = get_option( 'vol_general_options' );
 
@@ -90,7 +90,7 @@ function footer_element() {
 	'' );
 
 	// vol_site_info
-	if ( $options[ 'switch_vol_site_info' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
+	if ( $options[ 'switch_vol_site_info' ] == 0 ) {
 		if 	( ( is_home() && is_front_page() && $options[ 'home_vol_site_info' ] == 0 && $options[ 'front_vol_site_info' ] == 0 ) ||
 			( is_home() && ! is_front_page() && $options[ 'home_vol_site_info' ] == 0 ) ||
 			( is_front_page() && ! is_home() && $options[ 'front_vol_site_info' ] == 0 ) ||
