@@ -65,7 +65,7 @@ function vol_options_do_page() {
 	// Warning: Save settings before switching tabs
 	"{$tab3}<div class=\"save-settings half radius\">\n
 	{$tab3}\t<p><strong>",  
-	__( 'Save changes before switching tabs!', 'volatyl' ), 
+	__( 'Save changes before switching tabs.', 'volatyl' ), 
 	"</strong></p>\n
 	{$tab3}</div>\n";
 
