@@ -45,13 +45,13 @@ if (!function_exists('volatyl_content_nav')) {
 
 			echo "<nav role=\"navigation\" id=\"", $nav_id, "\" class=\"", $nav_class, "\">";
 		if (is_single()) {
-			previous_post_link('<div class="nav-previous post-nav border-box">' . __($post_navigation[ 'previous_post'] . '<br>', 'volatyl') . '%link</div>', '<span class="meta-nav">' . _x('', 'Previous post link', 'volatyl') . '</span> %title');
+			previous_post_link('<div class="nav-previous post-nav border-box">' . __($post_navigation['previous_post'] . '<br>', 'volatyl') . '%link</div>', '<span class="meta-nav">' . _x('', 'Previous post link', 'volatyl') . '</span> %title');
 			
-			next_post_link('<div class="nav-next post-nav border-box">' . __($post_navigation[ 'next_post'] . '<br>', 'volatyl') . '%link</div>', '%title <span class="meta-nav">' . _x('', 'Next post link', 'volatyl') . '</span>');
+			next_post_link('<div class="nav-next post-nav border-box">' . __($post_navigation['next_post'] . '<br>', 'volatyl') . '%link</div>', '%title <span class="meta-nav">' . _x('', 'Next post link', 'volatyl') . '</span>');
 
 		} elseif ($wp_query->max_num_pages > 1 && (is_home() || is_archive() || is_search())) {
-			((get_next_posts_link()) ? printf("<div class=\"nav-previous\">") . next_posts_link(__('<span class="meta-nav">' . $post_navigation[ 'older_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
-			((get_previous_posts_link()) ? printf("<div class=\"nav-next\">") . previous_posts_link(__('<span class="meta-nav">' . $post_navigation[ 'newer_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
+			((get_next_posts_link()) ? printf("<div class=\"nav-previous\">") . next_posts_link(__('<span class="meta-nav">' . $post_navigation['older_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
+			((get_previous_posts_link()) ? printf("<div class=\"nav-next\">") . previous_posts_link(__('<span class="meta-nav">' . $post_navigation['newer_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
 		}
 		echo "</nav>";		
 	}
@@ -74,7 +74,7 @@ function vol_pagination($pages = '', $range = 2) {
 	
 	// Pagination text custom filter
 	$pagination_place = apply_filters('pagination_place', __('<span>' . __('Page ', 'volatyl') . $paged . __(' of ', 'volatyl') . $pages . '</span>', 'volatyl'));
-	$pagination_text = apply_filters('pagination_text', array(
+	$pagination_navigation = apply_filters('pagination_navigation', array(
 		'first_page'		=> '&laquo;',
 		'previous_page'		=> '&lsaquo;',
 		'next_page'			=> '&rsaquo;',
@@ -84,15 +84,15 @@ function vol_pagination($pages = '', $range = 2) {
 
 	if (1 != $pages) {
 		echo "<div class=\"pagination clearfix\">", $pagination_place,
-		(($paged > 2 && $paged > $range+1 && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link(1) .  sprintf("\" title=\"") . __($pagination_text[ 'first_page'], 'volatyl') .  sprintf("\">") . __($pagination_text[ 'first_page'], 'volatyl') .  sprintf("</a>") : ''),
-		(($paged > 1 && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link($paged - 1) .  sprintf("\" title=\"") . __($pagination_text[ 'previous_page'], 'volatyl') . sprintf("\">") . __($pagination_text[ 'previous_page'], 'volatyl') . sprintf("</a>") : '');
+		(($paged > 2 && $paged > $range+1 && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link(1) .  sprintf("\" title=\"") . __($pagination_navigation['first_page'], 'volatyl') .  sprintf("\">") . __($pagination_navigation['first_page'], 'volatyl') .  sprintf("</a>") : ''),
+		(($paged > 1 && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link($paged - 1) .  sprintf("\" title=\"") . __($pagination_navigation['previous_page'], 'volatyl') . sprintf("\">") . __($pagination_navigation['previous_page'], 'volatyl') . sprintf("</a>") : '');
 		for ($i=1; $i <= $pages; $i++) {
 	 		if (1 != $pages &&(!($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems))
 		 		echo ($paged == $i) ? "<span class=\"current\">" . $i . "</span>" : "<a href='" . get_pagenum_link($i) . "' class=\"inactive\">" . $i . "</a>";
  
 		}
-		echo (($paged < $pages && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link($paged + 1) .  sprintf("\" title=\"") . __($pagination_text[ 'next_page'], 'volatyl') . sprintf("\">") . __($pagination_text[ 'next_page'], 'volatyl') . sprintf("</a>") : ''),  
-		(($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) ?  sprintf("<a href=\"") . get_pagenum_link($pages) . sprintf("\" title=\"") . __($pagination_text[ 'last_page'], 'volatyl') .  sprintf("\">") . __($pagination_text[ 'last_page'], 'volatyl') .  sprintf("</a>") : ''),
+		echo (($paged < $pages && $showitems < $pages) ? sprintf("<a href=\"") . get_pagenum_link($paged + 1) .  sprintf("\" title=\"") . __($pagination_navigation['next_page'], 'volatyl') . sprintf("\">") . __($pagination_navigation['next_page'], 'volatyl') . sprintf("</a>") : ''),  
+		(($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) ?  sprintf("<a href=\"") . get_pagenum_link($pages) . sprintf("\" title=\"") . __($pagination_navigation['last_page'], 'volatyl') .  sprintf("\">") . __($pagination_navigation['last_page'], 'volatyl') .  sprintf("</a>") : ''),
 		"</div>\n";
 	}
 }
@@ -101,5 +101,5 @@ function vol_pagination($pages = '', $range = 2) {
 function pagination_type() {
 	$options_content = get_option('vol_content_options');
 	
-	(($options_content[ 'pagination'] == 1 && (is_home() || is_archive() || is_search())) ? vol_pagination() : volatyl_content_nav('nav-below'));
+	(($options_content['pagination'] == 1 && (is_home() || is_archive() || is_search())) ? vol_pagination() : volatyl_content_nav('nav-below'));
 }

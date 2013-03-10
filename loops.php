@@ -50,14 +50,14 @@ function vol_content() {
 				get_template_part('content', get_post_format());
 			}
 			
+			pagination_type(); // /inc/functions/page-nav.php
+			
 			// vol_after_content_column
 			(($options['switch_vol_after_content_column'] == 0) ?
 				(($options['home_vol_after_content_column'] == 0) ?
 					vol_after_content_column() :
 					do_action('vol_after_content_column')) :
 			'');
-			
-			pagination_type(); // /inc/functions/page-nav.php
 	
 		// Single posts
 		} elseif (is_single() && ! is_attachment()) { 
@@ -109,6 +109,7 @@ function vol_content() {
 					continue;
 				get_template_part('content', 'search');
 			}
+			
 			pagination_type();
 
 		// Archives including categories, tags, authors, dates, and bears. Oh my!
@@ -177,6 +178,8 @@ function vol_content() {
 				the_post();
 				get_template_part('content', get_post_format());
 			}
+			
+			pagination_type();
 
 			// vol_after_content_column
 			(($options_hooks['switch_vol_after_content_column'] == 0) ?
@@ -184,7 +187,6 @@ function vol_content() {
 					vol_after_content_column() :
 					do_action('vol_after_content_column')) :
 			'');
-			pagination_type();
 	
 		// Attachment pages
 		} elseif (is_attachment()) {
