@@ -75,6 +75,11 @@ if ($options['adminmenu'] == 1) {
 				'target' 	=> '_blank'
 			),
 		));
+		$admin_bar->add_menu(array(
+			'id'    		=> 'volatyl-version',
+			'parent' 		=> 'volatyl',
+			'title' 		=> __('Version: ' . THEME_VERSION, 'volatyl')
+		));
 	}
 	add_action('admin_bar_menu', 'volatyl_toolbar', 100);
 }
