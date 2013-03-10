@@ -33,11 +33,15 @@ echo "\t<article id=\"post-", the_ID(), "\" ", post_class(), ">\n";
 		do_action('vol_before_article_header')) :
 '');
 echo "\t\t<header class=\"entry-header\">\n
-{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
-{$tab3}<div class=\"entry-meta\">\n",
-volatyl_post_meta(),
-"{$tab3}</div>\n
-\t\t</header>\n",
+{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n";
+
+if ($options_posts['by-date-post'] == 1 || $options_posts['by-author-post'] == 1 || $options_posts['by-comments-post'] == 1 || $options_posts['by-edit-post'] == 1 || $options_posts['by-cats'] == 1) {
+	printf("{$tab3}<div class=\"entry-meta\">\n");
+	volatyl_post_meta();
+	printf("{$tab3}</div>\n");
+}
+
+echo "\t\t</header>\n",
 
 // vol_after_article_header
 (($options['switch_vol_after_article_header'] == 0) ?
