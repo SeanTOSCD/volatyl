@@ -45,9 +45,9 @@ if ( ! function_exists( 'volatyl_content_nav' ) ) {
 
 			echo "<nav role=\"navigation\" id=\"", $nav_id, "\" class=\"", $nav_class, "\">";
 		if ( is_single() ) {
-			previous_post_link( '<div class="nav-previous post-nav">' . __( $post_navigation[ 'previous_post' ] . '<br>', 'volatyl' ) . '%link</div>', '<span class="meta-nav">' . _x( '', 'Previous post link', 'volatyl' ) . '</span> %title' );
+			previous_post_link( '<div class="nav-previous post-nav border-box">' . __( $post_navigation[ 'previous_post' ] . '<br>', 'volatyl' ) . '%link</div>', '<span class="meta-nav">' . _x( '', 'Previous post link', 'volatyl' ) . '</span> %title' );
 			
-			next_post_link( '<div class="nav-next post-nav">' . __( $post_navigation[ 'next_post' ] . '<br>', 'volatyl' ) . '%link</div>', '%title <span class="meta-nav">' . _x( '', 'Next post link', 'volatyl' ) . '</span>' );
+			next_post_link( '<div class="nav-next post-nav border-box">' . __( $post_navigation[ 'next_post' ] . '<br>', 'volatyl' ) . '%link</div>', '%title <span class="meta-nav">' . _x( '', 'Next post link', 'volatyl' ) . '</span>' );
 
 		} elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) {
 			( ( get_next_posts_link() ) ? printf( "<div class=\"nav-previous\">" ) . next_posts_link( __( '<span class="meta-nav">' . $post_navigation[ 'older_posts' ] . '</span>', 'volatyl' ) ) . printf( "</div>" ) : '' );
