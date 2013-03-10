@@ -18,12 +18,12 @@
 // The standard header element
 function header_element() {
 	global $options;
-	$options = get_option( 'vol_hooks_options' );
-	$options_content = get_option( 'vol_content_options' );
-	$title = $options_content[ 'title' ];
-	$logo = $options_content[ 'logo' ];
-	$tagline = $options_content[ 'tagline' ];
-	if ( is_home() || is_front_page() ) {
+	$options = get_option('vol_hooks_options');
+	$options_content = get_option('vol_content_options');
+	$title = $options_content['title'];
+	$logo = $options_content['logo'];
+	$tagline = $options_content['tagline'];
+	if (is_home() || is_front_page()) {
 		$seotitle = "h1";
 		$seotagline = "h2";
 	} else {
@@ -34,43 +34,43 @@ function header_element() {
 	echo "<header class=\"site-header inner\">\n";
 
 	// vol_header_top
-	if ( $options[ 'switch_vol_header_top' ] == 0 ) {
-		if 	( ( is_home() && is_front_page() && $options[ 'home_vol_header_top' ] == 0 && $options[ 'front_vol_header_top' ] == 0 ) ||
-			( is_home() && ! is_front_page() && $options[ 'home_vol_header_top' ] == 0 ) ||
-			( is_front_page() && ! is_home() && $options[ 'front_vol_header_top' ] == 0 ) ||
-			( is_single() && $options[ 'posts_vol_header_top' ] == 0 ) ||
-			( is_page() && ! is_front_page() && $options[ 'pages_vol_header_top' ] == 0 ) ||
-			( is_archive() && $options[ 'archive_vol_header_top' ] == 0 ) ||
-			( is_search() && $options[ 'search_vol_header_top' ] == 0 ) ||
-			( is_404() && $options[ '404_vol_header_top' ] == 0 ) ) {
+	if ($options['switch_vol_header_top'] == 0) {
+		if 	((is_home() && is_front_page() && $options['home_vol_header_top'] == 0 && $options['front_vol_header_top'] == 0) ||
+			(is_home() && ! is_front_page() && $options['home_vol_header_top'] == 0) ||
+			(is_front_page() && ! is_home() && $options['front_vol_header_top'] == 0) ||
+			(is_single() && $options['posts_vol_header_top'] == 0) ||
+			(is_page() && ! is_front_page() && $options['pages_vol_header_top'] == 0) ||
+			(is_archive() && $options['archive_vol_header_top'] == 0) ||
+			(is_search() && $options['search_vol_header_top'] == 0) ||
+			(is_404() && $options['404_vol_header_top'] == 0)) {
 				vol_header_top();
 		} else {
-			do_action( 'vol_header_top' );
+			do_action('vol_header_top');
 		}
 	}
 		
 	// Show site title? This controls the text title AND logo			
-	echo ( ( $title == 1 ) ? "\t\t<{$seotitle} class=\"site-title\"><a href=\"" . home_url( '/' ) . "\" title=\"" . esc_attr( get_bloginfo( 'name', 'display' ) ) . "\" rel=\"home\">" .
+	echo (($title == 1) ? "\t\t<{$seotitle} class=\"site-title\"><a href=\"" . home_url('/') . "\" title=\"" . esc_attr(get_bloginfo('name', 'display')) . "\" rel=\"home\">" .
 	
 	// If a logo is uploaded, show it. If not, show the site title.
-	( ( $logo != '' ) ? "<img src=\"" . $options_content[ 'logo' ] . "\" alt=\"" . get_bloginfo( 'name', 'display' ) . "\" />" : get_bloginfo( 'name' ) ) . "</a></{$seotitle}>\n" : '' ),
+	(($logo != '') ? "<img src=\"" . $options_content['logo'] . "\" alt=\"" . get_bloginfo('name', 'display') . "\" />" : get_bloginfo('name')) . "</a></{$seotitle}>\n" : ''),
 
 	// Show site tagline? Always hide on landing page		
-	( ( $tagline == 1 && ! is_page_template( 'custom-landing.php' ) ) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo( 'description' ) . "</{$seotagline}>\n" : '' );
+	(($tagline == 1 && ! is_page_template('custom-landing.php')) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo('description') . "</{$seotagline}>\n" : '');
 
 	// vol_header_bottom - Always hide on landing page
-	if ( $options[ 'switch_vol_header_bottom' ] == 0 && ! is_page_template( 'custom-landing.php' ) ) {
-		if 	( ( is_home() && is_front_page() && $options[ 'home_vol_header_bottom' ] == 0 && $options[ 'front_vol_header_bottom' ] == 0 ) ||
-			( is_home() && ! is_front_page() && $options[ 'home_vol_header_bottom' ] == 0 ) ||
-			( is_front_page() && ! is_home() && $options[ 'front_vol_header_bottom' ] == 0 ) ||
-			( is_single() && $options[ 'posts_vol_header_bottom' ] == 0 ) ||
-			( is_page() && ! is_front_page() && $options[ 'pages_vol_header_bottom' ] == 0 ) ||
-			( is_archive() && $options[ 'archive_vol_header_bottom' ] == 0 ) ||
-			( is_search() && $options[ 'search_vol_header_bottom' ] == 0 ) ||
-			( is_404() && $options[ '404_vol_header_bottom' ] == 0 ) ) {
+	if ($options['switch_vol_header_bottom'] == 0 && ! is_page_template('custom-landing.php')) {
+		if 	((is_home() && is_front_page() && $options['home_vol_header_bottom'] == 0 && $options['front_vol_header_bottom'] == 0) ||
+			(is_home() && ! is_front_page() && $options['home_vol_header_bottom'] == 0) ||
+			(is_front_page() && ! is_home() && $options['front_vol_header_bottom'] == 0) ||
+			(is_single() && $options['posts_vol_header_bottom'] == 0) ||
+			(is_page() && ! is_front_page() && $options['pages_vol_header_bottom'] == 0) ||
+			(is_archive() && $options['archive_vol_header_bottom'] == 0) ||
+			(is_search() && $options['search_vol_header_bottom'] == 0) ||
+			(is_404() && $options['404_vol_header_bottom'] == 0)) {
 				vol_header_bottom();
 		} else {
-			do_action( 'vol_header_bottom' );
+			do_action('vol_header_bottom');
 		}
 	}
 	header_menu();
@@ -78,12 +78,12 @@ function header_element() {
 
 // The above <header> will display based on HTML structure options
 function header_frame() {
-	$options_structure = get_option( 'vol_structure_options' );
+	$options_structure = get_option('vol_structure_options');
 	
-	( ( $options_structure[ 'wide' ] == 1 ) ?
-		printf( "<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n" ) .
+	(($options_structure['wide'] == 1) ?
+		printf("<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n") .
 		header_element() . 
-		printf( "\t</div>\n</div>\n" ) :
-		printf( "<div id=\"container\">\n" ) . 
-		header_element() );
+		printf("\t</div>\n</div>\n") :
+		printf("<div id=\"container\">\n") . 
+		header_element());
 }

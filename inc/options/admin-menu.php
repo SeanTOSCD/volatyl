@@ -13,68 +13,68 @@
  *
  * @since Volatyl 1.0
  */
-$options = get_option( 'vol_general_options' );
+$options = get_option('vol_general_options');
 
-if ( $options[ 'adminmenu' ] == 1 ) {
+if ($options['adminmenu'] == 1) {
 
-	function volatyl_toolbar( $admin_bar ) {
-		$admin_bar->add_menu( array(
+	function volatyl_toolbar($admin_bar) {
+		$admin_bar->add_menu(array(
 			'id'			=> 'volatyl',
 			'title' 		=> 'Volatyl',
 			'meta'  		=> array(
 				'title'		=> 'Volatyl',			
 			),
 		));
-		$admin_bar->add_menu( array(
+		$admin_bar->add_menu(array(
 			'id'    		=> 'volatyl-options-global',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'Global Options', 'volatyl' ),
-			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=global' ),
+			'title' 		=> __('Global Options', 'volatyl'),
+			'href'  		=> site_url('/wp-admin/themes.php?page=volatyl_options&tab=global'),
 			'meta'  		=> array(
-				'title' 	=> __( 'Global Options', 'volatyl' ),
+				'title' 	=> __('Global Options', 'volatyl'),
 				'target'	=> '_self'
 			),
 		));
-		$admin_bar->add_menu( array(
+		$admin_bar->add_menu(array(
 			'id'			=> 'volatyl-options-content',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'Content Options', 'volatyl' ),
-			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=content' ),
+			'title' 		=> __('Content Options', 'volatyl'),
+			'href'  		=> site_url('/wp-admin/themes.php?page=volatyl_options&tab=content'),
 			'meta'  		=> array(
-				'title' 	=> __( 'Content Options', 'volatyl' ),
+				'title' 	=> __('Content Options', 'volatyl'),
 				'target' 	=> '_self'
 			),
 		));
-		$admin_bar->add_menu( array(
+		$admin_bar->add_menu(array(
 			'id'    		=> 'volatyl-options-hooks',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'Custom Hooks', 'volatyl' ),
-			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=hooks' ),
+			'title' 		=> __('Custom Hooks', 'volatyl'),
+			'href'  		=> site_url('/wp-admin/themes.php?page=volatyl_options&tab=hooks'),
 			'meta'  		=> array(
-				'title' 	=> __( 'Custom Hooks', 'volatyl' ),
+				'title' 	=> __('Custom Hooks', 'volatyl'),
 				'target' 	=> '_self'
 			),
 		));
-		$admin_bar->add_menu( array(
+		$admin_bar->add_menu(array(
 			'id'    		=> 'volatyl-options-license',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'License Key', 'volatyl' ),
-			'href'  		=> site_url( '/wp-admin/themes.php?page=volatyl_options&tab=license' ),
+			'title' 		=> __('License Key', 'volatyl'),
+			'href'  		=> site_url('/wp-admin/themes.php?page=volatyl_options&tab=license'),
 			'meta'  		=> array(
-				'title' 	=> __( 'License Key', 'volatyl' ),
+				'title' 	=> __('License Key', 'volatyl'),
 				'target' 	=> '_self'
 			),
 		));
-		$admin_bar->add_menu( array(
+		$admin_bar->add_menu(array(
 			'id'    		=> 'volatyl-docs',
 			'parent' 		=> 'volatyl',
-			'title' 		=> __( 'Documentation', 'volatyl' ),
+			'title' 		=> __('Documentation', 'volatyl'),
 			'href'  		=> 'http://volatylthemes.com/docs/',
 			'meta'  		=> array(
-				'title' 	=> __( 'Documentation', 'volatyl' ),
+				'title' 	=> __('Documentation', 'volatyl'),
 				'target' 	=> '_blank'
 			),
 		));
 	}
-	add_action( 'admin_bar_menu', 'volatyl_toolbar', 100 );
+	add_action('admin_bar_menu', 'volatyl_toolbar', 100);
 }

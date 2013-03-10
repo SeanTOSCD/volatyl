@@ -31,14 +31,14 @@ function volatyl_structure_settings_init() {
 
      // set structure options equal to defaults
 	global $structure_options;
-	$structure_options = get_option( 'vol_structure_options' );
+	$structure_options = get_option('vol_structure_options');
 	
-	if ( false === $structure_options )
+	if (false === $structure_options)
 		$structure_options = volatyl_structure_default_settings();
 	  
-	update_option( 'vol_structure_options', $structure_options );
+	update_option('vol_structure_options', $structure_options);
 }
-add_action( 'after_setup_theme','volatyl_structure_settings_init' );
+add_action('after_setup_theme','volatyl_structure_settings_init');
 
 
 // General settings
@@ -56,14 +56,14 @@ function volatyl_general_settings_init() {
 
 	// set general options equal to defaults
 	global $general_options;
-	$general_options = get_option( 'vol_general_options' );
+	$general_options = get_option('vol_general_options');
 	
-	if ( false === $general_options )
+	if (false === $general_options)
 		$general_options = volatyl_general_default_settings();
 	  
-	update_option( 'vol_general_options', $general_options );
+	update_option('vol_general_options', $general_options);
 }
-add_action( 'after_setup_theme','volatyl_general_settings_init' );
+add_action('after_setup_theme','volatyl_general_settings_init');
 
 // Content settings
 function volatyl_content_default_settings() {
@@ -100,11 +100,11 @@ function volatyl_content_settings_init() {
 
 	// set content options equal to defaults
 	global $content_options;
-	$content_options = get_option( 'vol_content_options' );
+	$content_options = get_option('vol_content_options');
 	
-	if ( false === $content_options )
+	if (false === $content_options)
 		$content_options = volatyl_content_default_settings();
 	  
-	update_option( 'vol_content_options', $content_options );
+	update_option('vol_content_options', $content_options);
 }
-add_action( 'after_setup_theme','volatyl_content_settings_init' );
+add_action('after_setup_theme','volatyl_content_settings_init');

@@ -22,39 +22,39 @@
  * @since Volatyl 1.0
  */
 function vol_columns() {
-	$options = get_option( 'vol_structure_options' );
+	$options = get_option('vol_structure_options');
 	
-	switch ( $options[ 'column' ] ) {
+	switch ($options['column']) {
 		case 'c1':
 			vol_content();
 			break;
 		case 'c2':
 			vol_content();
-			printf( "\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n" );
-			get_sidebar( 'one' ); 
-			get_sidebar( 'two' );
-			printf( "\t\t</div>\n" );
+			printf("\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n");
+			get_sidebar('one'); 
+			get_sidebar('two');
+			printf("\t\t</div>\n");
 			break;
 		case 'cs':
 		case 'sc':
 			vol_content();
-			get_sidebar( 'one' );
+			get_sidebar('one');
 			break;
 		case 'css':
 		case 'ssc':
 			vol_content();
-			get_sidebar( 'one' );
-			get_sidebar( 'two' );
+			get_sidebar('one');
+			get_sidebar('two');
 			break;
 		case 'scs':
-			printf( "\t\t<div id=\"wrap\">\n" );
+			printf("\t\t<div id=\"wrap\">\n");
 			vol_content(); 
-			get_sidebar( 'one' );
-			printf( "\t\t</div>\n" );
-			get_sidebar( 'two' );
+			get_sidebar('one');
+			printf("\t\t</div>\n");
+			get_sidebar('two');
 			break;
 		case '':
-			echo __( 'Error: Please select a column structure in the ', 'volatyl' ) . THEME_NAME .  __( ' Options.', 'volatyl' );
+			echo __('Error: Please select a column structure in the ', 'volatyl') . THEME_NAME .  __(' Options.', 'volatyl');
 	}
 }
 
@@ -69,36 +69,36 @@ function vol_columns() {
  */
 function columns_singular() {
 	global $post;
-	$single_layout = get_post_meta( $post->ID, '_singular-column', true);
+	$single_layout = get_post_meta($post->ID, '_singular-column', true);
 	
-	switch ( $single_layout ) {
+	switch ($single_layout) {
 		case 'c1':
 			vol_content();
 			break;
 		case 'c2':
 			vol_content();
-			printf( "\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n" );
-			get_sidebar( 'one' );
-			get_sidebar( 'two' );
-			printf( "\t\t</div>\n" );
+			printf("\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n");
+			get_sidebar('one');
+			get_sidebar('two');
+			printf("\t\t</div>\n");
 			break;
 		case 'cs':
 		case 'sc':
 			vol_content();
-			get_sidebar( 'one' );
+			get_sidebar('one');
 			break;
 		case 'css':
 		case 'ssc':
 			vol_content(); 
-			get_sidebar( 'one' ); 
-			get_sidebar( 'two' );
+			get_sidebar('one'); 
+			get_sidebar('two');
 			break;
 		case 'scs':
-			printf( "\t\t<div id=\"wrap\">\n" );
+			printf("\t\t<div id=\"wrap\">\n");
 			vol_content();
-			get_sidebar( 'one' );
-			printf( "\t\t</div>\n" );
-			get_sidebar( 'two' );
+			get_sidebar('one');
+			printf("\t\t</div>\n");
+			get_sidebar('two');
 			break;
 		default:
 			

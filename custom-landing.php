@@ -19,18 +19,18 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-$options_structure = get_option( 'vol_structure_options' );
+$options_structure = get_option('vol_structure_options');
 
 get_header();
 header_frame();
-( ( $options_structure[ 'wide' ] == 1 ) ?
-	printf( "<div id=\"main-content\" class=\"full clearfix\">
-	<div class=\"main clearfix\">" ) . 
+(($options_structure['wide'] == 1) ?
+	printf("<div id=\"main-content\" class=\"full clearfix\">
+	<div class=\"main clearfix\">") . 
 	vol_content() . 
-	printf( "</div></div>" ) :
-	printf( "<div id=\"main-content\" class=\"clearfix\">" ) . 
+	printf("</div></div>") :
+	printf("<div id=\"main-content\" class=\"clearfix\">") . 
 	vol_content() . 
-	printf( "</div>" ) 
+	printf("</div>") 
 );
 footer_frame();
 get_footer();

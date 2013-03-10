@@ -15,19 +15,19 @@
 
 // Add the "Volatyl Quick Options" meta box to post and page edit screens
 function vol_add_meta_box() {  
-    add_meta_box( 'post-layout', __( THEME_NAME . ' Quick Settings', 'volatyl' ), 'vol_meta_box', 'post', 'normal', 'high' );    
-    add_meta_box( 'page-layout', __( THEME_NAME . ' Quick Settings', 'volatyl' ), 'vol_meta_box', 'page', 'normal', 'high' );  
+    add_meta_box('post-layout', __(THEME_NAME . ' Quick Settings', 'volatyl'), 'vol_meta_box', 'post', 'normal', 'high');    
+    add_meta_box('page-layout', __(THEME_NAME . ' Quick Settings', 'volatyl'), 'vol_meta_box', 'page', 'normal', 'high');  
 } 
-add_action( 'add_meta_boxes', 'vol_add_meta_box' ); 
+add_action('add_meta_boxes', 'vol_add_meta_box'); 
 
 // Callback for the above meta boxes. Posts and Pages share the same function.
-function vol_meta_box( $post ) {  
+function vol_meta_box($post) {  
 	global $post, $column_options;
-	$the_id = get_post_custom( $post->ID );
-	$selected = isset( $the_id[ '_singular-column' ] ) ? esc_attr( $the_id[ '_singular-column' ][ 0 ] ) : ''; 
-	$custom_class = isset( $the_id[ '_custom-class' ] ) ? esc_attr( $the_id[ '_custom-class' ][ 0 ] ) : '' ;
+	$the_id = get_post_custom($post->ID);
+	$selected = isset($the_id['_singular-column']) ? esc_attr($the_id['_singular-column'][0]) : ''; 
+	$custom_class = isset($the_id['_custom-class']) ? esc_attr($the_id['_custom-class'][0]) : '' ;
 	
-    wp_nonce_field( 'vol_meta_box_nonce', 'meta_box_nonce' );
+    wp_nonce_field('vol_meta_box_nonce', 'meta_box_nonce');
     
 
 	/** Select option input for singular layout choices
@@ -38,14 +38,14 @@ function vol_meta_box( $post ) {
     echo "<p><label for=\"_singular-column\">Select Column Layout: </label>
     <select name=\"_singular-column\" id=\"_singular-column\">
     <option value=\"default\"";
-    selected( $selected, 'default' );
+    selected($selected, 'default');
     echo ">Site Default</option>"; 
     
     // Create an option for each layout choice in the $column_options array
-    foreach ( $column_options as $key ) {
-		echo "<option value=\"", $key[ 'value' ], "\"";
-		selected( $selected, $key[ 'value' ] );
-		echo ">", $key[ 'description' ], "</option>"; 
+    foreach ($column_options as $key) {
+		echo "<option value=\"", $key['value'], "\"";
+		selected($selected, $key['value']);
+		echo ">", $key['description'], "</option>"; 
     }   
     
     echo "</select></p>
@@ -55,29 +55,29 @@ function vol_meta_box( $post ) {
 }
 
 // Validate singular layout options
-function vol_meta_box_save( $post_id ) {
+function vol_meta_box_save($post_id) {
 	global $options;
-	$options_structure = get_option( 'vol_structure_options' );
+	$options_structure = get_option('vol_structure_options');
 
 	// Bail if we're doing an auto save
-	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) 
+	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) 
 		return;
 	
 	// if our nonce isn't there, or we can't verify it, bail
-	if ( ! isset( $_POST['meta_box_nonce'] ) || ! wp_verify_nonce( $_POST['meta_box_nonce'], 'vol_meta_box_nonce' ) ) 
+	if (!isset($_POST['meta_box_nonce']) || ! wp_verify_nonce($_POST['meta_box_nonce'], 'vol_meta_box_nonce')) 
 		return;
 		
 	// if our current user can't edit this post, bail
-	if ( isset( $_POST[ '_singular-column' ] ) )
-		update_post_meta( $post_id, '_singular-column', esc_attr( $_POST[ '_singular-column' ] ) );
+	if (isset($_POST['_singular-column']))
+		update_post_meta($post_id, '_singular-column', esc_attr($_POST['_singular-column']));
 		
-	elseif ( ! isset( $_POST[ '_singular-column' ] ) )
-		$_POST[ '_singular-column' ] == $options_structure[ 'column' ];
+	elseif (!isset($_POST['_singular-column']))
+		$_POST['_singular-column'] == $options_structure['column'];
 	
 	// Allowed HTML in custom class field... which is none
 	$allowed = array();
 		
-	if ( isset( $_POST['_custom-class'] ) )  
-        update_post_meta( $post_id, '_custom-class', wp_kses( $_POST[ '_custom-class' ], $allowed ) );  
+	if (isset($_POST['_custom-class']))  
+        update_post_meta($post_id, '_custom-class', wp_kses($_POST['_custom-class'], $allowed));  
 }
-add_action( 'save_post', 'vol_meta_box_save' );
+add_action('save_post', 'vol_meta_box_save');

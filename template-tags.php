@@ -12,7 +12,7 @@
  * @since Volatyl 1.0
  */
 
-if ( ! function_exists( 'volatyl_comment' ) ) {
+if (!function_exists('volatyl_comment')) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -21,17 +21,17 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	function volatyl_comment( $comment, $args, $depth ) {
+	function volatyl_comment($comment, $args, $depth) {
 		global $tab3;
-		$GLOBALS[ 'comment' ] = $comment;
+		$GLOBALS['comment'] = $comment;
 		
-		switch ( $comment->comment_type ) {
+		switch ($comment->comment_type) {
 	
 			// Pings format
 			case 'pingback' :
 			case 'trackback' :
 				echo "<li class=\"post pingback\">",
-				"\t<p>", __( 'Pingback: ', 'volatyl' ), comment_author_link(), edit_comment_link( __( '(Edit)', 'volatyl' ), ' ' ), "</p>\n";
+				"\t<p>", __('Pingback: ', 'volatyl'), comment_author_link(), edit_comment_link(__('(Edit)', 'volatyl'), ' '), "</p>\n";
 				break;
 		
 			// Comments format	
@@ -41,21 +41,21 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 				\t\t<footer>\n
 				{$tab3}<div class=\"comment-author vcard\">\n
 				{$tab3}\t<div class=\"comment-avatar\">\n",
-				get_avatar( $comment, 50 ),
+				get_avatar($comment, 50),
 				"{$tab3}\t</div>\n
 				{$tab3}</div>\n" .
-				( ( $comment->comment_approved == '0' ) ? 
-					sprintf( "{$tab3}<em>" ) . __( 'Your comment is awaiting moderation.', 'volatyl' ) . sprintf( "</em><br />\n" ) : 
-				'' ) .
+				(($comment->comment_approved == '0') ? 
+					sprintf("{$tab3}<em>") . __('Your comment is awaiting moderation.', 'volatyl') . sprintf("</em><br />\n") : 
+				'') .
 				"{$tab3}<div class=\"comment-meta commentmetadata\">\n{$tab3}\t" .
-				sprintf( '<cite class="fn">%s</cite>', get_comment_author_link() ) .
+				sprintf('<cite class="fn">%s</cite>', get_comment_author_link()) .
 				"\n{$tab3}\t<div class=\"comment-date\">\n
-				{$tab3}\t\t<a href=\"", esc_url( get_comment_link( $comment->comment_ID ) ), "\"><time pubdate datetime=\"", comment_time( 'c' ), "\">";
+				{$tab3}\t\t<a href=\"", esc_url(get_comment_link($comment->comment_ID)), "\"><time pubdate datetime=\"", comment_time('c'), "\">";
 			
 				// translators: 1: date, 2: time
-				printf( __( '%1$s', 'volatyl' ), get_comment_date() );
+				printf(__('%1$s', 'volatyl'), get_comment_date());
 				echo "</time></a>\n";
-				edit_comment_link( __( '(Edit)', 'volatyl' ), ' ' );
+				edit_comment_link(__('(Edit)', 'volatyl'), ' ');
 				echo "{$tab3}\t</div>",
 				"{$tab3}</div>",
 				"\t\t</footer>",
@@ -63,7 +63,7 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
 				comment_text(),
 				"\n\t\t</div>\n",
 				"\t\t<div class=\"reply\">";
-				comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args[ 'max_depth' ] ) ) );
+				comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth'])));
 				echo "\t\t</div>",
 				"\t</article>";
 				break;
@@ -78,19 +78,19 @@ if ( ! function_exists( 'volatyl_comment' ) ) {
  * @since Volatyl 1.0
  */
 function volatyl_categorized_blog() {
-	if ( false === ( $all_the_cool_cats = get_transient( 'all_the_cool_cats' ) ) ) {
+	if (false === ($all_the_cool_cats = get_transient('all_the_cool_cats'))) {
 	
 		// Create an array of all the categories that are attached to posts
-		$all_the_cool_cats = get_categories( array(
+		$all_the_cool_cats = get_categories(array(
 			'hide_empty' => 1,
-		) );
+		));
 
 		// Count the number of categories that are attached to the posts
-		$all_the_cool_cats = count( $all_the_cool_cats );
-		set_transient( 'all_the_cool_cats', $all_the_cool_cats );
+		$all_the_cool_cats = count($all_the_cool_cats);
+		set_transient('all_the_cool_cats', $all_the_cool_cats);
 	}
 
-	if ( '1' != $all_the_cool_cats )
+	if ('1' != $all_the_cool_cats)
 	
 		// This blog has more than 1 category 
 		// So volatyl_categorized_blog should return true
@@ -111,7 +111,7 @@ function volatyl_categorized_blog() {
 function volatyl_category_transient_flusher() {
 
 	// Like, beat it. Dig?
-	delete_transient( 'all_the_cool_cats' );
+	delete_transient('all_the_cool_cats');
 }
-add_action( 'edit_category', 'volatyl_category_transient_flusher' );
-add_action( 'save_post', 'volatyl_category_transient_flusher' );
+add_action('edit_category', 'volatyl_category_transient_flusher');
+add_action('save_post', 'volatyl_category_transient_flusher');

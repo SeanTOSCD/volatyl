@@ -18,20 +18,20 @@
  * @since Volatyl 1.0
  */
 global $options, $tab3;
-$options_posts = get_option( 'vol_content_options' );
+$options_posts = get_option('vol_content_options');
 
 // Custom filters
-$single_tags_text = apply_filters( 'single_tags_text', 'Tags: ' );
-$post_page_nav = apply_filters( 'post_page_nav', 'Pages:' );
+$single_tags_text = apply_filters('single_tags_text', 'Tags: ');
+$post_page_nav = apply_filters('post_page_nav', 'Pages:');
 
 echo "\t<article id=\"post-", the_ID(), "\" ", post_class(), ">\n";
 
 // vol_before_article_header
-( ( $options[ 'switch_vol_before_article_header' ] == 0 ) ?
-	( ( $options[ 'posts_vol_before_article_header' ] == 0 ) ?
+(($options['switch_vol_before_article_header'] == 0) ?
+	(($options['posts_vol_before_article_header'] == 0) ?
 		vol_before_article_header() :
-		do_action( 'vol_before_article_header' ) ) :
-'' );
+		do_action('vol_before_article_header')) :
+'');
 echo "\t\t<header class=\"entry-header\">\n
 {$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
 {$tab3}<div class=\"entry-meta\">\n",
@@ -40,28 +40,28 @@ volatyl_post_meta(),
 \t\t</header>\n",
 
 // vol_after_article_header
-( ( $options[ 'switch_vol_after_article_header' ] == 0 ) ?
-	( ( $options[ 'posts_vol_after_article_header' ] == 0 ) ?
+(($options['switch_vol_after_article_header'] == 0) ?
+	(($options['posts_vol_after_article_header'] == 0) ?
 		vol_after_article_header() :
-		do_action( 'vol_after_article_header' ) ) :
-'' ),
+		do_action('vol_after_article_header')) :
+''),
 "\t\t<section class=\"entry-content\">\n",
 the_content();
 
 // Show feed tags
-( ( $options_posts[ 'singletags' ] == 1 ) ?
-	the_tags( __( '<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl' ), ', ', '<br /></div>' ) :
-'' );
+(($options_posts['singletags'] == 1) ?
+	the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') :
+'');
 
-wp_link_pages( array( 'before' => '<nav class="page-links post-meta-footer">' . __( $post_page_nav, 'volatyl' ), 'after' => '</nav>' ) );
+wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>'));
 echo "\t\t</section>\n
 \t</article>\n";
 
 // vol_post_footer
-( ( $options[ 'switch_vol_post_footer' ] == 0 ) ?
-	( ( $options[ 'posts_vol_post_footer' ] == 0 ) ?
+(($options['switch_vol_post_footer'] == 0) ?
+	(($options['posts_vol_post_footer'] == 0) ?
 		vol_post_footer() :
-		do_action( 'vol_post_footer' ) ) :
-'' );
-( ( comments_open() || '0' != get_comments_number() ) ? comments_template( '', true ) : '' );
-volatyl_content_nav( 'nav-below' );
+		do_action('vol_post_footer')) :
+'');
+((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : '');
+volatyl_content_nav('nav-below');

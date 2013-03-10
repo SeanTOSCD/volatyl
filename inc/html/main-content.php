@@ -30,38 +30,38 @@
 
 // Full site content structure
 function standard_content() {
-	$options_structure = get_option( 'vol_structure_options' );
+	$options_structure = get_option('vol_structure_options');
 	
-	( ( $options_structure[ 'wide' ] == 1 ) ? 
-		printf( "<div id=\"main-content\" class=\"full clearfix\">
-		<div class=\"main clearfix\">" ) .
+	(($options_structure['wide'] == 1) ? 
+		printf("<div id=\"main-content\" class=\"full clearfix\">
+		<div class=\"main clearfix\">") .
 		vol_columns() .
-		printf( "</div></div>" ) :
-		printf( "<div id=\"main-content\" class=\"clearfix\">" ) .
+		printf("</div></div>") :
+		printf("<div id=\"main-content\" class=\"clearfix\">") .
 		vol_columns() .
-		printf( "</div>" ) );
+		printf("</div>"));
 }
-add_action( 'main_content', 'standard_content' );
+add_action('main_content', 'standard_content');
 
 
 // Singular option content structure
 function singular_content() {
-	$options_structure = get_option( 'vol_structure_options' );
+	$options_structure = get_option('vol_structure_options');
 	
-	( ( $options_structure[ 'wide' ] == 1 ) ?
-		printf( "<div id=\"main-content\" class=\"full clearfix\">
-		<div class=\"main clearfix\">" ) .
+	(($options_structure['wide'] == 1) ?
+		printf("<div id=\"main-content\" class=\"full clearfix\">
+		<div class=\"main clearfix\">") .
 		columns_singular() .
-		printf( "</div></div>" ) :
-		printf( "\t<div id=\"main-content\" class=\"clearfix\">\n" ) .
+		printf("</div></div>") :
+		printf("\t<div id=\"main-content\" class=\"clearfix\">\n") .
 		columns_singular() .
-		printf( "\t</div>\n" ) );
+		printf("\t</div>\n"));
 }
-add_action( 'main_content_singular', 'singular_content' );
+add_action('main_content_singular', 'singular_content');
 
 
 // Custom layout clean slate
 function custom_content() {
 	// This is the blank canvas where developers can create their own layout
 }
-add_action( 'main_content_custom_layout', 'custom_content' );
+add_action('main_content_custom_layout', 'custom_content');

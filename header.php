@@ -13,10 +13,10 @@
  * @since Volatyl 1.0
  */ 
 global $page, $paged;
-$title = get_bloginfo( 'name' );
-$tagline = get_bloginfo( 'description' );
-$char = get_bloginfo( 'charset' );
-$ping = get_bloginfo( 'pingback_url' );
+$title = get_bloginfo('name');
+$tagline = get_bloginfo('description');
+$char = get_bloginfo('charset');
+$ping = get_bloginfo('pingback_url');
 
 echo "<!DOCTYPE html>\n
 <html ", language_attributes(), ">\n
@@ -26,14 +26,14 @@ echo "<!DOCTYPE html>\n
 <title>",
 
 // Print the <title> tag based on what is being viewed.	 
-wp_title( '|', false, 'right' ),
+wp_title('|', false, 'right'),
 $title,
 
 // Add the blog description for the home/front page.
-( ! empty( $tagline ) && ( is_home() || is_front_page() ) ? " | $tagline" : '' ),
+(!empty($tagline) && (is_home() || is_front_page()) ? " | $tagline" : ''),
 
 // Add a page number if necessary:
-( $page >= 2 || $page >= 2 ? ' | ' . sprintf( __( 'Page %s', 'volatyl' ), max( $paged, $page ) ) : '' ),
+($page >= 2 || $page >= 2 ? ' | ' . sprintf(__('Page %s', 'volatyl'), max($paged, $page)) : ''),
 
 "</title>\n
 <link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n

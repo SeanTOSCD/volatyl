@@ -11,19 +11,19 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-$options_content = get_option( 'vol_content_options' );
+$options_content = get_option('vol_content_options');
 
 // Custom filters
-$excerpt_link = apply_filters( 'excerpt_link', 'Read More &rarr;' );
+$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
 
 // Add .top class to the first post in a loop
-function vol_first_post_class( $classes ) {
+function vol_first_post_class($classes) {
 	global $wp_query;
-	if ( 0 == $wp_query->current_post )
+	if (0 == $wp_query->current_post)
 		$classes[] = 'top';
 		return $classes;
 }
-add_filter( 'post_class', 'vol_first_post_class' );
+add_filter('post_class', 'vol_first_post_class');
 
 
 /** Separate comments and pings
@@ -44,13 +44,13 @@ add_filter( 'post_class', 'vol_first_post_class' );
  *
  * @since Volatyl 1.0
  */
-function comments_only_count( $count ) {
+function comments_only_count($count) {
 
     // Filter the comments count in the front-end only
-    if ( ! is_admin() ) {
+    if (!is_admin()) {
         global $id;
-        $comments_by_type = &separate_comments( get_comments( 'status=approve&post_id=' . $id ) );
-        return count( $comments_by_type['comment'] );
+        $comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
+        return count($comments_by_type['comment']);
     }
     
     // When in the WP-admin back end, do NOT filter comments (and pings) count.
@@ -60,25 +60,25 @@ function comments_only_count( $count ) {
 }
 
 // Show 'Pages' in search results? 
-if ( $options_content[ 'searchpages' ] == 0 ) { 
-	function vol_search_filter( $query ) {
-		if ( $query->is_search )
-			$query->set( 'post_type', 'post' );
+if ($options_content['searchpages'] == 0) { 
+	function vol_search_filter($query) {
+		if ($query->is_search)
+			$query->set('post_type', 'post');
 		return $query;
 	}
-	add_filter( 'pre_get_posts','vol_search_filter' );
+	add_filter('pre_get_posts','vol_search_filter');
 }
 
 // Show excerpt/post link instead of [...]
-if ( $options_content[ 'excerptlink' ] == 1 ) {
+if ($options_content['excerptlink'] == 1) {
 
 	//create a permalink after the excerpt
-	function vol_replace_excerpt( $content ) {
+	function vol_replace_excerpt($content) {
 		global $excerpt_link;
-		return str_replace( '[...]',
-			'<p><a class="read-more" href="' . get_permalink() . '">' . __( $excerpt_link, 'volatyl' ) . '</a></p>',
+		return str_replace('[...]',
+			'<p><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
 			$content
 		);
 	}
-	add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
+	add_filter('get_the_excerpt', 'vol_replace_excerpt');
 }

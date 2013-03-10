@@ -19,7 +19,7 @@
  * Child themes MUST write the following line first in order for 
  * this system to work properly:
  *
- ***** require_once( get_template_directory() . '/inc/init-functions.php' );
+ ***** require_once(get_template_directory() . '/inc/init-functions.php');
  *
  * When that line is called in the child theme's functions.php file,
  * it will grab those initial theme functions itself and totally ignore
@@ -30,7 +30,7 @@
  */
 
 // We need this! Only if a child theme hasn't gotten to it first
-require_once( dirname( __FILE__ ) . '/inc/init-functions.php' );
+require_once(dirname(__FILE__) . '/inc/init-functions.php');
 
 // License key setup and Volatyl automatic updater
-require_once( dirname( __FILE__ ) . '/inc/updater.php' );
+require_once(dirname(__FILE__) . '/inc/updater.php');

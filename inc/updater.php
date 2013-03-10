@@ -20,16 +20,16 @@
  * @since Volatyl 1.0
  */
 
-define( 'VOL_STORE_URL', 'http://volatylthemes.com' );
-define( 'VOL_DOWNLOAD_NAME', 'Volatyl Framework' );
+define('VOL_STORE_URL', 'http://volatylthemes.com');
+define('VOL_DOWNLOAD_NAME', 'Volatyl Framework');
 
 /** The Volatyl updater
  *
  * @since Volatyl 1.0
  */
-$test_license = trim( get_option( 'vol_license_key' ) );
+$test_license = trim(get_option('vol_license_key'));
 
-$vol_updater = new VOL_Updater( array( 
+$vol_updater = new VOL_Updater(array(
 		'remote_api_url' 	=> VOL_STORE_URL, 
 		'version' 			=> '1.0', 
 		'license' 			=> $test_license,
@@ -45,30 +45,30 @@ $vol_updater = new VOL_Updater( array(
  */
 function vol_activate_license() {
 
-	if( isset( $_POST['vol_license_activate'] ) ) { 
-	 	if( ! check_admin_referer( 'vol_nonce', 'vol_nonce' ) ) 	
+	if(isset($_POST['vol_license_activate'])) { 
+	 	if(!check_admin_referer('vol_nonce', 'vol_nonce')) 	
 			return; // get out if we didn't click the Activate button
 
 		global $wp_version;
-		$license = trim( get_option( 'vol_license_key' ) );
-		$api_params = array( 
+		$license = trim(get_option('vol_license_key'));
+		$api_params = array(
 			'edd_action' => 'activate_license', 
 			'license' => $license, 
-			'item_name' => urlencode( VOL_DOWNLOAD_NAME ) 
+			'item_name' => urlencode(VOL_DOWNLOAD_NAME) 
 		);
 		
-		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+		$response = wp_remote_get(add_query_arg($api_params, VOL_STORE_URL), array(
 			'timeout' => 15, 
 			'sslverify' => false 
-		) );
+		));
 
-		if ( is_wp_error( $response ) )
+		if (is_wp_error($response))
 			return false;
 
-		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+		$license_data = json_decode(wp_remote_retrieve_body($response));
 		
 		// $license_data->license will be either "active" or "inactive"
-		update_option( 'vol_license_key_status', $license_data->license );
+		update_option('vol_license_key_status', $license_data->license);
 
 	}
 }
@@ -82,38 +82,38 @@ add_action('admin_init', 'vol_activate_license');
 function vol_deactivate_license() {
 
 	// listen for our activate button to be clicked
-	if( isset( $_POST['vol_license_deactivate'] ) ) {
+	if(isset($_POST['vol_license_deactivate'])) {
 
 		// run a quick security check 
-	 	if( ! check_admin_referer( 'vol_nonce', 'vol_nonce' ) ) 	
+	 	if(!check_admin_referer('vol_nonce', 'vol_nonce')) 	
 			return; // get out if we didn't click the Activate button
 
 		// retrieve the license from the database
-		$license = trim( get_option( 'vol_license_key' ) );
+		$license = trim(get_option('vol_license_key'));
 
 		// data to send in our API request
-		$api_params = array( 
+		$api_params = array(
 			'edd_action'=> 'deactivate_license', 
 			'license' 	=> $license, 
-			'item_name' => urlencode( VOL_DOWNLOAD_NAME )
+			'item_name' => urlencode(VOL_DOWNLOAD_NAME)
 		);
 		
 		// Call the custom API.
-		$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+		$response = wp_remote_get(add_query_arg($api_params, VOL_STORE_URL), array(
 			'timeout' => 15, 
 			'sslverify' => false 
-		) );
+		));
 
 		// make sure the response came back okay
-		if ( is_wp_error( $response ) )
+		if (is_wp_error($response))
 			return false;
 
 		// decode the license data
-		$license_data = json_decode( wp_remote_retrieve_body( $response ) );
+		$license_data = json_decode(wp_remote_retrieve_body($response));
 		
 		// $license_data->license will be either "deactivated" or "failed"
-		if( $license_data->license == 'deactivated' )
-			delete_option( 'vol_license_key' );
+		if($license_data->license == 'deactivated')
+			delete_option('vol_license_key');
 	}
 }
 add_action('admin_init', 'vol_deactivate_license');
@@ -125,22 +125,22 @@ add_action('admin_init', 'vol_deactivate_license');
  */
 function vol_check_license() {
 	global $wp_version;
-	$license = trim( get_option( 'vol_license_key' ) );
-	$api_params = array( 
+	$license = trim(get_option('vol_license_key'));
+	$api_params = array(
 		'edd_action' => 'check_license', 
 		'license' => $license, 
-		'item_name' => urlencode( VOL_DOWNLOAD_NAME ) 
+		'item_name' => urlencode(VOL_DOWNLOAD_NAME) 
 	);
 	
-	$response = wp_remote_get( add_query_arg( $api_params, VOL_STORE_URL ), array( 
+	$response = wp_remote_get(add_query_arg($api_params, VOL_STORE_URL), array(
 		'timeout' => 15, 
 		'sslverify' => false 
-	) );
+	));
 
-	if ( is_wp_error( $response ) )
+	if (is_wp_error($response))
 		return false;
-	$license_data = json_decode( wp_remote_retrieve_body( $response ) );
-	if( $license_data->license == 'valid' ) {
+	$license_data = json_decode(wp_remote_retrieve_body($response));
+	if($license_data->license == 'valid') {
 		echo 'valid'; 
 		exit;
 		// this license is still valid
@@ -165,8 +165,8 @@ class VOL_Updater {
 	private $version;
 	private $author;
 
-	function __construct( $args = array() ) {
-		$args = wp_parse_args( $args, array(
+	function __construct($args = array()) {
+		$args = wp_parse_args($args, array(
 			'remote_api_url' => 'http://easydigitaldownloads.com',
 			'request_data'   => array(),
 			'theme_slug'     => get_template(),
@@ -174,74 +174,74 @@ class VOL_Updater {
 			'license'        => '',
 			'version'        => '',
 			'author'         => ''
-		) );
-		extract( $args );
+		));
+		extract($args);
 
 		$this->license        = $license;
 		$this->item_name      = $item_name;
 		$this->version        = $version;
-		$this->theme_slug     = sanitize_key( $theme_slug );
+		$this->theme_slug     = sanitize_key($theme_slug);
 		$this->author         = $author;
 		$this->remote_api_url = $remote_api_url;
 		$this->response_key   = $this->theme_slug . '-update-response';
 
-		add_filter( 'site_transient_update_themes', array( &$this, 'theme_update_transient' ) );
-		add_filter( 'delete_site_transient_update_themes', array( &$this, 'delete_theme_update_transient' ) );
-		add_action( 'load-update-core.php', array( &$this, 'delete_theme_update_transient' ) );
-		add_action( 'load-themes.php', array( &$this, 'delete_theme_update_transient' ) );
-		add_action( 'load-themes.php', array( &$this, 'load_themes_screen' ) );
+		add_filter('site_transient_update_themes', array(&$this, 'theme_update_transient'));
+		add_filter('delete_site_transient_update_themes', array(&$this, 'delete_theme_update_transient'));
+		add_action('load-update-core.php', array(&$this, 'delete_theme_update_transient'));
+		add_action('load-themes.php', array(&$this, 'delete_theme_update_transient'));
+		add_action('load-themes.php', array(&$this, 'load_themes_screen'));
 	}
 
 	function load_themes_screen() {
 		add_thickbox();
-		add_action( 'admin_notices', array( &$this, 'update_nag' ) );
+		add_action('admin_notices', array(&$this, 'update_nag'));
 	}
 
 	function update_nag() {
-		$theme = wp_get_theme( $this->theme_slug );
+		$theme = wp_get_theme($this->theme_slug);
 
-		$api_response = get_transient( $this->response_key );
+		$api_response = get_transient($this->response_key);
 
-		if( false === $api_response )
+		if(false === $api_response)
 			return;
 
-		$update_url = wp_nonce_url( 'update.php?action=upgrade-theme&amp;theme=' . urlencode( $this->theme_slug ), 'upgrade-theme_' . $this->theme_slug );
-		$update_onclick = ' onclick="if ( confirm(\'' . esc_js( __( "Updating Volatyl will not erase any customizations you have made to a child theme. However, if you wrongly made changes to Volatyl, those changes will be overwritten. 'Cancel' to stop, 'OK' to update." ) ) . '\') ) {return true;}return false;"';
+		$update_url = wp_nonce_url('update.php?action=upgrade-theme&amp;theme=' . urlencode($this->theme_slug), 'upgrade-theme_' . $this->theme_slug);
+		$update_onclick = ' onclick="if (confirm(\'' . esc_js(__("Updating Volatyl will not erase any customizations you have made to a child theme. However, if you wrongly made changes to Volatyl, those changes will be overwritten. 'Cancel' to stop, 'OK' to update.")) . '\')) {return true;}return false;"';
 
-		if ( version_compare( $theme->get( 'Version' ), $api_response->new_version, '<' ) ) {
+		if (version_compare($theme->get('Version'), $api_response->new_version, '<')) {
 
 			echo '<div id="update-nag">';
-				printf( '<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a> (<strong>always</strong> backup first!).',
-					$theme->get( 'Name' ),
+				printf('<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a> (<strong>always</strong> backup first!).',
+					$theme->get('Name'),
 					$api_response->new_version,
 					'#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',
-					$theme->get( 'Name' ),
+					$theme->get('Name'),
 					$update_url,
 					$update_onclick
 				);
 			echo '</div>';
 			echo '<div id="' . $this->theme_slug . '_' . 'changelog" style="display:none;">';
-				echo wpautop( $api_response->sections['changelog'] );
+				echo wpautop($api_response->sections['changelog']);
 			echo '</div>';
 		}
 	}
 
-	function theme_update_transient( $value ) {
+	function theme_update_transient($value) {
 		$update_data = $this->check_for_update();
-		if ( $update_data ) {
-			$value->response[ $this->theme_slug ] = $update_data;
+		if ($update_data) {
+			$value->response[$this->theme_slug] = $update_data;
 		}
 		return $value;
 	}
 
 	function delete_theme_update_transient() {
-		delete_transient( $this->response_key );
+		delete_transient($this->response_key);
 	}
 
 	function check_for_update() {
-		$theme = wp_get_theme( $this->theme_slug );
-		$update_data = get_transient( $this->response_key );
-		if ( false === $update_data ) {
+		$theme = wp_get_theme($this->theme_slug);
+		$update_data = get_transient($this->response_key);
+		if (false === $update_data) {
 			$failed = false;
 
 			$api_params = array(
@@ -252,39 +252,39 @@ class VOL_Updater {
 				'author'		=> $this->author
 			);
 
-			$response = wp_remote_post( $this->remote_api_url, array( 
+			$response = wp_remote_post($this->remote_api_url, array(
 				'timeout' => 15, 
 				'sslverify' => false, 
 				'body' => $api_params 
-			) );
+			));
 
 			// make sure the response was successful
-			if ( is_wp_error( $response ) || 200 != wp_remote_retrieve_response_code( $response ) ) {
+			if (is_wp_error($response) || 200 != wp_remote_retrieve_response_code($response)) {
 				$failed = true;
 			}
 
-			$update_data = json_decode( wp_remote_retrieve_body( $response ) );
+			$update_data = json_decode(wp_remote_retrieve_body($response));
 
-			if ( ! is_object( $update_data ) ) {
+			if (!is_object($update_data)) {
 				$failed = true;
 			}
 
 			// if the response failed, try again in 30 minutes
-			if ( $failed ) {
+			if ($failed) {
 				$data = new stdClass;
-				$data->new_version = $theme->get( 'Version' );
-				set_transient( $this->response_key, $data, strtotime( '+30 minutes' ) );
+				$data->new_version = $theme->get('Version');
+				set_transient($this->response_key, $data, strtotime('+30 minutes'));
 				return false;
 			}
 
 			// if the status is 'ok', return the update arguments
-			if ( ! $failed ) {
-				$update_data->sections = maybe_unserialize( $update_data->sections );
-				set_transient( $this->response_key, $update_data, strtotime( '+12 hours' ) );
+			if (!$failed) {
+				$update_data->sections = maybe_unserialize($update_data->sections);
+				set_transient($this->response_key, $update_data, strtotime('+12 hours'));
 			}
 		}
 
-		if ( version_compare( $theme->get( 'Version' ), $update_data->new_version, '>=' ) ) {
+		if (version_compare($theme->get('Version'), $update_data->new_version, '>=')) {
 			return false;
 		}
 		return (array) $update_data;
