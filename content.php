@@ -35,7 +35,7 @@ echo "<article id=\"post-", the_ID(), "\" ", post_class(), ">\n",
 echo "\t</header>";
 	
 // Activate Featured Images
-if ($options[ 'featuredimage' ] == 1) {
+if ($options['featuredimage'] == 1) {
 
 	// If Featured Image is set for a post, show thumbnail.
 	((has_post_thumbnail()) ? 
@@ -48,7 +48,7 @@ if ($options[ 'featuredimage' ] == 1) {
 }
 
 // Only display Excerpts for Search or Home if options is selected
-((is_search() || $options[ 'homeexcerpt' ] == 1) ?
+((is_search() || $options['homeexcerpt'] == 1) ?
 	printf("\t<section class=\"entry-summary\">\n") . 
 	the_excerpt() . 
 	printf("\t</section>") :
@@ -58,7 +58,7 @@ if ($options[ 'featuredimage' ] == 1) {
 	the_content(__($more_link_text, 'volatyl')) .
 	
 	// Show feed tags
-	(($options[ 'feedtags' ] == 1) ?	the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>') : '') .
+	(($options['feedtags'] == 1) ?	the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>') : '') .
 	
 	// Navigate paginated posts
 	wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>')) .
