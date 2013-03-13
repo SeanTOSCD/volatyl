@@ -50,8 +50,8 @@ if (!function_exists('volatyl_content_nav')) {
 			next_post_link('<div class="nav-next post-nav border-box">' . __($post_navigation['next_post'] . '<br>', 'volatyl') . '%link</div>', '%title <span class="meta-nav">' . _x('', 'Next post link', 'volatyl') . '</span>');
 
 		} elseif ($wp_query->max_num_pages > 1 && (is_home() || is_archive() || is_search())) {
-			((get_next_posts_link()) ? printf("<div class=\"nav-previous\">") . next_posts_link(__('<span class="meta-nav">' . $post_navigation['older_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
-			((get_previous_posts_link()) ? printf("<div class=\"nav-next\">") . previous_posts_link(__('<span class="meta-nav">' . $post_navigation['newer_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
+			((get_next_posts_link()) ? printf("<div class=\"nav-previous border-box\">") . next_posts_link(__('<span class="meta-nav">' . $post_navigation['older_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
+			((get_previous_posts_link()) ? printf("<div class=\"nav-next border-box\">") . previous_posts_link(__('<span class="meta-nav">' . $post_navigation['newer_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
 		}
 		echo "</nav>";		
 	}

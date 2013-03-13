@@ -84,7 +84,7 @@ function footer_element() {
 	(($options_general['attribution'] == 1) ? 
 
 		// DO NOT CHANGE text IF displayed
-		__('<p>Built with ', 'volatyl') . 
+		__('<p class="attribution">Built with ', 'volatyl') . 
 		"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
 		__(' for WordPress</p>', 'volatyl') : 
 	'');
