@@ -4,7 +4,7 @@
 	Author: Volatyl Themes
 	Author URI: http://sdavismedia.com/
 	Description: Volatyl is a lightweight theme framework WordPress. The focus of Volatyl is leverage. Simple checkboxes perform complex tasks without breaking a sweat. Add content to any area of your website built-in hooks while controlling the columns layout on every single page or post. In other words, Volatyl creates unique websites with ease... period.
-	Version: 1.0.2
+	Version: 1.0.3
 	License: GNU General Public License
 	License URI: license.txt
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
@@ -12,22 +12,24 @@
 
 .entry-summary p:empty { display: none; }
 
+body,
+input,
+.cancel-reply {
+	font-size: 15px;
+	line-height: 1.6em;
+	font-family: Georgia, "Times New Roman", Times, serif;
+	margin: 0;
+}
+
 /* =Shared Commonly Used Styles
 -------------------------------------------------------------- */
 
-p,
-ul li,
-.site-content li,
-code, 
-kbd, 
-tt, 
-var,
+h6,
 cite.fn,
-.cancel-reply,
 input,
 #comment { 
-	font-size: 15px; 
-	line-height: 25px;
+	font-size: 1em; 
+	line-height: 1.6em;
 }
 
 h1, 
@@ -41,13 +43,19 @@ h6,
 .comments-title,
 cite.fn { 
 	font-weight: normal;
-	margin: 0 0 20px;  
+	margin: 0 0 1em;  
+}
+
+h1, 
+h2 {
+	margin: 0 0 .8em;  
 }
 
 .site-description,
 .entry-meta,
 .site-content h5, 
 .site-content h6,
+blockquote p,
 .comment-date,
 .comment-date a { 
 	color: #666; 
@@ -60,7 +68,7 @@ pre,
 .wp-caption p,
 .form-allowed-tags, 
 .form-allowed-tags code {
-	font-size: .8em; 
+	font-size: .86667em; 
 	line-height: 1.6em; 
 }
 
@@ -74,7 +82,7 @@ pre,
 #container .footer-menu-wrap,
 .short-menu .menu li ul a,
 .full-menu .menu li ul li a,
-.sticky,
+.post.sticky,
 .sticky .entry-header,
 .sticky .featured-img,
 #comments > ol > li,
@@ -85,7 +93,10 @@ abbr,
 acronym,
 pre,
 .form-allowed-tags,
-.default-widget {
+.default-widget,
+.paging-navigation,
+.post, 
+.site-content li {
 	border: 1px solid rgba(0,0,0,.1);
 }
 
@@ -98,12 +109,19 @@ pre,
 .wp-caption,
 .form-allowed-tags,
 .default-widget {
-	background: #f1f1f1;
+	background: rgba(0,0,0,.05);
+}
+
+#menu-area-standard,
+#menu-area-footer,
+.sticky,
+#fat-footer .default-widget {
+	background: rgba(0,0,0,.02);
 }
 
 .nav-previous,
 .nav-next {
-	padding: 20px 0;
+	padding: 1.33334em 0;
 }
 
 pre,
@@ -114,15 +132,7 @@ pre,
 .wp-caption.alignright,
 .site-content .gallery,
 #content .form-allowed-tags { 
-	margin-bottom: 20px; 
-}
-
-#menu-area-standard,
-.standard-menu-wrap,
-#menu-area-footer,
-.footer-menu-wrap,
-.sticky {
-	background: #fafafa;
+	margin-bottom: 1.33334em; 
 }
 
 abbr, 
@@ -134,13 +144,10 @@ acronym,
 }
 
 .entry-header h1, 
-.entry-header h1 a, 
 .entry-header h2, 
-.entry-header h2 a,
-.entry-title a,
 .entry-title,
 .site-title {
-	margin: 0 0 10px;
+	margin: 0 0 .33334em;
 }
 
 .sticky .entry-header,
@@ -169,22 +176,17 @@ acronym,
 .pagination span, 
 .pagination a,
 #fat-footer,
-.wp-caption img {
+.wp-caption img,
+.comments-title {
 	display: block;
 }
 
 /* =Format
 -------------------------------------------------------------- */
 
-body,
-.site-description,
-input {
-	font-family: Georgia, "Times New Roman", Times, serif;
-	margin: 0;
-}
-
-p { 
-	margin: 0 0 20px; 
+p,
+address { 
+	margin: 0 0 1.46667em; 
 }
 
 a {
@@ -202,9 +204,7 @@ a,
 	color: #367D98;
 }
 
-.entry-header h1, 
 .entry-header h1 a, 
-.entry-header h2, 
 .entry-header h2 a,
 .entry-title a { 
 	color: #000;
@@ -220,13 +220,13 @@ a,
 .alignleft {
 	display: inline;
 	float: left;
-	margin: 0 1.5em 1.5em 0;
+	margin: 0 1.46667em 1.46667em 0;
 }
 
 .alignright {
 	display: inline;
 	float: right;
-	margin: 0 0 1.5em 1.5em;
+	margin: 0 0 1.46667em 1.46667em;
 }
 
 .aligncenter {
@@ -266,17 +266,8 @@ input,
 	height: 0;
 }
 
-ul ul, 
-ol ol, 
-ul ol, 
-ol ul {
-	margin-bottom: 0;
-	margin-left: 20px;
-}
-
 dd {
-	line-height: 25px;
-	margin: 10px 20px 20px;
+	margin: .33334em .66667em .66667em;
 }
 
 dt, 
@@ -285,27 +276,24 @@ strong {
 	font-weight: bold;
 }
 
-dfn, cite, em, i {
+dfn, 
+cite, 
+em, 
+i, 
+blockquote p, 
+.site-content h6,
+address {
 	font-style: italic;
 }
 
 blockquote {
-	margin: 0 20px;
-}
-
-blockquote p {
-	color: #999;
-	font-style: italic;
-}
-
-address {
-	margin: 0 0 20px;
+	margin: 0 1.33334em;
 }
 
 pre {
-	background: #eee;
+	background: rgba(0,0,0,.1);
 	font-family: "Courier 10 Pitch", Courier, monospace;
-	padding: 15px;
+	padding: 1em;
 	overflow: auto;
 	max-width: 100%;
 }
@@ -358,12 +346,16 @@ figure {
 }
 
 table {
-	margin: 0 0 20px;
+	margin: 0 0 1.33334em;
 	width: 100%;
 }
 
 th {
 	font-weight: bold;
+}
+
+td {
+	padding: .53335em;
 }
 
 
@@ -382,11 +374,11 @@ th {
 
 .inner {
 	position: relative; 
-	padding: 10px 20px; 
+	padding: .66667em 1.33334em; 
 }
 
 #main-content {
-	padding: 20px 0;
+	padding: 1.33334em 0;
 }
 
 #footer-area {
@@ -402,7 +394,7 @@ th {
 }
 
 .site-footer { 
-	padding: 10px 20px; 
+	padding: .66667em 1.33334em; 
 }
 
 
@@ -410,8 +402,8 @@ th {
 -------------------------------------------------------------- */
 
 .site-title { 
-	font-size: 40px;
-	line-height: 48px;
+	font-size: 2.66667em;
+	line-height: 1.2em;
 }
 
 .site-title a { 
@@ -420,15 +412,15 @@ th {
 }
 
 .site-description { 
-	font-size: 16px;
-	line-height: 24px;
+	font-size: 1em;
+	line-height: 1.6em;
 	font-weight: normal;
 	margin: 0; 
 }
 
-.header-navigation { 
+.header-menu-wrap { 
 	position: absolute; 
-	top: 22px; 
+	top: 1.46667em; 
 	right: 0; 
 }
 
@@ -451,7 +443,7 @@ th {
 
 .short-menu,
 .full-menu {
-	padding: 0 10px;
+	padding: 0 .66667em;
 }
 
 .menu {
@@ -468,7 +460,7 @@ th {
 	position: relative;
 	display: inline-block; 
 	list-style: none;
-	padding: 15px 10px; 
+	padding: 1em .66667em; 
 }
 
 .short-menu .menu li {
@@ -539,7 +531,7 @@ th {
 .full-menu .menu li ul li a {
 	background: #fafafa;
 	color: #000;
-	padding: 10px;
+	padding: .66667em;
 	width: 180px;
 }
 
@@ -558,11 +550,12 @@ th {
 
 .post,
 .site-content li { 
-	border-bottom: 1px dashed rgba(0,0,0,.1);
+	border-width: 0 0 1px;
+	border-style: dashed;
 }
 
 .post {
-	padding: 20px 0;
+	padding: 1.3334em 0;
 }
 
 .post:last-of-type {
@@ -580,13 +573,13 @@ th {
 }
 
 .sticky + .sticky {
-	margin-top: 30px;
+	margin-top: 2em;
 }
 
 .sticky .entry-header,
 .sticky .entry-content,
 .sticky .entry-summary {
-	padding: 15px;
+	padding: 1em;
 }
 
 .sticky .featured-img {
@@ -607,41 +600,39 @@ th {
 
 .entry-meta.tags,
 .page-links {
-	padding: 20px 0 0;
+	padding: 1.33334em 0 0;
 }
 
 .post-meta-footer {
 	clear: both;
 }
 
-.site-content h1, 
-.site-content h2,
-.entry-title a { 
-	font-size: 30px; 
-	line-height: 42px; 
+h1, 
+h2 { 
+	font-size: 2em; 
+	line-height: 1.4em; 
 }
 
-.site-content h3 { 
-	font-size: 24px; 
-	line-height: 34px; 
+h3 { 
+	font-size: 1.6em; 
+	line-height: 1.41667em; 
 }
 
-.site-content h4,
-.widget h4, 
-.site-content h5, 
-.site-content h6 { 
-	font-size: 18px; 
-	line-height: 27px; 
+h4,
+h5, 
+.widget h4.widget-title { 
+	font-size: 1.2em; 
+	line-height: 1.5em; 
 }
 
 .site-content ul, 
 .site-content ol { 
 	padding-left: 0; 
-	margin: 0 0 30px 30px; 
+	margin: 0 0 2em 2em; 
 }
 
 .site-content li {  
-	padding: 8px 0; 
+	padding: .53335em 0; 
 }
 
 .site-content li:last-child { 
@@ -649,19 +640,20 @@ th {
 }
 
 .paging-navigation {
-	border-top: 1px dashed rgba(0,0,0,.1);
+	border-width: 1px 0 0;
+	border-style: dashed;
 }
 	
 .pagination {
 	position: relative;
-	padding: 20px 0;
+	padding: 1.33334em 0;
 }
  
 .pagination span, 
 .pagination a {
 	float: left;
 	text-decoration: none;
-	padding: 0 10px;
+	padding: 0 .66667em;
 	margin: 2px 2px 2px 0;
 	width: auto;
 }
@@ -687,12 +679,12 @@ th {
 
 .nav-previous {
 	float: left;
-	padding-right: 10px;
+	padding-right: .66667em;
 }
  
 .nav-next {
 	float: right;
-	padding-left: 10px;
+	padding-left: .66667em;
 }
 
 .paging-navigation .nav-next,
@@ -707,8 +699,12 @@ th {
 
 #comments > ol > li,
 .form-allowed-tags {
-	padding: 15px;
+	padding: 1em;
 	margin: 1em 0;
+}
+
+#content .form-allowed-tags {
+	margin-bottom: 2em;
 }
 
 #comments > ol,
@@ -717,7 +713,7 @@ th {
 }
 
 .comments-title {
-	font-size: 18px;
+	font-size: 1.2em;
 	margin-bottom: 1em;
 }
 
@@ -726,17 +722,17 @@ th {
 }
 
 #comments .children {
-	margin: 30px 0 0 20px;
+	margin: 2em 0 0 1.33334em;
 	padding-left: 0;
 }
 
 .children .comment + .comment {
-	margin-top: 20px;
+	margin-top: 1.33334em;
 }
 
 #comments .children > li > .comment {
 	border-width: 0 0 0 1px;
-	padding-left: 15px;
+	padding-left: 1em;
 }
 
 .comment-avatar {
@@ -744,7 +740,7 @@ th {
 	background: white;
 	line-height: 0;
 	padding: 6px;
-	margin: 0 0 10px 10px;
+	margin: 0 0 .66667em .66667em;
 }
 
 .comment-date {
@@ -794,19 +790,17 @@ cite.fn {
 }
 
 .widget {
-	margin: 0 0 40px;
+	margin: 0 0 2.66667em;
 }
 
 .footer-widget .widget {
-	margin-bottom: 30px;
+	margin-bottom: 2em;
 }
 
 .widget,
-.widget p, 
-.widget ul li,
-.site-footer p {
-	font-size: 14px;
-	line-height: 22px;
+.attribution {
+	font-size: .86667em;
+	line-height: 1.6em;
 }
 
 .widget h4 {
@@ -814,15 +808,11 @@ cite.fn {
 }
 
 .widget li {
-	margin-bottom: 10px;
+	margin-bottom: .66667em;
 }
 
 .default-widget {
-	padding: 15px;
-}
-
-#fat-footer .default-widget {
-	background: #fafafa;
+	padding: 1em;
 }
 
 
@@ -844,7 +834,7 @@ cite.fn {
 .footer-widget {
 	float: left;
 	margin-right: 3%;
-	width: 31.33333%;
+	width: 31.33334%;
 }
 
 .footer-widget:last-of-type {
@@ -855,11 +845,15 @@ cite.fn {
 /* =Input Elements
 -------------------------------------------------------------- */
 
+input {
+	font-size: 1em;
+	line-height: 1.6em;
+}
+
 input,
 #comment { 
-	line-height: 20px;
-	padding: 6px; 
-	margin: 0 10px 0 0; 
+	padding: .4em; 
+	margin: 0 .66667em 0 0; 
 	border: double rgba(0,0,0,.1); 
 }
 
@@ -905,7 +899,7 @@ img.size-full {
 }
 
 .featured-img {
-	margin-bottom: 15px;
+	margin-bottom: 1em;
 }
 
 .entry-content img.wp-smiley,
@@ -920,7 +914,7 @@ img.size-full {
 }
 
 .wp-caption img {
-	margin: 5px auto 0;
+	margin: .33334em auto 0;
 	max-width: 98%;
 	height: auto;
 }
@@ -931,7 +925,7 @@ img.size-full {
 }
 
 .wp-caption .wp-caption-text {
-	margin: 12px 0;
+	margin: .8em 0;
 }
 
 .gallery-caption {
@@ -978,7 +972,7 @@ select {
 .ssc .sidebar-1, 
 .ssc .sidebar-2 {
 	float: left;
-	padding: 20px;
+	padding: 1.33334em;
 }
 
 .c2 .sidebar-2, 
@@ -988,18 +982,18 @@ select {
 .scs .sidebar-2, 
 .ssc #content {
 	float: right;
-	padding: 20px;
+	padding: 1.33334em;
 } 
 
 .ssc .pagination, 
 .sc .pagination {
-	padding: 20px 0;
+	padding: 1.33334em 0;
 }
 
 .c1 #content, 
 .c2 #content { 
 	width: 100%; 
-	padding: 20px;
+	padding: 1.33334em;
 }
 
 .c2 .sidebar-1, 
@@ -1009,53 +1003,50 @@ select {
 
 .cs #content, 
 .sc #content { 
-	width: 65%; 
+	width: 620px; 
 }
 
 .cs #sidebars, 
 .sc #sidebars { 
-	width: 35%; 
+	width: 340px; 
 }
 
 .css #content, 
 .ssc #content { 
-	width: 55%; 
+	width: 528px; 
 }
 
 .css .sidebar-1, 
 .css .sidebar-2, 
 .ssc .sidebar-1, 
 .ssc .sidebar-2 { 
-	width: 22.5%; 
+	width: 216px; 
 }
 
 .scs #wrap { 
-	width: 75%; 
-}
-
-.scs #wrap { 
+	width: 725px; 
 	padding: 0; 
 }
 
 .scs #content { 
-	width: 68%; 
+	width: 490px;
 }
 
 .scs .sidebar-1 { 
-	width: 32%; 
+	width: 235px;
 }
 
 .scs .sidebar-2 { 
-	width: 25%; 
+	width: 235px; 
 }
 
 #main-content #content {
 	padding-top: 0;
-	padding-bottom: 20px;
+	padding-bottom: 1.33334em;
 }
 
 #main-content #sidebars {
-	padding-top: 10px;
+	padding-top: .66667em;
 }
 
 
@@ -1101,6 +1092,37 @@ select {
 	#container {
 		width: 100%;
 	}
+	.cs #content, 
+	.sc #content { 
+		width: 65%; 
+	}
+	.cs #sidebars, 
+	.sc #sidebars { 
+		width: 35%; 
+	}
+	.css #content, 
+	.ssc #content { 
+		width: 55%; 
+	}
+	.css .sidebar-1, 
+	.css .sidebar-2, 
+	.ssc .sidebar-1, 
+	.ssc .sidebar-2 { 
+		width: 22.5%; 
+	}
+	.scs #wrap { 
+		width: 75.52083%; 
+		padding: 0; 
+	}
+	.scs #content { 
+		width: 67.58621%; 
+	}
+	.scs .sidebar-1 { 
+		width: 32.41379%; 
+	}
+	.scs .sidebar-2 { 
+		width: 24.47917%; 
+	}
 	#container > .site-header,
 	#container > .site-footer,
 	#container #standard-menu-container,
@@ -1108,10 +1130,20 @@ select {
 		border-left: 0;
 		border-right: 0;
 	}
+	.landing .main #content,
+	.squeeze .main #content,
+	.landing #container #content,
+	.squeeze #container #content { 
+		width: 100%;
+	}
 }
 
-@media screen and (max-width: 860px) 
+@media screen and (max-width: 850px) 
 {
+	body.squeeze {
+		font-size: 20px;
+		line-height: 1.55em;
+	}
 	.squeeze #main-content .main,
 	.squeeze #main-content { 
 		width: 100%;
@@ -1120,6 +1152,11 @@ select {
 
 @media screen and (max-width: 768px) 
 {
+	body {
+		font-size: 20px;
+		line-height: 1.55em;
+	}
+	
 	/* =Responsive Menus and all that crap >:[
 	-------------------------------------------------------------- */
 	
@@ -1155,12 +1192,12 @@ select {
 	}
 	#standard-menu-container,
 	#footer-menu-container {
-		padding: 10px 20px;
+		padding: .66667em 1.33334em;
 	}
 	.standard-menu-wrap,
 	.footer-menu-wrap {
 		text-align: center;
-		padding: 10px 0;
+		padding: .66667em 0;
 	}
 	.short-menu,
 	.full-menu {
@@ -1209,7 +1246,7 @@ select {
 	}
 	.site-header .short-menu .menu li a,
 	.full-menu .menu li.menu-item a {
-		padding: 10px;
+		padding: .66667em;
 	}
 	.short-menu a:hover,
 	.full-menu a:hover,
@@ -1243,28 +1280,21 @@ select {
 		float: none;
 		width: 100%;
 	}
-	.widget,
-	.widget p, 
-	.widget ul li,
-	.site-footer p {
-		font-size: 20px;
-		line-height: 30px;
-	}
 	.site-header {
 		text-align: center;
-		padding-bottom: 15px;
+		padding-bottom: 1em;
 	}
 	.site-description { 
-		margin-bottom: 10px; 
+		margin-bottom: .66667em; 
 	}
-	.site-header .short-menu {
+	.site-header .header-menu-wrap {
 		position: static;
 		padding: 0;
-		margin-top: 15px;
+		margin-top: 1em;
 	}
 	.short-menu li,
 	.full-menu li {
-		padding: 5px 10px;
+		padding: .33334em .66667em;
 	}
 	#content .pagination {
 		float: none;
@@ -1274,78 +1304,20 @@ select {
 		margin-right: 0;
 		width: 100%;
 	}
-	p, 
-	ul li, 
-	.site-content li, 
-	code, 
-	kbd, 
-	tt, 
-	var, 
-	cite.fn, 
-	.cancel-reply, 
-	input, 
-	#comment,
-	.page-links,
-	.pagination,
-	.site-description,
-	.menu-toggle,
-	.site-navigation {
-		font-size: 20px;
-		line-height: 30px;
-	}
-	.entry-meta {
-		font-size: 15px;
-		line-height: 25px;
-	}
-	.widget .widget-title {
-		font-size: 24px;
-		line-height: 34px;
-	}
 }
 
 @media screen and (max-width: 480px) 
 {
+	body,
+	body.squeeze {
+		font-size: 15px;
+		line-height: 1.6em;
+	}
 	.short-menu,
 	.full-menu {
 		width: 100%;
 	}
 	.site-footer {
 		text-align: center;
-	}
-	p, 
-	ul li, 
-	.site-content li, 
-	code, 
-	kbd, 
-	tt, 
-	var, 
-	cite.fn, 
-	.cancel-reply, 
-	input, 
-	#comment,
-	.page-links,
-	.pagination,
-	.site-description,
-	.menu-toggle,
-	.site-navigation {
-		font-size: 15px;
-		line-height: 25px;
-	}
-	.site-content h1, 
-	.site-content h2,
-	.entry-title a { 
-		font-size: 24px; 
-		line-height: 32px; 
-	}
-	.widget,
-	.widget p, 
-	.widget ul li,
-	.site-footer p {
-		font-size: 14px;
-		line-height: 22px;
-	}
-	.entry-meta {
-		font-size: .8em;
-		line-height: 1.6em;
 	}
 }
