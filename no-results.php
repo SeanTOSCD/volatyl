@@ -53,9 +53,9 @@ if (is_404()) {
 
 	// Zero posts the viewer can create posts
 	if (is_home() && current_user_can('publish_posts')) {
-		echo "\t\t<p>" .
-		printf(__('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'volatyl'), admin_url('post-new.php')) .
-		"</p>\n";
+		echo "\t\t<p>";
+		printf(__('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'volatyl'), admin_url('post-new.php'));
+		echo "</p>\n";
 	
 	// Zero search results
 	} elseif (is_search()) {

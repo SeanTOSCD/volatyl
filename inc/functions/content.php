@@ -13,9 +13,6 @@
  */
 $options_content = get_option('vol_content_options');
 
-// Custom filters
-$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
-
 // Add .top class to the first post in a loop
 function vol_first_post_class($classes) {
 	global $wp_query;
@@ -75,6 +72,7 @@ if ($options_content['excerptlink'] == 1) {
 	//create a permalink after the excerpt
 	function vol_replace_excerpt($content) {
 		global $excerpt_link;
+		$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
 		return str_replace('[...]',
 			'<p><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
 			$content
