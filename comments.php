@@ -22,8 +22,8 @@ $comments_title = apply_filters('comments_title', __(_n('1 Comment:', '%1$s Comm
 $pings_title = apply_filters('pings_title', __(_n('1 Ping:', '%1$s Pings:', get_comments_number() - comments_only_count($count), 'volatyl'), 'volatyl'));
 $comments_text = apply_filters('comments_text', array(  
 	'comments_closed'		=> 'Comments are closed.',
-	'older_comments'		=> '&larr; Older Comments',
-	'newer_comments'		=> 'Newer Comments &rarr;',
+	'older_comments'		=> '&larr; Older comments',
+	'newer_comments'		=> 'Newer comments &rarr;',
 	'comment_reply_title'	=> 'Leave a Reply ',
 	'comment_submit'		=> 'Submit Comment'
 	) 
@@ -47,10 +47,10 @@ if (post_password_required())
 		// Are there comments to navigate through?
 		((get_comment_pages_count() > 1 && get_option('page_comments')) ? 
 			printf("\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation clearfix\">\n
-			\t\t<div class=\"nav-previous comment-nav\">\n") . 
+			\t\t<div class=\"nav-previous comment-nav border-box\">\n") . 
 			previous_comments_link(__($comments_text['older_comments'], 'volatyl')) .
 			printf("\t\t</div>\n
-			\t\t<div class=\"nav-next comment-nav\">\n") . 
+			\t\t<div class=\"nav-next comment-nav border-box\">\n") . 
 			next_comments_link(__($comments_text['newer_comments'], 'volatyl')) .
 			printf("\t\t</div>\n
 			\t</nav>") : 

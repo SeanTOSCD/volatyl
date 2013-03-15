@@ -85,10 +85,10 @@ wp_get_attachment_image($post->ID, $attachment_size),
 wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($attachment_page_nav, 'volatyl'), 'after' => '</nav>'));
 echo "{$tab3}</div>\n
 {$tab3}<nav class=\"site-navigation image-navigation clearfix\">
-{$tab3}\t<div class=\"nav-previous image-nav\">",
+{$tab3}\t<div class=\"nav-previous image-nav border-box\">",
 previous_image_link(false, __($attachment_navigation['previous_image'], 'volatyl')),
 "{$tab3}\t</div>\n
-{$tab3}\t<div class=\"nav-next image-nav\">",
+{$tab3}\t<div class=\"nav-next image-nav border-box\">",
 next_image_link(false, __($attachment_navigation['next_image'], 'volatyl')),
 "{$tab3}\t</div>\n
 {$tab3}</nav>\n
