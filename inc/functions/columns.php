@@ -77,7 +77,7 @@ function columns_singular() {
 			break;
 		case 'c2':
 			vol_content();
-			printf("\t\t<div id=\"sidebars-wrap\" class=\"clearfix\">\n");
+			printf("\t\t<div id=\"sidebars-wrap\" class=\"border-box clearfix\">\n");
 			get_sidebar('one');
 			get_sidebar('two');
 			printf("\t\t</div>\n");
@@ -102,7 +102,7 @@ function columns_singular() {
 			break;
 		default:
 			
-			// Back to main site layout options			
+			// Default back to main site layout options			
 			vol_columns();
 	}
 }
