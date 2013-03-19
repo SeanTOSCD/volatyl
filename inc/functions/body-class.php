@@ -37,7 +37,7 @@ add_filter('body_class', 'landing_body_class');
 /** Body class based on column structure
  *
  * Add specific CSS class by filter based on column layout option.
- * Based on the added class, the appropriate CSS will be used in style.css
+ * Based on the added classes, the appropriate CSS will be used in style.css
  *
  * Also, do it based on singular, site default, etc. If there are no special
  * conditions, though, just use the site default (Structure Settings).
@@ -48,16 +48,38 @@ function main_layout_class($classes) {
 	global $post;
 	$options = get_option('vol_structure_options');
 	
-	if (!is_404() && ! is_search())
+	if (!is_404() && !is_search())
 		$single_layout = get_post_meta($post->ID, '_singular-column', true);
 	
 	// add class name to the $classes array based on conditions
 	if (is_singular()) {
-		if ('default' == $single_layout || '' == $single_layout)
+		if ('default' == $single_layout || '' == $single_layout) {
+			if ($options['column'] == 'c1' || $options['column'] == 'c2') {
+				$classes[] = 'one-col';
+			} elseif ($options['column'] == 'cs' || $options['column'] == 'sc') {
+				$classes[] = 'two-col';
+			} elseif ($options['column'] == 'css' || $options['column'] == 'scs' || $options['column'] == 'ssc') {
+				$classes[] = 'three-col';
+			}
 			$classes[] = $options['column'];
-		else
+		} elseif ($single_layout == 'c1' || $single_layout == 'c2') {
+			$classes[] = 'one-col';
 			$classes[] = $single_layout;
+		} elseif ($single_layout == 'cs' || $single_layout == 'sc') {
+			$classes[] = 'two-col';
+			$classes[] = $single_layout;
+		} elseif ($single_layout == 'css' || $single_layout == 'scs' || $single_layout == 'ssc') {
+			$classes[] = 'three-col';
+			$classes[] = $single_layout;
+		}
 	} else {
+		if ($options['column'] == 'c1' || $options['column'] == 'c2') {
+			$classes[] = 'one-col';
+		} elseif ($options['column'] == 'cs' || $options['column'] == 'sc') {
+			$classes[] = 'two-col';
+		} elseif ($options['column'] == 'css' || $options['column'] == 'scs' || $options['column'] == 'ssc') {
+			$classes[] = 'three-col';
+		}
 		$classes[] = $options['column'];
 	}
 	
@@ -71,7 +93,7 @@ add_filter('body_class', 'main_layout_class');
 function singular_body_class($classes) {
 	global $post;
 	
-	if (!is_404() && ! is_search())
+	if (!is_404() && !is_search())
 		$singular_body_class = get_post_meta($post->ID, '_custom-class', true);
 	
 	// add class name to the $classes array based on conditions
