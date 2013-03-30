@@ -22,7 +22,7 @@
  * Certain templates can be overwritten by simply creating the actual
  * template file responsible for that particular template. For example,
  * creating a content-single.php file in a child theme (or in the core... 
- * but don't) will override the get_template_part('content', 'single') 
+ * but don't) will override the get_template_part('templates/content', 'single') 
  * function in the is_single() condition of this statement.
  *
  * @package Volatyl
@@ -49,7 +49,7 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) { 
 				the_post();
-				get_template_part('content', get_post_format());
+				get_template_part('templates/content', get_post_format());
 			}
 			
 			pagination_type(); // /inc/functions/page-nav.php
@@ -74,7 +74,7 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) { 
 				the_post();
-				get_template_part('content', 'single');
+				get_template_part('templates/content', 'single');
 			}
 
 			// vol_after_content_column
@@ -90,13 +90,13 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) {
 				the_post();
-				get_template_part('content', 'page');
+				get_template_part('templates/content', 'page');
 			}
 	
 		// Search results
 		} elseif (is_search()) {
 			
-			get_template_part('content', 'search');
+			get_template_part('templates/content', 'search');
 
 		// Archives including categories, tags, authors, dates, and bears. Oh my!
 		} elseif (is_archive()) {
@@ -109,7 +109,7 @@ function vol_content() {
 					do_action('vol_before_content_column')) :
 			'');
 				
-			get_template_part('content', 'archive');
+			get_template_part('templates/content', 'archive');
 
 			// vol_after_content_column
 			(($options_hooks['switch_vol_after_content_column'] == 0) ?
@@ -124,7 +124,16 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) {
 				the_post();
-				get_template_part('content', 'attachment');
+				get_template_part('templates/content', 'attachment');
+			}
+	
+		// 404 error page
+		} elseif (is_404()) {
+		
+			// Da loop
+			while (have_posts()) {
+				the_post();
+				get_template_part('templates/404', 'index');
 			}
 	
 		// Stray template (can that even happen?) floating around? I got this.
@@ -133,11 +142,11 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) {
 				the_post();
-				get_template_part('content', get_post_format());
+				get_template_part('templates/content', get_post_format());
 			}
 		}	
 	} else {
-		get_template_part('no-results', 'index');
+		get_template_part('templates/no-results', 'index');
 	}
 	echo "</div>";
 }

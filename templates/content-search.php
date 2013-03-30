@@ -30,7 +30,7 @@ while (have_posts()) {
 	the_post();
 	if (is_search() && ($post->post_type=='page')) 
 		continue;
-	get_template_part('content', get_post_format());
+	get_template_part('templates/content', get_post_format());
 }
 
 pagination_type();
