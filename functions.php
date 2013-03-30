@@ -25,6 +25,8 @@
  * it will grab those initial theme functions itself and totally ignore
  * the call to the same file you see below. Outstanding.
  *
+ * MORE INFORMATION http://volatylthemes.com/create-child-theme/
+ *
  * @package Volatyl
  * @since Volatyl 1.0
  */
@@ -32,5 +34,9 @@
 // We need this! Only if a child theme hasn't gotten to it first
 require_once(dirname(__FILE__) . '/inc/init-functions.php');
 
-// License key setup and Volatyl automatic updater
-require_once(dirname(__FILE__) . '/inc/updater.php');
+// Only allow automatic updates if option is checked
+$options = get_option('vol_general_options');
+if ($options['updates'] == 1)
+	
+	// License key setup and Volatyl automatic updater
+	require_once(dirname(__FILE__) . '/inc/updater.php');

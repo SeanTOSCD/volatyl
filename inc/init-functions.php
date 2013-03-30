@@ -13,10 +13,11 @@
  */
  
 // Constants
-define ('THEME_NAME', 'Volatyl ');
-define ('THEME_VERSION', '1.0.9 ');
+define ('THEME_NAME', 'Volatyl');
+define ('THEME_VERSION', '1.1.1');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
+define ('THEME_PATH_CHILD', get_stylesheet_directory());
 define ('THEME_PATH_URI', get_template_directory_uri());
 define ('THEME_STYLESHEET', get_stylesheet_uri());
 define ('THEME_HTML', THEME_PATH . '/inc/html');
@@ -57,7 +58,7 @@ if (!function_exists('volatyl_setup')) {
 	function volatyl_setup() {
 
 		// WordPress says it's required. *Shoulder shrug*
-		if (!isset($content_width)) $content_width = 1000;
+		if (!isset($content_width)) $content_width = 960;
 
 		// Translations can be filed in the /languages/ directory
 		load_theme_textdomain('volatyl', THEME_PATH . '/inc/languages');
@@ -97,8 +98,17 @@ add_action('after_setup_theme', 'volatyl_setup');
  *
  * @since Volatyl 1.0
  */
-function volatyl_front_scripts() {
-	wp_enqueue_style('style', THEME_STYLESHEET);
+function volatyl_front_scripts() {	
+	$options = get_option('vol_general_options');
+	
+	// Default stylesheet
+	wp_enqueue_style('style', THEME_PATH_URI . '/style.css');
+	
+	// Responsive stylesheet
+	if ($options['responsive'] == 1) {
+		wp_register_style('responsive', THEME_PATH_URI . '/responsive.css');
+		wp_enqueue_style('responsive');
+	}
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
@@ -106,7 +116,7 @@ function volatyl_front_scripts() {
 		wp_enqueue_script('keyboard-image-navigation', THEME_PATH . '/inc/js/keyboard-image-navigation.js', array('jquery'), '20120202');
 	}
 }
-add_action('wp_enqueue_scripts', 'volatyl_front_scripts');
+add_action('wp_enqueue_scripts', 'volatyl_front_scripts', 1);
 
 
 /** Enqueue back-end scripts and styles

@@ -1,0 +1,254 @@
+/* =Lightweight Responsiveness
+ *
+ * This file is called from the /inc/init-functions.php file
+ * specifically for core Volatyl responsive CSS. Whether or
+ * not this stylesheet is used is determined by the Responsive
+ * CSS option in the Volatyl General Settings.
+ *
+ * To alter this CSS in a child theme, simply write new responsive
+ * CSS in your child theme's style.css file. To completely disable
+ * this responsive CSS to use your own, use the General Settings
+ * option to disable this CSS and then start from scratch in your
+ * child theme's style.css file. 
+-------------------------------------------------------------- */
+
+@media screen and (max-width: 960px) 
+{
+	.main,
+	#container {
+		width: 100%;
+	}
+	.two-col #content { 
+		width: 65%; 
+	}
+	.two-col #sidebars { 
+		width: 35%; 
+	}
+	.css #content, 
+	.ssc #content { 
+		width: 55%; 
+	}
+	.three-col #sidebars { 
+		width: 22.5%; 
+	}
+	.scs #sidebars.sidebar-1 { 
+		width: 32.41379%; 
+	}
+	.scs #sidebars.sidebar-2 { 
+		width: 24.47917%; 
+	}
+	.scs #wrap { 
+		width: 75.52083%; 
+		padding: 0; 
+	}
+	.scs #content { 
+		width: 67.58621%; 
+	}
+	#container > .site-header,
+	#container > .site-footer,
+	#container #standard-menu-container,
+	#container #footer-menu-container {
+		border-left: 0;
+		border-right: 0;
+	}
+	.landing .main #content,
+	.squeeze .main #content,
+	.landing #container #content,
+	.squeeze #container #content { 
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 850px) 
+{
+	body.squeeze {
+		font-size: 20px;
+		line-height: 1.55em;
+	}
+	.squeeze #main-content .main,
+	.squeeze #main-content { 
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 768px) 
+{
+	body {
+		font-size: 20px;
+		line-height: 1.55em;
+	}
+	
+	/* =Responsive Menus and all that crap >:[
+	-------------------------------------------------------------- */
+	
+	/***** Hide desktop menus *****/
+	.short-menu,
+	.full-menu,
+	#header-menu-container:target .open-header-menu,
+	#standard-menu-container:target .open-standard-menu,
+	#footer-menu-container:target .open-footer-menu   {
+		display: none;
+	}
+	
+	/***** Show and style previously hidden menus and toggle links *****/
+	.header-menu-toggle,
+	.standard-menu-toggle,
+	.footer-menu-toggle,
+	#header-menu-container:target .short-menu,
+	#standard-menu-container:target .full-menu,
+	#footer-menu-container:target .full-menu {
+		display: block;
+	}
+	#header-menu-container:target .close-header-menu,
+	#standard-menu-container:target .close-standard-menu,
+	#footer-menu-container:target .close-footer-menu {
+		display: inline-block;
+	}
+	#header-menu-container:target .short-menu,
+	#standard-menu-container:target .close-standard-menu,
+	#footer-menu-container:target .close-footer-menu,
+	#standard-menu-container:target .full-menu,
+	#footer-menu-container:target .full-menu {
+		margin-bottom: 15px;
+	}
+	#standard-menu-container,
+	#footer-menu-container {
+		padding: .66667em 1.33334em;
+	}
+	.standard-menu-wrap,
+	.footer-menu-wrap {
+		text-align: center;
+		padding: .66667em 0;
+	}
+	.short-menu,
+	.full-menu {
+		display: none;
+		background: #ddd;
+		padding: 0;
+		width: 65%;
+		margin: 0 auto;
+	}
+	.short-menu .menu ul,
+	.short-menu .menu li,
+	.short-menu a,
+	.full-menu .menu ul,
+	.full-menu .menu li,
+	.full-menu a {
+		display: block;
+		padding: 0;
+	}
+	.short-menu .menu li ul a,
+	.short-menu .menu li ul a:hover, 
+	.full-menu .menu li ul li a,
+	.full-menu .menu li ul li a:hover,
+	.short-menu .menu ul,
+	.short-menu .menu li,
+	.short-menu a,
+	.full-menu .menu ul,
+	.full-menu .menu li,
+	.full-menu a {
+		background: none;
+	}
+	.full-menu .menu li + li,
+	.short-menu .menu li + li {
+		margin: 0;
+	}
+	.menu > li > a {
+		background: rgba(0,0,0,.08);
+	}
+	#header-menu-wrap.short-menu a,
+	#standard-menu-wrap.full-menu .menu a,
+	#footer-menu-wrap.full-menu .menu a {
+		border: 1px solid rgba(0,0,0,.2);
+		border-width: 0 0 1px;
+	}
+	.short-menu .menu li > ul > li ul {
+		display: none;
+	}
+	.site-header .short-menu .menu li a,
+	.full-menu .menu li.menu-item a {
+		padding: .66667em;
+	}
+	.short-menu a:hover,
+	.full-menu a:hover,
+	.short-menu .menu li ul a:hover,
+	.full-menu .menu li ul a:hover {
+		color: #666;
+	}
+	.short-menu .menu li ul,
+	.full-menu .menu li ul,
+	.full-menu .menu li ul li ul {
+		position: static;
+	}
+	.short-menu .menu li ul a,
+	.full-menu .menu li ul li a {
+		width: auto;
+		color: black;
+	}
+	.landing #main-content .main,
+	.landing #container #main-content {
+		width: 100%;
+	}
+	.landing #main-content .main,
+	.landing #container #main-content { 
+		margin: 0 auto; 
+	}
+	#main-content #content,
+	#main-content #sidebars,
+	.scs #wrap,
+	.nav-previous, 
+	.nav-next {
+		float: none;
+		width: 100%;
+	}
+	.nav-previous {
+		padding-right: 0;
+	}
+	.nav-next,
+	.paging-navigation .nav-next, 
+	.comment-navigation .nav-next, 
+	.image-navigation .nav-next {
+		padding-left: 0;
+		text-align: left;
+	}
+	.site-header {
+		text-align: center;
+		padding-bottom: 1em;
+	}
+	.site-description { 
+		margin-bottom: .66667em; 
+	}
+	.site-header .header-menu-wrap {
+		position: static;
+		padding: 0;
+		margin-top: 1em;
+	}
+	.short-menu li,
+	.full-menu li {
+		padding: .33334em .66667em;
+	}
+	#content .pagination {
+		float: none;
+	}
+	.footer-widget {
+		float: none;
+		margin-right: 0;
+		width: 100%;
+	}
+}
+
+@media screen and (max-width: 480px) 
+{
+	body,
+	body.squeeze {
+		font-size: 15px;
+		line-height: 1.6em;
+	}
+	.short-menu,
+	.full-menu {
+		width: 100%;
+	}
+	.site-footer {
+		text-align: center;
+	}
+}

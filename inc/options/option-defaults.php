@@ -21,7 +21,7 @@ function volatyl_structure_default_settings() {
 	global $structure_options;
 	$structure_options = array(
 		'wide'					=> 1,
-		'column'				=> 'sc',
+		'column'				=> 'sc'
 	);
 	return $structure_options;
 }
@@ -45,8 +45,10 @@ add_action('after_setup_theme','volatyl_structure_settings_init');
 function volatyl_general_default_settings() {
 	global $general_options;
 	$general_options = array(
+		'updates'				=> 1,
+		'responsive'			=> 1,
 		'adminmenu'				=> 1,
-		'attribution'			=> 1,
+		'attribution'			=> 1
 	);
 	return $general_options;
 }
@@ -90,7 +92,7 @@ function volatyl_content_default_settings() {
 		'singletags'			=> 1,
 		'postpings'				=> 1,
 		'searchpages'			=> 0,
-		'pagecomments'			=> 0,
+		'pagecomments'			=> 0
 	);
 	return $content_options;
 }

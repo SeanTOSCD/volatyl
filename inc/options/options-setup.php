@@ -81,9 +81,29 @@ return $column_options;
  */
 function volatyl_general() {
 	$vol_general = array(
-		'Admin Menu' 		=> array(
+		'Automatic Updates' => array(
 			'table_name'	=> __('<h3>General Settings</h3>', 'volatyl'),
 			'table'			=> '<table class="form-table">',
+			'tr'			=> '<tr>',
+			'th'			=> __('<th scope="row">Enable Framework Updates</th>', 'volatyl'),
+			'td'			=> '<td>',
+			
+			'title'			=> 'updates',
+			'label'			=> __('This does not affect your license key. With your license key still activated, use this option to temporarily disable update notifications.', 'volatyl'),
+			'td_end'		=> '</td>',
+			'tr_end'		=> '</tr>'
+		),
+		'Responsive CSS' 	=> array(
+			'tr'			=> '<tr>',
+			'th'			=> __('<th scope="row">Enable Responsive CSS</th>', 'volatyl'),
+			'td'			=> '<td>',
+			
+			'title'			=> 'responsive',
+			'label'			=> __('This option controls the ', 'volatyl') . THEME_NAME . __(' <strong>core</strong> responsive CSS (this option does not control responsive CSS written in a child theme).', 'volatyl'),
+			'td_end'		=> '</td>',
+			'tr_end'		=> '</tr>'
+		),
+		'Admin Menu' 		=> array(
 			'tr'			=> '<tr>',
 			'th'			=> __('<th scope="row">Display ', 'volatyl') . THEME_NAME . __(' Admin Toolbar</th>', 'volatyl'),
 			'td'			=> '<td>',

@@ -26,7 +26,7 @@
  * @since Volatyl 1.0
  */ 
 function vol_options_add_page() {
-	add_theme_page(THEME_NAME . __('Options', 'volatyl'), THEME_NAME . __('Options', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
+	add_theme_page(THEME_NAME . __(' Options', 'volatyl'), THEME_NAME . __(' Options', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
 	// Init general options
 	register_setting('volatyl_global_options', 'vol_general_options', 'vol_options_validate');
 	// Init structure options
@@ -60,7 +60,7 @@ function vol_options_do_page() {
 	
 	echo "<div class=\"wrap volatyl-options\">\n",
 	$tab3, screen_icon(), "\n
-	{$tab3}<h2>", THEME_NAME, THEME_VERSION, __('Options', 'volatyl'), "</h2>\n",
+	{$tab3}<h2>", THEME_NAME, " ", THEME_VERSION, " ", __('Options', 'volatyl'), "</h2>\n",
 	
 	// Warning: Save settings before switching tabs
 	"{$tab3}<div class=\"save-settings half radius\">\n
