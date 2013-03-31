@@ -211,7 +211,7 @@ class VOL_Updater {
 		if (version_compare($theme->get('Version'), $api_response->new_version, '<')) {
 
 			echo '<div id="update-nag">';
-				printf('<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s">Check out what\'s new</a> or <a href="%5$s"%6$s>update now</a> (<strong>always</strong> backup first!).',
+				printf('<strong>%1$s %2$s</strong> is available. <a href="%3$s" class="thickbox" title="%4s"><strong>READ THE CHANGE LOG</strong></a> first and then <a href="%5$s"%6$s>update</a>. <strong>Always</strong> backup first!',
 					$theme->get('Name'),
 					$api_response->new_version,
 					'#TB_inline?width=640&amp;inlineId=' . $this->theme_slug . '_changelog',

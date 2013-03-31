@@ -6,7 +6,8 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * Register Volatyl widgetized areas
+ * Register Volatyl widgetized areas (single post and page sidebars
+ * are registered in the /inc/options/post-meta.php file)
  *
  * @package Volatyl
  * @since Volatyl 1.0
@@ -15,18 +16,18 @@
 // Register widgetized areas
 function volatyl_widgets_init() {
 	register_sidebar(array(
-		'name' 			=> __('Sidebar 1', 'volatyl'),
+		'name' 			=> __('Sidebar 1 &#8212; Site Default', 'volatyl'),
 		'id' 			=> 'sidebar-1',
-		'description'   => __('Primary sidebar: On 1-column layouts, this sidebar will show. On 2-column layouts, this sidebar will be furthest to the left.', 'volatyl'),
+		'description'   => __('In all layouts including sidebars, this will be the leftmost sidebar (primary).', 'volatyl'),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> '</aside>',
 		'before_title' 	=> '<h4 class="widget-title">',
 		'after_title' 	=> '</h4>',
 	));
 	register_sidebar(array(
-		'name' 			=> __('Sidebar 2', 'volatyl'),
+		'name' 			=> __('Sidebar 2 &#8212; Site Default', 'volatyl'),
 		'id' 			=> 'sidebar-2',
-		'description'   => __('Secondary sidebar: On 1-column layouts, this sidebar will not show. On 2-column layouts, this sidebar will be furthest to the right.', 'volatyl'),
+		'description'   => __('In all layouts including sidebars, this will be the right most sidebar (secondary).', 'volatyl'),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> '</aside>',
 		'before_title' 	=> '<h4 class="widget-title">',
@@ -65,7 +66,7 @@ function volatyl_widgets_init() {
 		));
 	}
 }
-add_action('widgets_init', 'volatyl_widgets_init');
+add_action('widgets_init', 'volatyl_widgets_init', 10);
 
 // Default widget when no widgets are present in a widgetized area
 function default_widget() {

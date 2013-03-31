@@ -11,7 +11,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options_hooks;
+global $options_hooks, $new_sidebars;
 $options_hooks = get_option('vol_hooks_options');
 
 echo "<div id=\"sidebars\" class=\"widget-area sidebar-1 border-box\">\n";
@@ -32,8 +32,16 @@ if ($options_hooks['switch_vol_before_sidebar_1'] == 0) {
 	}
 }
 
+// Display Sidebar 1 only if there is no post/page specific sidebar with content
 do_action('before_sidebar');
-((!dynamic_sidebar('sidebar-1')) ? default_widget() : '');
+$singular_sidebar_1 = get_post_meta($post->ID, '_create-sidebar-1', true);
+if ('' !== $singular_sidebar_1 || 0 !== $singular_sidebar_1) {
+	((!dynamic_sidebar('sidebar-1-' . $post->ID)) ? 
+		((!dynamic_sidebar('sidebar-1')) ? default_widget() : '') : 
+	'');
+} else {
+	((!dynamic_sidebar('sidebar-1')) ? default_widget() : '');
+}
 
 // vol_after_sidebar_1
 if ($options_hooks['switch_vol_after_sidebar_1'] == 0) {

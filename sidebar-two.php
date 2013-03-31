@@ -32,8 +32,16 @@ if ($options_hooks['switch_vol_before_sidebar_2'] == 0) {
 	}
 }
 
+// Display Sidebar 2 only if there is no post/page specific sidebar with content
 do_action('before_sidebar');
-((!dynamic_sidebar('sidebar-2')) ? default_widget() : '');
+$singular_sidebar_2 = get_post_meta($post->ID, '_create-sidebar-2', true);
+if ('' !== $singular_sidebar_2 || 0 !== $singular_sidebar_2) {
+	((!dynamic_sidebar('sidebar-2-' . $post->ID)) ? 
+		((!dynamic_sidebar('sidebar-2')) ? default_widget() : '') : 
+	'');
+} else {
+	((!dynamic_sidebar('sidebar-2')) ? default_widget() : '');
+}
 
 // vol_after_sidebar_2
 if ($options_hooks['switch_vol_after_sidebar_2'] == 0) {
