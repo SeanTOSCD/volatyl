@@ -323,6 +323,11 @@ function volatyl_hooks() {
 			'title' 			=> __('Header Bottom', 'volatyl'),
 			'description'		=> __('Inside of your header below where your site title and site tagline are located.<br>Suggestion: Try turning off your site title and site tagline to build your own header here.', 'volatyl') 
 		),
+		'vol_header_after_title_tagline' 	=> array(
+			'name'				=> 'vol_header_after_title_tagline',
+			'title' 			=> __('Header After Title/Tagline', 'volatyl'),
+			'description'		=> __('Inside of your header below site title and site tagline but above<br>your header menu <em>in the HTML flow</em>', 'volatyl') 
+		),
 		'vol_footer_top' 		=> array(
 			'name'				=> 'vol_footer_top',
 			'title' 			=> __('Footer Top', 'volatyl'),
@@ -437,6 +442,11 @@ function vol_header_bottom() {
 	global $options; 
 	echo stripslashes($options['vol_header_bottom']); 
 	do_action('vol_header_bottom'); 
+}
+function vol_header_after_title_tagline() { 
+	global $options; 
+	echo stripslashes($options['vol_header_after_title_tagline']); 
+	do_action('vol_header_after_title_tagline'); 
 }
 function vol_footer_top() { 
 	global $options; 

@@ -56,6 +56,10 @@ h2 .nav-tab {
 	margin: 2em 0;
 }
 
+.volatyl-options ul.list {
+	margin-top: 0;
+}
+
 /* For multiple radio buttons and labels on one line, create spacing */
 .volatyl-options .label-space,
 .volatyl-options .logo-button {

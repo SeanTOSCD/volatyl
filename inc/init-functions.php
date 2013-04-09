@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.1.2');
+define ('THEME_VERSION', '1.1.3');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -68,10 +68,18 @@ if (!function_exists('volatyl_setup')) {
 
 		// Support for Post Thumbnails
 		add_theme_support('post-thumbnails');
+		
+		// Custom Menu filters
+		$menu_descriptions = apply_filters('menu_descriptions', array(
+			'header_menu_description'		=> 'Header Menu (Supports 1 drop-down level)',
+			'standard_menu_description'		=> 'Standard Menu (unlimited drop-downs)',
+			'footer_menu_description'		=> 'Footer Menu (unlimited drop-downs)'
+			) 
+		);
 
 		// Register wp_nav_menu() in header. This is the only default menu.	 
 		register_nav_menus(array(
-			'header' => __('Header Menu (Supports 1 drop-down level)', 'volatyl')
+			'header' => __($menu_descriptions['header_menu_description'], 'volatyl')
 		));
 	
 		// Register wp_nav_menu() below header (standard menu) if selected
@@ -79,14 +87,14 @@ if (!function_exists('volatyl_setup')) {
 		
 		(($options['standardmenu'] == 1) ? 
 			register_nav_menus(array(
-				'standard' => __('Standard Menu (unlimited drop-downs)', 'volatyl')
+				'standard' => __($menu_descriptions['standard_menu_description'], 'volatyl')
 			)) : 
 		'');
 	
 		// Register wp_nav_menu() above footer (footer menu) if selected	
 		(($options['footermenu'] == 1) ?
 			register_nav_menus(array(
-				'footer' => __('Footer Menu (unlimited drop-downs)', 'volatyl')
+				'footer' => __($menu_descriptions['footer_menu_description'], 'volatyl')
 			)) :
 		'');
 	}

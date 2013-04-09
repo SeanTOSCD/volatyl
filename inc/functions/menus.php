@@ -39,7 +39,6 @@ function header_menu() {
 		printf("\t</nav>\n
 		</div>") : 
 	'');	
-	echo "</header>";
 }
  
 // Standard Menu

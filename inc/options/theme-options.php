@@ -87,7 +87,7 @@ function vol_options_do_page() {
  	 * @since Volatyl 1.0
 	 */
 	$active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'global';
-	$add_tab = array('global', 'content', 'hooks', 'license');
+	$add_tab = array('global', 'content', 'hooks', 'license', 'information');
 	
 	echo "{$tab3}<h2 class=\"nav-tab-wrapper\">\n";
 	
@@ -556,6 +556,92 @@ function vol_options_do_page() {
 		esc_attr_e('Send License Key Changes to Database', 'volatyl'),
 		"\" />\n
 		{$tab3}\t</p>\n
+		{$tab3}</form>\n\t\t";
+		
+		
+	/* Tabbed - Information
+	 *
+ 	 * @since Volatyl 1.0
+	 */	
+	} elseif ($active_tab == 'information') {	
+		echo "{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t",
+		
+		// Start information table
+		"{$tab3}<table class=\"form-table\">\n
+		<tr valign=\"top\">
+		<th scope=\"row\" valign=\"top\">",
+		__('<strong>The ', 'volatyl'), THEME_NAME, __(' Framework</strong>', 'volatyl'), ":</th><td>";
+		
+		$vol_links = array(
+			'Docs'	=> array(
+				'name'	=> 'Documentation',
+				'url'	=> 'http://volatylthemes.com/'
+			),
+			'Support'	=> array(
+				'name'	=> 'Support',
+				'url'	=> 'http://support.sdavismedia.com/'
+			),
+			'Members'	=> array(
+				'name'	=> 'Members Area',
+				'url'	=> 'http://volatylthemes.com/members/'
+			),
+			'Affiliate'	=> array(
+				'name'	=> 'Affiliate Program',
+				'url'	=> 'http://volatylthemes.com/affiliates/'
+			),
+			'Skeletons'	=> array(
+				'name'	=> 'Child Theme Skeletons',
+				'url'	=> 'http://volatylthemes.com/skeletons-market/'
+			),
+		);
+		
+		foreach ($vol_links as $vl) {
+			printf('<a href="%2$s" target="_blank"><strong>%1$s</strong></a> - ',
+				$vl['name'],
+				$vl['url']
+			);
+		}
+		echo "<a href=\"http://sdavismedia.com\" target=\"_blank\"><strong>SDavis Media</strong></a>
+		</td></tr>
+		
+		<tr valign=\"top\">
+		<th scope=\"row\" valign=\"top\">",
+		__('About the Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",
+		"{$tab3}\t\t<p>", sprintf(__('Volatyl is an %1$s project created by Sean Davis and the wonderful WordPress Codex. Along the way, thanks to %2$s, email, and public begging on <strong>Austin, TX</strong> street corners, what you have here is a unique collection of concepts and codes to help you build websites with WordPress.</p>', 'volatyl'), '<a href="http://sdavismedia.com/" target="_blank">SDavis Media</a>', '<a href="http://sdvs.me/twitter" target="_blank">Twitter</a>'),
+		"{$tab3}\t\t<p>", sprintf(__('While there\'s no clear %1$s for the public begging, those who have taken the time to help solve coding problems, share their experiences, or provide encouragement deserve to be recognized. When you see these people around the universe, thank them.', 'volatyl'), '<acronym title="Return on Investment" style="border-bottom: 1px dotted #ccc;">ROI</acronym>'), "</p>\n
+		{$tab3}\t\t<p class=\"notes\">", __('<strong>Note: </strong>There were no core code contributors. Blame all of your bugs on Sean. ;)', 'volatyl'), "</p>\n
+		</td></tr>
+		
+		<tr valign=\"top\">
+		<th scope=\"row\" valign=\"top\">",
+		__('Special thanks to:', 'volatyl'), "</th><td>";
+		
+		$thanks_yo = array(
+			'Andrew Norcross'	=> array(
+				'name'			=> 'Andrew Norcross',
+				'homepage_url'	=> 'http://andrewnorcross.com/',
+				'twitter_url'	=> 'https://twitter.com/norcross/',
+				'notes'			=> __('Norcross probably sleeps on Twitter. Anytime a development issue was faced in the creation of Volatyl, a simple tweet <em>always</em> led to his assistance. He reviewed code, suggested changes, offered solutions, and never asked for anything in return. Outstanding.', 'volatyl')
+			),
+			'Alex Mangini'	=> array(
+				'name'			=> 'Alex Mangini',
+				'homepage_url'	=> 'http://kolakube.com/',
+				'twitter_url'	=> 'https://twitter.com/afrais/',
+				'notes'			=> __('"The kid," as we like to call him, has backed Volatyl from inception to launch. Many of the features that made the final cut were put through the ultimate "your friends will tell you the truth" test by Alex. His feedback and troubleshooting efforts are greatly appreciated.', 'volatyl')
+			),
+		);
+		foreach ($thanks_yo as $ty) {
+			printf('<a href="%2$s" target="_blank"><strong>%1$s</strong></a> &middot; 
+			<a href="%3$s" target="_blank">Twitter</a><br><p>%4$s</p> ',
+				$ty['name'],
+				$ty['homepage_url'],
+				$ty['twitter_url'],
+				$ty['notes']
+			);
+		}
+		echo "</td></tr>
+		
+		{$tab3}\t</table>
 		{$tab3}</form>\n\t\t";
 
 	// Tab checker - WTF? Settings

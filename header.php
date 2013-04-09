@@ -33,7 +33,7 @@ $title,
 (!empty($tagline) && (is_home() || is_front_page()) ? " | $tagline" : ''),
 
 // Add a page number if necessary:
-($page >= 2 || $page >= 2 ? ' | ' . sprintf(__('Page %s', 'volatyl'), max($paged, $page)) : ''),
+($paged >= 2 || $page >= 2 ? ' | ' . sprintf(__('Page %s', 'volatyl'), max($paged, $page)) : ''),
 
 "</title>\n
 <link rel=\"profile\" href=\"http://gmpg.org/xfn/11\" />\n

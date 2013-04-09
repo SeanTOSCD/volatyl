@@ -17,9 +17,9 @@ $search_text = apply_filters('search_text', array(
 	) 
 );
 
-echo "<form method=\"get\" id=\"searchform\" action=\"", esc_url(home_url('/')), "\" role=\"search\">\n
-\t<label for=\"s\" class=\"assistive-text\">", 
-__('Search', 'volatyl'), "</label>\n
-\t<input type=\"text\" class=\"field\" name=\"s\" value=\"", esc_attr(get_search_query()), "\" id=\"s\" placeholder=\"", esc_attr_e($search_text['search_field_text'], 'volatyl'), "\" />\n
-\t<input type=\"submit\" class=\"submit\" name=\"submit\" id=\"searchsubmit\" value=\"", esc_attr_e($search_text['search_submit_text'], 'volatyl'), "\" />\n
-</form>";
+printf('<form method="get" id="searchform" action="%1$s" role="search"><label for="s" class="assistive-text">' . __('Search', 'volatyl') . '</label><input type="text" class="field" name="s" value="%2$s" id="s" placeholder="%3$s" /><input type="submit" class="submit" name="submit" id="searchsubmit" value="%4$s" /></form>', 
+	esc_url(home_url('/')), 
+	esc_attr(get_search_query()), 
+	esc_attr($search_text['search_field_text'], 'volatyl'), 
+	esc_attr($search_text['search_submit_text'], 'volatyl')
+);
