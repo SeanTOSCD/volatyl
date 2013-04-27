@@ -28,7 +28,7 @@ function header_menu() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	(($options_content['headermenu'] == 1 && ! is_page_template('custom-landing.php')) ?
+	(($options_content['headermenu'] == 1 && ! is_page_template('custom-landing.php') && (true == has_nav_menu('header'))) ?
 		printf("<div id=\"header-menu-container\" class=\"header-menu-wrap\">
 		<div class=\"header-menu-toggle\">
 		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\"><span class=\"header-open\">") . printf(__($header_menu_toggle['header_open'], 'volatyl')) . printf("</span></a>

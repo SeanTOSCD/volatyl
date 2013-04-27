@@ -80,6 +80,7 @@ function volatyl_content_default_settings() {
 		'fatfooter'				=> 0,
 		'widgets'				=> 1,
 		'pagination'			=> 0,
+		'by-post-format'		=> 1,
 		'by-date-post'			=> 1,
 		'by-author-post'		=> 1,
 		'by-comments-post'		=> 1,

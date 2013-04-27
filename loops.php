@@ -49,7 +49,7 @@ function vol_content() {
 			// Da loop
 			while (have_posts()) { 
 				the_post();
-				get_template_part('templates/content', get_post_format());
+				get_template_part('templates/content');
 			}
 			
 			pagination_type(); // /inc/functions/page-nav.php
@@ -70,11 +70,13 @@ function vol_content() {
 					vol_before_content_column() :
 					do_action('vol_before_content_column')) :
 			'');
+			
+			$postformat = (get_post_format() ? get_post_format() : 'single');
 		
 			// Da loop
 			while (have_posts()) { 
 				the_post();
-				get_template_part('templates/content', 'single');
+				get_template_part('templates/content', $postformat);
 			}
 
 			// vol_after_content_column

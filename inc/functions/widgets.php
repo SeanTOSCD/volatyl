@@ -78,7 +78,7 @@ function default_widget() {
 		\t\t<h4 class=\"widget-title\">\n" .
 		__('Default Widget', 'volatyl') . 
 		"\t\t</h4>\n
-		\t\t<p>" . __('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="wp-admin/widgets.php">widgets page</a> of your WordPress dashboard.', 'volatyl') . "</p>\n
+		\t\t<p>" . __('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the <a href="' . admin_url('/widgets.php') . '">widgets page</a> of your WordPress dashboard.', 'volatyl') . "</p>\n
 		\t</aside>\n" : 
 	'');
 }

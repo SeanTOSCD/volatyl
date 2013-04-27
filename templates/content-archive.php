@@ -7,8 +7,8 @@
  *******************************************************************
  *
  * Archives use this template to output content. To override this
- * template in a child theme, copy this file into the root of your child
- * theme folder and make ADJUSTMENTS there. Use this file as a starting
+ * template in a child theme, copy this file into the root/templates folder
+ * of your child theme and make ADJUSTMENTS there. Use this file as a starting
  * point so you don't lose any variables, constants, etc.
  *
  * This template covers the actual archives title, description, <article>s 
@@ -25,54 +25,60 @@ $archive_title = apply_filters('archive_title', array(
 	'monthly_title'		=> 'Monthly Archives:',
 	'yearly_title'		=> 'Yearly Archives:'
 	)
-);
+); ?>
 
-echo "\t<header class=\"page-header\">\n
-\t\t<h1 class=\"page-title\">";
-if (is_category()) {
-	printf(__($archive_title['cat_title'] . ' %s', 'volatyl'), '<span>' . single_cat_title('', false) . '</span>');
-} elseif (is_tag()) {
-	printf(__($archive_title['tag_title'] . ' %s', 'volatyl'), '<span>' . single_tag_title('', false) . '</span>');
-} elseif (is_author()) {
+<header class="page-header">
+	<h1 class="page-title">
+		<?php 
+		if (is_category()) {
+			printf(__($archive_title['cat_title'] . ' %s', 'volatyl'), '<span>' . single_cat_title('', false) . '</span>');
+		} elseif (is_tag()) {
+			printf(__($archive_title['tag_title'] . ' %s', 'volatyl'), '<span>' . single_tag_title('', false) . '</span>');
+		} elseif (is_author()) {
 
-	// Queue the first post, that way we know
-	// what author we're dealing with (if that is the case)
-	the_post();
-	printf(__($archive_title['author_title'] . ' %s', 'volatyl'), '<span class="vcard"><a class="fn" href="' . get_author_posts_url(get_the_author_meta("ID")) . '" title="' . esc_attr(get_the_author()) . '">' . get_the_author() . '</a></span>');
+			// Queue the first post, that way we know
+			// what author we're dealing with (if that is the case)
+			the_post();
+			printf(__($archive_title['author_title'] . ' %s', 'volatyl'), '<span class="vcard"><a class="fn" href="' . get_author_posts_url(get_the_author_meta("ID")) . '" title="' . esc_attr(get_the_author()) . '">' . get_the_author() . '</a></span>');
 
-	// Since we called the_post() above, we need to
-	// rewind the loop back to the beginning that way
-	// we can run the loop properly, in full.
-	rewind_posts();
-} elseif (is_day()) {
-	printf(__($archive_title['daily_title'] . ' %s', 'volatyl'), '<span>' . get_the_date() . '</span>');
-} elseif (is_month()) {
-	printf(__($archive_title['monthly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('F Y') . '</span>');
-} elseif (is_year()) {
-	printf(__($archive_title['yearly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('Y') . '</span>');
-} else {
-	_e('Archives', 'volatyl');
-}
-echo "\t\t</h1>\n";
-if (is_category()) {
+			// Since we called the_post() above, we need to
+			// rewind the loop back to the beginning that way
+			// we can run the loop properly, in full.
+			rewind_posts();
+		} elseif (is_day()) {
+			printf(__($archive_title['daily_title'] . ' %s', 'volatyl'), '<span>' . get_the_date() . '</span>');
+		} elseif (is_month()) {
+			printf(__($archive_title['monthly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('F Y') . '</span>');
+		} elseif (is_year()) {
+			printf(__($archive_title['yearly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('Y') . '</span>');
+		} else {
+			_e('Archives', 'volatyl');
+		} ?>
+	</h1>
 
-	// show an optional category description
-	$category_description = category_description();
-	if (!empty($category_description))
-		echo apply_filters('category_archive_meta', '<div class="taxonomy-description">' . $category_description . '</div>');
-} elseif (is_tag()) {
+	<?php
+	if (is_author())
+		printf(__('<p class="user-description">%s</p>', 'volatyl'), get_the_author_meta('description'));
 
-	// show an optional tag description
-	$tag_description = tag_description(); 
-	if (!empty($tag_description))
-		echo apply_filters('tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>');
-}
-echo "\t</header>";
+	if (is_category()) {
 
+		// show an optional category description
+		$category_description = category_description();
+		if (!empty($category_description))
+			echo apply_filters('category_archive_meta', '<div class="taxonomy-description">' . $category_description . '</div>');
+	} elseif (is_tag()) {
+
+		// show an optional tag description
+		$tag_description = tag_description(); 
+		if (!empty($tag_description))
+			echo apply_filters('tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>');
+	} ?>
+</header>
+
+<?php
 // Da loop
 while (have_posts()) {
 	the_post();
 	get_template_part('templates/content', get_post_format());
 }
-
 pagination_type();

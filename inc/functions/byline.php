@@ -23,13 +23,28 @@ if (!function_exists('volatyl_post_meta')) {
 	function volatyl_post_meta() {
 		global $count;
 		$options_content = get_option('vol_content_options');
+		$post_format_type = ucfirst(get_post_format());
 		$byline_text = apply_filters('byline_text', array(
-			'publish_date'		=> 'on',	
+			'post_format_type'	=> $post_format_type,	
+			'publish_date'		=> 'Published on',	
 			'author_text'		=> 'by',	
 			'comments_off'		=> 'Comments off',	
 			'category_text'		=> 'Filed under:'
 			) 
 		);
+		
+		$byline_top_items = $options_content['by-date-post'] == 1 || $options_content['by-author-post'] == 1 || $options_content['by-comments-post'] == 1 || $options_content['by-edit-post'] == 1;
+		
+		$byline_categories = $options_content['by-cats'] == 1;
+		
+		if ($byline_top_items) echo "<div class=\"meta-top\">";			
+
+		// Show post format title
+		(($options_content['by-post-format'] == 1) ?
+			((get_post_format() != false) ?
+				printf('<span class="post-format">' . __($byline_text['post_format_type'] . ': ', 'volatyl') . '</span>') : 
+			'') : 
+		'');
 
 		// Show post date
 		(($options_content['by-date-post'] == 1) ?
@@ -92,15 +107,21 @@ if (!function_exists('volatyl_post_meta')) {
 	
 		// Show post edit link
 		(($options_content['by-edit-post'] == 1) ? edit_post_link(__('Edit', 'volatyl'), '<span class="edit-link"> ', '</span> ') : '');
+		
+		if ($byline_top_items) echo "</div>";			
+		
+		if ($byline_categories) echo "<div class=\"meta-bottom\">";
 	
 		// Show post categories
 		if ($options_content['by-cats'] == 1) {
 	
 			// Only place cats on new line if other byline items are removed
-			(($options_content['by-date-post'] == 1 || $options_content['by-author-post'] == 1 || $options_content['by-comments-post'] == 1) ? printf("<br>") : '');
 			_e('<span class="cat-title">' . $byline_text['category_text'] . '</span> <span class="meta-category">', 'volatyl');
 			the_category(', ');
 			_e('</span>', 'volatyl');
 		}
+		
+		//
+		if ($byline_categories) echo "</div>";	
 	}
 }

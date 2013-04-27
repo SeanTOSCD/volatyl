@@ -7,8 +7,8 @@
  *******************************************************************
  *
  * Pages use this template to output Page content. To override this
- * template in a child theme, copy this file into the root of your child
- * theme folder and make ADJUSTMENTS there. Use this file as a starting
+ * template in a child theme, copy this file into the root/templates folder
+ * of your child theme and make ADJUSTMENTS there. Use this file as a starting
  * point so you don't lose any variables, constants, etc.
  *
  * This template covers the basic Page <article> and associated
@@ -23,20 +23,21 @@ global $options, $tab3;
 $options = get_option('vol_content_options');
 
 // Custom filter
-$page_page_nav = apply_filters('page_page_nav', 'Pages:');
+$page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
 
-echo "\t<article id=\"post-", the_ID(), "\"",
-post_class(), ">\n
-\t\t<header class=\"entry-header\">\n
-{$tab3}<h1 class=\"entry-title\">", the_title(), "</h1>\n
-\t\t</header>\n
-\t\t<section class=\"entry-content\">\n",  the_content();
-(($options['pagecomments'] == 1) ?
-	((comments_open() || '0' != get_comments_number()) ?
-		comments_template('', true) :
-	'') :
-'');
-
-wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>'));
-echo "\t\t</section>\n
-\t</article>\n";
+<article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
+	<header class="entry-header">
+		<h1 class="entry-title"><?php the_title(); ?></h1>
+	</header>
+	<section class="entry-content">
+	
+		<?php 
+		the_content(); 
+		
+		if ($options['pagecomments'] == 1)
+			((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : '');
+			
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
+		
+	</section>
+</article>

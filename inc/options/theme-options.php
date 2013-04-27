@@ -350,8 +350,6 @@ function vol_options_do_page() {
 			__(' <span style="margin-right: 10px;">Hide on:</span> ', 'volatyl');
 			
 			switch ($hook['name']) {
-				case 'vol_before_article_header':
-				case 'vol_after_article_header':
 				case 'vol_post_footer':
 					echo '';
 					break;
@@ -368,8 +366,6 @@ function vol_options_do_page() {
 			}
 			
 			switch ($hook['name']) {
-				case 'vol_before_article_header':
-				case 'vol_after_article_header':
 				case 'vol_post_footer':
 				case 'vol_below_first_post':
 					echo '';
@@ -754,3 +750,12 @@ function vol_sanitize_license($new) {
 		delete_option('vol_license_key_status'); 
 	return $new;
 }
+
+// Add Twitter user profile contact method field
+function volatyl_user_profile_fields( $contactmethods ) {
+
+	// Add Twitter field
+	$contactmethods['twitter'] = 'Twitter Name (no @)';
+	return $contactmethods;
+}
+add_filter('user_contactmethods','volatyl_user_profile_fields',10,1);

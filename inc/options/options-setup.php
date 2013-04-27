@@ -197,12 +197,16 @@ function volatyl_content() {
 // Post Settings on the "Content" tab
 function volatyl_post() {
 	$vol_post = array(
-		'Byline Date'		=> array(
+		'Byline Post Format'=> array(
 			'table_name'	=> __('</table><h3>Post Settings</h3>', 'volatyl'),
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
 			'th'			=> __('<th scope="row">Display Post Byline Elements</th>', 'volatyl'),
 			'td'			=> '<td>',
+			'title'			=> 'by-post-format',
+			'label'			=> __('Post Format', 'volatyl'),
+		),
+		'Byline Date' 	=> array(
 			'title'			=> 'by-date-post',
 			'label'			=> __('Date', 'volatyl'),
 		),

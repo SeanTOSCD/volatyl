@@ -24,7 +24,7 @@ $comments_text = apply_filters('comments_text', array(
 	'comments_closed'		=> 'Comments are closed.',
 	'older_comments'		=> '&larr; Older comments',
 	'newer_comments'		=> 'Newer comments &rarr;',
-	'comment_reply_title'	=> 'Leave a Reply ',
+	'comment_reply_title'	=> 'Leave a Reply',
 	'comment_submit'		=> 'Submit Comment'
 	) 
 );
@@ -38,7 +38,9 @@ if (post_password_required())
 	return;
 	
 	// Otherwise...
-	echo "<div id=\"comments\">\n";
+	echo "<div id=\"comments\">\n",
+	"<div class=\"comments-wrap\">",
+	"<div class=\"comments-content\">";
 	if (have_comments()) {
 		echo "\t<span class=\"comments-title\">\n", 
 		sprintf($comments_title, number_format_i18n(comments_only_count($count))), 
@@ -129,7 +131,8 @@ echo ((!comments_open() && '0' != get_comments_number() && post_type_supports(ge
 comment_form( 
 	array( 
 		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" rows="8" aria-required="true"></textarea></p>',
-		'title_reply'			=> '<h3 id="reply-title">' . __($comments_text['comment_reply_title'], 'volatyl') . '</h3>',
+		'comment_notes_after'	=> '',
+		'title_reply'			=> __($comments_text['comment_reply_title'] . ' ', 'volatyl'),
 		'cancel_reply_link'		=> '<span class="cancel-reply">' . __('Cancel Reply', 'volatyl') . '</span>',
 		'label_submit'			=> __($comments_text['comment_submit'], 'volatyl'),
 		'fields'				=> apply_filters('comment_form_default_fields', 
@@ -144,4 +147,4 @@ comment_form(
 		)
 	) 
 );
-echo "</div>";
+echo "</div></div></div>";

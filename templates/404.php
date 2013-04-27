@@ -7,38 +7,50 @@
  *******************************************************************
  *
  * 404 error pages use this template to output content. To override this
- * template in a child theme, copy this file into the root of your child
- * theme folder and make ADJUSTMENTS there. Use this file as a starting
+ * template in a child theme, copy this file into the root/templates folder
+ * of your child theme and make ADJUSTMENTS there. Use this file as a starting
  * point so you don't lose any variables, constants, etc.
  *
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $tab3;
-echo "\t<article id=\"post-0\" class=\"post error404 not-found\">
-\t\t<header class=\"entry-header\">\n
-{$tab3}<h1 class=\"entry-title\">", __('404, eh? Well that\'s no good.', 'volatyl'), "</h1>
-\t\t</header>\n
-\t\t<section class=\"entry-content\">\n
-{$tab3}<p>". __('We can\'t change the past but let\'s try to make things right for the future. Use the search form and other tools below to find what you were looking for.', 'volatyl'), "</p>\n";
-get_search_form();
-the_widget('WP_Widget_Recent_Posts');
-echo "{$tab3}<div class=\"widget\">\n
-{$tab3}\t<h2 class=\"widgettitle\">", __('Most Used Categories', 'volatyl'), "</h2>\n
-{$tab3}\t<ul>\n";
-wp_list_categories(array(
-	'orderby' 	=> 'count', 
-	'order' 	=> 'DESC', 
-	'title_li' 	=> '', 
-	'number' 	=> 10, 
-	'depth' 	=> -1, 
-));
-echo "{$tab3}\t</ul>\n
-</div>";
+global $tab3; ?>
 
-// translators: %1$s: smilie
-$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
-the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content");
-the_widget('WP_Widget_Tag_Cloud');
-echo "\t\t</section	>\n
-\t</article>\n";
+<article id="post-0" class="post error404 not-found">
+	<header class="entry-header">
+		<h1 class="entry-title">
+			<?php _e('404, eh? Well that\'s no good.', 'volatyl'); ?>
+		</h1>
+	</header>
+	<section class="entry-content">
+		<p>
+			<?php _e('We can\'t change the past but let\'s try to make things right for the future. Use the search form and other tools below to find what you were looking for.', 'volatyl'); ?>
+		</p>
+		<?php get_search_form();
+		the_widget('WP_Widget_Recent_Posts'); ?>
+		
+		<div class="widget">
+			<h2 class="widgettitle">
+				<?php _e('Most Used Categories', 'volatyl'); ?>
+			</h2>
+			<ul>
+			
+				<?php
+				wp_list_categories(array(
+					'orderby' 	=> 'count', 
+					'order' 	=> 'DESC', 
+					'title_li' 	=> '', 
+					'number' 	=> 10, 
+					'depth' 	=> -1, 
+				)); ?>
+			
+			</ul>
+		</div>
+		
+		<?php 
+		// translators: %1$s: smilie
+		$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
+		the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content");
+		the_widget('WP_Widget_Tag_Cloud'); ?>
+	</section>
+</article>

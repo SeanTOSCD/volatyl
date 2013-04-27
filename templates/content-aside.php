@@ -1,12 +1,12 @@
 <?php
-/** content-single.php
+/** content-aside.php
  *
  ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
  ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * Single posts use this template to output content. To override this
+ * "Aside" post formats use this template to output content. To override this
  * template in a child theme, copy this file into the root/templates folder
  * of your child theme and make ADJUSTMENTS there. Use this file as a starting
  * point so you don't lose any variables, constants, etc.
@@ -27,7 +27,7 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
 
-	<?php
+	<?php 
 	// vol_before_article_header
 	(($options['switch_vol_before_article_header'] == 0) ?
 		(($options['posts_vol_before_article_header'] == 0) ?
@@ -39,16 +39,16 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 		<h1 class="entry-title">
 			<?php the_title(); ?>
 		</h1>
-		
+
 		<?php
-		if ($options_posts['by-date-post'] == 1 || $options_posts['by-author-post'] == 1 || $options_posts['by-comments-post'] == 1 || $options_posts['by-edit-post'] == 1 || $options_posts['by-cats'] == 1) { ?>
+		if ($options_posts['by-post-format'] == 1 || $options_posts['by-date-post'] == 1 || $options_posts['by-author-post'] == 1 || $options_posts['by-comments-post'] == 1 || $options_posts['by-edit-post'] == 1 || $options_posts['by-cats'] == 1) { ?>
 			<div class="entry-meta">
 				<?php volatyl_post_meta(); ?>
 			</div>
 		<?php } ?>
 
 	</header>
-		
+
 	<?php
 	(($options_content['featuredimage'] == 1) ?
 		the_post_thumbnail('post-thumbnail', array(
@@ -69,15 +69,14 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 
 		// Show feed tags
 		(($options_posts['singletags'] == 1) ?
-			the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') :
-		'');
-		
+			the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') : '');
+
 		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
 		
 	</section>
 </article>
 
-<?php 
+<?php
 // vol_post_footer
 (($options['switch_vol_post_footer'] == 0) ?
 	(($options['posts_vol_post_footer'] == 0) ?
