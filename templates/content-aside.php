@@ -17,8 +17,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options, $tab3;
-$options_content = get_option('vol_content_options');
+global $options;
 $options_posts = get_option('vol_content_options');
 
 // Custom filters
@@ -50,7 +49,7 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 	</header>
 
 	<?php
-	(($options_content['featuredimage'] == 1) ?
+	(($options_posts['singlefeaturedimage'] == 1) ?
 		the_post_thumbnail('post-thumbnail', array(
 			'class'	=> 'featured-img', 
 			'alt'	=> the_title_attribute('echo=0') 
@@ -67,11 +66,11 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 	<section class="entry-content">
 		<?php the_content();
 
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>'));
+
 		// Show feed tags
 		(($options_posts['singletags'] == 1) ?
-			the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') : '');
-
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
+			the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') : ''); ?>
 		
 	</section>
 </article>
