@@ -64,7 +64,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 	</header> 
 	
 	<?php // Activate Featured Images
-	if ($options['featuredimage'] == 1) { 
+	if ($options['feedfeaturedimage'] == 1) { 
 
 		// If Featured Image is set for a post, show thumbnail.
 		if (has_post_thumbnail()) { ?>
@@ -87,12 +87,13 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 		<section class="entry-content">
 			<?php the_content(__($more_link_text, 'volatyl'));
 	
+			// Navigate paginated posts
+			wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>'));
+	
 			// Show feed tags
 			if ($options['feedtags'] == 1 && !has_post_format('aside'))
-				the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>');
-	
-			// Navigate paginated posts
-			wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
+				the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>'); ?>
+				
 		</section>
 	<?php } ?>
 </article>
