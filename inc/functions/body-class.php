@@ -20,7 +20,7 @@
  *
  * @since Volatyl 1.0
  */
-function landing_body_class($classes) {
+function page_template_body_class($classes) {
 	
 	// add class name to the $classes array based on conditions
 	if (is_page_template('custom-landing.php'))
@@ -31,7 +31,7 @@ function landing_body_class($classes) {
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'landing_body_class');
+add_filter('body_class', 'page_template_body_class');
 
 
 /** Body class based on column structure
