@@ -14,7 +14,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $tab3; ?>
+?>
 
 <article id="post-0" class="post error404 not-found">
 	<header class="entry-header">

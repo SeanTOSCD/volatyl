@@ -12,7 +12,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options, $tab3, $tab6;
+global $options;
 	
 // 404 error page
 if (is_404()) {

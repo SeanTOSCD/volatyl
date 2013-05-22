@@ -17,7 +17,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $post, $options, $tab3;
+global $post, $options;
 $metadata = wp_get_attachment_metadata();
 $attachment_size = apply_filters('volatyl_attachment_size', array(1200, 1200));
 $attachment_page_nav = apply_filters('attachment_page_nav', 'Pages:');
