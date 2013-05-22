@@ -1,5 +1,5 @@
 <?php 
-/** content-func.php
+/** content.php
  *
  ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
  ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
