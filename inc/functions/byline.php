@@ -25,7 +25,7 @@ if (!function_exists('volatyl_post_meta')) {
 		$options_content = get_option('vol_content_options');
 		$post_format_type = ucfirst(get_post_format());
 		$byline_text = apply_filters('byline_text', array(
-			'post_format_type'	=> $post_format_type,	
+			'post_format_type'	=> $post_format_type . ': ',	
 			'publish_date'		=> 'Published on',	
 			'author_text'		=> 'by',	
 			'comments_off'		=> 'Comments off',	
@@ -42,7 +42,7 @@ if (!function_exists('volatyl_post_meta')) {
 		// Show post format title
 		(($options_content['by-post-format'] == 1) ?
 			((get_post_format() != false) ?
-				printf('<span class="post-format">' . __($byline_text['post_format_type'] . ': ', 'volatyl') . '</span>') : 
+				printf('<span class="post-format">' . __($byline_text['post_format_type'], 'volatyl') . '</span>') : 
 			'') : 
 		'');
 
