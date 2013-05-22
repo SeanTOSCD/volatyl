@@ -19,7 +19,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options, $tab3;
+global $options;
 $options = get_option('vol_content_options');
 
 // Custom filter
@@ -33,11 +33,11 @@ $page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
 	
 		<?php 
 		the_content(); 
+			
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>'));
 		
 		if ($options['pagecomments'] == 1)
-			((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : '');
-			
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
+			((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : ''); ?>
 		
 	</section>
 </article>
