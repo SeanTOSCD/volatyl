@@ -241,12 +241,16 @@ function volatyl_post() {
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
-		'Featured Image'			=> array(
+		'Featured Image Feed'			=> array(
 			'tr'			=> '<tr>',
 			'th'			=> __('<th scope="row">Display Featured Images</th>', 'volatyl'),
 			'td'			=> '<td>',
-			'title'			=> 'featuredimage',
-			'label'			=> __('Display Featured Images that have been set in the Edit Post screen.', 'volatyl'),
+			'title'			=> 'feedfeaturedimage',
+			'label'			=> __('Post Feeds (home, search, archives, etc.)', 'volatyl')
+		),
+		'Featured Image Posts'			=> array(
+			'title'			=> 'singlefeaturedimage',
+			'label'			=> __('Single Posts', 'volatyl'),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
