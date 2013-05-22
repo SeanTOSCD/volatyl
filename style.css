@@ -4,7 +4,7 @@
 	Author: Volatyl Themes
 	Author URI: http://volatylthemes.com/
 	Description: Volatyl is a lightweight theme framework WordPress. The focus of Volatyl is leverage. Simple checkboxes perform complex tasks without breaking a sweat. Add content to any area of your website built-in hooks while controlling the columns layout on every single page or post. In other words, Volatyl creates unique websites with ease... period.
-	Version: 1.1.5
+	Version: 1.1.6
 	License: GNU General Public License Version 2
 	License URI: license.txt
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
@@ -73,9 +73,8 @@ pre,
 }
 
 #header-area,
-#footer-area,
+.site-footer,
 #container > .site-header,
-#container > .site-footer,
 #menu-area-standard,
 #menu-area-footer,
 #container .standard-menu-wrap,
@@ -102,9 +101,7 @@ pre,
 }
 
 #header-area,
-#footer-area,
 #container > .site-header,
-#container > .site-footer,
 .sticky .entry-header,
 .comments-content > ol > li.comment,
 .wp-caption,
@@ -390,20 +387,13 @@ td {
 	padding: 1.33334em 0;
 }
 
-#footer-area {
-	border-width: 1px 0 0;
-}
-
 #container > .site-header { 
 	border-width: 0 1px 1px;
 }
 
-#container > .site-footer { 
-	border-width: 1px 1px 0;
-}
-
 .site-footer { 
 	padding: .66667em 1.33334em; 
+	border-width: 1px 0 0;
 }
 
 
@@ -644,7 +634,6 @@ h5,
 #comments ol,
 #comments ul { 
 	padding-left: 0; 
-	padding-bottom: 1em;
 	margin: 0 0 2em 2em; 
 }
 
