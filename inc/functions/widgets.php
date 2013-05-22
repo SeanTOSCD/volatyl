@@ -16,7 +16,7 @@
 // Register widgetized areas
 function volatyl_widgets_init() {
 	register_sidebar(array(
-		'name' 			=> __('Sidebar 1 &#8212; Site Default', 'volatyl'),
+		'name' 			=> __('Standard Sidebar 1', 'volatyl'),
 		'id' 			=> 'sidebar-1',
 		'description'   => __('In all layouts including sidebars, this will be the leftmost sidebar (primary).', 'volatyl'),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
@@ -25,7 +25,7 @@ function volatyl_widgets_init() {
 		'after_title' 	=> '</h4>',
 	));
 	register_sidebar(array(
-		'name' 			=> __('Sidebar 2 &#8212; Site Default', 'volatyl'),
+		'name' 			=> __('Standard Sidebar 2', 'volatyl'),
 		'id' 			=> 'sidebar-2',
 		'description'   => __('In all layouts including sidebars, this will be the right most sidebar (secondary).', 'volatyl'),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
