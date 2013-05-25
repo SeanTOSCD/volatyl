@@ -65,7 +65,7 @@ return $column_options;
  *
  * This array is used to set up the General Settings options. The array
  * fields are designed to build an HTML table and utilize the built-in
- * styling that WordPress provides for settings pages.
+ * styling that WordPress provides for settings pages (Settings API).
  *
  * The /inc/options/theme-options.php file uses the variables that hold
  * theses arrays and runs them through foreach loops to create the options
@@ -127,7 +127,24 @@ function volatyl_general() {
 }
 
 
-// Content Settings on the "Content" tab
+/** Content Settings of the "Content" tab
+ *
+ * This array is used to set up the Content Settings options. The array
+ * fields are designed to build an HTML table and utilize the built-in
+ * styling that WordPress provides for settings pages (Settings API).
+ *
+ * The /inc/options/theme-options.php file uses the variables that hold
+ * theses arrays and runs them through foreach loops to create the options
+ * fields. Not every main array key holds the same type of values. Depending
+ * on an option's placement in the table, it may opening the beginning or
+ * closing HTML tags of certain <table> elements. 
+ *
+ * The foreach loops check first to see if the array items have a certain 
+ * key in place before attempting to put it in the table. If that key doesn't
+ * exist, the foreach will move on. It's pretty cool.
+ * 
+ * @since Volatyl 1.0
+ */
 function volatyl_content() {
 	$vol_content = array(
 		'Site Title' 		=> array(
@@ -194,7 +211,25 @@ function volatyl_content() {
 	return $vol_content;
 }
 
-// Post Settings on the "Content" tab
+
+/** Post Settings of the "Content" tab
+ *
+ * This array is used to set up the Post Settings options. The array
+ * fields are designed to build an HTML table and utilize the built-in
+ * styling that WordPress provides for settings pages (Settings API).
+ *
+ * The /inc/options/theme-options.php file uses the variables that hold
+ * theses arrays and runs them through foreach loops to create the options
+ * fields. Not every main array key holds the same type of values. Depending
+ * on an option's placement in the table, it may opening the beginning or
+ * closing HTML tags of certain <table> elements. 
+ *
+ * The foreach loops check first to see if the array items have a certain 
+ * key in place before attempting to put it in the table. If that key doesn't
+ * exist, the foreach will move on. It's pretty cool.
+ * 
+ * @since Volatyl 1.0
+ */
 function volatyl_post() {
 	$vol_post = array(
 		'Byline Post Format'=> array(
@@ -281,7 +316,25 @@ function volatyl_post() {
 	return $vol_post;
 }
 
-// Page Settings on the "Content" tab
+
+/** Page Settings of the "Content" tab
+ *
+ * This array is used to set up the Page Settings options. The array
+ * fields are designed to build an HTML table and utilize the built-in
+ * styling that WordPress provides for settings pages (Settings API).
+ *
+ * The /inc/options/theme-options.php file uses the variables that hold
+ * theses arrays and runs them through foreach loops to create the options
+ * fields. Not every main array key holds the same type of values. Depending
+ * on an option's placement in the table, it may opening the beginning or
+ * closing HTML tags of certain <table> elements. 
+ *
+ * The foreach loops check first to see if the array items have a certain 
+ * key in place before attempting to put it in the table. If that key doesn't
+ * exist, the foreach will move on. It's pretty cool.
+ * 
+ * @since Volatyl 1.0
+ */
 function volatyl_page() {
 	$vol_page = array(
 		'Search Pages'		=> array(
@@ -308,7 +361,26 @@ function volatyl_page() {
 	);
 	return $vol_page;
 }
- 
+
+
+/** Volatyl Hooks of the "Hooks" tab
+ *
+ * This array is used to set up the Volatyl Hooks information. The array
+ * fields are designed to build an HTML table and utilize the built-in
+ * styling that WordPress provides for settings pages (Settings API).
+ *
+ * The /inc/options/theme-options.php file uses the variables that hold
+ * theses arrays and runs them through foreach loops to create the options
+ * fields. Not every main array key holds the same type of values. Depending
+ * on an option's placement in the table, it may opening the beginning or
+ * closing HTML tags of certain <table> elements. 
+ *
+ * The foreach loops check first to see if the array items have a certain 
+ * key in place before attempting to put it in the table. If that key doesn't
+ * exist, the foreach will move on. It's pretty cool.
+ * 
+ * @since Volatyl 1.0
+ */
 function volatyl_hooks() {
 	$vol_hooks = array(
 		'vol_before_html' 		=> array(
@@ -430,7 +502,16 @@ function volatyl_hooks() {
 	return $vol_hooks;
 }
 
-// Hooks setup	
+
+/** Volatyl Hooks Setup
+ *
+ * All Volatyl hooks are built and output here. Volatyl Hooks
+ * under the "Hooks" tab in the Volatyl Options are displayed 
+ * using the following functions as well as any custom functions
+ * that are called with a hook name from a WordPress action.
+ * 
+ * @since Volatyl 1.0
+ */	
 function vol_before_html() { 
 	global $options; 
 	echo stripslashes($options['vol_before_html']); 
