@@ -30,7 +30,7 @@
  */
 
 function vol_content() {
-	global $options, $tab3, $tab6;
+	global $options;
 	
 	echo "<div id=\"content\" class=\"site-content border-box clearfix\">";
 	

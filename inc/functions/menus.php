@@ -69,7 +69,7 @@ function standard_menu() {
 	);
 
 	/**
-	 * The header menu is replaced with a link beneath a certain screen
+	 * The standard menu is replaced with a link beneath a certain screen
 	 * width. At that point, the menu will show once the link is clicked.
 	 *
 	 * @since Volatyl 1.0
@@ -113,7 +113,7 @@ function footer_menu() {
 	);
 
 	/**
-	 * The header menu is replaced with a link beneath a certain screen
+	 * The footer menu is replaced with a link beneath a certain screen
 	 * width. At that point, the menu will show once the link is clicked.
 	 *
 	 * @since Volatyl 1.0
