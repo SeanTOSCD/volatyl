@@ -16,7 +16,7 @@
 $options = get_option('vol_general_options');
 
 if ($options['adminmenu'] == 1) {
-	function volatyl_toolbar($admin_bar) {
+	function vol_toolbar($admin_bar) {
 		$admin_bar->add_menu(array(
 			'id'			=> 'volatyl',
 			'title' 		=> 'Volatyl',
@@ -80,5 +80,5 @@ if ($options['adminmenu'] == 1) {
 			'title' 		=> __('Version: ' . THEME_VERSION, 'volatyl')
 		));
 	}
-	add_action('admin_bar_menu', 'volatyl_toolbar', 100);
+	add_action('admin_bar_menu', 'vol_toolbar', 100);
 }

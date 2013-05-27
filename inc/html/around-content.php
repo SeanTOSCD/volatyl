@@ -6,8 +6,8 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * Dumb filename, huh? The two functions here, before_content() and
- * after_content(), cover everything from the bottom of the <head> to
+ * Dumb filename, huh? The two functions here, vol_html_before_content() and
+ * vol_html_after_content(), cover everything from the bottom of the <head> to
  * the top of the main content... and the bottom of the main content
  * to the top of the site footer. They actually are "around the content."
  *
@@ -15,7 +15,7 @@
  * @since Volatyl 1.0
  */
 
-function before_content() {
+function vol_html_before_content() {
 	global $options;
 	$options = get_option('vol_hooks_options');
 	$options_content = get_option('vol_content_options');
@@ -38,8 +38,8 @@ function before_content() {
 	}
 
 	echo
-	header_frame(),
-	standard_menu_on();
+	vol_header_frame(),
+	vol_standard_menu_on();
 
 	// vol_headliner
 	if ($options['switch_vol_headliner'] == 0 && ! is_page_template('custom-landing.php') && ! is_page_template('custom-layout.php')) {
@@ -91,7 +91,7 @@ function before_content() {
 	
 }
 
-function after_content() {
+function vol_html_after_content() {
 	global $options;
 	$options = get_option('vol_hooks_options');
 	$options_content = get_option('vol_content_options');
@@ -145,8 +145,8 @@ function after_content() {
 		}
 	}
 	
-	footer_menu_on();
-	footer_frame();
+	vol_footer_menu_on();
+	vol_footer_frame();
 
 	// vol_after_html
 	if ($options['switch_vol_after_html'] == 0) {

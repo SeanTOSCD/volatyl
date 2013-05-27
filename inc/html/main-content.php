@@ -10,12 +10,12 @@
  * layout all across your site, I modularized everything in order
  * to isolate the main content area.
  *
- * standard_content() is the default columns structure based on what
+ * vol_standard_content() is the default columns structure based on what
  * you've chosen in the Volatyl Options. 
  *
- * singular_content() is the columns structure for individual posts,
+ * vol_singular_content() is the columns structure for individual posts,
  * pages, and attachments. The structure can be set on each individual
- * page type. If no site structure is selected, standard_content() will
+ * page type. If no site structure is selected, vol_standard_content() will
  * be used to match the site default. When site default is used, the 
  * layout of the individual pages will change when you changed the site
  * layout. In other words, it's awesome.
@@ -29,7 +29,7 @@
  */
 
 // Full site content structure
-function standard_content() {
+function vol_standard_content() {
 	$options_structure = get_option('vol_structure_options');
 	
 	(($options_structure['wide'] == 1) ? 
@@ -41,27 +41,27 @@ function standard_content() {
 		vol_columns() .
 		printf("</div>"));
 }
-add_action('main_content', 'standard_content');
+add_action('main_content', 'vol_standard_content');
 
 
 // Singular option content structure
-function singular_content() {
+function vol_singular_content() {
 	$options_structure = get_option('vol_structure_options');
 	
 	(($options_structure['wide'] == 1) ?
 		printf("<div id=\"main-content\" class=\"full clearfix\">
 		<div class=\"main clearfix\">") .
-		columns_singular() .
+		vol_columns_singular() .
 		printf("</div></div>") :
 		printf("\t<div id=\"main-content\" class=\"clearfix\">\n") .
-		columns_singular() .
+		vol_columns_singular() .
 		printf("\t</div>\n"));
 }
-add_action('main_content_singular', 'singular_content');
+add_action('main_content_singular', 'vol_singular_content');
 
 
 // Custom layout clean slate
-function custom_content() {
+function vol_custom_content() {
 	// This is the blank canvas where developers can create their own layout
 }
-add_action('main_content_custom_layout', 'custom_content');
+add_action('main_content_custom_layout', 'vol_custom_content');

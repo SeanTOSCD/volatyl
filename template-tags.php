@@ -12,7 +12,7 @@
  * @since Volatyl 1.0
  */
 
-if (!function_exists('volatyl_comment')) {
+if (!function_exists('vol_comment')) {
 	/**
 	 * Template for comments and pingbacks.
 	 *
@@ -21,7 +21,7 @@ if (!function_exists('volatyl_comment')) {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	function volatyl_comment($comment, $args, $depth) {
+	function vol_comment($comment, $args, $depth) {
 		global $tab3;
 		$GLOBALS['comment'] = $comment;
 		
@@ -77,7 +77,7 @@ if (!function_exists('volatyl_comment')) {
  *
  * @since Volatyl 1.0
  */
-function volatyl_categorized_blog() {
+function vol_categorized_blog() {
 	if (false === ($all_the_cool_cats = get_transient('all_the_cool_cats'))) {
 	
 		// Create an array of all the categories that are attached to posts
@@ -93,25 +93,25 @@ function volatyl_categorized_blog() {
 	if ('1' != $all_the_cool_cats)
 	
 		// This blog has more than 1 category 
-		// So volatyl_categorized_blog should return true
+		// So vol_categorized_blog should return true
 		return true;
 	else
 	
 		// This blog has only 1 category
-		// So volatyl_categorized_blog should return false
+		// So vol_categorized_blog should return false
 		return false;
 }
 
 
 /**
- * Flush out the transients used in volatyl_categorized_blog
+ * Flush out the transients used in vol_categorized_blog
  *
  * @since Volatyl 1.0
  */
-function volatyl_category_transient_flusher() {
+function vol_category_transient_flusher() {
 
 	// Like, beat it. Dig?
 	delete_transient('all_the_cool_cats');
 }
-add_action('edit_category', 'volatyl_category_transient_flusher');
-add_action('save_post', 'volatyl_category_transient_flusher');
+add_action('edit_category', 'vol_category_transient_flusher');
+add_action('save_post', 'vol_category_transient_flusher');

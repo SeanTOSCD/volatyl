@@ -8,15 +8,15 @@
  *
  * This is the main <header> element of your site. 
  *
- * The header_element() function is the <header> itself while the
- * header_frame() displays the header based on the site structure.
+ * The vol_header_element() function is the <header> itself while the
+ * vol_header_frame() displays the header based on the site structure.
  * 
  * @package Volatyl
  * @since Volatyl 1.0
  */
 
 // The standard header element
-function header_element() {
+function vol_header_element() {
 	global $options;
 	$options = get_option('vol_hooks_options');
 	$options_content = get_option('vol_content_options');
@@ -75,7 +75,7 @@ function header_element() {
 	}
 	
 	// Display header menu
-	header_menu();
+	vol_header_menu();
 
 	// vol_header_bottom - Always hide on landing page
 	if ($options['switch_vol_header_bottom'] == 0 && ! is_page_template('custom-landing.php')) {
@@ -96,13 +96,13 @@ function header_element() {
 }
 
 // The above <header> will display based on HTML structure options
-function header_frame() {
+function vol_header_frame() {
 	$options_structure = get_option('vol_structure_options');
 	
 	(($options_structure['wide'] == 1) ?
 		printf("<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n") .
-		header_element() . 
+		vol_header_element() . 
 		printf("\t</div>\n</div>\n") :
 		printf("<div id=\"container\">\n") . 
-		header_element());
+		vol_header_element());
 }

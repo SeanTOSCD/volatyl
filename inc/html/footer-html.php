@@ -8,15 +8,15 @@
  *
  * This is the main <footer> element of your site. 
  *
- * The footer_element() function is the <footer> itself while the
- * footer_frame() displays the footer based on the site structure.
+ * The vol_footer_element() function is the <footer> itself while the
+ * vol_footer_frame() displays the footer based on the site structure.
  * 
  * @package Volatyl
  * @since Volatyl 1.0
  */
 
 // The standard footer element
-function footer_element() {
+function vol_footer_element() {
 	global $options, $tab3, $tab6;
 	$options = get_option('vol_hooks_options');
 	$options_content = get_option('vol_content_options');
@@ -52,13 +52,13 @@ function footer_element() {
 	(($options_content['fatfooter'] == 1 && ! is_page_template()) ?
 		printf("\t\t<div id=\"fat-footer\" class=\"clearfix\">\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-left')) ? default_widget() : '') .
+		((!dynamic_sidebar('footer-left')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-middle')) ? default_widget() : '') .
+		((!dynamic_sidebar('footer-middle')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-right')) ? default_widget() : '') .
+		((!dynamic_sidebar('footer-right')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		\t\t</div>\n") : 
 	'');
@@ -110,13 +110,13 @@ function footer_element() {
 }
 
 // The above <footer> will display based on HTML structure options
-function footer_frame() {
+function vol_footer_frame() {
 	$options_structure = get_option('vol_structure_options');
 	
 	(($options_structure['wide'] == 1) ? 
 		printf("\t<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n") . 
-		footer_element() . 
+		vol_footer_element() . 
 		printf("\t</div>\n</div>\n") : 
-		footer_element() . 
+		vol_footer_element() . 
 		printf("</div>\n"));
 }

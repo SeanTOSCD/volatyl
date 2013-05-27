@@ -18,8 +18,8 @@ $req = get_option('require_name_email');
 $aria_req = ($req ? " aria-required='true'" : '');
 
 // Custom filters
-$comments_title = apply_filters('comments_title', __(_n('1 Comment:', '%1$s Comments:', comments_only_count($count), 'volatyl'), 'volatyl'));
-$pings_title = apply_filters('pings_title', __(_n('1 Ping:', '%1$s Pings:', get_comments_number() - comments_only_count($count), 'volatyl'), 'volatyl'));
+$comments_title = apply_filters('comments_title', __(_n('1 Comment:', '%1$s Comments:', vol_comments_only_count($count), 'volatyl'), 'volatyl'));
+$pings_title = apply_filters('pings_title', __(_n('1 Ping:', '%1$s Pings:', get_comments_number() - vol_comments_only_count($count), 'volatyl'), 'volatyl'));
 $comments_text = apply_filters('comments_text', array(  
 	'comments_closed'		=> 'Comments are closed.',
 	'older_comments'		=> '&larr; Older comments',
@@ -43,7 +43,7 @@ if (post_password_required())
 	"<div class=\"comments-content\">";
 	if (have_comments()) {
 		echo "\t<span class=\"comments-title\">\n", 
-		sprintf($comments_title, number_format_i18n(comments_only_count($count))), 
+		sprintf($comments_title, number_format_i18n(vol_comments_only_count($count))), 
 		"</span>\n";
 		
 		// Are there comments to navigate through?
@@ -61,15 +61,15 @@ if (post_password_required())
 		
 
 		/* Loop through and list the comments. Tell wp_list_comments()
-		 * to use volatyl_comment() to format the comments.
+		 * to use vol_comment() to format the comments.
 		 * If you want to overload this in a child theme then you can
-		 * define volatyl_comment() and that will be used instead.
+		 * define vol_comment() and that will be used instead.
 		 *
 		 * Only comments will be displayed here. No pings!!!!
 		 */
 		wp_list_comments( 
 			array( 
-				'callback'	=> 'volatyl_comment',
+				'callback'	=> 'vol_comment',
 				'type'		=> 'comment', 
 			) 
 		);
@@ -100,7 +100,7 @@ if (post_password_required())
 			// Here are the trackbacks and pingbacks
 			wp_list_comments( 
 				array( 
-					'callback'	=> 'volatyl_comment',
+					'callback'	=> 'vol_comment',
 					'type'		=> 'pings', 
 				) 
 			);

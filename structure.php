@@ -12,9 +12,9 @@
  * structure from different parts of the framework.
  *
  * Here, there's a simple call to the header.php and footer.php files.
- * in between those, before_content() and after_content() are called from
- * the /inc/html/around-content.php file covering everything above and 
- * below the main site content.
+ * in between those, vol_html_before_content() and vol_html_after_content() 
+ * are called from the /inc/html/around-content.php file covering everything 
+ * above and below the main site content.
  *
  * Between those functions is where the control is needed. do_action() is
  * used to render the site layout based on conditions. "main_content" is
@@ -31,7 +31,7 @@ function volatyl() {
 	global $post;
 	
 	get_header();
-	before_content();
+	vol_html_before_content();
 	if (is_page_template('custom-layout.php'))
 	
 		// Activated when the "Custom Layout" Template is used on a Page
@@ -44,6 +44,6 @@ function volatyl() {
 		
 		// Used as the site's default layout set in the Structure Options
 		do_action('main_content');
-	after_content();
+	vol_html_after_content();
 	get_footer();
 }

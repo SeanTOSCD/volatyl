@@ -125,9 +125,9 @@ function vol_options_do_page() {
 		__('Wide (100%) HTML Structure', 'volatyl'), 
 		"</th>\n
 		{$tab6}<td>\n
-		{$tab6}\t<input class=\"checkbox-space\" id=\"vol_structure_options[wide]\" name=\"vol_structure_options[wide]\" type=\"checkbox\" value=\"1\"",
-		checked('1', $options_structure['wide']), "/>\n
-		{$tab6}\t<label class=\"description\" for=\"vol_structure_options[wide]\">", 
+		{$tab6}\t<input class=\"checkbox-space\" id=\"vol_structure_options[wide]\" name=\"vol_structure_options[wide]\" type=\"checkbox\" value=\"1\"";
+		checked('1', $options_structure['wide'], true);
+		echo "/>\n{$tab6}\t<label class=\"description\" for=\"vol_structure_options[wide]\">", 
 		__('Activate (Recommended - A narrow structure look can still be achieved with the <em>.main</em> class.)', 'volatyl'), 
 		"</label>\n", "{$tab6}</td>\n", "{$tab3}\t\t</tr>\n",
 
@@ -183,9 +183,9 @@ function vol_options_do_page() {
 			$vg['td'], "\n",	
 			"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_general_options[", 
 			$vg['title'], "]\" name=\"vol_general_options[", 
-			$vg['title'], "]\" type=\"checkbox\" value=\"1\"",
-			checked('1', $options_general[$vg['title']]),
-		"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_general_options[", 
+			$vg['title'], "]\" type=\"checkbox\" value=\"1\"";
+			checked('1', $options_general[$vg['title']], true);
+			echo "/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_general_options[", 
 			$vg['title'], "]\">", 
 			$vg['label'], "</label>\n{$tab6}\t\t",
 			(isset($vg['notes']) ? $vg['notes'] : ''), "\n{$tab6}",
@@ -261,7 +261,7 @@ function vol_options_do_page() {
 	
 	
 		/** With the Volatyl content settings collected in the 
-		 * $varrays variable, create radio button and corresponding
+		 * $varrays variable, create checkbox and corresponding
 		 * label for each option setting.
 		 *
 		 * Close out the table, display submit button to save
@@ -280,9 +280,9 @@ function vol_options_do_page() {
 			// Input and labels for content options
 			"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_content_options[", 
 			$va['title'], "]\" name=\"vol_content_options[", 
-			$va['title'], "]\" type=\"checkbox\" value=\"1\"",
-			checked('1', $options_content[$va['title']]),
-			"/>\n{$tab6}\t<label class=\"description label-space\" for=\"vol_content_options[", 
+			$va['title'], "]\" type=\"checkbox\" value=\"1\"";
+			checked('1', $options_content[$va['title']], true);
+			echo ">\n{$tab6}\t<label class=\"description label-space\" for=\"vol_content_options[", 
 			$va['title'], "]\">", 
 			$va['label'], "</label>\n{$tab6}\t\t",
 			
@@ -357,9 +357,9 @@ function vol_options_do_page() {
 					// Hide on blog
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[home_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[home_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['home_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[home_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['home_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[home_",
 					$hook['name'], "]\">", 
 					__(' Blog ', 'volatyl'),
 					"</label>\n";
@@ -374,9 +374,9 @@ function vol_options_do_page() {
 					// Hide on front page
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[front_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[front_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['front_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[front_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['front_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[front_",
 					$hook['name'], "]\">", 
 					__(' Front Page ', 'volatyl'),
 					"</label>\n";
@@ -390,9 +390,9 @@ function vol_options_do_page() {
 					// Hide on posts
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[posts_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[posts_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['posts_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[posts_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['posts_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[posts_",
 					$hook['name'], "]\">", 
 					__(' Posts ', 'volatyl'),
 					"</label>\n";
@@ -411,9 +411,9 @@ function vol_options_do_page() {
 					// Hide on pages
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[pages_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[pages_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['pages_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[pages_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['pages_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[pages_",
 					$hook['name'], "]\">", 
 					__(' Pages ', 'volatyl'),
 					"</label>\n";
@@ -430,9 +430,9 @@ function vol_options_do_page() {
 					// Hide on archives
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[archive_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[archive_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['archive_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[archive_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['archive_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[archive_",
 					$hook['name'], "]\">", 
 					__(' Archives ', 'volatyl'),
 					"</label>\n";
@@ -451,9 +451,9 @@ function vol_options_do_page() {
 					// Hide on search
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[search_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[search_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['search_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[search_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['search_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[search_",
 					$hook['name'], "]\">", 
 					__(' Search ', 'volatyl'),
 					"</label>\n";
@@ -472,9 +472,9 @@ function vol_options_do_page() {
 					// Hide on 404
 					echo "{$tab3}\t\t<input id=\"vol_hooks_options[404_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[404_", 
-					$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-					checked('1', $options_hooks['404_' . $hook['name']]),
-					" />\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[404_",
+					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+					checked('1', $options_hooks['404_' . $hook['name']], true);
+					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[404_",
 					$hook['name'], "]\">", 
 					__(' 404 ', 'volatyl'),
 					"</label>\n";
@@ -483,9 +483,9 @@ function vol_options_do_page() {
 			// Disable hooks
 			echo "<br>{$tab3}\t\t<input id=\"vol_hooks_options[switch_", 
 			$hook['name'], "]\" name=\"vol_hooks_options[switch_", 
-			$hook['name'], "]\" type=\"checkbox\" value=\"1\"",
-			checked('1', $options_hooks['switch_' . $hook['name']]),
-			" />\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[switch_", 
+			$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
+			checked('1', $options_hooks['switch_' . $hook['name']], true);
+			echo "/>\n{$tab3}\t\t<label class=\"description label-space\" for=\"vol_hooks_options[switch_", 
 			$hook['name'], "]\">", 
 			__(' Disable hook ', 'volatyl') . 
 			"<span class=\"notes\">" . 

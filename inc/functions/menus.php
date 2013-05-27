@@ -13,7 +13,7 @@
  * @since Volatyl 1.0
  */	
 
-function header_menu() {
+function vol_header_menu() {
 	$header_menu_toggle = apply_filters('header_menu_toggle', array(
 		'header_open'		=> 'Menu',
 		'header_close'		=> 'Hide'
@@ -42,7 +42,7 @@ function header_menu() {
 }
  
 // Standard Menu
-function standard_menu_on() {
+function vol_standard_menu_on() {
 	$options_structure = get_option('vol_structure_options');
 	$options_content = get_option('vol_content_options');
 	
@@ -51,17 +51,17 @@ function standard_menu_on() {
 		(($options_content['standardmenu'] == 1) ?
 			printf("<div id=\"menu-area-standard\" class=\"full\">
 			<div class=\"main\">") .
-			standard_menu() .
+			vol_standard_menu() .
 			printf("</div></div>") : 
 		'') :
 		(($options_content['standardmenu'] == 1) ? 
-			standard_menu() : 
+			vol_standard_menu() : 
 		'')
 	);
 }
 
 // The standard menu itself... called above
-function standard_menu() {	
+function vol_standard_menu() {	
 	$standard_menu_toggle = apply_filters('standard_menu_toggle', array(
 		'standard_open'		=> 'Navigation',
 		'standard_close'	=> 'Hide'
@@ -86,7 +86,7 @@ function standard_menu() {
 }
 
 // Footer Menu
-function footer_menu_on() {
+function vol_footer_menu_on() {
 	$options_structure = get_option('vol_structure_options');
 	$options_content = get_option('vol_content_options');
 	
@@ -95,17 +95,17 @@ function footer_menu_on() {
 		(($options_content['footermenu'] == 1) ?
 			printf("<div id=\"menu-area-footer\" class=\"full\">
 			<div class=\"main\">") .
-			footer_menu() .
+			vol_footer_menu() .
 			printf("</div></div>") : 
 		'') :
 		(($options_content['footermenu'] == 1) ? 
-			footer_menu() : 
+			vol_footer_menu() : 
 		'')
 	);
 }
 
 // The footer menu itself... called above
-function footer_menu() {
+function vol_footer_menu() {
 	$footer_menu_toggle = apply_filters('footer_menu_toggle', array(
 		'footer_open'		=> 'Navigation',
 		'footer_close'		=> 'Hide'

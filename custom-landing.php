@@ -22,7 +22,7 @@
 $options_structure = get_option('vol_structure_options');
 
 get_header();
-header_frame();
+vol_header_frame();
 (($options_structure['wide'] == 1) ?
 	printf("<div id=\"main-content\" class=\"full clearfix\">
 	<div class=\"main clearfix\">") . 
@@ -32,5 +32,5 @@ header_frame();
 	vol_content() . 
 	printf("</div>") 
 );
-footer_frame();
+vol_footer_frame();
 get_footer();

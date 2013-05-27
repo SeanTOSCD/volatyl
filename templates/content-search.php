@@ -33,4 +33,4 @@ while (have_posts()) {
 		continue;
 	get_template_part('templates/content', get_post_format());
 }
-pagination_type();
+vol_pagination_type();

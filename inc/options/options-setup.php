@@ -270,20 +270,20 @@ function volatyl_post() {
 			'title'			=> 'homeexcerpt',
 			'label'			=> __('Display excerpts instead of full posts.', 'volatyl'),
 		),
-		'Excerpt Link'			=> array(
+		'Excerpt Link'		=> array(
 			'title'			=> 'excerptlink',
 			'label'			=> __('Link to full article in excerpts.', 'volatyl'),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
-		'Featured Image Feed'			=> array(
+		'Featured Image Feed'	=> array(
 			'tr'			=> '<tr>',
 			'th'			=> __('<th scope="row">Display Featured Images</th>', 'volatyl'),
 			'td'			=> '<td>',
 			'title'			=> 'feedfeaturedimage',
 			'label'			=> __('Post Feeds (home, search, archives, etc.)', 'volatyl')
 		),
-		'Featured Image Posts'			=> array(
+		'Featured Image Posts'	=> array(
 			'title'			=> 'singlefeaturedimage',
 			'label'			=> __('Single Posts', 'volatyl'),
 			'td_end'		=> '</td>',

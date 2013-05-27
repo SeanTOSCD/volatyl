@@ -100,7 +100,7 @@ if (!function_exists('vol_pagination')) {
 }
 
 // Pagination options - Standard or Fancy?
-function pagination_type() {
+function vol_pagination_type() {
 	$options_content = get_option('vol_content_options');
 	
 	(($options_content['pagination'] == 1 && (is_home() || is_archive() || is_search())) ? vol_pagination() : volatyl_content_nav('nav-below'));

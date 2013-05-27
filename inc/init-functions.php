@@ -54,8 +54,8 @@ require_once (THEME_FUNCTIONS . '/body-class.php');
 
 
 //  Sets up theme defaults and registers support for various WordPress features
-if (!function_exists('volatyl_setup')) {
-	function volatyl_setup() {
+if (!function_exists('vol_setup')) {
+	function vol_setup() {
 
 		// WordPress says it's required. *Shoulder shrug*
 		if (!isset($content_width)) $content_width = 960;
@@ -99,14 +99,14 @@ if (!function_exists('volatyl_setup')) {
 		'');
 	}
 }
-add_action('after_setup_theme', 'volatyl_setup');
+add_action('after_setup_theme', 'vol_setup');
 
 
 /** Enqueue front-end scripts and styles
  *
  * @since Volatyl 1.0
  */
-function volatyl_front_scripts() {	
+function vol_front_scripts() {	
 	$options = get_option('vol_general_options');
 	
 	// Default stylesheet
@@ -124,14 +124,14 @@ function volatyl_front_scripts() {
 		wp_enqueue_script('keyboard-image-navigation', THEME_PATH . '/inc/js/keyboard-image-navigation.js', array('jquery'), '20120202');
 	}
 }
-add_action('wp_enqueue_scripts', 'volatyl_front_scripts', 1);
+add_action('wp_enqueue_scripts', 'vol_front_scripts', 1);
 
 
 /** Enqueue back-end scripts and styles
  *
  * @since Volatyl 1.0
  */
-function volatyl_back_scripts() {
+function vol_back_scripts() {
 	wp_register_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
 	wp_register_script('logo-upload', THEME_PATH_URI . '/inc/js/logo-upload.js', array('jquery','media-upload','thickbox'));
 	if ('appearance_page_volatyl_options' == get_current_screen() -> id) {
@@ -143,7 +143,7 @@ function volatyl_back_scripts() {
 		wp_enqueue_script('logo-upload');
 	}
 }
-add_action('admin_enqueue_scripts', 'volatyl_back_scripts');
+add_action('admin_enqueue_scripts', 'vol_back_scripts');
 
 
 // Tabs are so annoying sometimes

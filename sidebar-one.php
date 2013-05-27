@@ -37,10 +37,10 @@ do_action('before_sidebar');
 $singular_sidebar_1 = get_post_meta($post->ID, '_create-sidebar-1', true);
 if ('' !== $singular_sidebar_1 || 0 !== $singular_sidebar_1) {
 	((!dynamic_sidebar('sidebar-1-' . $post->ID)) ? 
-		((!dynamic_sidebar('sidebar-1')) ? default_widget() : '') : 
+		((!dynamic_sidebar('sidebar-1')) ? vol_default_widget() : '') : 
 	'');
 } else {
-	((!dynamic_sidebar('sidebar-1')) ? default_widget() : '');
+	((!dynamic_sidebar('sidebar-1')) ? vol_default_widget() : '');
 }
 
 // vol_after_sidebar_1

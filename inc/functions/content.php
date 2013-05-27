@@ -34,14 +34,14 @@ add_filter('post_class', 'vol_first_post_class');
  * allow users to hide pings while still displaying comments. So,
  * when pings are hidden, the comment count needs to reflect that.
  *
- * In the byline.php file, the volatyl_post_meta() function displays
+ * In the byline.php file, the vol_post_meta() function displays
  * the "response" count totaling all comments and pings. If pings are
  * turned off, "response" is replaced with "comment" and only comments
  * are shown. Below is the count of comments only.
  *
  * @since Volatyl 1.0
  */
-function comments_only_count($count) {
+function vol_comments_only_count($count) {
 
     // Filter the comments count in the front-end only
     if (!is_admin()) {

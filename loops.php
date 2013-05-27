@@ -52,7 +52,7 @@ function vol_content() {
 				get_template_part('templates/content');
 			}
 			
-			pagination_type(); // /inc/functions/page-nav.php
+			vol_pagination_type(); // /inc/functions/page-nav.php
 			
 			// vol_after_content_column
 			(($options['switch_vol_after_content_column'] == 0) ?

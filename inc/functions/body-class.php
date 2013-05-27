@@ -20,7 +20,7 @@
  *
  * @since Volatyl 1.0
  */
-function page_template_body_class($classes) {
+function vol_page_template_body_class($classes) {
 	
 	// add class name to the $classes array based on conditions
 	if (is_page_template('custom-landing.php'))
@@ -31,7 +31,7 @@ function page_template_body_class($classes) {
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'page_template_body_class');
+add_filter('body_class', 'vol_page_template_body_class');
 
 
 /** Body class based on column structure
@@ -44,7 +44,7 @@ add_filter('body_class', 'page_template_body_class');
  *
  * @since Volatyl 1.0
  */
-function main_layout_class($classes) {
+function vol_main_layout_class($classes) {
 	global $post;
 	$options = get_option('vol_structure_options');
 	
@@ -86,11 +86,11 @@ function main_layout_class($classes) {
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'main_layout_class');
+add_filter('body_class', 'vol_main_layout_class');
 
 
 // Body class based on custom CSS field
-function singular_body_class($classes) {
+function vol_singular_body_class($classes) {
 	global $post;
 	
 	if (!is_404() && !is_search())
@@ -107,4 +107,4 @@ function singular_body_class($classes) {
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'singular_body_class');
+add_filter('body_class', 'vol_singular_body_class');

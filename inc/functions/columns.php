@@ -67,7 +67,7 @@ function vol_columns() {
  *
  * @since Volatyl 1.0
  */
-function columns_singular() {
+function vol_columns_singular() {
 	global $post;
 	$single_layout = get_post_meta($post->ID, '_singular-column', true);
 	

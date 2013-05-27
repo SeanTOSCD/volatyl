@@ -119,17 +119,6 @@ h2 .nav-tab {
 	margin-bottom: 0;
 }
 
-/* Show/Hide options */
-.volatyl-options input[id="vol_content_options[excerptlink]"],
-.volatyl-options label[for="vol_content_options[excerptlink]"] {
-	display: none;
-}
-
-.volatyl-options input[id="vol_content_options[homeexcerpt]"]:checked ~ input[id="vol_content_options[excerptlink]"],
-.volatyl-options input[id="vol_content_options[homeexcerpt]"]:checked ~ label[for="vol_content_options[excerptlink]"] {
-	display: inline;
-}
-
 /* Hooks form formatting */
 .volatyl-options .hook-field {
 	margin-top: 5px;

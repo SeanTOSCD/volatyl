@@ -14,7 +14,7 @@
  */
 
 // Register widgetized areas
-function volatyl_widgets_init() {
+function vol_widgets_init() {
 	register_sidebar(array(
 		'name' 			=> __('Standard Sidebar 1', 'volatyl'),
 		'id' 			=> 'sidebar-1',
@@ -66,10 +66,10 @@ function volatyl_widgets_init() {
 		));
 	}
 }
-add_action('widgets_init', 'volatyl_widgets_init', 10);
+add_action('widgets_init', 'vol_widgets_init', 10);
 
 // Default widget when no widgets are present in a widgetized area
-function default_widget() {
+function vol_default_widget() {
 	$options_content = get_option('vol_content_options');
 	
 	// Only show when selection is made in the options

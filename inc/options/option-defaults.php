@@ -17,7 +17,7 @@
  */
 
 // Structure settings
-function volatyl_structure_default_settings() {
+function vol_structure_default_settings() {
 	global $structure_options;
 	$structure_options = array(
 		'wide'					=> 1,
@@ -27,22 +27,22 @@ function volatyl_structure_default_settings() {
 }
  
 // Initialize Structure Default Options
-function volatyl_structure_settings_init() {
+function vol_structure_settings_init() {
 
      // set structure options equal to defaults
 	global $structure_options;
 	$structure_options = get_option('vol_structure_options');
 	
 	if (false === $structure_options)
-		$structure_options = volatyl_structure_default_settings();
+		$structure_options = vol_structure_default_settings();
 	  
 	update_option('vol_structure_options', $structure_options);
 }
-add_action('after_setup_theme','volatyl_structure_settings_init');
+add_action('after_setup_theme','vol_structure_settings_init');
 
 
 // General settings
-function volatyl_general_default_settings() {
+function vol_general_default_settings() {
 	global $general_options;
 	$general_options = array(
 		'updates'				=> 1,
@@ -54,21 +54,21 @@ function volatyl_general_default_settings() {
 }
 
 // Initialize General Default Options
-function volatyl_general_settings_init() {
+function vol_general_settings_init() {
 
 	// set general options equal to defaults
 	global $general_options;
 	$general_options = get_option('vol_general_options');
 	
 	if (false === $general_options)
-		$general_options = volatyl_general_default_settings();
+		$general_options = vol_general_default_settings();
 	  
 	update_option('vol_general_options', $general_options);
 }
-add_action('after_setup_theme','volatyl_general_settings_init');
+add_action('after_setup_theme','vol_general_settings_init');
 
 // Content settings
-function volatyl_content_default_settings() {
+function vol_content_default_settings() {
 	global $content_options;
 	$content_options = array(
 		'logo'					=> "",
@@ -99,15 +99,15 @@ function volatyl_content_default_settings() {
 }
 	
 // Initialize Content Default Options
-function volatyl_content_settings_init() {
+function vol_content_settings_init() {
 
 	// set content options equal to defaults
 	global $content_options;
 	$content_options = get_option('vol_content_options');
 	
 	if (false === $content_options)
-		$content_options = volatyl_content_default_settings();
+		$content_options = vol_content_default_settings();
 	  
 	update_option('vol_content_options', $content_options);
 }
-add_action('after_setup_theme','volatyl_content_settings_init');
+add_action('after_setup_theme','vol_content_settings_init');

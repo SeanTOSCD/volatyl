@@ -68,7 +68,7 @@ if (!function_exists('volatyl_post_meta')) {
 			
 			// Only mark comments as closed in byline of comment count is 0	
 			$response_count = get_comments_number();
-			$comment_count = comments_only_count($count);
+			$comment_count = vol_comments_only_count($count);
 			if (!comments_open() && $response_count == 0) {
 		
 				// No need to show a count if comments are off and there are none!
@@ -93,7 +93,7 @@ if (!function_exists('volatyl_post_meta')) {
 				} else {
 		
 					// Only get the comments... no pings
-					$num_comments = comments_only_count($count);
+					$num_comments = vol_comments_only_count($count);
 					if ($num_comments == 0)
 						$comments = __('0 Comments ', 'volatyl');
 					elseif ($num_comments > 1)
