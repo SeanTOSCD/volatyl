@@ -90,11 +90,11 @@ if (post_password_required())
 			'');
 		
 			// Only show pings header if there are pings to show
-			(((get_comments_number() - comments_only_count($count)) > 0) ?
+			(((get_comments_number() - vol_comments_only_count($count)) > 0) ?
 			
 				// Pings! Trackbacks and Pingbacks...
 				printf("\t<span class=\"comments-title\">\n") .
-				printf($pings_title, number_format_i18n(get_comments_number() - comments_only_count($count))) . printf("</span>\n") : 
+				printf($pings_title, number_format_i18n(get_comments_number() - vol_comments_only_count($count))) . printf("</span>\n") : 
 			'');
 			
 			// Here are the trackbacks and pingbacks
