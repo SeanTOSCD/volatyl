@@ -516,8 +516,8 @@ function vol_options_do_page() {
 		"\n{$tab3}\t<h3>", 
 		__('License Key Settings', 'volatyl'), "</h3>\n",
 		"{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('When you purchased Volatyl, you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the Volatyl Framework. Enter your license key below and click the <strong>Send License Key Changes to Database</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl'), "</p>\n
-		{$tab3}\t\t<p>", __('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole Volatyl and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), "</p>\n
+		{$tab3}\t\t<p>", __('When you purchased ', 'volatyl') . THEME_NAME . __(', you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the ', 'volatyl') . THEME_NAME . __(' Framework. Enter your license key below and click the <strong>Send License Key Changes to Database</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl'), "</p>\n
+		{$tab3}\t\t<p>", __('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole ', 'volatyl') . THEME_NAME . __(' and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), "</p>\n
 		{$tab3}\t</div>
 		{$tab3}<table class=\"form-table\">\n
 		<tr valign=\"top\">
@@ -603,7 +603,7 @@ function vol_options_do_page() {
 		<tr valign=\"top\">
 		<th scope=\"row\" valign=\"top\">",
 		__('About the Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",
-		"{$tab3}\t\t<p>", sprintf(__('Volatyl is an %1$s project created by Sean Davis and the wonderful WordPress Codex. Along the way, thanks to %2$s, email, and public begging on <strong>Austin, TX</strong> street corners, what you have here is a unique collection of concepts and codes to help you build websites with WordPress.</p>', 'volatyl'), '<a href="http://sdavismedia.com/" target="_blank">SDavis Media</a>', '<a href="http://sdvs.me/twitter" target="_blank">Twitter</a>'),
+		"{$tab3}\t\t<p>", sprintf(THEME_NAME . __(' is an %1$s project created by Sean Davis and the wonderful WordPress Codex. Along the way, thanks to %2$s, email, and public begging on <strong>Austin, TX</strong> street corners, what you have here is a unique collection of concepts and codes to help you build websites with WordPress.</p>', 'volatyl'), '<a href="http://sdavismedia.com/" target="_blank">SDavis Media</a>', '<a href="http://sdvs.me/twitter" target="_blank">Twitter</a>'),
 		"{$tab3}\t\t<p>", sprintf(__('While there\'s no clear %1$s for the public begging, those who have taken the time to help solve coding problems, share their experiences, or provide encouragement deserve to be recognized. When you see these people around the universe, thank them.', 'volatyl'), '<acronym title="Return on Investment" style="border-bottom: 1px dotted #ccc;">ROI</acronym>'), "</p>\n
 		{$tab3}\t\t<p class=\"notes\">", __('<strong>Note: </strong>There were no core code contributors. Blame all of your bugs on Sean. ;)', 'volatyl'), "</p>\n
 		</td></tr>
@@ -617,13 +617,13 @@ function vol_options_do_page() {
 				'name'			=> 'Andrew Norcross',
 				'homepage_url'	=> 'http://andrewnorcross.com/',
 				'twitter_url'	=> 'https://twitter.com/norcross/',
-				'notes'			=> __('Norcross probably sleeps on Twitter. Anytime a development issue was faced in the creation of Volatyl, a simple tweet <em>always</em> led to his assistance. He reviewed code, suggested changes, offered solutions, and never asked for anything in return. Outstanding.', 'volatyl')
+				'notes'			=> __('Norcross probably sleeps on Twitter. Anytime a development issue was faced in the creation of ', 'volatyl') . THEME_NAME . __(', a simple tweet <em>always</em> led to his assistance. He reviewed code, suggested changes, offered solutions, and never asked for anything in return. Outstanding.', 'volatyl')
 			),
 			'Alex Mangini'	=> array(
 				'name'			=> 'Alex Mangini',
 				'homepage_url'	=> 'http://kolakube.com/',
 				'twitter_url'	=> 'https://twitter.com/afrais/',
-				'notes'			=> __('"The kid," as we like to call him, has backed Volatyl from inception to launch. Many of the features that made the final cut were put through the ultimate "your friends will tell you the truth" test by Alex. His feedback and troubleshooting efforts are greatly appreciated.', 'volatyl')
+				'notes'			=> __('"The kid," as we like to call him, has backed ', 'volatyl') . THEME_NAME . __(' from inception to launch. Many of the features that made the final cut were put through the ultimate "your friends will tell you the truth" test by Alex. His feedback and troubleshooting efforts are greatly appreciated.', 'volatyl')
 			),
 		);
 		foreach ($thanks_yo as $ty) {
@@ -643,7 +643,7 @@ function vol_options_do_page() {
 	// Tab checker - WTF? Settings
 	} else {
 	
-		echo "<p>", __('How did you get here? Get back to the <a href="themes.php?page=volatyl_options&tab=global">Volatyl Options</a> please.', 'volatyl'), "</p>";
+		echo "<p>", __('How did you get here? Get back to the <a href="themes.php?page=volatyl_options&tab=global">', 'volatyl') . THEME_NAME . __(' Options</a> please.', 'volatyl'), "</p>";
 		
 	}	
 	echo "</div>";

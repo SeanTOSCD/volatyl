@@ -206,7 +206,7 @@ class VOL_Updater {
 			return;
 
 		$update_url = wp_nonce_url('update.php?action=upgrade-theme&amp;theme=' . urlencode($this->theme_slug), 'upgrade-theme_' . $this->theme_slug);
-		$update_onclick = ' onclick="if (confirm(\'' . esc_js(__("Updating Volatyl will not erase any customizations you have made to a child theme. However, if you wrongly made changes to Volatyl, those changes will be overwritten. 'Cancel' to stop, 'OK' to update.")) . '\')) {return true;}return false;"';
+		$update_onclick = ' onclick="if (confirm(\'' . esc_js(__('Updating ', 'volatyl') . THEME_NAME . __(' will not erase any customizations you have made to a child theme. However, if you wrongly made changes to ', 'volatyl') . THEME_NAME . __(', those changes will be overwritten. "Cancel" to stop, "OK" to update.')) . '\')) {return true;}return false;"';
 
 		if (version_compare($theme->get('Version'), $api_response->new_version, '<')) {
 

@@ -421,7 +421,7 @@ function volatyl_hooks() {
 		'Site Info' 	=> array(
 			'name'				=> 'vol_site_info',
 			'title' 			=> __('Site Information', 'volatyl'),
-			'description'		=> __('This displays just after (inline) the site attribution. If you remove the Volatyl attribution,<br>you can build your own information area here.', 'volatyl') 
+			'description'		=> __('This displays just after (inline) the site attribution. If you remove the ', 'volatyl') . THEME_NAME . __(' attribution,<br>you can build your own information area here.', 'volatyl') 
 		),
 		'vol_headliner' 		=> array(
 			'name'				=> 'vol_headliner',

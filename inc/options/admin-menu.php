@@ -19,9 +19,9 @@ if ($options['adminmenu'] == 1) {
 	function vol_toolbar($admin_bar) {
 		$admin_bar->add_menu(array(
 			'id'			=> 'volatyl',
-			'title' 		=> 'Volatyl',
+			'title' 		=> THEME_NAME,
 			'meta'  		=> array(
-				'title'		=> 'Volatyl',			
+				'title'		=> THEME_NAME,			
 			),
 		));
 		$admin_bar->add_menu(array(

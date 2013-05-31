@@ -85,7 +85,7 @@ function vol_footer_element() {
 
 		// DO NOT CHANGE text IF displayed
 		__('<p class="attribution">Built with ', 'volatyl') . 
-		"<a href=\"" . THEME_URI . "\">Volatyl</a>" . 
+		"<a href=\"" . THEME_URI . "\">" . THEME_NAME . "</a>" . 
 		__(' for WordPress</p>', 'volatyl') : 
 	'');
 
