@@ -18,12 +18,9 @@
  *
  * These loops call to respective template files for Volatyl. If no loop
  * is present in this file, the loops are located in the template files.
- * 
- * Certain templates can be overwritten by simply creating the actual
- * template file responsible for that particular template. For example,
- * creating a content-single.php file in a child theme (or in the core... 
- * but don't) will override the get_template_part('templates/content', 'single') 
- * function in the is_single() condition of this statement.
+ *
+ * Instructions for overwriting template files can be found in the template
+ * files themselves.
  *
  * @package Volatyl
  * @since Volatyl 1.0

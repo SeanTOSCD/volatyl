@@ -49,7 +49,7 @@ if (!function_exists('volatyl_post_meta')) {
 		// Show post date
 		(($options_content['by-date-post'] == 1) ?
 			printf(__('<span class="posted-on">' . $byline_text['publish_date'] . '</span> ', 'volatyl') .
-			"<span class=\"meta-date\"><a href=\"") . the_permalink() . printf("\" title=\"") . esc_attr(sprintf(__('Permalink', 'volatyl') . the_title_attribute('echo=0'))) . printf("\" rel=\"bookmark\">") . 
+			"<span class=\"meta-date\"><a href=\"") . the_permalink() . printf("\" title=\"") . esc_attr(printf(__('Permalink - ', 'volatyl'))) . _e(the_title_attribute('echo=0')) . printf("\" rel=\"bookmark\">") . 
 			the_time(get_option('date_format')) .
 			printf("</a></span> \n") :
 		'');

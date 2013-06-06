@@ -20,7 +20,7 @@
  * used to render the site layout based on conditions. "main_content" is
  * the default layout while "main_content_singular" controls posts, pages,
  * and attachment files. "main_content_custom_layout" is a blank canvas
- * use for custom templates. More conditions can be added to accomodate more
+ * used for custom templates. More conditions can be added to accomodate more
  * layout options!
  * 
  * @package Volatyl

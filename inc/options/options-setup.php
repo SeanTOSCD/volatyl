@@ -189,7 +189,7 @@ function volatyl_content() {
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>' 
 		),
-		'Default Widgets' 			=> array(
+		'Default Widgets' 	=> array(
 			'tr'			=> '<tr>',
 			'th'			=> __('<th scope="row">Display Default Widgets</th>', 'volatyl'),
 			'td'			=> '<td>',
@@ -241,7 +241,7 @@ function volatyl_post() {
 			'title'			=> 'by-post-format',
 			'label'			=> __('Post Format', 'volatyl'),
 		),
-		'Byline Date' 	=> array(
+		'Byline Date' 		=> array(
 			'title'			=> 'by-date-post',
 			'label'			=> __('Date', 'volatyl'),
 		),
@@ -418,7 +418,7 @@ function volatyl_hooks() {
 			'title' 			=> __('Footer Bottom', 'volatyl'),
 			'description'		=> __('This displays inside of your footer at the bottom. If you have the Fat Footer<br>activated, this will display below that but above the copyright section.', 'volatyl') 
 		),
-		'Site Info' 	=> array(
+		'Site Info' 			=> array(
 			'name'				=> 'vol_site_info',
 			'title' 			=> __('Site Information', 'volatyl'),
 			'description'		=> __('This displays just after (inline) the site attribution. If you remove the ', 'volatyl') . THEME_NAME . __(' attribution,<br>you can build your own information area here.', 'volatyl') 
@@ -478,7 +478,7 @@ function volatyl_hooks() {
 			'title' 			=> __('Single Post Footer', 'volatyl'),
 			'description'		=> __('Displays below your articles but above the comments.<br>Suggestion: Use this area as a call-to-action after a vistor reads your content.', 'volatyl') 
 		),
-		'vol_before_sidebar_1' => array(
+		'vol_before_sidebar_1' 	=> array(
 			'name'				=> 'vol_before_sidebar_1',
 			'title' 			=> __('Before Sidebar 1', 'volatyl'),
 			'description'		=> __('Directly above Sidebar 1 in all layouts', 'volatyl') 
@@ -488,7 +488,7 @@ function volatyl_hooks() {
 			'title' 			=> __('After Sidebar 1', 'volatyl'),
 			'description'		=> __('Directly below Sidebar 1 in all layouts', 'volatyl') 
 		),
-		'vol_before_sidebar_2' => array(
+		'vol_before_sidebar_2' 	=> array(
 			'name'				=> 'vol_before_sidebar_2',
 			'title' 			=> __('Before Sidebar 2', 'volatyl'),
 			'description'		=> __('Directly above Sidebar 2 in all layouts', 'volatyl') 
