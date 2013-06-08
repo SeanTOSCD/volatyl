@@ -25,9 +25,10 @@ if (!function_exists('volatyl_post_meta')) {
 		$options_content = get_option('vol_content_options');
 		$post_format_type = ucfirst(get_post_format());
 		$byline_text = apply_filters('byline_text', array(
-			'post_format_type'	=> $post_format_type . ': ',	
+			'post_format_type'	=> $post_format_type . '&#58;',	
 			'publish_date'		=> 'Published on',	
-			'author_text'		=> 'by',	
+			'author_text'		=> 'by',		
+			'comments_dash'		=> '&ndash;',	
 			'comments_off'		=> 'Comments off',	
 			'category_text'		=> 'Filed under:'
 			) 
@@ -42,7 +43,7 @@ if (!function_exists('volatyl_post_meta')) {
 		// Show post format title
 		(($options_content['by-post-format'] == 1) ?
 			((get_post_format() != false) ?
-				printf('<span class="post-format">' . __($byline_text['post_format_type'], 'volatyl') . '</span>') : 
+				printf('<span class="post-format">' . __($byline_text['post_format_type'], 'volatyl') . '</span> ') : 
 			'') : 
 		'');
 
@@ -64,7 +65,7 @@ if (!function_exists('volatyl_post_meta')) {
 		if ($options_content['by-comments-post'] == 1) {
 	
 			// Only show dash before comments if byline items are in front of it
-			(($options_content['by-date-post'] == 0 && $options_content['by-author-post'] == 0) ? "<span class=\"meta-comments\">" : printf("<span class=\"comments-dash\"> - </span><span class=\"meta-comments\">"));
+			(($options_content['by-date-post'] == 0 && $options_content['by-author-post'] == 0) ? "<span class=\"meta-comments\">" : printf(" <span class=\"comments-dash\">" . $byline_text['comments_dash'] . "</span> <span class=\"meta-comments\">"));
 			
 			// Only mark comments as closed in byline of comment count is 0	
 			$response_count = get_comments_number();
