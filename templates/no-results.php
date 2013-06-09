@@ -43,6 +43,7 @@ if (is_404()) {
 				</p>
 				
 				<?php
+				// output search form
 				get_search_form();
 	
 			// Zero posts in the loop
@@ -53,8 +54,10 @@ if (is_404()) {
 				</p>
 				
 				<?php
+				// output search form
 				get_search_form();
 			} ?>
+			
 		</section>
 	</article>
 <?php }

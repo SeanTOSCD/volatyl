@@ -40,6 +40,7 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 		</h1>
 		
 		<?php
+		// post meta info
 		if ($options_posts['by-date-post'] == 1 || $options_posts['by-author-post'] == 1 || $options_posts['by-comments-post'] == 1 || $options_posts['by-edit-post'] == 1 || $options_posts['by-cats'] == 1) { ?>
 			<div class="entry-meta">
 				<?php volatyl_post_meta(); ?>
@@ -64,8 +65,12 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 	''); ?>
 	
 	<section class="entry-content">
-		<?php the_content();
+	
+		<?php 
+		// output post content
+		the_content();
 		
+		// internal post navigation
 		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>'));
 
 		// Show feed tags
@@ -84,6 +89,8 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 		do_action('vol_post_footer')) :
 '');
 
+// post comments
 ((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : '');
 
+// post navigation
 volatyl_content_nav('nav-below');

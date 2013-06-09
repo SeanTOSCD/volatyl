@@ -577,6 +577,10 @@ function vol_options_do_page() {
 				'name'	=> 'Support',
 				'url'	=> 'http://support.sdavismedia.com/'
 			),
+			'Headquarters'	=> array(
+				'name'	=> 'Headquarters',
+				'url'	=> 'http://hq.volatylthemes.com/'
+			),
 			'Members'	=> array(
 				'name'	=> 'Members Area',
 				'url'	=> 'http://volatylthemes.com/members/'
@@ -591,15 +595,15 @@ function vol_options_do_page() {
 			),
 		);
 		
+		echo '<strong>version ' . THEME_VERSION . '</strong>';
+		
 		foreach ($vol_links as $vl) {
-			printf('<a href="%2$s" target="_blank"><strong>%1$s</strong></a> - ',
+			printf(' &middot; <a href="%2$s" target="_blank"><strong>%1$s</strong></a>',
 				$vl['name'],
 				$vl['url']
 			);
 		}
-		echo "<a href=\"http://sdavismedia.com\" target=\"_blank\"><strong>SDavis Media</strong></a>
-		</td></tr>
-		
+		echo "</td></tr>		
 		<tr valign=\"top\">
 		<th scope=\"row\" valign=\"top\">",
 		__('About the Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",

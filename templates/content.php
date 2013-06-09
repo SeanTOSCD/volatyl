@@ -37,18 +37,25 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 	
 	<header class="entry-header"> 
 
-		<?php if (!has_post_format('aside')) { ?>
+		<?php 
+		// show title if not an aside post format
+		if (!has_post_format('aside')) { ?>
+		
 			<h1 class="entry-title">
 				<a href="<?php the_permalink(); ?>" title="<?php esc_attr(sprintf(__('%s', 'volatyl'), the_title_attribute('echo=0'))); ?>" rel="bookmark"><?php _e(the_title(), 'volatyl'); ?>
 				</a>
 			</h1>
+			
 		<?php }
-	
+			
+		// display meta info
 		if ('post' == get_post_type()) { 
 			if ($options['by-date-post'] == 1 || $options['by-author-post'] == 1 || $options['by-comments-post'] == 1 || $options['by-edit-post'] == 1 || $options['by-cats'] == 1) { ?>
+			
 				<div class="entry-meta"> 
 					<?php volatyl_post_meta(); ?>
 				</div> 
+				
 			<?php }
 		} 
 		
@@ -63,29 +70,37 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 		
 	</header> 
 	
-	<?php // Activate Featured Images
+	<?php 
+	// Activate Featured Images
 	if ($options['feedfeaturedimage'] == 1) { 
 
 		// If Featured Image is set for a post, show thumbnail.
 		if (has_post_thumbnail()) { ?>
+		
 			<a class="featured-img-anchor" href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>">
 				<?php the_post_thumbnail('post-thumbnail', array(
 					'class'	=> 'featured-img', 
 					'alt'	=> the_title_attribute('echo=0') 
 				)); ?>
 			</a>
+			
 		<?php }
 	}
 
 	// Only display Excerpts for Search or Home if options is selected
 	if (is_search() || $options['homeexcerpt'] == 1 && !has_post_format('aside')) { ?>
+	
 		<section class="entry-summary"> 
 			<?php the_excerpt(); ?>
 		</section> 
+		
 	<?php 
 	} else { // Otherwise, show full article ?>
 		<section class="entry-content">
-			<?php the_content(__($more_link_text, 'volatyl'));
+		
+			<?php 
+			// display content
+			the_content(__($more_link_text, 'volatyl'));
 	
 			// Navigate paginated posts
 			wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>'));

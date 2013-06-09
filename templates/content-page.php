@@ -32,10 +32,13 @@ $page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
 	<section class="entry-content">
 	
 		<?php 
+		// display page content
 		the_content(); 
 			
+		// internal page navigation
 		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>'));
 		
+		// page comments
 		if ($options['pagecomments'] == 1)
 			((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : ''); ?>
 		

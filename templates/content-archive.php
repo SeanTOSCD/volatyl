@@ -29,7 +29,9 @@ $archive_title = apply_filters('archive_title', array(
 
 <header class="page-header">
 	<h1 class="page-title">
+	
 		<?php 
+		// archive titles
 		if (is_category()) {
 			printf(__($archive_title['cat_title'] . ' %s', 'volatyl'), '<span>' . single_cat_title('', false) . '</span>');
 		} elseif (is_tag()) {
@@ -54,9 +56,11 @@ $archive_title = apply_filters('archive_title', array(
 		} else {
 			_e('Archives', 'volatyl');
 		} ?>
+		
 	</h1>
 
 	<?php
+	// archive type specifics
 	if (is_author())
 		printf(__('<p class="user-description">%s</p>', 'volatyl'), get_the_author_meta('description'));
 
@@ -73,6 +77,7 @@ $archive_title = apply_filters('archive_title', array(
 		if (!empty($tag_description))
 			echo apply_filters('tag_archive_meta', '<div class="taxonomy-description">' . $tag_description . '</div>');
 	} ?>
+	
 </header>
 
 <?php

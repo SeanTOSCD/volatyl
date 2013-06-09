@@ -26,7 +26,12 @@
 		<p>
 			<?php _e('We can\'t change the past but let\'s try to make things right for the future. Use the search form and other tools below to find what you were looking for.', 'volatyl'); ?>
 		</p>
-		<?php get_search_form();
+		
+		<?php 
+		// output search form
+		get_search_form();
+		
+		// output recent posts and categories widgets
 		the_widget('WP_Widget_Recent_Posts'); ?>
 		
 		<div class="widget">
@@ -50,7 +55,10 @@
 		<?php 
 		// translators: %1$s: smilie
 		$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
+		// output archives widget
 		the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content");
+		
+		// output tag cloud widget
 		the_widget('WP_Widget_Tag_Cloud'); ?>
 	</section>
 </article>

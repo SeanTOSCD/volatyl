@@ -52,13 +52,13 @@ function vol_footer_element() {
 	(($options_content['fatfooter'] == 1 && ! is_page_template()) ?
 		printf("\t\t<div id=\"fat-footer\" class=\"clearfix\">\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-left')) ? vol_default_widget() : '') .
+			((!dynamic_sidebar('footer-left')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-middle')) ? vol_default_widget() : '') .
+			((!dynamic_sidebar('footer-middle')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
-		((!dynamic_sidebar('footer-right')) ? vol_default_widget() : '') .
+			((!dynamic_sidebar('footer-right')) ? vol_default_widget() : '') .
 		printf("{$tab3}</div>\n
 		\t\t</div>\n") : 
 	'');
@@ -84,9 +84,7 @@ function vol_footer_element() {
 	(($options_general['attribution'] == 1) ? 
 
 		// DO NOT CHANGE text IF displayed
-		__('<p class="attribution">Built with ', 'volatyl') . 
-		"<a href=\"" . THEME_URI . "\">" . THEME_NAME . "</a>" . 
-		__(' for WordPress</p>', 'volatyl') : 
+		__('<p class="attribution">Built with ', 'volatyl') . "<a href=\"" . THEME_URI . "\">" . THEME_NAME . "</a>" . __(' for WordPress</p>', 'volatyl') : 
 	'');
 
 	// vol_site_info
