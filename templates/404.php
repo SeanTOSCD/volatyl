@@ -14,17 +14,22 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-?>
+
+// Custom filters 
+$error_404 = apply_filters('error_404_content', array(
+	'error_title'	=> 'Oops! Looks like we have an error.',
+	'error_content'	=> 'Use the search form and other tools below to find what you were looking for.'
+)); ?>
 
 <article id="post-0" class="post error404 not-found">
 	<header class="entry-header">
 		<h1 class="entry-title">
-			<?php _e('404, eh? Well that\'s no good.', 'volatyl'); ?>
+			<?php _e($error_404['error_title'], 'volatyl'); ?>
 		</h1>
 	</header>
 	<section class="entry-content">
 		<p>
-			<?php _e('We can\'t change the past but let\'s try to make things right for the future. Use the search form and other tools below to find what you were looking for.', 'volatyl'); ?>
+			<?php _e($error_404['error_content'], 'volatyl'); ?>
 		</p>
 		
 		<?php 
