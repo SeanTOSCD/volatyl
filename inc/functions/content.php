@@ -69,11 +69,11 @@ if ($options_content['searchpages'] == 0) {
 // Show excerpt/post link instead of [...]
 if ($options_content['excerptlink'] == 1) {
 
-	//create a permalink after the excerpt
+	// create a permalink after the excerpt
 	function vol_replace_excerpt($content) {
 		global $excerpt_link;
 		$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
-		return str_replace('[&hellip;]',
+		return str_replace('[...]',
 			'<p class="excert-link"><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
 			$content
 		);
