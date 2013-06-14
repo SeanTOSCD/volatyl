@@ -126,6 +126,9 @@ echo ((!comments_open() && '0' != get_comments_number() && post_type_supports(ge
  * All of these have a default value, however, they can be changed. 
  * Below are the changes implemented by Volatyl.
  *
+ * If you want to overload this in a child theme then you can
+ * define comment_form() and that will be used instead.
+ *
  * @since Volatyl 1.0
  */
 comment_form( 
