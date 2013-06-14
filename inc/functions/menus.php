@@ -32,7 +32,7 @@ function vol_header_menu() {
 		printf("<div id=\"header-menu-container\" class=\"header-menu-wrap\">
 		<div class=\"header-menu-toggle\">
 		<a href=\"#header-menu-container\" class=\"open-header-menu menu-toggle\"><span class=\"header-open\">") . printf(__($header_menu_toggle['header_open'], 'volatyl')) . printf("</span></a>
-		<a href=\"#\" class=\"close-header-menu menu-toggle\"><span class=\"header-close\">") . printf(__($header_menu_toggle['header_close'], 'volatyl')) . printf("</span></a>
+		<a href=\"#header-menu-collapse\" class=\"close-header-menu menu-toggle\" id=\"header-menu-collapse\"><span class=\"header-close\">") . printf(__($header_menu_toggle['header_close'], 'volatyl')) . printf("</span></a>
 		</div>
 		\t<nav role=\"navigation\" id=\"header-menu-wrap\" class=\"site-navigation short-menu header-navigation border-box\">\n") .
 		((has_nav_menu('header')) ? wp_nav_menu(array('theme_location' => 'header')) : '') .
