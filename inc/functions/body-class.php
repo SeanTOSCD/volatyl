@@ -89,7 +89,12 @@ function vol_main_layout_class($classes) {
 add_filter('body_class', 'vol_main_layout_class');
 
 
-// Body class based on custom CSS field
+/** Body class by singular metabox options
+ *
+ * Add specific CSS class on each post or page edit screen
+ *
+ * @since Volatyl 1.0
+ */
 function vol_singular_body_class($classes) {
 	global $post;
 	
