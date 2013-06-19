@@ -49,7 +49,7 @@ function vol_footer_element() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	(($options_content['fatfooter'] == 1 && !is_page_template('custom-landing')) ?
+	(($options_content['fatfooter'] == 1 && !is_page_template('custom-landing.php')) ?
 		printf("\t\t<div id=\"fat-footer\" class=\"clearfix\">\n
 		{$tab3}<div class=\"footer-widget border-box\">\n") .
 			((!dynamic_sidebar('footer-left')) ? vol_default_widget() : '') .

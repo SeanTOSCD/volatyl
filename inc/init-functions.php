@@ -120,9 +120,6 @@ function vol_front_scripts() {
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
-	if (is_singular() && wp_attachment_is_image()) {
-		wp_enqueue_script('keyboard-image-navigation', THEME_PATH . '/inc/js/keyboard-image-navigation.js', array('jquery'), '20120202');
-	}
 }
 add_action('wp_enqueue_scripts', 'vol_front_scripts', 1);
 
