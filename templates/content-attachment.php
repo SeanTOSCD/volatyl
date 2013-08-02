@@ -33,19 +33,7 @@ $attachment_navigation = apply_filters('attachment_navigation', array(
 	<header class="entry-header">
 		<h1 class="entry-title"><?php the_title(); ?></h1>
 		<div class="entry-meta">
-			
-			<?php
-			// attachment meta info
-			sprintf(__('Published <span class="entry-date"><time class="entry-date" datetime="%1$s" pubdate>%2$s</time></span> at <a href="%3$s" title="Link to full-size image">%4$s &times; %5$s</a> in <a href="%6$s" title="Return to %7$s" rel="gallery">%7$s</a>', 'volatyl'),
-				esc_attr(get_the_date('c')),
-				esc_html(get_the_date()),
-				wp_get_attachment_url(),
-				$metadata['width'],
-				$metadata['height'],
-				get_permalink($post->post_parent),
-				get_the_title($post->post_parent)
-			) ?>
-			
+			<?php _e('Published ', 'volatyl'); ?><span class="entry-date"><time class="entry-date" datetime="<?php esc_attr(get_the_date('c')); ?>" pubdate><?php echo esc_html(get_the_date()); ?></time></span> <?php _e('at ', 'volatyl'); ?><a href="<?php wp_get_attachment_url(); ?>" title="Link to full-size image"><?php echo $metadata['width']; ?> &times; <?php echo $metadata['height']; ?></a> <?php _e('in ', 'volatyl'); ?><a href="<?php get_permalink($post->post_parent); ?>" title="Return to %7$s" rel="gallery"><?php echo get_the_title($post->post_parent); ?></a>
 		</div>
 	</header>
 	<section class="entry-content">

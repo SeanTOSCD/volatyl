@@ -84,7 +84,7 @@ function vol_footer_element() {
 	(($options_general['attribution'] == 1) ? 
 
 		// DO NOT CHANGE text IF displayed
-		__('<p class="attribution">Built with ', 'volatyl') . "<a href=\"" . THEME_URI . "\">" . THEME_NAME . "</a>" . __(' for WordPress</p>', 'volatyl') : 
+		"<p class=\"attribution\">" . __('Built with ', 'volatyl') . "<a href=\"" . THEME_URI . "\">" . THEME_NAME . "</a>" . __(' for WordPress', 'volatyl') . "</p>" : 
 	'');
 
 	// vol_site_info

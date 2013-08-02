@@ -1,0 +1,1118 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Volatyl\n"
+"POT-Creation-Date: 2013-07-31 19:15-0600\n"
+"PO-Revision-Date: 2013-07-31 19:28-0600\n"
+"Last-Translator: \n"
+"Language-Team: SDavis Media\n"
+"Language: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;_ngettext_noop:1,2;_c;"
+"_nc:4c,1,2;_x:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;_ex:1,2c;esc_attr__;esc_attr_e;"
+"esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
+"X-Poedit-Basepath: ...\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Poedit-SearchPath-0: /Applications/MAMP/htdocs/localhost/wordpress/wp-"
+"content/themes/volatyl\n"
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:21
+#, php-format
+msgid "1 Comment:"
+msgid_plural "%1$s Comments:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:22
+#, php-format
+msgid "1 Ping:"
+msgid_plural "%1$s Pings:"
+msgstr[0] ""
+msgstr[1] ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:138
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:76
+msgid " "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:139
+msgid "Cancel Reply"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:144
+msgid "Name"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:146
+msgid "Email"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/comments.php:148
+msgid "Website"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/header.php:36
+#, php-format
+msgid "Page %s"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/searchform.php:20
+msgid "Search"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/template-tags.php:34
+msgid "Pingback: "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/template-tags.php:34
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/template-tags.php:58
+msgid "(Edit)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/template-tags.php:48
+msgid "Your comment is awaiting moderation."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/template-tags.php:56
+#, php-format
+msgid "%1$s"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/updater.php:209
+msgid "Updating "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/updater.php:209
+msgid ""
+" will not erase any customizations you have made to a child theme. However, "
+"if you wrongly made changes to "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/updater.php:209
+msgid ""
+", those changes will be overwritten. \"Cancel\" to stop, \"OK\" to update."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:53
+msgid "Permalink - "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:89
+msgid "0 Responses "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:91
+msgid " Responses "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:93
+msgid "1 Response "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:99
+msgid "0 Comments "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:101
+msgid " Comments "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:103
+msgid "1 Comment "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/byline.php:110
+msgid "Edit"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/columns.php:57
+msgid "Error: Please select a column structure in the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/columns.php:57
+msgid " Options."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/page-nav.php:77
+msgid "Page "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/page-nav.php:77
+msgid " of "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:19
+msgid "Standard Sidebar 1"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:21
+msgid ""
+"In all layouts including sidebars, this will be the leftmost sidebar "
+"(primary)."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:28
+msgid "Standard Sidebar 2"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:30
+msgid ""
+"In all layouts including sidebars, this will be the right most sidebar "
+"(secondary)."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:41
+msgid "Footer Left"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:43
+msgid "Far left footer widget"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:50
+msgid "Footer Middle"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:52
+msgid "Middle footer widget"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:59
+msgid "Footer Right"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:61
+msgid "Far right footer widget"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:79
+msgid "Default Widget"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:81
+msgid ""
+"This is a widget placeholder. You have a widgetized area activated with no "
+"assigned widgets. Add widgets in the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:81
+msgid "widgets page"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/functions/widgets.php:81
+msgid "of your WordPress dashboard."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/html/footer-html.php:87
+msgid "Built with "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/html/footer-html.php:87
+msgid " for WordPress"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:30
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:33
+msgid "Global Options"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:40
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:43
+msgid "Content Options"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:50
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:53
+msgid "Custom Hooks"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:60
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:63
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:525
+msgid "License Key"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:70
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:73
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:573
+msgid "Documentation"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/admin-menu.php:80
+msgid "Version: "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/logo-uploader.php:34
+msgid "Use my sweet new logo!"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:27
+msgid "Content (No Sidebars)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:32
+msgid "Content (Sidebars below)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:37
+msgid "Content - Sidebar"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:42
+msgid "Sidebar - Content"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:47
+msgid "Content - Sidebar - Sidebar"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:52
+msgid "Sidebar - Content - Sidebar"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:57
+msgid "Sidebar - Sidebar - Content"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:85
+msgid "General Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:88
+msgid "Enable Framework Updates"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:92
+msgid ""
+"This does not affect your license key. With your license key still "
+"activated, use this option to temporarily disable update notifications."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:98
+msgid "Enable Responsive CSS"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:102
+msgid "This option controls the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:102
+msgid ""
+" core responsive CSS (this option does not control responsive CSS written in "
+"a child theme)."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:108
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:118
+msgid "Display "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:108
+msgid " Admin Toolbar"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:112
+msgid ""
+"This is the drop-down menu at the very top of your admin dashboard if "
+"enabled."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:118
+msgid " Attribution"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:121
+msgid "There's no fee to remove the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:121
+msgid " attribution. ;)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:151
+msgid "Content Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:154
+msgid "Display Default Header Elements"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:157
+msgid "Site title"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:161
+msgid "Site tagline"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:165
+msgid "Header menu"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:171
+msgid "Activate Additional Menus"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:174
+msgid "Standard Menu - Displays below the site header *<br>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:178
+msgid "Footer Menu - Displays above the site footer *"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:179
+msgid "* Once activated, you must "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:179
+msgid "create new menus"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:179
+msgid " and add them to their respective \"Theme Locations.\""
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:185
+msgid "Activate Widgetized (Fat) Footer"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:188
+msgid "Activate the 3-column, widget-ready footer. If activated, "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:188
+msgid "add widgets here"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:194
+msgid "Display Default Widgets"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:197
+msgid "Show default widgets in empty widgetized areas."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:203
+msgid "Activate Pagination"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:206
+msgid ""
+"Activate numbered pagination on homepage, archives, search results, etc."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:236
+msgid "Post Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:239
+msgid "Display Post Byline Elements"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:242
+msgid "Post Format"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:246
+msgid "Date"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:250
+msgid "Author"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:254
+msgid "Responses/Comments"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:258
+msgid "Edit Link (logged in users)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:262
+msgid "Categories"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:268
+msgid "Display Post Excerpts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:271
+msgid "Display excerpts instead of full posts."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:275
+msgid "Link to full article in excerpts."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:281
+msgid "Display Featured Images"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:284
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:297
+msgid "Post Feeds (home, search, archives, etc.)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:288
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:301
+msgid "Single Posts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:294
+msgid "Display Tags List"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:307
+msgid "Display Post Pings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:310
+msgid "Display trackbacks and pingbacks on posts below comments."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:311
+msgid ""
+"If pings already exist, choosing to no longer allow them on the \"Edit Post"
+"\" page will not remove the original ones from the Post. Checking this box "
+"will."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:341
+msgid "Page Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:344
+msgid "Display Pages in Search Results"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:347
+msgid ""
+"Search results are usually limited to posts. Consider leaving this unchecked."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:353
+msgid "Display Comments on all Pages"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:356
+msgid "Display comments, trackbacks, and pingbacks on Pages. "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:357
+msgid ""
+"If comments, trackbacks, or pingbacks already exist, choosing to no longer "
+"allow them on the \"Edit Page\" page will not remove the original ones from "
+"the Page. Checking this box will."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:388
+msgid "Before HTML"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:389
+msgid ""
+"The first content inside of the opening &lt;body&gt; tag.<br>Suggestion: Use "
+"this hook to build a \"Hello Bar\" style attention grabber."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:393
+msgid "After HTML"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:394
+msgid ""
+"The last content on your page just inside of the closing &lt;/body&gt; tag"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:398
+msgid "Header Top"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:399
+msgid ""
+"Inside of your header above where your site title and site tagline are "
+"located.<br>Suggestion: Try turning off your site title and site tagline to "
+"build your own header here."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:403
+msgid "Header Bottom"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:404
+msgid ""
+"Inside of your header below where your site title and site tagline are "
+"located.<br>Suggestion: Try turning off your site title and site tagline to "
+"build your own header here."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:408
+msgid "Header After Title/Tagline"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:409
+msgid ""
+"Inside of your header below site title and site tagline but above<br>your "
+"header menu <em>in the HTML flow</em>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:413
+msgid "Footer Top"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:414
+msgid ""
+"This displays inside of your footer at the very top.<br>If you have the Fat "
+"Footer activated, this will display above that."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:418
+msgid "Footer Bottom"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:419
+msgid ""
+"This displays inside of your footer at the bottom. If you have the Fat "
+"Footer<br>activated, this will display below that but above the copyright "
+"section."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:423
+msgid "Site Information"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:424
+msgid ""
+"This displays just after (inline) the site attribution. If you remove the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:424
+msgid " attribution,<br>you can build your own information area here."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:428
+msgid "Headliner"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:429
+msgid ""
+"Better known as a \"Feature Box\" displaying beneath the header but above "
+"content"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:433
+msgid "Footliner"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:434
+msgid ""
+"Much like the Headliner, this area can be used to highlight "
+"important<br>information below the main content area."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:438
+msgid "Before Content Area"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:439
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:444
+msgid ""
+"Only active on full-width HTML structure, use this hook<br>to add full-width "
+"sections to your layout."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:443
+msgid "After Content Area"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:448
+msgid "Before Content"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:449
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:454
+msgid ""
+"Only active on page-width HTML structure, use this hook<br>to add stacked "
+"sections to your layout"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:453
+msgid "After Content"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:458
+msgid "Before Content Column"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:459
+msgid ""
+"Very top of the content column before article/feed<br>(home, archive, & "
+"single posts only)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:463
+msgid "After Content Column"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:464
+msgid ""
+"Very bottom of the content column after article/feed<br>(home, archive, & "
+"single posts only)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:468
+msgid "Before Article Header"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:469
+msgid ""
+"Displays above article headline and byline .<br>Suggestion: Many bloggers "
+"place ads in this area."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:473
+msgid "After Article Header"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:474
+msgid ""
+"Displays beneath article headline and byline (if byline items show)."
+"<br>Suggestion: Many bloggers place ads in this area."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:478
+msgid "Single Post Footer"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:479
+msgid ""
+"Displays below your articles but above the comments.<br>Suggestion: Use this "
+"area as a call-to-action after a vistor reads your content."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:483
+msgid "Before Sidebar 1"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:484
+msgid "Directly above Sidebar 1 in all layouts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:488
+msgid "After Sidebar 1"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:489
+msgid "Directly below Sidebar 1 in all layouts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:493
+msgid "Before Sidebar 2"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:494
+msgid "Directly above Sidebar 2 in all layouts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:498
+msgid "After Sidebar 2"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/options-setup.php:499
+msgid "Directly below Sidebar 2 in all layouts"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:18
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:19
+msgid " Quick Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:34
+msgid "Create Sidebar 1:"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:39
+msgid "Create Sidebar 2:"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:52
+msgid "Select Column Layout: "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:56
+msgid "Site Default"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:66
+msgid "CSS Class: "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:67
+msgid "No Periods! Separate Classes by a Space"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:75
+msgid ""
+"When you select to create a new sidebar, it will not register until you "
+"publish the post/page. However, the site-wide, default sidebar content will "
+"continue to display until you go to your widgets panel and add widgets to "
+"your new sidebar(s)."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:91
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:108
+msgid "This sidebar is specific to the Post/Page titled \""
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:91
+msgid ""
+".\" Sidebar 1 will always be the leftmost sidebar, first in the HTML flow."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/post-meta.php:108
+msgid ""
+".\" Sidebar 2 will always be the rightmost sidebar, last in the HTML flow."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:29
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:650
+msgid " Options"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:63
+msgid "Options"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:68
+msgid "Save changes before switching tabs."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:76
+msgid "Your settings have been updated. Nice."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:119
+msgid "Structure Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:125
+msgid "Wide (100%) HTML Structure"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:131
+msgid ""
+"Activate (Recommended - A narrow structure look can still be achieved with "
+"the <em>.main</em> class.)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:137
+msgid "Content and Sidebar Structure"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:198
+msgid "Save Global Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:223
+msgid "Logo Uploader"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:228
+msgid "Upload Your Site Logo"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:232
+msgid "Upload Logo"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:234
+msgid "Upload a logo image."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:238
+msgid "Delete Logo"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:252
+msgid "Logo Preview"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:298
+msgid "Save Content Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:320
+msgid " Hooks"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:322
+msgid ""
+"Hooks are areas of your website that can be \"hooked\" into at will. If you "
+"are familiar with WordPress core, you probably already know about hooks like "
+"wp_head() and wp_footer(). You are not allowed to use PHP in these hooks! "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:322
+msgid "Write custom PHP functions"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:322
+msgid " and place them inside of your child theme's functions file."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:350
+msgid " Hide on: "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:364
+msgid " Blog "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:381
+msgid " Front Page "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:397
+msgid " Posts "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:418
+msgid " Pages "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:437
+msgid " Archives "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:458
+msgid " Search "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:479
+msgid " 404 "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:490
+msgid " Disable hook "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:492
+msgid "(Your changes will be saved)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:517
+msgid "License Key Settings"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:519
+msgid "When you purchased "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:519
+msgid ""
+", you received an email containing a license key for your framework. You "
+"will need that license key in order to receive automatic updates of the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:519
+msgid ""
+" Framework. Enter your license key below and click the \"Send License Key "
+"Changes to Database\" button. Once saved to the database, click the "
+"\"Activate License\" button."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:520
+msgid ""
+"You can use this exact license key on as many installs as you would like. "
+"Also, your license is valid for all of eternity. If you deactivate your "
+"license or you stole "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:520
+msgid ""
+" and you don't have one, you will not receive updates to the Framework. In "
+"other words, the fun will not last forever!"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:529
+msgid " Enter your license key"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:534
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:544
+msgid "Activate License"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:537
+msgid "active "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:540
+msgid "Deactivate License"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:552
+msgid "Send License Key Changes to Database"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:569
+msgid "The "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:569
+msgid " Framework"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:577
+msgid "Support"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:581
+msgid "Headquarters"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:585
+msgid "Members Area"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:589
+msgid "Affiliate Program"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:593
+msgid "Child Theme Skeletons"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:598
+msgid "version "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:609
+msgid "About the Creation of "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:610
+#, php-format
+msgid ""
+" is an %1$s project created by Sean Davis and the wonderful WordPress Codex. "
+"Along the way, thanks to %2$s, email, and public begging on <strong>Austin, "
+"TX</strong> street corners, what you have here is a unique collection of "
+"concepts and codes to help you build websites with WordPress.</p>"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:611
+#, php-format
+msgid ""
+"While there's no clear %1$s for the public begging, those who have taken the "
+"time to help solve coding problems, share their experiences, or provide "
+"encouragement deserve to be recognized. When you see these people around the "
+"universe, thank them."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:612
+msgid ""
+"Note: There were no core code contributors. Blame all of your bugs on "
+"Sean. ;)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:617
+msgid "Special thanks to:"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:624
+msgid ""
+"Norcross probably sleeps on Twitter. Anytime a development issue was faced "
+"in the creation of "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:624
+msgid ""
+", a simple tweet <em>always</em> led to his assistance. He reviewed code, "
+"suggested changes, offered solutions, and never asked for anything in "
+"return. Outstanding."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:630
+msgid "\"The kid,\" as we like to call him, has backed "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:630
+msgid ""
+" from inception to launch. Many of the features that made the final cut were "
+"put through the ultimate \"your friends will tell you the truth\" test by "
+"Alex. His feedback and troubleshooting efforts are greatly appreciated."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:650
+msgid "How did you get here? Get back to the "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:650
+msgid " please."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:661
+msgid "Update Hooks"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/inc/options/theme-options.php:762
+msgid "Twitter Name (no @)"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/404.php:44
+msgid "Most Used Categories"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/404.php:62
+#, php-format
+msgid "Try looking in the monthly archives. %1$s"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/content-archive.php:64
+msgid "Archives"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/content-attachment.php:36
+msgid "Published "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/content-attachment.php:36
+msgid "at "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/content-attachment.php:36
+msgid "in "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/content.php:45
+#, php-format
+msgid "%s"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/no-results.php:25
+msgid "Nothing Found"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/no-results.php:34
+msgid "Ready to publish your first post? "
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/no-results.php:34
+msgid "Get started here"
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/no-results.php:42
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with "
+"different keywords."
+msgstr ""
+
+#: /Applications/MAMP/htdocs/localhost/wordpress/wp-content/themes/volatyl/templates/no-results.php:53
+msgid ""
+"It seems we can&rsquo;t find what you&rsquo;re looking for. Perhaps "
+"searching can help."
+msgstr ""

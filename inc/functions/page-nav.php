@@ -45,13 +45,13 @@ if (!function_exists('volatyl_content_nav')) {
 
 			echo "<nav role=\"navigation\" id=\"", $nav_id, "\" class=\"", $nav_class, "\">";
 		if (is_single()) {
-			previous_post_link('<div class="nav-previous post-nav border-box"><span class="post-nav-title">' . __($post_navigation['previous_post'] . '</span><br>', 'volatyl') . '%link</div>', '<span class="meta-nav">' . _x('', 'Previous post link', 'volatyl') . '</span> %title');
+			previous_post_link('<div class="nav-previous post-nav border-box"><span class="post-nav-title">' . __($post_navigation['previous_post'], 'volatyl') . '</span><br>%link</div>');
 			
-			next_post_link('<div class="nav-next post-nav border-box"><span class="post-nav-title">' . __($post_navigation['next_post'] . '</span><br>', 'volatyl') . '%link</div>', '%title <span class="meta-nav">' . _x('', 'Next post link', 'volatyl') . '</span>');
+			next_post_link('<div class="nav-next post-nav border-box"><span class="post-nav-title">' . __($post_navigation['next_post'], 'volatyl') . '</span><br>%link</div>');
 
 		} elseif ($wp_query->max_num_pages > 1 && (is_home() || is_archive() || is_search())) {
-			((get_next_posts_link()) ? printf("<div class=\"nav-previous border-box\">") . next_posts_link(__('<span class="meta-nav">' . $post_navigation['older_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
-			((get_previous_posts_link()) ? printf("<div class=\"nav-next border-box\">") . previous_posts_link(__('<span class="meta-nav">' . $post_navigation['newer_posts'] . '</span>', 'volatyl')) . printf("</div>") : '');
+			((get_next_posts_link()) ? printf("<div class=\"nav-previous border-box\">") . next_posts_link(__($post_navigation['older_posts'], 'volatyl')) . printf("</div>") : '');
+			((get_previous_posts_link()) ? printf("<div class=\"nav-next border-box\">") . previous_posts_link(__($post_navigation['newer_posts'], 'volatyl')) . printf("</div>") : '');
 		}
 		echo "</nav>";		
 	}
@@ -74,7 +74,7 @@ if (!function_exists('vol_pagination')) {
 		}
 	
 		// Pagination text custom filter
-		$pagination_place = apply_filters('pagination_place', __('<span>' . __('Page ', 'volatyl') . $paged . __(' of ', 'volatyl') . $pages . '</span>', 'volatyl'));
+		$pagination_place = apply_filters('pagination_place', '<span class="pagination-place">' . __('Page ', 'volatyl') . $paged . __(' of ', 'volatyl') . $pages . '</span>');
 		$pagination_navigation = apply_filters('pagination_navigation', array(
 			'first_page'		=> '&laquo;',
 			'previous_page'		=> '&lsaquo;',

@@ -15,8 +15,8 @@
 
 // Add the "Volatyl Quick Options" meta box to post and page edit screens
 function vol_add_meta_box() {  
-    add_meta_box('post-layout', __(THEME_NAME . ' Quick Settings', 'volatyl'), 'vol_meta_box', 'post', 'normal', 'high');    
-    add_meta_box('page-layout', __(THEME_NAME . ' Quick Settings', 'volatyl'), 'vol_meta_box', 'page', 'normal', 'high');  
+    add_meta_box('post-layout', __(THEME_NAME . ' Quick Post Settings', 'volatyl'), 'vol_meta_box', 'post', 'normal', 'high');    
+    add_meta_box('page-layout', __(THEME_NAME . ' Quick Page Settings', 'volatyl'), 'vol_meta_box', 'page', 'normal', 'high');  
 } 
 add_action('add_meta_boxes', 'vol_add_meta_box'); 
 
@@ -31,12 +31,12 @@ function vol_meta_box($post) {
     $new_sidebars = array(
     	'Sidebar 1'		=> array(
     		'name'		=> '_create-sidebar-1',
-    		'label'		=> 'Create Sidebar 1:',
+    		'label'		=> __('Create Sidebar 1:', 'volatyl'),
     		'state'		=> $create_sidebar_1
     	),
     	'Sidebar 2'		=> array(
     		'name'		=> '_create-sidebar-2',
-    		'label'		=> 'Create Sidebar 2:',
+    		'label'		=> __('Create Sidebar 2:', 'volatyl'),
     		'state'		=> $create_sidebar_2
     	)
     );
@@ -49,11 +49,11 @@ function vol_meta_box($post) {
 	 * The first options is a standalone option - Site Default. It is not 
 	 * included in the $column_options array and will only be used here.
 	 */
-    echo "<p><label for=\"_singular-column\">Select Column Layout: </label>
+    echo "<p><label for=\"_singular-column\">" . __('Select Column Layout: ', 'volatyl') . "</label>
     <select name=\"_singular-column\" id=\"_singular-column\">
     <option value=\"default\"";
     selected($selected, 'default');
-    echo ">Site Default</option>"; 
+    echo ">" . __('Site Default', 'volatyl') . "</option>"; 
     
     // Create an option for each layout choice in the $column_options array
     foreach ($column_options as $key) {
@@ -63,8 +63,8 @@ function vol_meta_box($post) {
     }   
     
     echo "</select></p>
-    <p><label for=\"_custom-class\">CSS Class: </label>
-    <input id=\"_custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"No Periods! Separate Classes by a Space\"></p>";
+    <p><label for=\"_custom-class\">" . __('CSS Class: ', 'volatyl') . "</label>
+    <input id=\"_custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"" . __('No Periods! Separate Classes by a Space', 'volatyl') . "\"></p>";
     
     // Create sidebars per Page or Post
     echo "<p>";
@@ -72,7 +72,7 @@ function vol_meta_box($post) {
     	echo "<label for=\"", $ns['name'], "\">", $ns['label'], " </label>
     <input id=\"", $ns['name'], "\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" size=\"30\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), " style=\"margin: 0 20px 0 3px;\"/>";
     }
-    echo "<span style=\"display: block; color: #666; font-style: italic; max-width: 600px;\"><br>When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).</span>",
+    echo "<span style=\"display: block; color: #666; font-style: italic; max-width: 600px;\"><br>" . __('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl') . "</span>",
     "</p>";
 }
 
@@ -88,7 +88,7 @@ function singular_widgets_init() {
         register_sidebar( array(
         	'name'				=> 'Sidebar 1 &#8212; ' . $page->post_title, 
         	'id'				=> 'sidebar-1-' . $page->ID,
-			'description'   	=> __('This sidebar is specific to the Post/Page titled "' . $page->post_title . '." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'),
+			'description'   	=> __('This sidebar is specific to the Post/Page titled "', 'volatyl') . $page->post_title . __('." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'),
 			'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 		=> '</aside>',
 			'before_title' 		=> '<h4 class="widget-title">',
@@ -105,7 +105,7 @@ function singular_widgets_init() {
         register_sidebar( array(
         	'name'				=> 'Sidebar 2 &#8212; ' . $page->post_title, 
         	'id'				=> 'sidebar-2-' . $page->ID,
-			'description'   	=> __('This sidebar is specific to the Post/Page titled "' . $page->post_title . '." Sidebar 2 will always be the rightmost sidebar, last in the HTML flow.', 'volatyl'),
+			'description'   	=> __('This sidebar is specific to the Post/Page titled "', 'volatyl') . $page->post_title . __('." Sidebar 2 will always be the rightmost sidebar, last in the HTML flow.', 'volatyl'),
 			'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 			'after_widget' 		=> '</aside>',
 			'before_title' 		=> '<h4 class="widget-title">',

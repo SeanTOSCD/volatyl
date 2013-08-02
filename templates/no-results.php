@@ -31,7 +31,7 @@ if (is_404()) {
 			// Zero posts the viewer can create posts
 			if (is_home() && current_user_can('publish_posts')) { ?>
 				<p class="first-post">
-					<?php printf(__('Ready to publish your first post? <a href="%1$s">Get started here</a>.', 'volatyl'), admin_url('post-new.php')); ?>
+					<?php echo __('Ready to publish your first post? ', 'volatyl'), '<a href="' . admin_url('post-new.php') . '">', __('Get started here', 'volatyl'), '</a>'; ?>
 				</p>
 			
 			<?php

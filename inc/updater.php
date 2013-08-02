@@ -14,7 +14,7 @@
  * of Pippin's Plugins. He deserves the credit.
  *
  * Easy Digital Downloads
- * https://easydigitaldownloads.com?ref=184
+ * https://easydigitaldownloads.com/extensions/software-licensing?ref=184
  *
  * @package Volatyl
  * @since Volatyl 1.0

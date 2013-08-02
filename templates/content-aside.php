@@ -70,7 +70,7 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 
 		// Show feed tags
 		(($options_posts['singletags'] == 1) ?
-			the_tags(__('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, 'volatyl'), ', ', '<br /></div>') : ''); ?>
+			the_tags('<div class="entry-meta tags post-meta-footer">' . __($single_tags_text, 'volatyl'), ', ', '<br /></div>') : ''); ?>
 		
 	</section>
 </article>

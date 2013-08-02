@@ -24,37 +24,37 @@ $column_image = '<img src="' . THEME_PATH_URI . '/inc/options/images';
 $column_options = array(
 	'c1' => array(
 		'value' 		=> 'c1',
-		'description' 	=> 'Content (No Sidebars)',
+		'description' 	=> __('Content (No Sidebars)', 'volatyl'),
 		'label' 		=> $column_image . '/c1.png">'
 	),
 	'c2' => array(
 		'value' 		=> 'c2',
-		'description' 	=> 'Content (Sidebars below)',
+		'description' 	=> __('Content (Sidebars below)', 'volatyl'),
 		'label' 		=> $column_image . '/c2.png">'
 	),
 	'cs' => array(
 		'value' 		=> 'cs',
-		'description' 	=> 'Content - Sidebar',
+		'description' 	=> __('Content - Sidebar', 'volatyl'),
 		'label' 		=> $column_image . '/cs.png">'
 	),
 	'sc' => array(
 		'value' 		=> 'sc',
-		'description' 	=> 'Sidebar - Content',
+		'description' 	=> __('Sidebar - Content', 'volatyl'),
 		'label' 		=> $column_image . '/sc.png">'
 	),
 	'css' => array(
 		'value' 		=> 'css',
-		'description' 	=> 'Content - Sidebar - Sidebar',
+		'description' 	=> __('Content - Sidebar - Sidebar', 'volatyl'),
 		'label' 		=> $column_image . '/css.png">'
 	),
 	'scs' => array(
 		'value' 		=> 'scs',
-		'description' 	=> 'Sidebar - Content - Sidebar',
+		'description' 	=> __('Sidebar - Content - Sidebar', 'volatyl'),
 		'label' 		=> $column_image . '/scs.png">'
 	),
 	'ssc' => array(
 		'value' 		=> 'ssc',
-		'description' 	=> 'Sidebar - Sidebar - Content',
+		'description' 	=> __('Sidebar - Sidebar - Content', 'volatyl'),
 		'label' 		=> $column_image . '/ssc.png">'
 	)
 );
@@ -82,10 +82,10 @@ return $column_options;
 function volatyl_general() {
 	$vol_general = array(
 		'Automatic Updates' => array(
-			'table_name'	=> __('<h3>General Settings</h3>', 'volatyl'),
+			'table_name'	=> '<h3>' . __('General Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Enable Framework Updates</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Enable Framework Updates', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			
 			'title'			=> 'updates',
@@ -95,17 +95,17 @@ function volatyl_general() {
 		),
 		'Responsive CSS' 	=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Enable Responsive CSS</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Enable Responsive CSS', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			
 			'title'			=> 'responsive',
-			'label'			=> __('This option controls the ', 'volatyl') . THEME_NAME . __(' <strong>core</strong> responsive CSS (this option does not control responsive CSS written in a child theme).', 'volatyl'),
+			'label'			=> __('This option controls the ', 'volatyl') . THEME_NAME . __(' core responsive CSS (this option does not control responsive CSS written in a child theme).', 'volatyl'),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
 		'Admin Menu' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display ', 'volatyl') . THEME_NAME . __(' Admin Toolbar</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display ', 'volatyl') . THEME_NAME . __(' Admin Toolbar', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			
 			'title'			=> 'adminmenu',
@@ -115,7 +115,7 @@ function volatyl_general() {
 		),
 		'Attribution' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display ', 'volatyl') . THEME_NAME . __(' Attribution</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display ', 'volatyl') . THEME_NAME . __(' Attribution', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'attribution',
 			'label'			=> __('There\'s no fee to remove the ', 'volatyl') . THEME_NAME . __(' attribution. ;)', 'volatyl'),
@@ -148,10 +148,10 @@ function volatyl_general() {
 function volatyl_content() {
 	$vol_content = array(
 		'Site Title' 		=> array(
-			'table_name'	=> __('<h3>Content Settings</h3>', 'volatyl'),
+			'table_name'	=> '<h3>' . __('Content Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Default Header Elements</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Default Header Elements', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'title',
 			'label'			=> __('Site title', 'volatyl'),
@@ -168,7 +168,7 @@ function volatyl_content() {
 		),
 		'Standard Menu' 	=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Activate Additional Menus</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Activate Additional Menus', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'standardmenu',
 			'label'			=> __('Standard Menu - Displays below the site header *<br>', 'volatyl'),
@@ -176,22 +176,22 @@ function volatyl_content() {
 		'Footer Menu' 		=> array(
 			'title'			=> 'footermenu',
 			'label'			=> __('Footer Menu - Displays above the site footer *', 'volatyl'),
-			'notes'			=> __('<span class="notes">* Once activated, you must <a href="nav-menus.php">create new menus</a> and add them to their respective "Theme Locations."</span>', 'volatyl'),
+			'notes'			=> '<span class="notes">' . __('* Once activated, you must ', 'volatyl') . '<a href="nav-menus.php">' . __('create new menus', 'volatyl') . '</a>' . __(' and add them to their respective "Theme Locations."', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
 		'Fat Footer' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Activate Widgetized (Fat) Footer</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Activate Widgetized (Fat) Footer', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'fatfooter',
-			'label'			=> __('Activate the 3-column, widget-ready footer. If activated, <a href="widgets.php">add widgets here</a>.', 'volatyl'),
+			'label'			=> __('Activate the 3-column, widget-ready footer. If activated, ', 'volatyl') . '<a href="widgets.php">' . __('add widgets here', 'volatyl') . '</a>.',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>' 
 		),
 		'Default Widgets' 	=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Default Widgets</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Default Widgets', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'widgets',
 			'label'			=> __('Show default widgets in empty widgetized areas.', 'volatyl'),
@@ -200,7 +200,7 @@ function volatyl_content() {
 		),
 		'Pagination' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Activate Pagination</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Activate Pagination', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'pagination',
 			'label'			=> __('Activate numbered pagination on homepage, archives, search results, etc.', 'volatyl'),
@@ -233,10 +233,10 @@ function volatyl_content() {
 function volatyl_post() {
 	$vol_post = array(
 		'Byline Post Format'=> array(
-			'table_name'	=> __('</table><h3>Post Settings</h3>', 'volatyl'),
+			'table_name'	=> '</table><h3>' . __('Post Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Post Byline Elements</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Post Byline Elements', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'by-post-format',
 			'label'			=> __('Post Format', 'volatyl'),
@@ -265,7 +265,7 @@ function volatyl_post() {
 		),
 		'Excerpts'			=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Post Excerpts</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Post Excerpts', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'homeexcerpt',
 			'label'			=> __('Display excerpts instead of full posts.', 'volatyl'),
@@ -278,7 +278,7 @@ function volatyl_post() {
 		),
 		'Featured Image Feed'	=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Featured Images</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Featured Images', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'feedfeaturedimage',
 			'label'			=> __('Post Feeds (home, search, archives, etc.)', 'volatyl')
@@ -291,7 +291,7 @@ function volatyl_post() {
 		),
 		'Tags Feed'			=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Tags List</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Tags List', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'feedtags',
 			'label'			=> __('Post Feeds (home, search, archives, etc.)', 'volatyl'),
@@ -304,11 +304,11 @@ function volatyl_post() {
 		),
 		'Post Pings'		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Post Pings</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Post Pings', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'postpings',
 			'label'			=> __('Display trackbacks and pingbacks on posts below comments.', 'volatyl'),
-			'notes'			=> __('<span class="notes">If pings already exist, choosing to no longer allow them on the "Edit Post" page will not remove the original ones from the Post. Checking this box will.</span>', 'volatyl'),
+			'notes'			=> '<span class="notes">' . __('If pings already exist, choosing to no longer allow them on the "Edit Post" page will not remove the original ones from the Post. Checking this box will.', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
@@ -338,10 +338,10 @@ function volatyl_post() {
 function volatyl_page() {
 	$vol_page = array(
 		'Search Pages'		=> array(
-			'table_name'	=> __('</table><h3>Page Settings</h3>', 'volatyl'),
+			'table_name'	=> '</table><h3>' . __('Page Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Pages in Search Results</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Pages in Search Results', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'searchpages',
 			'label'			=> __('Search results are usually limited to posts. Consider leaving this unchecked.', 'volatyl'),
@@ -350,11 +350,11 @@ function volatyl_page() {
 		),
 		'Page Comments' 	=> array(
 			'tr'			=> '<tr>',
-			'th'			=> __('<th scope="row">Display Comments on all Pages</th>', 'volatyl'),
+			'th'			=> '<th scope="row">' . __('Display Comments on all Pages', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'pagecomments',
 			'label'			=> __('Display comments, trackbacks, and pingbacks on Pages. ', 'volatyl'),
-			'notes'			=> __('<span class="notes">If comments, trackbacks, or pingbacks already exist, choosing to no longer allow them on the "Edit Page" page will not remove the original ones from the Page. Checking this box will.</span>', 'volatyl'),
+			'notes'			=> '<span class="notes">' . __('If comments, trackbacks, or pingbacks already exist, choosing to no longer allow them on the "Edit Page" page will not remove the original ones from the Page. Checking this box will.', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),

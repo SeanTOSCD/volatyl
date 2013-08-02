@@ -21,7 +21,7 @@ $search_title = apply_filters('search_title', 'Search Results for:'); ?>
 
 <header class="page-header">
 	<h1 class="page-title">
-		<?php echo sprintf(__($search_title . ' %s', 'volatyl'), '<span>' . get_search_query() . '</span>'); ?>
+		<?php echo __($search_title, 'volatyl'), ' <span>', get_search_query(), '</span>'; ?>
 	</h1>
 </header>
 

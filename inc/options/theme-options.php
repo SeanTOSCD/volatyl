@@ -319,7 +319,7 @@ function vol_options_do_page() {
 		// Hooks intro
 		"\n{$tab3}\t<h3>", THEME_NAME . __(' Hooks', 'volatyl'), "</h3>\n
 		{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be “hooked” into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). You are <strong style="color: red">not</strong> allowed to use PHP in these hooks! <a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">Write custom PHP functions</a> and place them inside of your child theme\'s functions file.', 'volatyl'), 
+		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be "hooked" into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). You are not allowed to use PHP in these hooks! ', 'volatyl') . '<a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">' . __('Write custom PHP functions', 'volayl') . '</a>' . __(' and place them inside of your child theme\'s functions file.', 'volatyl'), 
 		"</p>\n
 		{$tab3}\t</div>";
 	
@@ -347,7 +347,7 @@ function vol_options_do_page() {
 			$hook['name'], "]\">", 
 			stripslashes(esc_textarea($options_hooks[$hook['name']])), 
 			"</textarea><br>\n",
-			__(' <span style="margin-right: 10px;">Hide on:</span> ', 'volatyl');
+			"<span style=\"margin-right: 10px;\">", __(' Hide on: ', 'volatyl'), "</span>";
 			
 			switch ($hook['name']) {
 				case 'vol_post_footer':
@@ -516,7 +516,7 @@ function vol_options_do_page() {
 		"\n{$tab3}\t<h3>", 
 		__('License Key Settings', 'volatyl'), "</h3>\n",
 		"{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('When you purchased ', 'volatyl') . THEME_NAME . __(', you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the ', 'volatyl') . THEME_NAME . __(' Framework. Enter your license key below and click the <strong>Send License Key Changes to Database</strong> button. Once saved to the database, click the <strong>Activate License</strong> button.', 'volatyl'), "</p>\n
+		{$tab3}\t\t<p>", __('When you purchased ', 'volatyl') . THEME_NAME . __(', you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the ', 'volatyl') . THEME_NAME . __(' Framework. Enter your license key below and click the "Send License Key Changes to Database" button. Once saved to the database, click the "Activate License" button.', 'volatyl'), "</p>\n
 		{$tab3}\t\t<p>", __('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole ', 'volatyl') . THEME_NAME . __(' and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), "</p>\n
 		{$tab3}\t</div>
 		{$tab3}<table class=\"form-table\">\n
@@ -566,36 +566,36 @@ function vol_options_do_page() {
 		"{$tab3}<table class=\"form-table\">\n
 		<tr valign=\"top\">
 		<th scope=\"row\" valign=\"top\">",
-		__('<strong>The ', 'volatyl'), THEME_NAME, __(' Framework</strong>', 'volatyl'), ":</th><td>";
+		"<strong>", __('The ', 'volatyl'), THEME_NAME, __(' Framework', 'volatyl'), "</strong>:</th><td>";
 		
 		$vol_links = array(
 			'Docs'	=> array(
-				'name'	=> 'Documentation',
+				'name'	=> __('Documentation', 'volatyl'),
 				'url'	=> 'http://volatylthemes.com/'
 			),
 			'Support'	=> array(
-				'name'	=> 'Support',
+				'name'	=> __('Support', 'volatyl'),
 				'url'	=> 'http://support.sdavismedia.com/'
 			),
 			'Headquarters'	=> array(
-				'name'	=> 'Headquarters',
+				'name'	=> __('Headquarters', 'volatyl'),
 				'url'	=> 'http://hq.volatylthemes.com/'
 			),
 			'Members'	=> array(
-				'name'	=> 'Members Area',
+				'name'	=> __('Members Area', 'volatyl'),
 				'url'	=> 'http://volatylthemes.com/members/'
 			),
 			'Affiliate'	=> array(
-				'name'	=> 'Affiliate Program',
+				'name'	=> __('Affiliate Program', 'volatyl'),
 				'url'	=> 'http://volatylthemes.com/affiliates/'
 			),
 			'Skeletons'	=> array(
-				'name'	=> 'Child Theme Skeletons',
+				'name'	=> __('Child Theme Skeletons', 'volatyl'),
 				'url'	=> 'http://volatylthemes.com/skeletons-market/'
 			),
 		);
 		
-		echo '<strong>version ' . THEME_VERSION . '</strong>';
+		echo '<strong>' . __('version ', 'volatyl') . THEME_VERSION . '</strong>';
 		
 		foreach ($vol_links as $vl) {
 			printf(' &middot; <a href="%2$s" target="_blank"><strong>%1$s</strong></a>',
@@ -609,7 +609,7 @@ function vol_options_do_page() {
 		__('About the Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",
 		"{$tab3}\t\t<p>", sprintf(THEME_NAME . __(' is an %1$s project created by Sean Davis and the wonderful WordPress Codex. Along the way, thanks to %2$s, email, and public begging on <strong>Austin, TX</strong> street corners, what you have here is a unique collection of concepts and codes to help you build websites with WordPress.</p>', 'volatyl'), '<a href="http://sdavismedia.com/" target="_blank">SDavis Media</a>', '<a href="http://sdvs.me/twitter" target="_blank">Twitter</a>'),
 		"{$tab3}\t\t<p>", sprintf(__('While there\'s no clear %1$s for the public begging, those who have taken the time to help solve coding problems, share their experiences, or provide encouragement deserve to be recognized. When you see these people around the universe, thank them.', 'volatyl'), '<acronym title="Return on Investment" style="border-bottom: 1px dotted #ccc;">ROI</acronym>'), "</p>\n
-		{$tab3}\t\t<p class=\"notes\">", __('<strong>Note: </strong>There were no core code contributors. Blame all of your bugs on Sean. ;)', 'volatyl'), "</p>\n
+		{$tab3}\t\t<p class=\"notes\">", __('Note: There were no core code contributors. Blame all of your bugs on Sean. ;)', 'volatyl'), "</p>\n
 		</td></tr>
 		
 		<tr valign=\"top\">
@@ -647,7 +647,7 @@ function vol_options_do_page() {
 	// Tab checker - WTF? Settings
 	} else {
 	
-		echo "<p>", __('How did you get here? Get back to the <a href="themes.php?page=volatyl_options&tab=global">', 'volatyl') . THEME_NAME . __(' Options</a> please.', 'volatyl'), "</p>";
+		echo "<p>", __('How did you get here? Get back to the ', 'volatyl'), "<a href=\"themes.php?page=volatyl_options&tab=global\">", THEME_NAME, __(' Options', 'volatyl'), "</a>", __(' please.', 'volatyl'), "</p>";
 		
 	}	
 	echo "</div>";
@@ -759,7 +759,7 @@ function vol_sanitize_license($new) {
 function volatyl_user_profile_fields( $contactmethods ) {
 
 	// Add Twitter field
-	$contactmethods['twitter'] = 'Twitter Name (no @)';
+	$contactmethods['twitter'] = __('Twitter Name (no @)', 'volatyl' );
 	return $contactmethods;
 }
 add_filter('user_contactmethods','volatyl_user_profile_fields',10,1);

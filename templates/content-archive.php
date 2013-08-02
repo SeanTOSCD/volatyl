@@ -33,37 +33,46 @@ $archive_title = apply_filters('archive_title', array(
 		<?php 
 		// archive titles
 		if (is_category()) {
-			printf(__($archive_title['cat_title'] . ' %s', 'volatyl'), '<span>' . single_cat_title('', false) . '</span>');
+			echo __($archive_title['cat_title'], 'volatyl'), ' <span>', single_cat_title('', true), '</span>';
+			
 		} elseif (is_tag()) {
-			printf(__($archive_title['tag_title'] . ' %s', 'volatyl'), '<span>' . single_tag_title('', false) . '</span>');
+			echo __($archive_title['tag_title'], 'volatyl'), ' <span>', single_tag_title('', true), '</span>';
+		
 		} elseif (is_author()) {
 
 			// Queue the first post, that way we know
 			// what author we're dealing with (if that is the case)
 			the_post();
-			printf(__($archive_title['author_title'] . ' %s', 'volatyl'), '<span class="vcard"><a class="fn" href="' . get_author_posts_url(get_the_author_meta("ID")) . '" title="' . esc_attr(get_the_author()) . '">' . get_the_author() . '</a></span>');
-
+			
+			echo __($archive_title['author_title'], 'volatyl'), ' <span class="vcard"><a class="fn" href="' . get_author_posts_url(get_the_author_meta("ID")) . '" title="' . esc_attr(get_the_author()) . '">' . get_the_author() . '</a></span>';
+			
 			// Since we called the_post() above, we need to
 			// rewind the loop back to the beginning that way
 			// we can run the loop properly, in full.
 			rewind_posts();
+			
 		} elseif (is_day()) {
-			printf(__($archive_title['daily_title'] . ' %s', 'volatyl'), '<span>' . get_the_date() . '</span>');
+			echo __($archive_title['daily_title'], 'volatyl'), ' <span>', get_the_date(), '</span>';
+			
 		} elseif (is_month()) {
-			printf(__($archive_title['monthly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('F Y') . '</span>');
+			echo __($archive_title['monthly_title'], 'volatyl'), ' <span>', get_the_date('F Y'), '</span>';
+			
 		} elseif (is_year()) {
-			printf(__($archive_title['yearly_title'] . ' %s', 'volatyl'), '<span>' . get_the_date('Y') . '</span>');
+			echo __($archive_title['yearly_title'], 'volatyl'), ' <span>', get_the_date('Y'), '</span>';
+			
 		} else {
 			_e('Archives', 'volatyl');
+			
 		} ?>
 		
 	</h1>
 
 	<?php
 	// archive type specifics
-	if (is_author())
-		printf(__('<p class="user-description">%s</p>', 'volatyl'), get_the_author_meta('description'));
+	if (is_author()) ?>
+		<p class="user-description"><?php echo get_the_author_meta('description'); ?></p>
 
+	<?php
 	if (is_category()) {
 
 		// show an optional category description
