@@ -575,11 +575,7 @@ function vol_options_do_page() {
 			),
 			'Support'	=> array(
 				'name'	=> __('Support', 'volatyl'),
-				'url'	=> 'http://support.sdavismedia.com/'
-			),
-			'Headquarters'	=> array(
-				'name'	=> __('Headquarters', 'volatyl'),
-				'url'	=> 'http://hq.volatylthemes.com/'
+				'url'	=> 'http://support.volatylthemes.com/forums/'
 			),
 			'Members'	=> array(
 				'name'	=> __('Members Area', 'volatyl'),
