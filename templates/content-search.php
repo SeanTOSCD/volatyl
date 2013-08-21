@@ -29,8 +29,6 @@ $search_title = apply_filters('search_title', 'Search Results for:'); ?>
 // Da loop		
 while (have_posts()) { 
 	the_post();
-	if (is_search() && ($post->post_type=='page')) 
-		continue;
 	get_template_part('templates/content', get_post_format());
 }
 vol_pagination_type();
