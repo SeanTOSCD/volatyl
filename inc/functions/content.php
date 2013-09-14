@@ -74,7 +74,7 @@ if ($options_content['excerptlink'] == 1) {
 		global $excerpt_link;
 		$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
 		return str_replace('[&hellip;]',
-			'<p class="excert-link"><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
+			'<p class="excerpt-link"><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
 			$content
 		);
 	}

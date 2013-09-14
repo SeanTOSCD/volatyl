@@ -42,9 +42,13 @@ if (post_password_required())
 	"<div class=\"comments-wrap\">",
 	"<div class=\"comments-content\">";
 	if (have_comments()) {
-		echo "\t<span class=\"comments-title\">\n", 
-		sprintf($comments_title, number_format_i18n(vol_comments_only_count($count))), 
-		"</span>\n";
+	
+		// only display comments count title if there are actual comments (not pings!)
+		if ('0' != vol_comments_only_count($count)) {
+			echo "\t<span class=\"comments-title\">\n", 
+			sprintf($comments_title, number_format_i18n(vol_comments_only_count($count))), 
+			"</span>\n";
+		}
 		
 		// Are there comments to navigate through?
 		((get_comment_pages_count() > 1 && get_option('page_comments')) ? 

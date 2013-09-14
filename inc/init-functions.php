@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.2.4');
+define ('THEME_VERSION', '1.2.5');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
