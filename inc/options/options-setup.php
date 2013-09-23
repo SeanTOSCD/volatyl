@@ -473,6 +473,11 @@ function volatyl_hooks() {
 			'title' 			=> __('After Article Header', 'volatyl'),
 			'description'		=> __('Displays beneath article headline and byline (if byline items show).<br>Suggestion: Many bloggers place ads in this area.', 'volatyl') 
 		),
+		'vol_last_byline_item'	=> array(
+			'name'				=> 'vol_last_byline_item',
+			'title' 			=> __('Last Byline Item', 'volatyl'),
+			'description'		=> __('Displays as the last item in the byline any time the byline is shown.<br>Your content will appear before the "edit" link as that link is not seen by visitors.', 'volatyl') 
+		),
 		'vol_post_footer' 		=> array(
 			'name'				=> 'vol_post_footer',
 			'title' 			=> __('Single Post Footer', 'volatyl'),
@@ -601,6 +606,11 @@ function vol_after_article_header() {
 	global $options; 
 	echo stripslashes($options['vol_after_article_header']); 
 	do_action('vol_after_article_header'); 
+}
+function vol_last_byline_item() {
+	global $options_hooks; 
+	echo stripslashes($options_hooks['vol_last_byline_item']); 
+	do_action('vol_last_byline_item'); 
 }
 function vol_post_footer() { 
 	global $options; 

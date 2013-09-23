@@ -99,8 +99,11 @@
 	#footer-menu-container:target .full-menu {
 		display: block;
 	}
+	#header-menu-container .open-header-menu,
 	#header-menu-container:target .close-header-menu,
+	#standard-menu-container .open-standard-menu,
 	#standard-menu-container:target .close-standard-menu,
+	#footer-menu-container .open-footer-menu,
 	#footer-menu-container:target .close-footer-menu {
 		display: inline-block;
 	}

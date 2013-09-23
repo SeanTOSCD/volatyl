@@ -21,8 +21,9 @@
  */
 if (!function_exists('volatyl_post_meta')) {
 	function volatyl_post_meta() {
-		global $count;
+		global $count, $options_hooks;
 		$options_content = get_option('vol_content_options');
+		$options_hooks = get_option('vol_hooks_options');
 		$post_format_type = ucfirst(get_post_format());
 		$byline_text = apply_filters('byline_text', array(
 			'post_format_type'	=> $post_format_type . '&#58;',	
@@ -105,6 +106,16 @@ if (!function_exists('volatyl_post_meta')) {
 			} 
 			echo $comments . '</span>';
 		}
+
+		// vol_last_byline_item
+		(($options_hooks['switch_vol_last_byline_item'] == 0) ?
+			((is_single() && $options_hooks['posts_vol_last_byline_item'] == 0) ||
+			(is_home() && $options_hooks['home_vol_last_byline_item'] == 0) ||
+			(is_archive() && $options_hooks['archive_vol_last_byline_item'] == 0) ||
+			(is_search() && $options_hooks['search_vol_last_byline_item'] == 0)) ?
+				vol_last_byline_item() :
+				do_action('vol_last_byline_item') :
+		'');
 	
 		// Show post edit link
 		(($options_content['by-edit-post'] == 1) ? edit_post_link(__('Edit', 'volatyl'), '<span class="edit-link"> ', '</span> ') : '');
