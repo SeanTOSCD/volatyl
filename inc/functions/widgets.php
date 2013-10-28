@@ -69,16 +69,18 @@ function vol_widgets_init() {
 add_action('widgets_init', 'vol_widgets_init', 10);
 
 // Default widget when no widgets are present in a widgetized area
-function vol_default_widget() {
-	$options_content = get_option('vol_content_options');
-	
-	// Only show when selection is made in the options
-	echo (($options_content['widgets'] == 1) ?
-		"\t<aside class=\"widget default-widget\">\n
-		\t\t<h4 class=\"widget-title\">\n" .
-		__('Default Widget', 'volatyl') . 
-		"\t\t</h4>\n
-		\t\t<p>" . __('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the ', 'volatyl') . '<a href="' . admin_url('/widgets.php') . '">' . __('widgets page', 'volatyl') . '</a> ' . __('of your WordPress dashboard.', 'volatyl') . "</p>\n
-		\t</aside>\n" : 
-	'');
+if (!function_exists('vol_default_widget')) {
+	function vol_default_widget() {
+		$options_content = get_option('vol_content_options');
+		
+		// Only show when selection is made in the options
+		echo (($options_content['widgets'] == 1) ?
+			"\t<aside class=\"widget default-widget\">\n
+			\t\t<h4 class=\"widget-title\">\n" .
+			__('Default Widget', 'volatyl') . 
+			"\t\t</h4>\n
+			\t\t<p>" . __('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the ', 'volatyl') . '<a href="' . admin_url('/widgets.php') . '">' . __('widgets page', 'volatyl') . '</a> ' . __('of your WordPress dashboard.', 'volatyl') . "</p>\n
+			\t</aside>\n" : 
+		'');
+	}
 }
