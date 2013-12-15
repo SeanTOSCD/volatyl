@@ -61,10 +61,6 @@
 
 @media screen and (max-width: 850px) 
 {
-	body.squeeze {
-		font-size: 20px;
-		line-height: 1.55em;
-	}
 	.squeeze #main-content .main,
 	.squeeze #main-content { 
 		width: 100%;
@@ -73,10 +69,6 @@
 
 @media screen and (max-width: 768px) 
 {
-	body {
-		font-size: 20px;
-		line-height: 1.55em;
-	}
 	
 	/* =Responsive Menus and all that crap >:[
 	-------------------------------------------------------------- */
@@ -240,11 +232,6 @@
 
 @media screen and (max-width: 480px) 
 {
-	body,
-	body.squeeze {
-		font-size: 15px;
-		line-height: 1.6em;
-	}
 	.short-menu,
 	.full-menu {
 		width: 100%;

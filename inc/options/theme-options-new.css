@@ -1,0 +1,197 @@
+/* Save changes and changes saved alert boxes */
+.wrap.volatyl-options .half.updated,
+.wrap.volatyl-options .half.save-settings {
+	float: left;
+	width: 35%;
+	min-width: 240px;
+	margin-right: 10px;
+}
+
+.save-settings {
+	background: #fff;
+	border-left: 4px solid #2ea2cc;
+	padding: 1px 12px;
+	margin: 5px 0 15px;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.save-settings p {
+	margin: .5em 0;
+	padding: 2px;
+}
+
+.volatyl-options .radius { 
+	-webkit-border-radius: 3px; 
+	-moz-border-radius:    3px; 
+	border-radius:         3px; 
+}
+
+/* Keep tabbed options below alert messages */
+.nav-tab-wrapper {
+	clear: both;
+}
+
+h2 .nav-tab {
+	text-transform: capitalize;
+}
+
+/* Form content formattings */
+.volatyl-options form h3 {
+	background: #fff;
+	font-size: 18px;
+	text-shadow: white 0 1px 0;
+	font-weight: normal;
+	padding: 10px;
+	margin-top: 30px;
+	border-left: 4px solid #7ad03a;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius:    3px; 
+	border-radius:         3px; 
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.volatyl-options hr {
+	clear: both;
+	background: #f1f1f1; 
+	border: 0; 
+	height: 3px; 
+	margin: 2em 0;
+}
+
+.volatyl-options ul.list {
+	margin-top: 0;
+}
+
+/* For multiple radio buttons and labels on one line, create spacing */
+.volatyl-options .label-space,
+.volatyl-options .logo-button {
+	margin-right: 20px;
+}
+
+.volatyl-options .hook-label-space {
+	margin-right: 12px;
+}
+
+.volatyl-options .checkbox-space {
+	margin-right: 3px;
+}
+
+/* Columns layout images and radio buttons */
+.volatyl-options .layout-label {
+	position: relative;
+	margin: 0 10px 18px 0 !important;
+	display: inline-block;
+	width: 90px;
+	height: 60px;
+}
+
+.volatyl-options .layout-label input + img {
+	background: #ccc;
+	padding: 2px;
+}
+
+.volatyl-options .layout-label input + img:hover {
+	background: #aaa;
+}
+
+.volatyl-options .layout-radio {
+	position: absolute;
+	left: -2px;
+	top: -4px;
+}
+
+/* Additional options information */
+.volatyl-options .notes {
+	color: #999;
+	font-style: italic;
+}
+
+.volatyl-options .instructions {
+	background: #ffffe0;
+	padding: 15px;
+	max-width: 650px;
+	border-left: 4px solid #D1D15F;
+	-webkit-border-radius: 3px; 
+	-moz-border-radius:    3px; 
+	border-radius:         3px; 
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+.volatyl-options .instructions p,
+.vol-information td p {
+	margin: 0 0 1.5em;
+}
+
+.volatyl-options .instructions p:last-of-type {
+	margin-bottom: 0;
+}
+
+/* Hooks form formatting */
+.volatyl-options .hook-field {
+	margin-top: 5px;
+}
+
+.volatyl-options .hook-title {
+	font-size: 18px;
+	font-weight: bold;
+	margin: 20px 0 10px;
+}
+
+.volatyl-options .hook-info {
+	display: block;
+}
+
+.hide-on {
+	display: inline-block; 
+	margin: 0 10px 10px 0;
+}
+
+.volatyl-options .submit-hooks {
+	margin-bottom: 30px;
+}
+
+/* metabox options */
+input.create-sidebar[type=checkbox] {
+	margin: 0 20px 0 3px;
+}
+
+
+/* WP 3.8+ responsive dashboard */
+@media screen and (max-width: 782px) {
+	.save-settings {
+		padding: 5px 10px;
+		margin: 20px 0 5px;
+	}
+	
+	h2.nav-tab-wrapper {
+		padding: 10px 0 0;
+		width: 100%;
+	}
+	
+	h2 .nav-tab {
+		display: block;
+		margin: 0;
+	}
+	
+	.nav-tab-active, 
+	.nav-tab-active:hover {
+		border-width: 1px 1px 0;
+	}
+	
+	.input-group,
+	.input-hook-conditions {
+		display: block;
+		margin-bottom: 10px;
+	}
+	
+	.hook-field,
+	.custom-class {
+		max-width: 100%;
+	}
+}

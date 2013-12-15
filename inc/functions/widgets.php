@@ -27,7 +27,7 @@ function vol_widgets_init() {
 	register_sidebar(array(
 		'name' 			=> __('Standard Sidebar 2', 'volatyl'),
 		'id' 			=> 'sidebar-2',
-		'description'   => __('In all layouts including sidebars, this will be the right most sidebar (secondary).', 'volatyl'),
+		'description'   => __('In all layouts including two sidebars, this will be the rightmost sidebar (secondary).', 'volatyl'),
 		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
 		'after_widget' 	=> '</aside>',
 		'before_title' 	=> '<h4 class="widget-title">',

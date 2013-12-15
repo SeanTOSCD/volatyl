@@ -278,13 +278,13 @@ function vol_options_do_page() {
 			(isset($va['td']) ? $va['td'] . "\n" : ''),
 	
 			// Input and labels for content options
-			"{$tab6}\t<input class=\"checkbox-space\" id=\"vol_content_options[", 
+			"{$tab6}\t<span class=\"input-group\"><input class=\"checkbox-space\" id=\"vol_content_options[", 
 			$va['title'], "]\" name=\"vol_content_options[", 
 			$va['title'], "]\" type=\"checkbox\" value=\"1\"";
 			checked('1', $options_content[$va['title']], true);
 			echo ">\n{$tab6}\t<label class=\"description label-space\" for=\"vol_content_options[", 
 			$va['title'], "]\">", 
-			$va['label'], "</label>\n{$tab6}\t\t",
+			$va['label'], "</label></span>\n{$tab6}\t\t",
 			
 			(isset($va['notes']) ? "<br>" . $va['notes'] . "\n{$tab6}" : ''),
 			(isset($va['td_end']) ? $va['td_end'] . "\n{$tab3}\t\t" : ''),
@@ -347,7 +347,7 @@ function vol_options_do_page() {
 			$hook['name'], "]\">", 
 			stripslashes(esc_textarea($options_hooks[$hook['name']])), 
 			"</textarea><br>\n",
-			"<span style=\"margin-right: 10px;\">", __(' Hide on: ', 'volatyl'), "</span>";
+			"<span class=\"hide-on\">", __(' Hide on: ', 'volatyl'), "</span>";
 			
 			switch ($hook['name']) {
 				case 'vol_post_footer':
@@ -355,14 +355,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on blog
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[home_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[home_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[home_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['home_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[home_",
 					$hook['name'], "]\">", 
 					__(' Blog ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -373,14 +373,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on front page
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[front_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[front_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[front_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['front_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[front_",
 					$hook['name'], "]\">", 
 					__(' Front Page ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -389,14 +389,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on posts
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[posts_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[posts_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[posts_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['posts_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[posts_",
 					$hook['name'], "]\">", 
 					__(' Posts ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -411,14 +411,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on pages
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[pages_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[pages_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[pages_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['pages_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[pages_",
 					$hook['name'], "]\">", 
 					__(' Pages ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -430,14 +430,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on archives
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[archive_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[archive_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[archive_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['archive_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[archive_",
 					$hook['name'], "]\">", 
 					__(' Archives ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -451,14 +451,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on search
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[search_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[search_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[search_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['search_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[search_",
 					$hook['name'], "]\">", 
 					__(' Search ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			switch ($hook['name']) {
@@ -473,14 +473,14 @@ function vol_options_do_page() {
 					break;
 				default:
 					// Hide on 404
-					echo "{$tab3}\t\t<input id=\"vol_hooks_options[404_", 
+					echo "{$tab3}\t\t<span class=\"input-hook-conditions\"><input id=\"vol_hooks_options[404_", 
 					$hook['name'], "]\" name=\"vol_hooks_options[404_", 
 					$hook['name'], "]\" type=\"checkbox\" value=\"1\"";
 					checked('1', $options_hooks['404_' . $hook['name']], true);
 					echo "/>\n{$tab3}\t\t<label class=\"description hook-label-space\" for=\"vol_hooks_options[404_",
 					$hook['name'], "]\">", 
 					__(' 404 ', 'volatyl'),
-					"</label>\n";
+					"</label></span>\n";
 			}
 			
 			// Disable hooks
@@ -566,7 +566,7 @@ function vol_options_do_page() {
 		echo "{$tab3}<form method=\"post\" action=\"options.php\">\n{$tab3}\t",
 		
 		// Start information table
-		"{$tab3}<table class=\"form-table\">\n
+		"{$tab3}<table class=\"form-table vol-information\">\n
 		<tr valign=\"top\">
 		<th scope=\"row\" valign=\"top\">",
 		"<strong>", __('The ', 'volatyl'), THEME_NAME, __(' Framework', 'volatyl'), "</strong>:</th><td>";
@@ -574,7 +574,7 @@ function vol_options_do_page() {
 		$vol_links = array(
 			'Docs'	=> array(
 				'name'	=> __('Documentation', 'volatyl'),
-				'url'	=> 'http://volatylthemes.com/'
+				'url'	=> 'http://volatylthemes.com/docs'
 			),
 			'Support'	=> array(
 				'name'	=> __('Support', 'volatyl'),

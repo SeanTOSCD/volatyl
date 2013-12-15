@@ -40,7 +40,7 @@ $title,
 <link rel=\"pingback\" href=\"", $ping, "\" />",
 
 // HTML5 Shiv
-"<!--[if lt IE 9]>\t<script src=\"", THEME_PATH, "/inc/js/html5.js\" type=\"text/javascript\"></script><![endif]-->";
+"<!--[if lt IE 9]>\t<script src=\"", THEME_PATH_URI, "/inc/js/html5.js\" type=\"text/javascript\"></script><![endif]-->";
 
 // WordPress' <head> hook
 wp_head();

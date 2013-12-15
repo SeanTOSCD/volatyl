@@ -64,13 +64,13 @@ function vol_meta_box($post) {
     
     echo "</select></p>
     <p><label for=\"_custom-class\">" . __('CSS Class: ', 'volatyl') . "</label>
-    <input id=\"_custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"" . __('No Periods! Separate Classes by a Space', 'volatyl') . "\"></p>";
+    <input id=\"_custom-class\" class=\"custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"" . __('No Periods! Separate by a Space', 'volatyl') . "\"></p>";
     
     // Create sidebars per Page or Post
     echo "<p>";
     foreach ($new_sidebars as $ns) {
-    	echo "<label for=\"", $ns['name'], "\">", $ns['label'], " </label>
-    <input id=\"", $ns['name'], "\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" size=\"30\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), " style=\"margin: 0 20px 0 3px;\"/>";
+    	echo "<span class=\"input-group\"><label for=\"", $ns['name'], "\">", $ns['label'], " </label>
+    <input id=\"", $ns['name'], "\" class=\"create-sidebar\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), "/></span>";
     }
     echo "<span style=\"display: block; color: #666; font-style: italic; max-width: 600px;\"><br>" . __('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl') . "</span>",
     "</p>";
