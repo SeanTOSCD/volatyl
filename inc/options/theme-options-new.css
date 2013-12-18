@@ -56,7 +56,7 @@ h2 .nav-tab {
 
 .volatyl-options hr {
 	clear: both;
-	background: #f1f1f1; 
+	background: rgba(0,0,0,.05); 
 	border: 0; 
 	height: 3px; 
 	margin: 2em 0;
@@ -98,13 +98,20 @@ h2 .nav-tab {
 	background: #aaa;
 }
 
+.volatyl-options .layout-label input:checked + img {
+	background: #63aa9c;
+}
+
 .volatyl-options .layout-radio {
-	position: absolute;
-	left: -2px;
-	top: -4px;
+	display: none;
 }
 
 /* Additional options information */
+.volatyl-options h2.vol-options-title {
+	background: transparent url('images/volatyl-admin-icon.png') no-repeat 0 13px;
+	padding-left: 30px;
+}
+
 .volatyl-options .notes {
 	color: #999;
 	font-style: italic;
@@ -130,6 +137,20 @@ h2 .nav-tab {
 
 .volatyl-options .instructions p:last-of-type {
 	margin-bottom: 0;
+}
+
+#upload_logo_preview {
+	display: inline-block;
+	background: #fff;
+	padding: 1em;
+	border-radius: 5px;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: 	0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 		0 1px 1px 0 rgba(0,0,0,.1);
+}
+
+#delete_logo_button {
+	color: red;
 }
 
 /* Hooks form formatting */

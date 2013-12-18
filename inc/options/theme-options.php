@@ -41,6 +41,16 @@ function vol_options_add_page() {
 add_action('admin_menu', 'vol_options_add_page');
 
 
+/** Change WordPress admin footer
+ *
+ * @since Volatyl 1.2.8
+ */
+function vol_adjust_footer_admin () {
+	echo __('Powered by ', 'volatyl' ) . '<a href="http://www.wordpress.org" target="_blank">WordPress</a> ' . __('and', 'volatyl' ) . ' <a href="http://volatylthemes.com" target="_blank">Volatyl</a>';
+}
+add_filter('admin_footer_text', 'vol_adjust_footer_admin');
+
+
 /* Volatyl Options Form (all tabs included)
  *
  * The Volatyl Options page uses a tabbed structure with one
@@ -59,8 +69,7 @@ function vol_options_do_page() {
 		$_REQUEST['settings-updated'] = false;
 	
 	echo "<div class=\"wrap volatyl-options\">\n",
-	$tab3, screen_icon(), "\n
-	{$tab3}<h2>", THEME_NAME, " ", THEME_VERSION, " ", __('Options', 'volatyl'), "</h2>\n",
+	$tab3, "<h2 class=\"vol-options-title\">", THEME_NAME, " ", THEME_VERSION, " ", __('Options', 'volatyl'), "</h2>\n",
 	
 	// Warning: Save settings before switching tabs
 	"{$tab3}<div class=\"save-settings half radius\">\n
@@ -73,7 +82,7 @@ function vol_options_do_page() {
 	((false !== $_REQUEST['settings-updated']) ?
 		printf("{$tab3}<div class=\"updated half fade radius\">\n
 		{$tab3}\t<p><strong>" . 
-		__('Your settings have been updated. Nice.', 'volatyl') . 
+		__('Your settings have been updated.', 'volatyl') . 
 		"</strong></p>\n
 		{$tab3}</div>\n") :
 	'');
@@ -134,7 +143,7 @@ function vol_options_do_page() {
 		// Site layout options
 		"{$tab3}\t\t<tr>\n
 		{$tab6}<th scope=\"row\">", 
-		__('Content and Sidebar Structure', 'volatyl'), 
+		__('Content and Sidebars', 'volatyl'), 
 		"</th>\n", "{$tab6}<td>\n", "{$tab6}\t<fieldset>\n";
 		
 		((!isset($checked)) ? $checked = '' : '');
@@ -237,7 +246,7 @@ function vol_options_do_page() {
 		(('' != $options_content['logo']) ? 
 			"{$tab6}<input id=\"delete_logo_button\" name=\"vol_content_options[delete_logo]\" type=\"submit\" class=\"button\" value=\"" .  __('Delete Logo', 'volatyl') . "\" />\n
 			{$tab3}\t\t</td>\n" : 
-		''),
+		'');
 	
 	
 		/** Logo Preview
@@ -247,17 +256,19 @@ function vol_options_do_page() {
 		 *
 		 * @since Volatyl 1.0
 		 */
-		"{$tab3}\t\t<tr>\n",
-		"{$tab6}<th scope=\"row\">", 
-		__('Logo Preview', 'volatyl'), "</th>\n",
-		"{$tab6}<td>\n
-		{$tab6}\t<div id=\"upload_logo_preview\">\n
-		{$tab6}\t\t<img style=\"max-width:100%;\" src=\"", 
-		esc_url($options_content['logo']), "\" />\n
-		{$tab6}\t</div>\n
-		{$tab6}</td>\n
-		{$tab3}\t\t</tr>\n
-		{$tab3}\t</table>\n";
+		if ('' != $options_content['logo']) :
+			echo "{$tab3}\t\t<tr>\n",
+			"{$tab6}<th scope=\"row\">", 
+			__('Logo Preview', 'volatyl'), "</th>\n",
+			"{$tab6}<td>\n
+			{$tab6}\t<div id=\"upload_logo_preview\">\n
+			{$tab6}\t\t<img style=\"max-width:100%;\" src=\"", 
+			esc_url($options_content['logo']), "\" />\n
+			{$tab6}\t</div>\n
+			{$tab6}</td>\n
+			{$tab3}\t\t</tr>\n";
+		endif;
+		echo "{$tab3}\t</table>\n";
 	
 	
 		/** With the Volatyl content settings collected in the 
@@ -319,7 +330,7 @@ function vol_options_do_page() {
 		// Hooks intro
 		"\n{$tab3}\t<h3>", THEME_NAME . __(' Hooks', 'volatyl'), "</h3>\n
 		{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be "hooked" into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). You are not allowed to use PHP in these hooks! ', 'volatyl') . '<a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">' . __('Write custom PHP functions', 'volayl') . '</a>' . __(' and place them inside of your child theme\'s functions file.', 'volatyl'), 
+		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be "hooked" into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). <strong>You are not allowed to use PHP</strong> in these hooks! ', 'volatyl') . '<a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">' . __('Write custom PHP functions', 'volayl') . '</a>' . __(' and place them inside of your child theme\'s functions file.', 'volatyl'), 
 		"</p>\n
 		{$tab3}\t</div>";
 	
@@ -515,11 +526,11 @@ function vol_options_do_page() {
 		settings_fields('volatyl_license_key'),
 		do_settings_sections('volatyl_license_key'),
 		
-		// Start content options table
+		// Start license options table
 		"\n{$tab3}\t<h3>", 
 		__('License Key Settings', 'volatyl'), "</h3>\n",
 		"{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('When you purchased ', 'volatyl') . THEME_NAME . __(', you received an email containing a license key for your framework. You will need that license key in order to receive automatic updates of the ', 'volatyl') . THEME_NAME . __(' Framework. Enter your license key below and click the "Send License Key Changes to Database" button. Once saved to the database, click the "Activate License" button.', 'volatyl'), "</p>\n
+		{$tab3}\t\t<p><strong>Step 1:</strong> Enter your license key.<br><strong>Step 2:</strong> Click the 'Send License Key Changes to Database' button.<br><strong>Step 3:</strong> Click the 'Activate license' button and you're done!</p>\n
 		{$tab3}\t\t<p>", __('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole ', 'volatyl') . THEME_NAME . __(' and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), "</p>\n
 		{$tab3}\t</div>
 		{$tab3}<table class=\"form-table\">\n
@@ -605,7 +616,7 @@ function vol_options_do_page() {
 		echo "</td></tr>		
 		<tr valign=\"top\">
 		<th scope=\"row\" valign=\"top\">",
-		__('About the Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",
+		__('The Creation of ', 'volatyl'), THEME_NAME, ":</th><td>",
 		"{$tab3}\t\t<p>", sprintf(THEME_NAME . __(' is an %1$s project created by Sean Davis and the wonderful WordPress Codex. Along the way, thanks to %2$s, email, and public begging on <strong>Austin, TX</strong> street corners, what you have here is a unique collection of concepts and codes to help you build websites with WordPress.</p>', 'volatyl'), '<a href="http://sdavismedia.com/" target="_blank">SDavis Media</a>', '<a href="http://sdvs.me/twitter" target="_blank">Twitter</a>'),
 		"{$tab3}\t\t<p>", sprintf(__('While there\'s no clear %1$s for the public begging, those who have taken the time to help solve coding problems, share their experiences, or provide encouragement deserve to be recognized. When you see these people around the universe, thank them.', 'volatyl'), '<acronym title="Return on Investment" style="border-bottom: 1px dotted #ccc;">ROI</acronym>'), "</p>\n
 		{$tab3}\t\t<p class=\"notes\">", __('Note: There were no core code contributors. Blame all of your bugs on Sean. ;)', 'volatyl'), "</p>\n
