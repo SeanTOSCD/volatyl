@@ -13,6 +13,7 @@
  * @since Volatyl 1.0
  */
 
+
 /** Body class by custom page template
  *
  * Add specific CSS class by filter for custom templated pages.

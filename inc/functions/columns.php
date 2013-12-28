@@ -19,6 +19,9 @@
  * in the Structure Settings. Depending on which layout is selected,
  * the appropriate columns will be echod.
  *
+ * Also, depending on new sidebars being created on posts or pages,
+ * different sidebars are called.
+ *
  * @since Volatyl 1.0
  */
 function vol_columns() {

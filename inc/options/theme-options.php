@@ -45,7 +45,7 @@ add_action('admin_menu', 'vol_options_add_page');
  *
  * @since Volatyl 1.2.8
  */
-function vol_adjust_footer_admin () {
+function vol_adjust_footer_admin() {
 	echo __('Powered by ', 'volatyl' ) . '<a href="http://www.wordpress.org" target="_blank">WordPress</a> ' . __('and', 'volatyl' ) . ' <a href="http://volatylthemes.com" target="_blank">Volatyl</a>';
 }
 add_filter('admin_footer_text', 'vol_adjust_footer_admin');
@@ -173,7 +173,7 @@ function vol_options_do_page() {
 	
 	
 		/** With the Volatyl general settings in an array in the 
-		 * $vgeneral variable, create radio button and corresponding
+		 * $vgeneral variable, create checkbox and corresponding
 		 * label for each option setting.
 		 *
 		 * Close out the table, display submit button to save
@@ -530,7 +530,7 @@ function vol_options_do_page() {
 		"\n{$tab3}\t<h3>", 
 		__('License Key Settings', 'volatyl'), "</h3>\n",
 		"{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p><strong>Step 1:</strong> Enter your license key.<br><strong>Step 2:</strong> Click the 'Send License Key Changes to Database' button.<br><strong>Step 3:</strong> Click the 'Activate license' button and you're done!</p>\n
+		{$tab3}\t\t<p>", __('Step 1: Enter your license key.<br>Step 2: Click the "Send License Key Changes to Database" button.<br>Step 3: Click the "Activate license" button and you&rsquo;re done!', 'volatyl'), "</p>\n
 		{$tab3}\t\t<p>", __('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole ', 'volatyl') . THEME_NAME . __(' and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), "</p>\n
 		{$tab3}\t</div>
 		{$tab3}<table class=\"form-table\">\n
@@ -638,6 +638,12 @@ function vol_options_do_page() {
 				'homepage_url'	=> 'http://kolakube.com/',
 				'twitter_url'	=> 'https://twitter.com/afrais/',
 				'notes'			=> __('"The kid," as we like to call him, has backed ', 'volatyl') . THEME_NAME . __(' from inception to launch. Many of the features that made the final cut were put through the ultimate "your friends will tell you the truth" test by Alex. His feedback and troubleshooting efforts are greatly appreciated.', 'volatyl')
+			),
+			'Pippin Williamson'	=> array(
+				'name'			=> 'Pippin Williamson',
+				'homepage_url'	=> 'http://pippinsplugins.com/',
+				'twitter_url'	=> 'https://twitter.com/pippinsplugins',
+				'notes'			=> __('Pippin is one of the most talented and hardworking developers I know. Not only was ', 'volatyl') . THEME_NAME . __(' for Easy Digital Downloads built based on his work, but he also lends a helping hand when needed. Without his help, many aspects of ', 'volatyl') . THEME_NAME . __(' wouldn&rsquo;t exist.', 'volatyl')
 			),
 		);
 		foreach ($thanks_yo as $ty) {
@@ -769,7 +775,7 @@ function vol_sanitize_license($new) {
 function volatyl_user_profile_fields( $contactmethods ) {
 
 	// Add Twitter field
-	$contactmethods['twitter'] = __('Twitter Name (no @)', 'volatyl' );
+	$contactmethods['twitter'] = __('Twitter Name (no @)', 'volatyl');
 	return $contactmethods;
 }
 add_filter('user_contactmethods','volatyl_user_profile_fields',10,1);

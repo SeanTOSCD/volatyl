@@ -108,13 +108,15 @@ function vol_footer_element() {
 }
 
 // The above <footer> will display based on HTML structure options
-function vol_footer_frame() {
-	$options_structure = get_option('vol_structure_options');
-	
-	(($options_structure['wide'] == 1) ? 
-		printf("\t<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n") . 
-		vol_footer_element() . 
-		printf("\t</div>\n</div>\n") : 
-		vol_footer_element() . 
-		printf("</div>\n"));
+if (!function_exists('vol_footer_frame')) {
+	function vol_footer_frame() {
+		$options_structure = get_option('vol_structure_options');
+		
+		(($options_structure['wide'] == 1) ? 
+			printf("\t<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n") . 
+			vol_footer_element() . 
+			printf("\t</div>\n</div>\n") : 
+			vol_footer_element() . 
+			printf("</div>\n"));
+	}
 }

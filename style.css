@@ -919,12 +919,14 @@ input[type="submit"]:hover,
 /* =Media
 -------------------------------------------------------------- */
 
+img,
 .comment-content img,
 .widget img,
 .featured-img {
 	max-width: 100%;
 }
 
+img,
 .site-header img,
 .entry-content img,
 .featured-img,
