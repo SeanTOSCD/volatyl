@@ -418,7 +418,7 @@ function volatyl_hooks() {
 			'title' 			=> __('Footer Bottom', 'volatyl'),
 			'description'		=> __('This displays inside of your footer at the bottom. If you have the Fat Footer<br>activated, this will display below that but above the copyright section.', 'volatyl') 
 		),
-		'Site Info' 			=> array(
+		'vol_site_info' 		=> array(
 			'name'				=> 'vol_site_info',
 			'title' 			=> __('Site Information', 'volatyl'),
 			'description'		=> __('This displays just after (inline) the site attribution. If you remove the ', 'volatyl') . THEME_NAME . __(' attribution,<br>you can build your own information area here.', 'volatyl') 
