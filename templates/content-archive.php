@@ -69,11 +69,10 @@ $archive_title = apply_filters('archive_title', array(
 
 	<?php
 	// archive type specifics
-	if (is_author()) ?>
-		<p class="user-description"><?php echo get_the_author_meta('description'); ?></p>
+	if (is_author()) {
+		echo "<p class=\"user-description\">", get_the_author_meta('description'), "</p>";
 
-	<?php
-	if (is_category()) {
+	} elseif (is_category()) {
 
 		// show an optional category description
 		$category_description = category_description();

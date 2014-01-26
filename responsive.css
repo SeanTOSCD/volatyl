@@ -239,4 +239,10 @@
 	.site-footer {
 		text-align: center;
 	}
+	img[class*="wp-image-"] {
+		float: none; 
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
 }

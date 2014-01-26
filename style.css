@@ -939,7 +939,6 @@ img[class*="wp-image-"] {
 .entry-content img,
 img.size-full {
 	max-width: 100%;
-	width: auto; 
 }
 
 .featured-img {
