@@ -49,19 +49,27 @@ function vol_footer_element() {
 	 *
 	 * @since Volatyl 1.0
 	 */
-	(($options_content['fatfooter'] == 1 && !is_page_template('custom-landing.php')) ?
-		printf("\t\t<div id=\"fat-footer\" class=\"clearfix\">\n
-		{$tab3}<div class=\"footer-widget border-box\">\n") .
-			((!dynamic_sidebar('footer-left')) ? vol_default_widget() : '') .
-		printf("{$tab3}</div>\n
-		{$tab3}<div class=\"footer-widget border-box\">\n") .
-			((!dynamic_sidebar('footer-middle')) ? vol_default_widget() : '') .
-		printf("{$tab3}</div>\n
-		{$tab3}<div class=\"footer-widget border-box\">\n") .
-			((!dynamic_sidebar('footer-right')) ? vol_default_widget() : '') .
-		printf("{$tab3}</div>\n
-		\t\t</div>\n") : 
-	'');
+	if (!is_page_template('custom-landing.php') && (is_active_sidebar('footer-left') || is_active_sidebar('footer-middle') || is_active_sidebar('footer-right'))) : ?>
+		<div id="fat-footer" class="clearfix">
+			<?php if (is_active_sidebar('footer-left')) : ?>
+				<div class="footer-widget border-box">
+					<?php dynamic_sidebar('footer-left'); ?>
+				</div>
+			<?php endif; ?>
+		
+			<?php if (is_active_sidebar('footer-middle')) : ?>		
+					<div class="footer-widget border-box">
+						<?php dynamic_sidebar('footer-middle'); ?>
+					</div>
+			<?php endif; ?>
+			
+			<?php if (is_active_sidebar('footer-right')) : ?>
+				<div class="footer-widget border-box">
+					<?php dynamic_sidebar('footer-right'); ?>
+				</div>
+			<?php endif; ?>
+		</div>
+	<?php endif;
 
 	// vol_footer_bottom - Always hide on landing page
 	if ($options['switch_vol_footer_bottom'] == 0 && ! is_page_template('custom-landing.php')) {
@@ -110,13 +118,17 @@ function vol_footer_element() {
 // The above <footer> will display based on HTML structure options
 if (!function_exists('vol_footer_frame')) {
 	function vol_footer_frame() {
-		$options_structure = get_option('vol_structure_options');
+		$options_structure = get_option('vol_structure_options'); ?>
 		
-		(($options_structure['wide'] == 1) ? 
-			printf("\t<div id=\"footer-area\" class=\"full\">\n\t<div class=\"main\">\n") . 
-			vol_footer_element() . 
-			printf("\t</div>\n</div>\n") : 
-			vol_footer_element() . 
-			printf("</div>\n"));
+		<?php if ($options_structure['wide'] == 1) : ?>
+			<div id="footer-area" class="full">
+				<div class="main">
+					<?php vol_footer_element(); ?>
+				</div>
+			</div>
+		<?php else : ?>
+				<?php vol_footer_element(); ?> 
+			</div>
+		<?php endif;
 	}
 }

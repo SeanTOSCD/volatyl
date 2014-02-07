@@ -178,7 +178,7 @@ h2 .nav-tab {
 }
 
 /* metabox options */
-input.create-sidebar[type=checkbox] {
+.postbox-container .input-group input[type=checkbox] {
 	margin: 0 20px 0 3px;
 }
 

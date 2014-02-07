@@ -98,13 +98,17 @@ function vol_header_element() {
 // The above <header> will display based on HTML structure options
 if (!function_exists('vol_header_frame')) {
 	function vol_header_frame() {
-		$options_structure = get_option('vol_structure_options');
+		$options_structure = get_option('vol_structure_options'); ?>
 		
-		(($options_structure['wide'] == 1) ?
-			printf("<div id=\"header-area\" class=\"full\">\n\t<div class=\"main\">\n") .
-			vol_header_element() . 
-			printf("\t</div>\n</div>\n") :
-			printf("<div id=\"container\">\n") . 
-			vol_header_element());
+		<?php if ($options_structure['wide'] == 1) : ?>
+			<div id="header-area" class="full">
+				<div class="main">
+					<?php vol_header_element(); ?> 
+				</div>
+			</div>
+		<?php else : ?>
+			<div id="container">
+				<?php vol_header_element(); ?>
+		<?php endif;
 	}
 }

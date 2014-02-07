@@ -22,10 +22,11 @@ add_action('add_meta_boxes', 'vol_add_meta_box');
 
 // Callback for the above meta boxes. Posts and Pages share the same function.
 function vol_meta_box($post) {  
-	global $post, $column_options;
+	global $post, $current_screen, $column_options;
 	$the_id = get_post_custom($post->ID);
 	$selected = isset($the_id['_singular-column']) ? esc_attr($the_id['_singular-column'][0]) : ''; 
 	$custom_class = isset($the_id['_custom-class']) ? esc_attr($the_id['_custom-class'][0]) : '' ;
+	$da_title = isset($the_id['_singular-title']) ? $the_id['_singular-title'][0] : 0 ;
 	$create_sidebar_1 = isset($the_id['_create-sidebar-1']) ? $the_id['_create-sidebar-1'][0] : 0 ;
 	$create_sidebar_2 = isset($the_id['_create-sidebar-2']) ? $the_id['_create-sidebar-2'][0] : 0 ;
     $new_sidebars = array(
@@ -69,11 +70,16 @@ function vol_meta_box($post) {
     // Create sidebars per Page or Post
     echo "<p>";
     foreach ($new_sidebars as $ns) {
-    	echo "<span class=\"input-group\"><label for=\"", $ns['name'], "\">", $ns['label'], " </label>
-    <input id=\"", $ns['name'], "\" class=\"create-sidebar\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), "/></span>";
+    	echo "<span class=\"input-group\"><label for=\"", $ns['name'], "\">", $ns['label'], " </label><input id=\"", $ns['name'], "\" class=\"create-sidebar\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), "/></span>";
     }
-    echo "<span style=\"display: block; color: #666; font-style: italic; max-width: 600px;\"><br>" . __('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl') . "</span>",
+    echo "<span style=\"display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;\">" . __('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl') . "</span>",
     "</p>";
+    
+    // only show the option to remove titles if on the edit PAGE screen
+    if ('page' == $current_screen->post_type) :
+	    echo "<p><span class=\"input-group\"><label for=\"_singular-title\">" . __('Remove Page Title: ', 'volatyl') . "</label><input id=\"_singular-title\" name=\"_singular-title\" value=\"", $da_title, "\" size=\"30\" type=\"checkbox\"",	checked('1', $da_title, '1'), "/></span>";
+	    echo "<span style=\"display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;\">" . __( 'Check this option if you&rsquo;d like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep SEO in mind. Your default title is an H1. It&rsquo;s best that you rebuild it somewhere in your content if you use this option.', 'volatyl' ) . "</span></p>";
+    endif;
 }
 
 // Register new sidebars "on the fly" when the option is selected on singulars
@@ -146,5 +152,8 @@ function vol_meta_box_save($post_id) {
 
     $new_sidebar_2 = isset($_POST['_create-sidebar-2']) ? 1 : 0;  
     	update_post_meta( $post_id, '_create-sidebar-2', $new_sidebar_2 ); 
+
+    $da_title_ = isset($_POST['_singular-title']) ? 1 : 0;  
+    	update_post_meta( $post_id, '_singular-title', $da_title_ ); 
 }
 add_action('save_post', 'vol_meta_box_save');

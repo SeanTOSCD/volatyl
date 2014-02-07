@@ -118,7 +118,7 @@ function volatyl_general() {
 			'th'			=> '<th scope="row">' . __('Display ', 'volatyl') . THEME_NAME . __(' Attribution', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'attribution',
-			'label'			=> __('There\'s no fee to remove the ', 'volatyl') . THEME_NAME . __(' attribution. ;)', 'volatyl'),
+			'label'			=> __('There\'s no fee to remove the ', 'volatyl') . THEME_NAME . __(' attribution. ;) Rebuild your footer in the <code>vol_site_info</code> hook.', 'volatyl'),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
@@ -180,21 +180,13 @@ function volatyl_content() {
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
-		'Fat Footer' 		=> array(
-			'tr'			=> '<tr>',
-			'th'			=> '<th scope="row">' . __('Activate Widgetized Footer', 'volatyl') . '</th>',
-			'td'			=> '<td>',
-			'title'			=> 'fatfooter',
-			'label'			=> __('Activate the 3-column, widget-ready footer. If activated, ', 'volatyl') . '<a href="widgets.php">' . __('add widgets here', 'volatyl') . '</a>.',
-			'td_end'		=> '</td>',
-			'tr_end'		=> '</tr>' 
-		),
 		'Default Widgets' 	=> array(
 			'tr'			=> '<tr>',
 			'th'			=> '<th scope="row">' . __('Display Default Widgets', 'volatyl') . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'widgets',
-			'label'			=> __('Show default widgets in empty widgetized areas.', 'volatyl'),
+			'label'			=> __('Show default widgets in empty sidebar areas.', 'volatyl'),
+			'notes'			=> '<span class="notes">' . __('* The default widget does not show in footer widgetized areas because they only display if an actual widget is used.', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>' 
 		),
@@ -232,16 +224,12 @@ function volatyl_content() {
  */
 function volatyl_post() {
 	$vol_post = array(
-		'Byline Post Format'=> array(
+		'Byline Date'		=> array(
 			'table_name'	=> '</table><h3>' . __('Post Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
 			'tr'			=> '<tr>',
 			'th'			=> '<th scope="row">' . __('Display Post Byline Elements', 'volatyl') . '</th>',
 			'td'			=> '<td>',
-			'title'			=> 'by-post-format',
-			'label'			=> __('Post Format', 'volatyl'),
-		),
-		'Byline Date' 		=> array(
 			'title'			=> 'by-date-post',
 			'label'			=> __('Date', 'volatyl'),
 		),

@@ -868,7 +868,17 @@ cite.fn {
 	margin-top: 15px;
 }
 
-.footer-widget {
+.one-footer-col .footer-widget {
+	width: 100%;
+}
+
+.two-footer-col .footer-widget {
+	float: left;
+	margin-right: 4%;
+	width: 48%;
+}
+
+.three-footer-col .footer-widget {
 	float: left;
 	margin-right: 3%;
 	width: 31.33334%;

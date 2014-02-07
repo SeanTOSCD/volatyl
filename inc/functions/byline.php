@@ -24,9 +24,7 @@ if (!function_exists('volatyl_post_meta')) {
 		global $count, $options_hooks;
 		$options_content = get_option('vol_content_options');
 		$options_hooks = get_option('vol_hooks_options');
-		$post_format_type = ucfirst(get_post_format());
 		$byline_text = apply_filters('byline_text', array(
-			'post_format_type'	=> $post_format_type . '&#58;',	
 			'publish_date'		=> 'Published on',	
 			'author_text'		=> 'by',		
 			'comments_dash'		=> '&ndash;',	
@@ -39,14 +37,7 @@ if (!function_exists('volatyl_post_meta')) {
 		
 		$byline_categories = $options_content['by-cats'] == 1;
 		
-		if ($byline_top_items) echo "<div class=\"meta-top\">";			
-
-		// Show post format title
-		(($options_content['by-post-format'] == 1) ?
-			((get_post_format() != false) ?
-				printf('<span class="post-format">' . __($byline_text['post_format_type'], 'volatyl') . '</span> ') : 
-			'') : 
-		'');
+		if ($byline_top_items) echo "<div class=\"meta-top\">";	
 
 		// Show post date
 		(($options_content['by-date-post'] == 1) ?

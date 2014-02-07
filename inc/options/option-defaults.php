@@ -16,6 +16,10 @@
  * @since Volatyl 1.0
  */
 
+// remove old fat footer option
+delete_option('fatfooter');
+delete_option('by-post-format');
+
 // Structure settings
 function vol_structure_default_settings() {
 	global $structure_options;
@@ -77,10 +81,8 @@ function vol_content_default_settings() {
 		'headermenu'			=> 1,
 		'standardmenu'			=> 0,
 		'footermenu'			=> 0,
-		'fatfooter'				=> 0,
 		'widgets'				=> 1,
 		'pagination'			=> 0,
-		'by-post-format'		=> 1,
 		'by-date-post'			=> 1,
 		'by-author-post'		=> 1,
 		'by-comments-post'		=> 1,

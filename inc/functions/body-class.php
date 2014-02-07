@@ -102,12 +102,18 @@ function vol_singular_body_class($classes) {
 	if (!is_404() && !is_search())
 		$singular_body_class = get_post_meta($post->ID, '_custom-class', true);
 	
+	if (is_page())	
+		$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
+	
 	// add class name to the $classes array based on conditions
 	if (is_singular()) {
 	
 		// Add the body class if it exists
 		if ('' !== $singular_body_class)
 			$classes[] = $singular_body_class;
+			
+		if ($da_title_or_no == 1)
+			$classes[] = 'no-title';
 	}
 	
 	// return the $classes array

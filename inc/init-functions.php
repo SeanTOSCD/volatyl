@@ -82,21 +82,21 @@ if (!function_exists('vol_setup')) {
 			'header' => __($menu_descriptions['header_menu_description'], 'volatyl')
 		));
 	
-		// Register wp_nav_menu() below header (standard menu) if selected
 		$options = get_option('vol_content_options');
-		
-		(($options['standardmenu'] == 1) ? 
+	
+		// Register wp_nav_menu() below header (standard menu) if selected	
+		if ($options['standardmenu'] == 1) :
 			register_nav_menus(array(
 				'standard' => __($menu_descriptions['standard_menu_description'], 'volatyl')
-			)) : 
-		'');
+			)); 
+		endif;
 	
 		// Register wp_nav_menu() above footer (footer menu) if selected	
-		(($options['footermenu'] == 1) ?
+		if ($options['footermenu'] == 1) :
 			register_nav_menus(array(
 				'footer' => __($menu_descriptions['footer_menu_description'], 'volatyl')
-			)) :
-		'');
+			));
+		endif;
 	}
 }
 add_action('after_setup_theme', 'vol_setup');

@@ -21,14 +21,17 @@
  */
 global $options;
 $options = get_option('vol_content_options');
+$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
 
 // Custom filter
 $page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
-	<header class="entry-header">
-		<h1 class="entry-title"><?php the_title(); ?></h1>
-	</header>
+	<?php if (0 == $da_title_or_no) : ?>
+		<header class="entry-header">
+			<h1 class="entry-title"><?php the_title(); ?></h1>
+		</header>
+	<?php endif; ?>
 	<section class="entry-content">
 	
 		<?php 

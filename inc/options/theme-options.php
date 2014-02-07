@@ -330,7 +330,7 @@ function vol_options_do_page() {
 		// Hooks intro
 		"\n{$tab3}\t<h3>", THEME_NAME . __(' Hooks', 'volatyl'), "</h3>\n
 		{$tab3}\t<div class=\"instructions radius\">\n
-		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be "hooked" into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). <strong>You are not allowed to use PHP</strong> in these hooks! ', 'volatyl') . '<a href="http://volatylthemes.com/hooks/#hooks-php" target="_blank">' . __('Write custom PHP functions', 'volayl') . '</a>' . __(' and place them inside of your child theme\'s functions file.', 'volatyl'), 
+		{$tab3}\t\t<p>", __('Hooks are areas of your website that can be "hooked" into at will. If you are familiar with WordPress core, you probably already know about hooks like wp_head() and wp_footer(). <strong>You are not allowed to use PHP</strong> in the hooks below! ', 'volatyl') . '<a href="http://volatylthemes.com/hooks-guide/#hooks-php" target="_blank">' . __('Write custom PHP functions', 'volayl') . '</a>' . __(' and place them inside of your child theme\'s functions file.', 'volatyl'), 
 		"</p>\n
 		{$tab3}\t</div>";
 	
@@ -770,12 +770,3 @@ function vol_sanitize_license($new) {
 		delete_option('vol_license_key_status'); 
 	return $new;
 }
-
-// Add Twitter user profile contact method field
-function volatyl_user_profile_fields( $contactmethods ) {
-
-	// Add Twitter field
-	$contactmethods['twitter'] = __('Twitter Name (no @)', 'volatyl');
-	return $contactmethods;
-}
-add_filter('user_contactmethods','volatyl_user_profile_fields',10,1);

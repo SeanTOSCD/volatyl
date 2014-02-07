@@ -223,7 +223,8 @@
 	#content .pagination {
 		float: none;
 	}
-	.footer-widget {
+	.two-footer-col .footer-widget,
+	.three-footer-col .footer-widget {
 		float: none;
 		margin-right: 0;
 		width: 100%;
