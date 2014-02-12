@@ -35,19 +35,13 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 			do_action('vol_before_article_header')) :
 	''); ?>
 	
-	<header class="entry-header"> 
-
-		<?php 
-		// show title if not an aside post format
-		if (!has_post_format('aside')) { ?>
-		
-			<h1 class="entry-title">
-				<a href="<?php the_permalink(); ?>" title="<?php esc_attr(sprintf(__('%s', 'volatyl'), the_title_attribute('echo=0'))); ?>" rel="bookmark"><?php _e(the_title(), 'volatyl'); ?>
-				</a>
-			</h1>
+	<header class="entry-header"> 		
+		<h1 class="entry-title">
+			<a href="<?php the_permalink(); ?>" title="<?php esc_attr(sprintf(__('%s', 'volatyl'), the_title_attribute('echo=0'))); ?>" rel="bookmark"><?php _e(the_title(), 'volatyl'); ?>
+			</a>
+		</h1>
 			
-		<?php }
-			
+		<?php			
 		// display meta info
 		if ('post' == get_post_type()) { 
 			if ($options['by-date-post'] == 1 || $options['by-author-post'] == 1 || $options['by-comments-post'] == 1 || $options['by-edit-post'] == 1 || $options['by-cats'] == 1) { ?>
@@ -88,7 +82,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 	}
 
 	// Only display Excerpts for Search or Home if options is selected
-	if (is_search() || $options['homeexcerpt'] == 1 && !has_post_format('aside')) { ?>
+	if (is_search() || $options['homeexcerpt'] == 1) { ?>
 	
 		<section class="entry-summary"> 
 			<?php the_excerpt(); ?>
@@ -106,7 +100,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 			wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>'));
 	
 			// Show feed tags
-			if ($options['feedtags'] == 1 && !has_post_format('aside'))
+			if ($options['feedtags'] == 1)
 				the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>'); ?>
 				
 		</section>
