@@ -540,18 +540,12 @@ td {
 .short-menu .menu li ul a,
 .full-menu .menu li ul li a {
 	background: #fafafa;
-	color: #000;
 	padding: .66667em;
 	width: 180px;
 }
 
 .short-menu .menu li ul a {
 	width: 120px;
-}
-
-.short-menu .menu li ul a:hover,
-.full-menu .menu li ul li a:hover {
-	background: #dfdfdf;
 }
 
 

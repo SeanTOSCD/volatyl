@@ -118,7 +118,6 @@
 	.short-menu,
 	.full-menu {
 		display: none;
-		background: #ddd;
 		padding: 0;
 	}
 	.short-menu .menu ul,
@@ -147,12 +146,11 @@
 		margin: 0;
 	}
 	.menu > li > a {
-		background: rgba(0,0,0,.08);
 	}
 	#header-menu-wrap.short-menu a,
 	#standard-menu-wrap.full-menu .menu a,
 	#footer-menu-wrap.full-menu .menu a {
-		border: 1px solid rgba(0,0,0,.2);
+		border: 1px solid rgba(0,0,0,.05);
 		border-width: 0 0 1px;
 	}
 	.short-menu .menu li > ul > li ul {
@@ -162,12 +160,6 @@
 	.full-menu .menu li.menu-item a {
 		padding: .66667em;
 	}
-	.short-menu a:hover,
-	.full-menu a:hover,
-	.short-menu .menu li ul a:hover,
-	.full-menu .menu li ul a:hover {
-		color: #666;
-	}
 	.short-menu .menu li ul,
 	.full-menu .menu li ul,
 	.full-menu .menu li ul li ul {
@@ -176,7 +168,6 @@
 	.short-menu .menu li ul a,
 	.full-menu .menu li ul li a {
 		width: auto;
-		color: black;
 	}
 	.landing #main-content .main,
 	.landing #container #main-content {
