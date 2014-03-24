@@ -88,9 +88,6 @@ pre,
 #container .standard-menu-wrap,
 .short-menu .menu li ul a,
 .full-menu .menu li ul li a,
-.post.sticky,
-.sticky .entry-header,
-.sticky .featured-img,
 .comments-content > ol > li.comment,
 .comments-content > ol > li.pingback,
 .children > li > .comment,
@@ -102,16 +99,16 @@ pre,
 .form-allowed-tags,
 .default-widget,
 .paging-navigation,
-.post, 
-.page.hentry,
-.site-content li,
-.note {
+.note,
+input,
+textarea,
+#comment,
+.cancel-reply {
 	border: 1px solid rgba(0,0,0,.1);
 }
 
 #header-area,
 #container > .site-header,
-.sticky .entry-header,
 .comments-content > ol > li.comment,
 .comments-content > ol > li.pingback,
 .wp-caption,
@@ -121,7 +118,6 @@ pre,
 }
 
 #menu-area-standard,
-.sticky,
 #fat-footer .default-widget {
 	background: rgba(0,0,0,.02);
 }
@@ -145,8 +141,7 @@ pre,
 abbr, 
 acronym,
 #header-area,
-#menu-area-standard,
-.sticky .entry-header {
+#menu-area-standard {
 	border-width: 0 0 1px;
 }
 
@@ -156,8 +151,6 @@ acronym,
 	margin: 0 0 .33334em;
 }
 
-.sticky .entry-header,
-.sticky .featured-img,
 .site-content ul ul, 
 .site-content ul ol,
 .site-content ol ul, 
@@ -553,13 +546,6 @@ td {
 -------------------------------------------------------------- */
 
 .post,
-.page.hentry,
-.site-content li { 
-	border-width: 0 0 1px;
-	border-style: dashed;
-}
-
-.post,
 .page.hentry {
 	padding: 1.3334em 0;
 }
@@ -576,29 +562,9 @@ td {
 }
 
 .sticky { 
-	padding: 0;
-	border-bottom: 1px solid rgba(0,0,0,.1);
 }
 
-.sticky + .sticky {
-	margin-top: 2em;
-}
-
-.sticky .entry-header,
-.sticky .entry-content,
-.sticky .entry-summary {
-	padding: 1em;
-}
-
-.sticky .featured-img {
-	border-width: 0 0 1px;
-	margin-bottom: -4px;
-}
-
-.post > .entry-summary > p:last-of-type,
-.page.hentry > .entry-summary > p:last-of-type,
-.sticky.post > .entry-summary > p:last-of-type,
-.format-aside > .entry-content > p:last-of-type {
+.post > .entry-summary > p:last-of-type {
 	margin-bottom: 0;
 }
 
@@ -800,7 +766,6 @@ cite.fn {
 	font-weight: 400;
 	background: #f00;
 	padding: .4em;
-	border: double rgba(0, 0, 0, .1);
 	color: #fff;
 }
 
@@ -896,7 +861,6 @@ textarea,
 #comment { 
 	padding: .4em; 
 	margin: 0 .66667em 0 0; 
-	border: double rgba(0,0,0,.1); 
 }
 
 #comments textarea {
