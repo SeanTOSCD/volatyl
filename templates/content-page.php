@@ -24,7 +24,7 @@ $options = get_option('vol_content_options');
 $da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
 
 // Custom filter
-$page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
+$page_page_nav = apply_filters('page_page_nav', __('Pages:', 'volatyl')); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
 	<?php if (0 == $da_title_or_no) : ?>
@@ -39,7 +39,7 @@ $page_page_nav = apply_filters('page_page_nav', 'Pages:'); ?>
 		the_content(); 
 			
 		// internal page navigation
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($page_page_nav, 'volatyl'), 'after' => '</nav>'));
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $page_page_nav, 'after' => '</nav>'));
 		
 		// page comments
 		if ($options['pagecomments'] == 1)

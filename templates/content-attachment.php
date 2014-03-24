@@ -20,12 +20,12 @@
 global $post, $options;
 $metadata = wp_get_attachment_metadata();
 $attachment_size = apply_filters('volatyl_attachment_size', array(1200, 1200));
-$attachment_page_nav = apply_filters('attachment_page_nav', 'Pages:');
+$attachment_page_nav = apply_filters('attachment_page_nav', __('Pages:', 'volatyl'));
 
 // Custom filters
 $attachment_navigation = apply_filters('attachment_navigation', array(
-	'previous_image'	=> '&larr; Previous',
-	'next_image'		=> 'Next &rarr;'
+	'previous_image'	=> '&larr; ' . __('Previous', 'volatyl'),
+	'next_image'		=> __('Next', 'volatyl') . ' &rarr;'
 	)
 ); ?>
 
@@ -72,7 +72,7 @@ $attachment_navigation = apply_filters('attachment_navigation', array(
 					$next_attachment_url = wp_get_attachment_url();
 				} ?>
 			
-			<a href="<?php $next_attachment_url; ?>" title="<?php esc_attr(get_the_title()); ?> rel="attachment">
+			<a href="<?php $next_attachment_url; ?>" title="<?php esc_attr(get_the_title()); ?>" rel="attachment">
 				<?php echo wp_get_attachment_image($post->ID, $attachment_size); ?>
 			</a>
 		</div>
@@ -86,15 +86,15 @@ $attachment_navigation = apply_filters('attachment_navigation', array(
 		<?php }
 		
 		// Navigate through other attachments
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($attachment_page_nav, 'volatyl'), 'after' => '</nav>')); ?>
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $attachment_page_nav, 'after' => '</nav>')); ?>
 		
 		</div>
 		<nav class="site-navigation image-navigation clearfix">
 			<div class="nav-previous image-nav border-box">
-				<?php previous_image_link(false, __($attachment_navigation['previous_image'], 'volatyl')); ?>
+				<?php previous_image_link(false, $attachment_navigation['previous_image']); ?>
 			</div>
 			<div class="nav-next image-nav border-box">
-				<?php next_image_link(false, __($attachment_navigation['next_image'], 'volatyl')); ?>
+				<?php next_image_link(false, $attachment_navigation['next_image']); ?>
 			</div>
 		</nav>
 	</section>

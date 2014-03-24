@@ -17,19 +17,19 @@
 
 // Custom filters 
 $error_404 = apply_filters('error_404_content', array(
-	'error_title'	=> 'Oops! Looks like we have an error.',
-	'error_content'	=> 'Use the search form and other tools below to find what you were looking for.'
+	'error_title'	=> __('Oops! Looks like we have an error.', 'volatyl'),
+	'error_content'	=> __('Use the search form and other tools below to find what you were looking for.', 'volatyl')
 )); ?>
 
 <article id="post-0" class="post error404 not-found">
 	<header class="entry-header">
 		<h1 class="entry-title">
-			<?php _e($error_404['error_title'], 'volatyl'); ?>
+			<?php echo $error_404['error_title']; ?>
 		</h1>
 	</header>
 	<section class="entry-content">
 		<p>
-			<?php _e($error_404['error_content'], 'volatyl'); ?>
+			<?php echo $error_404['error_content']; ?>
 		</p>
 		
 		<?php 

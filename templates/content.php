@@ -21,9 +21,9 @@ $options = get_option('vol_content_options');
 $options_hooks = get_option('vol_hooks_options');
 
 // Custom filters
-$feed_tags_text = apply_filters('feed_tags_text', 'Tags: ');
-$more_link_text = apply_filters('more_link_text', 'Read More &rarr;');
-$feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
+$feed_tags_text = apply_filters('feed_tags_text', __('Tags: ', 'volatyl'));
+$more_link_text = apply_filters('more_link_text', __('Read More', 'volatyl') . ' &rarr;');
+$feed_post_page_nav = apply_filters('feed_post_page_nav', __('Pages: ', 'volatyl')); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
 	
@@ -94,14 +94,14 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', 'Pages: '); ?>
 		
 			<?php 
 			// display content
-			the_content(__($more_link_text, 'volatyl'));
+			the_content($more_link_text);
 	
 			// Navigate paginated posts
-			wp_link_pages(array('before' => '<nav class="page-links">' . __($feed_post_page_nav, 'volatyl'), 'after' => '</nav>'));
+			wp_link_pages(array('before' => '<nav class="page-links">' . $feed_post_page_nav, 'after' => '</nav>'));
 	
 			// Show feed tags
 			if ($options['feedtags'] == 1)
-				the_tags('<div class="entry-meta tags">' . __($feed_tags_text, 'volatyl'), ', ', '<br /></div>'); ?>
+				the_tags('<div class="entry-meta tags">' . $feed_tags_text, ', ', '<br /></div>'); ?>
 				
 		</section>
 	<?php } ?>

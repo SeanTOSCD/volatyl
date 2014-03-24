@@ -25,11 +25,11 @@ if (!function_exists('volatyl_post_meta')) {
 		$options_content = get_option('vol_content_options');
 		$options_hooks = get_option('vol_hooks_options');
 		$byline_text = apply_filters('byline_text', array(
-			'publish_date'		=> 'Published on',	
-			'author_text'		=> 'by',		
+			'publish_date'		=> __('Published on', 'volatyl'),	
+			'author_text'		=> __('by', 'volatyl'),		
 			'comments_dash'		=> '&ndash;',	
-			'comments_off'		=> 'Comments off',	
-			'category_text'		=> 'Filed under:'
+			'comments_off'		=> __('Comments off', 'volatyl'),	
+			'category_text'		=> __('Filed under:', 'volatyl')
 			) 
 		);
 		
@@ -41,7 +41,7 @@ if (!function_exists('volatyl_post_meta')) {
 
 		// Show post date
 		(($options_content['by-date-post'] == 1) ?
-			printf('<span class="posted-on">' . __($byline_text['publish_date'], 'volatyl') . '</span> ' . 
+			printf('<span class="posted-on">' . $byline_text['publish_date'] . '</span> ' . 
 			"<span class=\"meta-date\"><a href=\"") . the_permalink() . printf("\" title=\"") . esc_attr(printf(__('Permalink - ', 'volatyl'))) . _e(the_title_attribute('echo=0')) . printf("\" rel=\"bookmark\">") . 
 			the_time(get_option('date_format')) .
 			printf("</a></span> \n") :
@@ -49,7 +49,7 @@ if (!function_exists('volatyl_post_meta')) {
 	
 		// Show post author
 		(($options_content['by-author-post'] == 1) ? 
-			printf('<span class="post-by">' . __($byline_text['author_text'], 'volatyl') . '</span> ' . 
+			printf('<span class="post-by">' . $byline_text['author_text'] . '</span> ' . 
 			"<span class=\"meta-author\"><a class=\"fn\" href=\"" . get_author_posts_url(get_the_author_meta('ID')) . "\" title=\"") . esc_attr(get_the_author()) . printf('">') . the_author_meta('display_name') . printf("</a></span>") : 
 		'');
 	
@@ -65,7 +65,7 @@ if (!function_exists('volatyl_post_meta')) {
 			if (!comments_open() && $response_count == 0) {
 		
 				// No need to show a count if comments are off and there are none!
-				$comments = __($byline_text['comments_off'] . ' ', 'volatyl');
+				$comments = $byline_text['comments_off'] . ' ';
 			} else {
 			
 				/** Return "response" count with or without pings! ;)
@@ -119,7 +119,7 @@ if (!function_exists('volatyl_post_meta')) {
 		if ($options_content['by-cats'] == 1) {
 	
 			// Only place cats on new line if other byline items are removed
-			echo '<span class="cat-title">' . __($byline_text['category_text'], 'volatyl') . '</span> <span class="meta-category">';
+			echo '<span class="cat-title">' . $byline_text['category_text'] . '</span> <span class="meta-category">';
 			the_category(', ');
 			echo '</span>';
 		}

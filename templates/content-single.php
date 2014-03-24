@@ -21,8 +21,8 @@ global $options;
 $options_posts = get_option('vol_content_options');
 
 // Custom filters
-$single_tags_text = apply_filters('single_tags_text', 'Tags: ');
-$post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
+$single_tags_text = apply_filters('single_tags_text', __('Tags: ', 'volatyl'));
+$post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl')); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
 
@@ -71,11 +71,11 @@ $post_page_nav = apply_filters('post_page_nav', 'Pages:'); ?>
 		the_content();
 		
 		// internal post navigation
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . __($post_page_nav, 'volatyl'), 'after' => '</nav>'));
+		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $post_page_nav, 'after' => '</nav>'));
 
 		// Show feed tags
 		(($options_posts['singletags'] == 1) ?
-			the_tags('<div class="entry-meta tags post-meta-footer">' . __($single_tags_text, 'volatyl'), ', ', '<br /></div>') :
+			the_tags('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, ', ', '<br /></div>') :
 		''); ?>
 		
 	</section>

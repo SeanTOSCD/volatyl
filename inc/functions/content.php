@@ -72,9 +72,9 @@ if ($options_content['excerptlink'] == 1) {
 	// create a permalink after the excerpt
 	function vol_replace_excerpt($content) {
 		global $excerpt_link;
-		$excerpt_link = apply_filters('excerpt_link', 'Read More &rarr;');
+		$excerpt_link = apply_filters('excerpt_link', __('Read More', 'volatyl') . ' &rarr;');
 		return str_replace('[&hellip;]',
-			'<p class="excerpt-link"><a class="read-more" href="' . get_permalink() . '">' . __($excerpt_link, 'volatyl') . '</a></p>',
+			'<p class="excerpt-link"><a class="read-more" href="' . get_permalink() . '">' . $excerpt_link . '</a></p>',
 			$content
 		);
 	}

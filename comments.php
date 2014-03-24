@@ -21,11 +21,11 @@ $aria_req = ($req ? " aria-required='true'" : '');
 $comments_title = apply_filters('comments_title', __(_n('1 Comment:', '%1$s Comments:', vol_comments_only_count($count), 'volatyl'), 'volatyl'));
 $pings_title = apply_filters('pings_title', __(_n('1 Ping:', '%1$s Pings:', get_comments_number() - vol_comments_only_count($count), 'volatyl'), 'volatyl'));
 $comments_text = apply_filters('comments_text', array(  
-	'comments_closed'		=> 'Comments are closed.',
-	'older_comments'		=> '&larr; Older comments',
-	'newer_comments'		=> 'Newer comments &rarr;',
-	'comment_reply_title'	=> 'Leave a Reply',
-	'comment_submit'		=> 'Submit Comment'
+	'comments_closed'		=> __('Comments are closed.', 'volatyl'),
+	'older_comments'		=> '&larr; ' . __('Older comments', 'volatyl'),
+	'newer_comments'		=> __('Newer comments', 'volatyl') . ' &rarr;',
+	'comment_reply_title'	=> __('Leave a Reply', 'volatyl'),
+	'comment_submit'		=> __('Submit Comment', 'volatyl')
 	) 
 );
 
@@ -54,10 +54,10 @@ if (post_password_required())
 		((get_comment_pages_count() > 1 && get_option('page_comments')) ? 
 			printf("\t<nav role=\"navigation\" id=\"comment-nav-above\" class=\"site-navigation comment-navigation clearfix\">\n
 			\t\t<div class=\"nav-previous comment-nav border-box\">\n") . 
-			previous_comments_link(__($comments_text['older_comments'], 'volatyl')) .
+			previous_comments_link($comments_text['older_comments']) .
 			printf("\t\t</div>\n
 			\t\t<div class=\"nav-next comment-nav border-box\">\n") . 
-			next_comments_link(__($comments_text['newer_comments'], 'volatyl')) .
+			next_comments_link($comments_text['newer_comments']) .
 			printf("\t\t</div>\n
 			\t</nav>") : 
 		'');
@@ -85,10 +85,10 @@ if (post_password_required())
 			((get_comment_pages_count() > 1 && get_option('page_comments')) ? 
 				printf("\t<nav role=\"navigation\" id=\"comment-nav-below\" class=\"site-navigation comment-navigation clearfix\">\n
 				\t\t<div class=\"nav-previous comment-nav\">\n") . 
-				previous_comments_link(__($comments_text['older_comments'], 'volatyl')) .
+				previous_comments_link($comments_text['older_comments']) .
 				printf("\t\t</div>\n
 				\t\t<div class=\"nav-next comment-nav\">\n") . 
-				next_comments_link(__($comments_text['newer_comments'], 'volatyl')) .
+				next_comments_link($comments_text['newer_comments']) .
 				printf("\t\t</div>\n
 				\t</nav>") : 
 			'');
@@ -115,7 +115,7 @@ if (post_password_required())
 // If comments are closed and there are comments, let's leave a little note.
 echo ((!comments_open() && '0' != get_comments_number() && post_type_supports(get_post_type(), 'comments')) ? 
 	sprintf("\t\t<p class=\"nocomments\">") . 
-	__($comments_text['comments_closed'], 'volatyl') . 
+	$comments_text['comments_closed'] . 
 	sprintf("</p>\n") : 
 '');
 
@@ -139,9 +139,9 @@ comment_form(
 	array( 
 		'comment_field'			=> '<p class="comment-form-comment"><textarea id="comment" name="comment" rows="8" aria-required="true"></textarea></p>',
 		'comment_notes_after'	=> '',
-		'title_reply'			=> __($comments_text['comment_reply_title'] . ' ', 'volatyl'),
+		'title_reply'			=> $comments_text['comment_reply_title'] . ' ',
 		'cancel_reply_link'		=> '<span class="cancel-reply">' . __('Cancel Reply', 'volatyl') . '</span>',
-		'label_submit'			=> __($comments_text['comment_submit'], 'volatyl'),
+		'label_submit'			=> $comments_text['comment_submit'],
 		'fields'				=> apply_filters('comment_form_default_fields', 
 		
 			array(

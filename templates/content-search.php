@@ -17,11 +17,11 @@
  * @since Volatyl 1.0
  */
 global $post;
-$search_title = apply_filters('search_title', 'Search Results for:'); ?>
+$search_title = apply_filters('search_title', __('Search Results for:', 'volatyl')); ?>
 
 <header class="page-header">
 	<h1 class="page-title">
-		<?php echo __($search_title, 'volatyl'), ' <span>', get_search_query(), '</span>'; ?>
+		<?php echo $search_title, ' <span>', get_search_query(), '</span>'; ?>
 	</h1>
 </header>
 

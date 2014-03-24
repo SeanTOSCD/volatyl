@@ -71,15 +71,15 @@ if (!function_exists('vol_setup')) {
 		
 		// Custom Menu filters
 		$menu_descriptions = apply_filters('menu_descriptions', array(
-			'header_menu_description'		=> 'Header Menu (Supports 1 drop-down level)',
-			'standard_menu_description'		=> 'Standard Menu (unlimited drop-downs)',
-			'footer_menu_description'		=> 'Footer Menu (unlimited drop-downs)'
+			'header_menu_description'		=> __('Header Menu (Supports 1 drop-down level)', 'volatyl'),
+			'standard_menu_description'		=> __('Standard Menu (unlimited drop-downs)', 'volatyl'),
+			'footer_menu_description'		=> __('Footer Menu (unlimited drop-downs)', 'volatyl')
 			) 
 		);
 
 		// Register wp_nav_menu() in header. This is the only default menu.	 
 		register_nav_menus(array(
-			'header' => __($menu_descriptions['header_menu_description'], 'volatyl')
+			'header' => $menu_descriptions['header_menu_description']
 		));
 	
 		$options = get_option('vol_content_options');
@@ -87,14 +87,14 @@ if (!function_exists('vol_setup')) {
 		// Register wp_nav_menu() below header (standard menu) if selected	
 		if ($options['standardmenu'] == 1) :
 			register_nav_menus(array(
-				'standard' => __($menu_descriptions['standard_menu_description'], 'volatyl')
+				'standard' => $menu_descriptions['standard_menu_description']
 			)); 
 		endif;
 	
 		// Register wp_nav_menu() above footer (footer menu) if selected	
 		if ($options['footermenu'] == 1) :
 			register_nav_menus(array(
-				'footer' => __($menu_descriptions['footer_menu_description'], 'volatyl')
+				'footer' => $menu_descriptions['footer_menu_description']
 			));
 		endif;
 	}

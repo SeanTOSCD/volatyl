@@ -18,12 +18,13 @@
  * @since Volatyl 1.0
  */
 $archive_title = apply_filters('archive_title', array(
-	'cat_title'			=> 'Category Archives:',
-	'tag_title'			=> 'Tag Archives:',
-	'author_title'		=> 'Author Archives:',
-	'daily_title'		=> 'Daily Archives:',
-	'monthly_title'		=> 'Monthly Archives:',
-	'yearly_title'		=> 'Yearly Archives:'
+	'cat_title'			=> __('Category Archives:', 'volatyl'),
+	'tag_title'			=> __('Tag Archives:', 'volatyl'),
+	'author_title'		=> __('Author Archives:', 'volatyl'),
+	'daily_title'		=> __('Daily Archives:', 'volatyl'),
+	'monthly_title'		=> __('Monthly Archives:', 'volatyl'),
+	'yearly_title'		=> __('Yearly Archives:', 'volatyl'),
+	'default_title'		=> __('Archives', 'volatyl')
 	)
 ); ?>
 
@@ -33,10 +34,10 @@ $archive_title = apply_filters('archive_title', array(
 		<?php 
 		// archive titles
 		if (is_category()) :
-			echo __($archive_title['cat_title'], 'volatyl'), ' <span>', single_cat_title('', true), '</span>';
+			echo $archive_title['cat_title'], ' <span>', single_cat_title('', true), '</span>';
 			
 		elseif (is_tag()) :
-			echo __($archive_title['tag_title'], 'volatyl'), ' <span>', single_tag_title('', true), '</span>';
+			echo $archive_title['tag_title'], ' <span>', single_tag_title('', true), '</span>';
 		
 		elseif (is_author()) :
 
@@ -44,7 +45,7 @@ $archive_title = apply_filters('archive_title', array(
 			// what author we're dealing with (if that is the case)
 			the_post();
 			
-			echo __($archive_title['author_title'], 'volatyl'), ' <span class="vcard">' . get_the_author() . '</span>';
+			echo $archive_title['author_title'], ' <span class="vcard">' . get_the_author() . '</span>';
 			
 			// Since we called the_post() above, we need to
 			// rewind the loop back to the beginning that way
@@ -52,16 +53,16 @@ $archive_title = apply_filters('archive_title', array(
 			rewind_posts();
 			
 		elseif (is_day()) :
-			echo __($archive_title['daily_title'], 'volatyl'), ' <span>', get_the_date(), '</span>';
+			echo $archive_title['daily_title'], ' <span>', get_the_date(), '</span>';
 			
 		elseif (is_month()) :
-			echo __($archive_title['monthly_title'], 'volatyl'), ' <span>', get_the_date('F Y'), '</span>';
+			echo $archive_title['monthly_title'], ' <span>', get_the_date('F Y'), '</span>';
 			
 		elseif (is_year()) :
-			echo __($archive_title['yearly_title'], 'volatyl'), ' <span>', get_the_date('Y'), '</span>';
+			echo $archive_title['yearly_title'], ' <span>', get_the_date('Y'), '</span>';
 			
 		else :
-			_e($archive_title['default_title'], 'volatyl');
+			echo $archive_title['default_title'];
 			
 		endif; ?>
 		

@@ -16,8 +16,8 @@
 if (!function_exists('vol_header_menu')) {
 	function vol_header_menu() {
 		$header_menu_toggle = apply_filters('header_menu_toggle', array(
-			'header_open'		=> 'Menu',
-			'header_close'		=> 'Hide'
+			'header_open'		=> __('Menu', 'volatyl'),
+			'header_close'		=> __('Hide', 'volatyl')
 			)
 		);
 		$options_content = get_option('vol_content_options');
@@ -34,12 +34,12 @@ if (!function_exists('vol_header_menu')) {
 				<div class="header-menu-toggle">
 					<a href="#header-menu-container" class="open-header-menu menu-toggle">
 						<span class="header-open">
-							<?php _e($header_menu_toggle['header_open'], 'volatyl'); ?>
+							<?php echo $header_menu_toggle['header_open']; ?>
 						</span>
 					</a>
 					<a href="#header-menu-collapse" class="close-header-menu menu-toggle" id="header-menu-collapse">
 						<span class="header-close">
-							<?php _e($header_menu_toggle['header_close'], 'volatyl'); ?>
+							<?php echo $header_menu_toggle['header_close']; ?>
 						</span>
 					</a>
 				</div>
@@ -56,8 +56,8 @@ if (!function_exists('vol_header_menu')) {
 if (!function_exists('vol_standard_menu')) {
 	function vol_standard_menu() {	
 		$standard_menu_toggle = apply_filters('standard_menu_toggle', array(
-			'standard_open'		=> 'Navigation',
-			'standard_close'	=> 'Hide'
+			'standard_open'		=> __('Navigation', 'volatyl'),
+			'standard_close'	=> __('Hide', 'volatyl')
 			)
 		);
 	
@@ -72,12 +72,12 @@ if (!function_exists('vol_standard_menu')) {
 			<div class="standard-menu-toggle">
 				<a href="#standard-menu-container" class="open-standard-menu menu-toggle">
 					<span class="standard-open">
-						<?php _e($standard_menu_toggle['standard_open'], 'volatyl'); ?>
+						<?php echo $standard_menu_toggle['standard_open']; ?>
 					</span>
 				</a>
 				<a href="#standard-menu-collapse" class="close-standard-menu menu-toggle" id="standard-menu-collapse">
 					<span class="standard-close">
-						<?php _e($standard_menu_toggle['standard_close'], 'volatyl'); ?>
+						<?php echo $standard_menu_toggle['standard_close']; ?>
 					</span>
 				</a>
 			</div>
@@ -92,8 +92,8 @@ if (!function_exists('vol_standard_menu')) {
 if (!function_exists('vol_footer_menu')) {
 	function vol_footer_menu() {
 		$footer_menu_toggle = apply_filters('footer_menu_toggle', array(
-			'footer_open'		=> 'Navigation',
-			'footer_close'		=> 'Hide'
+			'footer_open'		=> __('Navigation', 'volatyl'),
+			'footer_close'		=> __('Hide', 'volatyl')
 			)
 		);
 	
@@ -109,12 +109,12 @@ if (!function_exists('vol_footer_menu')) {
 			<div class="footer-menu-toggle">
 				<a href="#footer-menu-container" class="open-footer-menu menu-toggle ">
 					<span class="footer-open">
-						<?php _e($footer_menu_toggle['footer_open'], 'volatyl'); ?>
+						<?php echo $footer_menu_toggle['footer_open']; ?>
 					</span>
 				</a>
 				<a href="#footer-menu-collapse" class="close-footer-menu menu-toggle" id="footer-menu-collapse">
 					<span class="footer-close">
-						<?php _e($footer_menu_toggle['footer_close'], 'volatyl'); ?>
+						<?php echo $footer_menu_toggle['footer_close']; ?>
 					</span>
 				</a>
 			</div>
