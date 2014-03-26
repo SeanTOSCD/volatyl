@@ -45,9 +45,7 @@
 		width: 67.58621%; 
 	}
 	#container > .site-header,
-	#container > .site-footer,
-	#container #standard-menu-container,
-	#container #footer-menu-container {
+	#container > .site-footer {
 		border-left: 0;
 		border-right: 0;
 	}
@@ -70,105 +68,79 @@
 @media screen and (max-width: 768px) 
 {
 	
-	/* =Responsive Menus and all that crap >:[
+	/* =Responsive Menus
 	-------------------------------------------------------------- */
 	
-	/***** Hide desktop menus *****/
-	.short-menu,
-	.full-menu,
-	#header-menu-container:target .open-header-menu,
-	#standard-menu-container:target .open-standard-menu,
-	#footer-menu-container:target .open-footer-menu   {
-		display: none;
-	}
-	
-	/***** Show and style previously hidden menus and toggle links *****/
 	.header-menu-toggle,
 	.standard-menu-toggle,
 	.footer-menu-toggle,
-	#header-menu-container:target .short-menu,
-	#standard-menu-container:target .full-menu,
-	#footer-menu-container:target .full-menu {
+	.header-navigation.toggled .nav-menu,
+	.standard-navigation.toggled .nav-menu,
+	.footer-navigation.toggled .nav-menu,
+	.header-navigation .menu ul,
+	.secondary-navigation .menu ul,
+	.header-navigation .menu a,
+	.secondary-navigation .menu a {
 		display: block;
 	}
-	#header-menu-container .open-header-menu,
-	#header-menu-container:target .close-header-menu,
-	#standard-menu-container .open-standard-menu,
-	#standard-menu-container:target .close-standard-menu,
-	#footer-menu-container .open-footer-menu,
-	#footer-menu-container:target .close-footer-menu {
-		display: inline-block;
-	}
-	#header-menu-container:target .short-menu,
-	#standard-menu-container:target .close-standard-menu,
-	#footer-menu-container:target .close-footer-menu,
-	#standard-menu-container:target .full-menu,
-	#footer-menu-container:target .full-menu {
-		margin-bottom: 15px;
-	}
-	#standard-menu-container,
-	#footer-menu-container {
-		padding: .66667em 1.33334em;
-	}
-	.standard-menu-wrap,
-	.footer-menu-wrap {
-		text-align: center;
-		padding: .66667em 0;
-	}
-	.short-menu,
-	.full-menu {
-		display: none;
+	
+	.header-navigation,
+	.secondary-navigation {
 		padding: 0;
 	}
-	.short-menu .menu ul,
-	.short-menu .menu li,
-	.short-menu a,
-	.full-menu .menu ul,
-	.full-menu .menu li,
-	.full-menu a {
-		display: block;
-		padding: 0;
-	}
-	.short-menu .menu li ul a,
-	.short-menu .menu li ul a:hover, 
-	.full-menu .menu li ul li a,
-	.full-menu .menu li ul li a:hover,
-	.short-menu .menu ul,
-	.short-menu .menu li,
-	.short-menu a,
-	.full-menu .menu ul,
-	.full-menu .menu li,
-	.full-menu a {
-		background: none;
-	}
-	.full-menu .menu li + li,
-	.short-menu .menu li + li {
-		margin: 0;
-	}
-	.menu > li > a {
-	}
-	#header-menu-wrap.short-menu a,
-	#standard-menu-wrap.full-menu .menu a,
-	#footer-menu-wrap.full-menu .menu a {
-		border: 1px solid rgba(0,0,0,.05);
-		border-width: 0 0 1px;
-	}
-	.short-menu .menu li > ul > li ul {
-		display: none;
-	}
-	.site-header .short-menu .menu li a,
-	.full-menu .menu li.menu-item a {
-		padding: .66667em;
-	}
-	.short-menu .menu li ul,
-	.full-menu .menu li ul,
-	.full-menu .menu li ul li ul {
+	
+	.header-navigation,
+	.secondary-navigation,
+	.header-navigation .menu li ul,
+	.secondary-navigation .menu li ul {
 		position: static;
+		text-align: center;
+		padding: 0;
 	}
-	.short-menu .menu li ul a,
-	.full-menu .menu li ul li a {
-		width: auto;
+
+	.header-navigation ul,
+	.secondary-navigation ul {
+		display: none;
 	}
+	
+	.header-navigation.toggled .nav-menu {
+		background: #fff;
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		margin: 1em 0;
+	}
+	
+	.secondary-navigation.toggled .nav-menu {
+		margin: 0 0 1em;
+	}
+	
+	.header-navigation .menu li,
+	.secondary-navigation .menu li {
+		display: block;
+		padding: 0;
+	}
+
+	.header-navigation .menu li ul li,
+	.secondary-navigation .menu li ul li {
+		padding: 0;
+	}
+	
+	.header-navigation .menu a,
+	.secondary-navigation .menu a,
+	.header-navigation .menu li ul a,
+	.secondary-navigation .menu li ul li a {
+		padding: 1em .66667em;
+		width: 100%;
+		box-sizing: border-box;
+	}
+	
+	.header-navigation .menu li ul a,
+	.secondary-navigation .menu li ul li a {
+		background: none;
+		border: 0;
+	}
+	
+	/* all other styles */
+	
 	.landing #main-content .main,
 	.landing #container #main-content {
 		width: 100%;
@@ -202,15 +174,6 @@
 	.site-description { 
 		margin-bottom: .66667em; 
 	}
-	.site-header .header-menu-wrap {
-		position: static;
-		padding: 0;
-		margin-top: 1em;
-	}
-	.short-menu li,
-	.full-menu li {
-		padding: .33334em .66667em;
-	}
 	#content .pagination {
 		float: none;
 	}
@@ -224,10 +187,6 @@
 
 @media screen and (max-width: 480px) 
 {
-	.short-menu,
-	.full-menu {
-		width: 100%;
-	}
 	.site-footer {
 		text-align: center;
 	}

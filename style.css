@@ -4,7 +4,7 @@
 	Author: Volatyl Themes
 	Author URI: http://volatylthemes.com/
 	Description: Volatyl is a lightweight theme framework WordPress. The focus of Volatyl is leverage. Simple checkboxes perform complex tasks without breaking a sweat. Add content to any area of your website built-in hooks while controlling the columns layout on every single page or post. In other words, Volatyl creates unique websites with ease... period.
-	Version: 1.3.3
+	Version: 1.3.4
 	License: GNU General Public License Version 2
 	License URI: license.txt
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
@@ -85,9 +85,8 @@ pre,
 .site-footer,
 #container > .site-header,
 #menu-area-standard,
-#container .standard-menu-wrap,
-.short-menu .menu li ul a,
-.full-menu .menu li ul li a,
+.header-navigation .menu li ul a,
+.secondary-navigation .menu li ul li a,
 .comments-content > ol > li.comment,
 .comments-content > ol > li.pingback,
 .children > li > .comment,
@@ -167,11 +166,11 @@ acronym,
 .clearfix:after,
 .inner:after,
 .post:after,
-.short-menu .menu > li:hover > ul,
-.full-menu .menu li:hover > ul,
-.full-menu .menu li:hover ul li a,
-.short-menu .menu li ul a,
-.full-menu .menu li ul li a,
+.header-navigation .menu > li:hover > ul,
+.secondary-navigation .menu li:hover > ul,
+.secondary-navigation .menu li:hover ul li a,
+.header-navigation .menu li ul a,
+.secondary-navigation .menu li ul li a,
 .pagination span, 
 .pagination a,
 #fat-footer,
@@ -419,7 +418,7 @@ td {
 	margin: 0; 
 }
 
-.header-menu-wrap { 
+.header-navigation { 
 	position: absolute; 
 	top: 1.46667em; 
 	right: 0; 
@@ -430,20 +429,21 @@ td {
 -------------------------------------------------------------- */
 
 .header-menu-toggle,
-.close-header-menu,
-.standard-menu-toggle,
-.close-standard-menu,
-.footer-menu-toggle,
-.close-footer-menu {
+.secondary-menu-toggle {
 	display: none;
+	cursor: pointer;
+}
+
+.secondary-menu-toggle {
+	padding: 1em .66667em;
 }
 
 #menu-area-footer {
 	border-width: 1px 0 0;
 }
 
-.short-menu,
-.full-menu {
+.header-navigation,
+.secondary-navigation {
 	padding: 0 .66667em;
 }
 
@@ -464,12 +464,8 @@ td {
 	padding: 1em .66667em; 
 }
 
-.short-menu .menu li {
+.header-navigation .menu li {
 	z-index: 99999;
-}
-
-.short-menu .menu li {
-	z-index: 99998;
 }
 
 .menu a { 
@@ -481,14 +477,6 @@ td {
 	clear: both;
 }
 
-#container .standard-menu-wrap {
-	border-width: 0 1px 1px;
-}
-
-#container .footer-menu-wrap {	
-	border-width: 1px 1px 0;
-}
-
 
 /* =Drop-down Menu
 -------------------------------------------------------------- */
@@ -497,8 +485,8 @@ td {
 	display: none;
 }
 
-.short-menu .menu li ul,
-.full-menu .menu li ul {
+.header-navigation .menu li ul,
+.secondary-navigation .menu li ul {
 	position: absolute;
 	padding-left: 0;
 	top: 100%;
@@ -506,14 +494,14 @@ td {
 	z-index: 999;
 }
 
-.full-menu .menu li ul li ul {
+.secondary-navigation .menu li ul li ul {
 	position: absolute;
 	top: 0;
 	left: 0;
 	margin: 0;
 }
 
-.full-menu .menu li:hover ul li:hover ul {
+.secondary-navigation .menu li:hover ul li:hover ul {
 	left: 201px;
 }
 
@@ -530,14 +518,14 @@ td {
 	margin-top: -1px;
 }
 
-.short-menu .menu li ul a,
-.full-menu .menu li ul li a {
+.header-navigation .menu li ul a,
+.secondary-navigation .menu li ul li a {
 	background: #fafafa;
 	padding: .66667em;
 	width: 180px;
 }
 
-.short-menu .menu li ul a {
+.header-navigation .menu li ul a {
 	width: 120px;
 }
 
