@@ -117,8 +117,7 @@ function vol_front_scripts() {
 	
 	// Responsive stylesheet
 	if ($options['responsive'] == 1) {
-		wp_register_style('responsive', THEME_PATH_URI . '/responsive.css');
-		wp_enqueue_style('responsive');
+		wp_enqueue_style('responsive', THEME_PATH_URI . '/responsive.css');
 	}
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
@@ -136,17 +135,9 @@ function vol_back_scripts() {
 	
 	// register Volatyl Options CSS file based on WP version (new admin styles!!!)
 	if (version_compare($wp_version, '3.8', '>=')) {
-		wp_register_style('theme-options-new', THEME_PATH_URI . '/inc/options/theme-options-new.css');
+		wp_enqueue_style('theme-options-new', THEME_PATH_URI . '/inc/options/theme-options-new.css');
 	} else {
-		wp_register_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
-	}
-	wp_register_script('logo-upload', THEME_PATH_URI . '/inc/js/logo-upload.js', array('jquery','media-upload','thickbox'));
-		
-	// load Volatyl Options CSS file based on WP version (new admin styles!!!)
-	if (version_compare($wp_version, '3.8', '>=')) {
-		wp_enqueue_style('theme-options-new');
-	} else {
-		wp_enqueue_style('theme-options');
+		wp_enqueue_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
 	}
 	
 	// load scripts and styles on options pages
@@ -155,7 +146,7 @@ function vol_back_scripts() {
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
 		wp_enqueue_script('media-upload');
-		wp_enqueue_script('logo-upload');
+		wp_enqueue_script('logo-upload', THEME_PATH_URI . '/inc/js/logo-upload.js', array('jquery','media-upload','thickbox'));
 	}
 }
 add_action('admin_enqueue_scripts', 'vol_back_scripts');

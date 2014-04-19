@@ -358,7 +358,7 @@ function vol_options_do_page() {
 			$hook['name'], "]\">", 
 			stripslashes(esc_textarea($options_hooks[$hook['name']])), 
 			"</textarea><br>\n",
-			"<span class=\"hide-on\">", __(' Hide on: ', 'volatyl'), "</span>";
+			"<span class=\"hide-on\">", __(' Hide on:', 'volatyl'), "</span>";
 			
 			switch ($hook['name']) {
 				case 'vol_post_footer':
@@ -608,10 +608,7 @@ function vol_options_do_page() {
 		echo '<strong>' . __('version ', 'volatyl') . THEME_VERSION . '</strong>';
 		
 		foreach ($vol_links as $vl) {
-			printf(' &middot; <a href="%2$s" target="_blank"><strong>%1$s</strong></a>',
-				$vl['name'],
-				$vl['url']
-			);
+			printf(' &middot; <a href="%2$s" target="_blank"><strong>%1$s</strong></a>', $vl['name'], $vl['url']); 
 		}
 		echo "</td></tr>		
 		<tr valign=\"top\">

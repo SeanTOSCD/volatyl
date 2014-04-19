@@ -22,7 +22,7 @@ function vol_logo_options_setup() {
 	if ('media-upload.php' == $pagenow || 'async-upload.php' == $pagenow)
 	
 		// Now we'll replace the 'Insert into Post Button' inside Thickbox
-		add_filter('gettext', 'vol_replace_thickbox_text'  , 1, 3);
+		add_filter('gettext', 'vol_replace_thickbox_text' , 1, 3);
 }
 add_action('admin_init', 'vol_logo_options_setup');
 
