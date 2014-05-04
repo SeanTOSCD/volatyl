@@ -12,14 +12,12 @@
  * @since Volatyl 1.0
  */	
 $search_text = apply_filters('search_text', array(
-	'search_field_text'		=> 'Enter Keyword(s)&hellip;',
-	'search_submit_text'	=> 'Search'
-	) 
-);
-
-printf('<form method="get" id="searchform" action="%1$s" role="search"><label for="s" class="assistive-text">' . __('Search', 'volatyl') . '</label><input type="search" class="field" name="s" value="%2$s" id="s" placeholder="%3$s" /><input type="submit" class="submit" name="submit" id="searchsubmit" value="%4$s" /></form>', 
-	esc_url(home_url('/')), 
-	esc_attr(get_search_query()), 
-	esc_attr($search_text['search_field_text'], 'volatyl'), 
-	esc_attr($search_text['search_submit_text'], 'volatyl')
-);
+	'search_field_text'		=> __('Enter Keywords', 'volatyl') . '&hellip;',
+	'search_submit_text'	=> __('Search', 'volatyl')
+));
+?>
+<form method="get" id="searchform" action="<?php esc_url(home_url('/')); ?>" role="search">
+	<label for="s" class="assistive-text"><?php __('Search', 'volatyl'); ?></label>
+	<input type="search" class="field" name="s" value="<?php esc_attr_e(get_search_query()); ?>" id="s" placeholder="<?php esc_attr_e($search_text['search_field_text']); ?>">
+	<input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php esc_attr_e($search_text['search_submit_text']); ?>" />
+</form>

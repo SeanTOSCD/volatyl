@@ -23,6 +23,9 @@ function vol_header_element() {
 	$title = $options_content['title'];
 	$logo = $options_content['logo'];
 	$tagline = $options_content['tagline'];
+	
+	// The following condition swaps the title and headline HTML tags like old school SEO required.
+	// Read the message below this condition.
 	if (is_home() || is_front_page()) {
 		$seotitle = "h1";
 		$seotagline = "h2";
@@ -30,69 +33,52 @@ function vol_header_element() {
 		$seotitle = "p";
 		$seotagline = "p";
 	}
+	// Please understand that Volatyl is written in HTML5. What you see above isn't even necessary. 
+	// The title and tagline will already be inside of a <header> so they can be H1s and H2s all day long!
+	?>
 	
-	echo "<header class=\"site-header inner\">\n";
-
-	// vol_header_top
-	if ($options['switch_vol_header_top'] == 0) {
-		if 	((is_home() && is_front_page() && $options['home_vol_header_top'] == 0 && $options['front_vol_header_top'] == 0) ||
-			(is_home() && ! is_front_page() && $options['home_vol_header_top'] == 0) ||
-			(is_front_page() && ! is_home() && $options['front_vol_header_top'] == 0) ||
-			(is_single() && $options['posts_vol_header_top'] == 0) ||
-			(is_page() && ! is_front_page() && $options['pages_vol_header_top'] == 0) ||
-			(is_archive() && $options['archive_vol_header_top'] == 0) ||
-			(is_search() && $options['search_vol_header_top'] == 0) ||
-			(is_404() && $options['404_vol_header_top'] == 0)) {
-				vol_header_top();
-		} else {
-			do_action('vol_header_top');
-		}
-	}
+	<header class="site-header inner">
+		<?php
+			// vol_header_top hook
+			vol_header_top_output();				
+			
+			// Show site title? This controls the text title AND logo			
+			if ($title == 1) { ?>
+				<<?php echo $seotitle; ?> class="site-title">
+					<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php esc_attr_e(get_bloginfo('name')); ?>" rel="home">
+						<?php
+							// If a logo is uploaded, show it. If not, show the site title.
+							if ($logo != '') { ?>
+								<img src="<?php echo $options_content['logo']; ?>" alt="<?php esc_attr_e(get_bloginfo('name')); ?>">
+								<?php
+							} else {
+								echo get_bloginfo('name');
+							}
+						?>
+					</a>
+				</<?php echo $seotitle; ?>>
+				<?php
+			}
+			
+			// Show site tagline? Always hide on landing page		
+			if ($tagline == 1 && ! is_page_template('custom-landing.php')) { ?>
+				<<?php echo $seotagline; ?> class="site-description">
+					<?php echo esc_attr_e(get_bloginfo('description')); ?>
+				</<?php echo $seotagline; ?>>
+				<?php
+			}
 		
-	// Show site title? This controls the text title AND logo			
-	echo (($title == 1) ? "\t\t<{$seotitle} class=\"site-title\"><a href=\"" . home_url('/') . "\" title=\"" . esc_attr(get_bloginfo('name', 'display')) . "\" rel=\"home\">" .
-	
-	// If a logo is uploaded, show it. If not, show the site title.
-	(($logo != '') ? "<img src=\"" . $options_content['logo'] . "\" alt=\"" . get_bloginfo('name', 'display') . "\" />" : get_bloginfo('name')) . "</a></{$seotitle}>\n" : ''),
-
-	// Show site tagline? Always hide on landing page		
-	(($tagline == 1 && ! is_page_template('custom-landing.php')) ? "\t\t<{$seotagline} class=\"site-description\">" . get_bloginfo('description') . "</{$seotagline}>\n" : '');
-
-	// vol_header_after_title_tagline - Always hide on landing page
-	if ($options['switch_vol_header_after_title_tagline'] == 0 && ! is_page_template('custom-landing.php')) {
-		if 	((is_home() && is_front_page() && $options['home_vol_header_after_title_tagline'] == 0 && $options['front_vol_header_after_title_tagline'] == 0) ||
-			(is_home() && ! is_front_page() && $options['home_vol_header_after_title_tagline'] == 0) ||
-			(is_front_page() && ! is_home() && $options['front_vol_header_after_title_tagline'] == 0) ||
-			(is_single() && $options['posts_vol_header_after_title_tagline'] == 0) ||
-			(is_page() && ! is_front_page() && $options['pages_vol_header_after_title_tagline'] == 0) ||
-			(is_archive() && $options['archive_vol_header_after_title_tagline'] == 0) ||
-			(is_search() && $options['search_vol_header_after_title_tagline'] == 0) ||
-			(is_404() && $options['404_vol_header_after_title_tagline'] == 0)) {
-				vol_header_after_title_tagline();
-		} else {
-			do_action('vol_header_after_title_tagline');
-		}
-	}
-	
-	// Display header menu
-	vol_header_menu();
-
-	// vol_header_bottom - Always hide on landing page
-	if ($options['switch_vol_header_bottom'] == 0 && ! is_page_template('custom-landing.php')) {
-		if 	((is_home() && is_front_page() && $options['home_vol_header_bottom'] == 0 && $options['front_vol_header_bottom'] == 0) ||
-			(is_home() && ! is_front_page() && $options['home_vol_header_bottom'] == 0) ||
-			(is_front_page() && ! is_home() && $options['front_vol_header_bottom'] == 0) ||
-			(is_single() && $options['posts_vol_header_bottom'] == 0) ||
-			(is_page() && ! is_front_page() && $options['pages_vol_header_bottom'] == 0) ||
-			(is_archive() && $options['archive_vol_header_bottom'] == 0) ||
-			(is_search() && $options['search_vol_header_bottom'] == 0) ||
-			(is_404() && $options['404_vol_header_bottom'] == 0)) {
-				vol_header_bottom();
-		} else {
-			do_action('vol_header_bottom');
-		}
-	}
-	echo "</header>";
+			// vol_header_after_title_tagline hook - Always hidden in landing page header
+			vol_header_after_title_tagline_output();
+						
+			// Display header menu
+			vol_header_menu();
+		
+			// vol_header_bottom hook - Always hidden in landing page header
+			vol_header_bottom_output();
+		?>
+	</header>
+	<?php
 }
 
 // The above <header> will display based on HTML structure options
@@ -100,15 +86,15 @@ if (!function_exists('vol_header_frame')) {
 	function vol_header_frame() {
 		$options_structure = get_option('vol_structure_options'); ?>
 		
-		<?php if ($options_structure['wide'] == 1) : ?>
+		<?php if ($options_structure['wide'] == 1) { ?>
 			<div id="header-area" class="full">
 				<div class="main">
 					<?php vol_header_element(); ?> 
 				</div>
 			</div>
-		<?php else : ?>
+		<?php } else { ?>
 			<div id="container">
 				<?php vol_header_element(); ?>
-		<?php endif;
+		<?php }
 	}
 }

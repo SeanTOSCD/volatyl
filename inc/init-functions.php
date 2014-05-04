@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.3.4');
+define ('THEME_VERSION', '1.4');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -36,6 +36,7 @@ require_once (THEME_HTML . '/main-content.php');
 require_once (THEME_HTML . '/footer-html.php');
 
 // Load theme goodies (options)
+require_once (THEME_OPTIONS . '/hook-output.php');
 require_once (THEME_OPTIONS . '/theme-options.php');
 require_once (THEME_OPTIONS . '/options-setup.php');
 require_once (THEME_OPTIONS . '/option-defaults.php');
@@ -113,7 +114,7 @@ function vol_front_scripts() {
 	wp_enqueue_style('style', THEME_PATH_URI . '/style.css');
 	
 	// Navigation JS
-	wp_enqueue_script('navigation', THEME_PATH_URI . '/inc/js/navigation.js', array(), '20120206', true);
+	wp_enqueue_script('navigation', THEME_PATH_URI . '/inc/js/navigation.js', array(), THEME_VERSION, true);
 	
 	// Responsive stylesheet
 	if ($options['responsive'] == 1) {
@@ -152,7 +153,14 @@ function vol_back_scripts() {
 add_action('admin_enqueue_scripts', 'vol_back_scripts');
 
 
-// Tabs are so annoying sometimes
+/**
+ * Tabs are so annoying sometimes
+ *
+ * This is only still here for backwards compatibility. If you're building child
+ * themes for Volatyl, make sure all of your template files and the like are updated
+ * without the $tab3, $tab6, $tab9 variables. They will be removed in future updates.
+ * Volatyl core no longer uses these variables.
+ */
 $indent = 3;
 $tab3 = str_repeat("\t", $indent);
 $tab6 = str_repeat("\t", $indent + 3);

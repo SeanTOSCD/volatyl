@@ -31,7 +31,7 @@ function vol_replace_thickbox_text($translated_text, $text, $domain) {
 		$referer = strpos(wp_get_referer(), 'volatyl_options');
 		
 		if ($referer != '')
-			return __('Use my sweet new logo!', 'volatyl');
+			return __('Make this my logo!', 'volatyl');
 	}
 	return $translated_text;
 }

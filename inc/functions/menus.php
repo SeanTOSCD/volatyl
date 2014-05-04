@@ -25,13 +25,13 @@ if (!function_exists('vol_header_menu')) {
 		 *
 		 * @since Volatyl 1.0
 		 */
-		if ($options_content['headermenu'] == 1 && ! is_page_template('custom-landing.php') && (true == has_nav_menu('header'))) : ?>
+		if ($options_content['headermenu'] == 1 && !is_page_template('custom-landing.php') && (true == has_nav_menu('header'))) { ?>
 			<nav id="header-menu-wrap" class="site-navigation header-navigation border-box">
 				<span class="header-menu-toggle"><?php echo $header_menu_toggle; ?></span>
 				<?php wp_nav_menu(array('theme_location' => 'header')); ?>
 			</nav>
 		<?php
-		endif;
+		}
 	}
 }
 
@@ -79,17 +79,20 @@ function vol_standard_menu_on() {
 	$options_content = get_option('vol_content_options');
 	
 	// Wide Structure?
-	(($options_structure['wide'] == 1) ?
-		(($options_content['standardmenu'] == 1) ?
-			printf("<div id=\"menu-area-standard\" class=\"full\">
-			<div class=\"main\">") .
-			vol_standard_menu() .
-			printf("</div></div>") : 
-		'') :
-		(($options_content['standardmenu'] == 1) ? 
-			vol_standard_menu() : 
-		'')
-	);
+	if ($options_structure['wide'] == 1) {
+		if ($options_content['standardmenu'] == 1) { ?>
+			<div id="menu-area-standard" class="full">
+				<div class="main">
+					<?php vol_standard_menu(); ?>
+				</div>
+			</div>
+			<?php 
+		}
+	} else {
+		if ($options_content['standardmenu'] == 1) { 
+			vol_standard_menu();
+		}
+	}
 }
 
 // Footer Menu
@@ -98,15 +101,18 @@ function vol_footer_menu_on() {
 	$options_content = get_option('vol_content_options');
 	
 	// Wide Structure?
-	(($options_structure['wide'] == 1) ?
-		(($options_content['footermenu'] == 1) ?
-			printf("<div id=\"menu-area-footer\" class=\"full\">
-			<div class=\"main\">") .
-			vol_footer_menu() .
-			printf("</div></div>") : 
-		'') :
-		(($options_content['footermenu'] == 1) ? 
-			vol_footer_menu() : 
-		'')
-	);
+	if ($options_structure['wide'] == 1) {
+		if ($options_content['footermenu'] == 1) { ?>
+			<div id="menu-area-footer" class="full">
+				<div class="main">
+					<?php vol_footer_menu(); ?>
+				</div>
+			</div>
+			<?php
+		}
+	} else {
+		if ($options_content['footermenu'] == 1) {
+			vol_footer_menu();
+		}
+	}
 }

@@ -36,7 +36,8 @@ require_once(dirname(__FILE__) . '/inc/init-functions.php');
 
 // Only allow automatic updates if option is checked
 $options = get_option('vol_general_options');
-if ($options['updates'] == 1)
+if ($options['updates'] == 1) {
 	
 	// License key setup and Volatyl automatic updater
 	require_once(dirname(__FILE__) . '/inc/updater.php');
+}

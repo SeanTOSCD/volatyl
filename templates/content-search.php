@@ -26,7 +26,7 @@ $search_title = apply_filters('search_title', __('Search Results for:', 'volatyl
 </header>
 
 <?php
-// Da loop		
+// da loop		
 while (have_posts()) { 
 	the_post();
 	get_template_part('templates/content', get_post_format());

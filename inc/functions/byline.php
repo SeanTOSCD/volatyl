@@ -33,35 +33,54 @@ if (!function_exists('volatyl_post_meta')) {
 			) 
 		);
 		
-		$byline_top_items = $options_content['by-date-post'] == 1 || $options_content['by-author-post'] == 1 || $options_content['by-comments-post'] == 1 || $options_content['by-edit-post'] == 1;
+		$byline_top_items	=	$options_content['by-date-post']		== 1 ||
+								$options_content['by-author-post']		== 1 ||
+								$options_content['by-comments-post']	== 1 ||
+								$options_content['by-edit-post']		== 1;
+		$byline_categories	=	$options_content['by-cats'] == 1;
 		
-		$byline_categories = $options_content['by-cats'] == 1;
-		
-		if ($byline_top_items) echo "<div class=\"meta-top\">";	
+		if ($byline_top_items) echo '<div class="meta-top">';	
 
 		// Show post date
-		(($options_content['by-date-post'] == 1) ?
-			printf('<span class="posted-on">' . $byline_text['publish_date'] . '</span> ' . 
-			"<span class=\"meta-date\"><a href=\"") . the_permalink() . printf("\" title=\"") . esc_attr(printf(__('Permalink - ', 'volatyl'))) . _e(the_title_attribute('echo=0')) . printf("\" rel=\"bookmark\">") . 
-			the_time(get_option('date_format')) .
-			printf("</a></span> \n") :
-		'');
+		if ($options_content['by-date-post'] == 1) { ?>
+			<span class="posted-on">
+				<?php echo $byline_text['publish_date']; ?>
+			</span>
+			<span class="meta-date">
+				<a href="<?php echo esc_url(the_permalink()); ?>" title="<?php esc_attr_e(__('Permalink - ', 'volatyl')); _e(the_title_attribute('echo=0')); ?>" rel="bookmark"><?php the_time(get_option('date_format')); ?></a>
+			</span>
+			<?php
+		}
 	
 		// Show post author
-		(($options_content['by-author-post'] == 1) ? 
-			printf('<span class="post-by">' . $byline_text['author_text'] . '</span> ' . 
-			"<span class=\"meta-author\"><a class=\"fn\" href=\"" . get_author_posts_url(get_the_author_meta('ID')) . "\" title=\"") . esc_attr(get_the_author()) . printf('">') . the_author_meta('display_name') . printf("</a></span>") : 
-		'');
+		if ($options_content['by-author-post'] == 1) { ?>
+			<span class="post-by">
+				<?php echo $byline_text['author_text']; ?>
+			</span>
+			<span class="meta-author">
+				<a class="fn" href="<?php echo get_author_posts_url(get_the_author_meta('ID')); ?>" title="<?php esc_attr_e(get_the_author()); ?>"><?php echo the_author_meta('display_name'); ?></a>
+			</span>
+			<?php
+		}
 	
 		// Show post comment count
 		if ($options_content['by-comments-post'] == 1) {
 	
 			// Only show dash before comments if byline items are in front of it
-			(($options_content['by-date-post'] == 0 && $options_content['by-author-post'] == 0) ? "<span class=\"meta-comments\">" : printf(" <span class=\"comments-dash\">" . $byline_text['comments_dash'] . "</span> <span class=\"meta-comments\">"));
+			if ($options_content['by-date-post'] == 0 && $options_content['by-author-post'] == 0) { ?>
+				<span class="meta-comments">
+				<?php
+			} else { ?>
+				<span class="comments-dash">
+					<?php echo $byline_text['comments_dash']; ?>
+				</span> <span class="meta-comments">
+				<?php
+			}
 			
 			// Only mark comments as closed in byline of comment count is 0	
 			$response_count = get_comments_number();
 			$comment_count = vol_comments_only_count($count);
+			
 			if (!comments_open() && $response_count == 0) {
 		
 				// No need to show a count if comments are off and there are none!
@@ -77,54 +96,50 @@ if (!function_exists('volatyl_post_meta')) {
 		
 					// Get the total number of comments and pings
 					$num_comments = get_comments_number();
-					if ($num_comments == 0)
+					if ($num_comments == 0) {
 						$comments = __('0 Responses ', 'volatyl');
-					elseif ($num_comments > 1)
+					} elseif ($num_comments > 1) {
 						$comments = $num_comments . __(' Responses ', 'volatyl');
-					else
+					} else {
 						$comments = __('1 Response ', 'volatyl');
+					}
 				} else {
 		
 					// Only get the comments... no pings
 					$num_comments = vol_comments_only_count($count);
-					if ($num_comments == 0)
+					if ($num_comments == 0) {
 						$comments = __('0 Comments ', 'volatyl');
-					elseif ($num_comments > 1)
+					} elseif ($num_comments > 1) {
 						$comments = $num_comments . __(' Comments ', 'volatyl');
-					else
+					} else {
 						$comments = __('1 Comment ', 'volatyl');
+					}
 				}
 			} 
 			echo $comments . '</span>';
 		}
 
-		// vol_last_byline_item
-		(($options_hooks['switch_vol_last_byline_item'] == 0) ?
-			((is_single() && $options_hooks['posts_vol_last_byline_item'] == 0) ||
-			(is_home() && $options_hooks['home_vol_last_byline_item'] == 0) ||
-			(is_archive() && $options_hooks['archive_vol_last_byline_item'] == 0) ||
-			(is_search() && $options_hooks['search_vol_last_byline_item'] == 0)) ?
-				vol_last_byline_item() :
-				do_action('vol_last_byline_item') :
-		'');
+		// vol_last_byline_item hook
+		vol_last_byline_item_output();
 	
 		// Show post edit link
-		(($options_content['by-edit-post'] == 1) ? edit_post_link(__('Edit', 'volatyl'), '<span class="edit-link"> ', '</span> ') : '');
-		
-		if ($byline_top_items) echo "</div>";			
-		
-		if ($byline_categories) echo "<div class=\"meta-bottom\">";
-	
-		// Show post categories
-		if ($options_content['by-cats'] == 1) {
-	
-			// Only place cats on new line if other byline items are removed
-			echo '<span class="cat-title">' . $byline_text['category_text'] . '</span> <span class="meta-category">';
-			the_category(', ');
-			echo '</span>';
+		if ($options_content['by-edit-post'] == 1) {
+			edit_post_link(__('Edit', 'volatyl'), '<span class="edit-link"> ', '</span> ');
 		}
 		
-		//
-		if ($byline_categories) echo "</div>";	
+		if ($byline_top_items) echo '</div>'; // end .meta-top		
+		
+		if ($byline_categories) echo '<div class="meta-bottom">';
+	
+			// Show post categories
+			if ($options_content['by-cats'] == 1) { ?>
+				<span class="cat-title"><?php echo $byline_text['category_text']; ?></span>
+				 <span class="meta-category">
+				 	<?php the_category(', '); ?>
+				</span>
+				<?php
+			}
+		
+		if ($byline_categories) echo '</div>'; // end .meta-bottom
 	}
 }

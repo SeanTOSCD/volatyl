@@ -27,12 +27,12 @@ define('VOL_DOWNLOAD_NAME', 'Volatyl Framework');
  *
  * @since Volatyl 1.0
  */
-$test_license = trim(get_option('vol_license_key'));
+$the_vol_license = trim(get_option('vol_license_key'));
 
 $vol_updater = new VOL_Updater(array(
 		'remote_api_url' 	=> VOL_STORE_URL, 
-		'version' 			=> '1.0', 
-		'license' 			=> $test_license,
+		'version' 			=> THEME_VERSION, 
+		'license' 			=> $the_vol_license,
 		'item_name' 		=> VOL_DOWNLOAD_NAME,
 		'author'			=> 'Sean Davis'
 	)
@@ -45,16 +45,18 @@ $vol_updater = new VOL_Updater(array(
  */
 function vol_activate_license() {
 
-	if(isset($_POST['vol_license_activate'])) { 
-	 	if(!check_admin_referer('vol_nonce', 'vol_nonce')) 	
+	if (isset($_POST['vol_license_activate'])) { 
+	 	if (!check_admin_referer('vol_nonce', 'vol_nonce')) {
 			return; // get out if we didn't click the Activate button
+		}
 
 		global $wp_version;
 		$license = trim(get_option('vol_license_key'));
 		$api_params = array(
 			'edd_action' => 'activate_license', 
-			'license' => $license, 
-			'item_name' => urlencode(VOL_DOWNLOAD_NAME) 
+			'license'	=> $license, 
+			'item_name'	=> urlencode(VOL_DOWNLOAD_NAME),
+			'url' 		=> home_url() 
 		);
 		
 		$response = wp_remote_get(add_query_arg($api_params, VOL_STORE_URL), array(
@@ -62,14 +64,14 @@ function vol_activate_license() {
 			'sslverify' => false 
 		));
 
-		if (is_wp_error($response))
+		if (is_wp_error($response)) {
 			return false;
+		}
 
 		$license_data = json_decode(wp_remote_retrieve_body($response));
 		
 		// $license_data->license will be either "active" or "inactive"
 		update_option('vol_license_key_status', $license_data->license);
-
 	}
 }
 add_action('admin_init', 'vol_activate_license');
@@ -82,20 +84,22 @@ add_action('admin_init', 'vol_activate_license');
 function vol_deactivate_license() {
 
 	// listen for our activate button to be clicked
-	if(isset($_POST['vol_license_deactivate'])) {
+	if (isset($_POST['vol_license_deactivate'])) {
 
 		// run a quick security check 
-	 	if(!check_admin_referer('vol_nonce', 'vol_nonce')) 	
+	 	if (!check_admin_referer('vol_nonce', 'vol_nonce')) {
 			return; // get out if we didn't click the Activate button
+		}
 
 		// retrieve the license from the database
 		$license = trim(get_option('vol_license_key'));
 
 		// data to send in our API request
 		$api_params = array(
-			'edd_action'=> 'deactivate_license', 
-			'license' 	=> $license, 
-			'item_name' => urlencode(VOL_DOWNLOAD_NAME)
+			'edd_action'	=> 'deactivate_license', 
+			'license'		=> $license, 
+			'item_name'		=> urlencode(VOL_DOWNLOAD_NAME),
+			'url'			=> home_url() 
 		);
 		
 		// Call the custom API.
@@ -105,15 +109,17 @@ function vol_deactivate_license() {
 		));
 
 		// make sure the response came back okay
-		if (is_wp_error($response))
+		if (is_wp_error($response)) {
 			return false;
+		}
 
 		// decode the license data
 		$license_data = json_decode(wp_remote_retrieve_body($response));
 		
 		// $license_data->license will be either "deactivated" or "failed"
-		if($license_data->license == 'deactivated')
+		if ($license_data->license == 'deactivated') {
 			delete_option('vol_license_key');
+		}
 	}
 }
 add_action('admin_init', 'vol_deactivate_license');
@@ -127,9 +133,10 @@ function vol_check_license() {
 	global $wp_version;
 	$license = trim(get_option('vol_license_key'));
 	$api_params = array(
-		'edd_action' => 'check_license', 
-		'license' => $license, 
-		'item_name' => urlencode(VOL_DOWNLOAD_NAME) 
+		'edd_action'	=> 'check_license', 
+		'license'		=> $license, 
+		'item_name'		=> urlencode(VOL_DOWNLOAD_NAME),
+		'url'			=> home_url() 
 	);
 	
 	$response = wp_remote_get(add_query_arg($api_params, VOL_STORE_URL), array(
@@ -206,7 +213,7 @@ class VOL_Updater {
 			return;
 
 		$update_url = wp_nonce_url('update.php?action=upgrade-theme&amp;theme=' . urlencode($this->theme_slug), 'upgrade-theme_' . $this->theme_slug);
-		$update_onclick = ' onclick="if (confirm(\'' . esc_js(__('Updating ', 'volatyl') . THEME_NAME . __(' will not erase any customizations you have made to a child theme. However, if you wrongly made changes to ', 'volatyl') . THEME_NAME . __(', those changes will be overwritten. "Cancel" to stop, "OK" to update.')) . '\')) {return true;}return false;"';
+		$update_onclick = ' onclick="if (confirm(\'' . esc_js(__('Updating Volatyl will not erase any customizations you have made to a child theme. However, if you wrongly made changes to Volatyl, those changes will be overwritten. "Cancel" to stop, "OK" to update.')) . '\')) {return true;}return false;"';
 
 		if (version_compare($theme->get('Version'), $api_response->new_version, '<')) {
 
@@ -240,7 +247,9 @@ class VOL_Updater {
 
 	function check_for_update() {
 		$theme = wp_get_theme($this->theme_slug);
+		
 		$update_data = get_transient($this->response_key);
+		
 		if (false === $update_data) {
 			$failed = false;
 
@@ -249,7 +258,8 @@ class VOL_Updater {
 				'license' 		=> $this->license,
 				'name' 			=> $this->item_name,
 				'slug' 			=> $this->theme_slug,
-				'author'		=> $this->author
+				'author'		=> $this->author,
+				'url'			=> home_url()
 			);
 
 			$response = wp_remote_post($this->remote_api_url, array(

@@ -12,6 +12,6 @@
  * @since Volatyl 1.0
  */
 
-// WordPress' footer
-wp_footer();
-echo "</body>\n</html>"; 
+		wp_footer(); ?>
+	</body>
+</html>

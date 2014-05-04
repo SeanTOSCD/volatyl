@@ -68,14 +68,14 @@ return $column_options;
  * styling that WordPress provides for settings pages (Settings API).
  *
  * The /inc/options/theme-options.php file uses the variables that hold
- * theses arrays and runs them through foreach loops to create the options
+ * these arrays and runs them through foreach loops to create the options
  * fields. Not every main array key holds the same type of values. Depending
- * on an option's placement in the table, it may opening the beginning or
+ * on an option's placement in the table, it may be opening the beginning or
  * closing HTML tags of certain <table> elements. 
  *
  * The foreach loops check first to see if the array items have a certain 
  * key in place before attempting to put it in the table. If that key doesn't
- * exist, the foreach will move on. It's pretty cool.
+ * exist, the foreach will move on.
  * 
  * @since Volatyl 1.0
  */
@@ -89,7 +89,7 @@ function volatyl_general() {
 			'td'			=> '<td>',
 			
 			'title'			=> 'updates',
-			'label'			=> __('This does not affect your license key. With your license key still activated, use this option to temporarily disable update notifications.', 'volatyl'),
+			'label'			=> __('This does not affect your license key. With your license key still activated, uncheck this option to temporarily disable update notifications.', 'volatyl'),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
@@ -99,13 +99,13 @@ function volatyl_general() {
 			'td'			=> '<td>',
 			
 			'title'			=> 'responsive',
-			'label'			=> __('This option controls the ', 'volatyl') . THEME_NAME . __(' core responsive CSS (this option does not control responsive CSS written in a child theme).', 'volatyl'),
+			'label'			=> sprintf(__('This option controls the %s core responsive CSS (this option does not control responsive CSS written in a child theme).', 'volatyl'), THEME_NAME),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
 		'Admin Menu' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> '<th scope="row">' . __('Display ', 'volatyl') . THEME_NAME . __(' Toolbar', 'volatyl') . '</th>',
+			'th'			=> '<th scope="row">' . sprintf(__('Display %s Toolbar', 'volatyl'), THEME_NAME) . '</th>',
 			'td'			=> '<td>',
 			
 			'title'			=> 'adminmenu',
@@ -115,10 +115,10 @@ function volatyl_general() {
 		),
 		'Attribution' 		=> array(
 			'tr'			=> '<tr>',
-			'th'			=> '<th scope="row">' . __('Display ', 'volatyl') . THEME_NAME . __(' Attribution', 'volatyl') . '</th>',
+			'th'			=> '<th scope="row">' . sprintf(__('Display %s Attribution', 'volatyl'), THEME_NAME) . '</th>',
 			'td'			=> '<td>',
 			'title'			=> 'attribution',
-			'label'			=> __('There\'s no fee to remove the ', 'volatyl') . THEME_NAME . __(' attribution. ;) Rebuild your footer in the <code>vol_site_info</code> hook.', 'volatyl'),
+			'label'			=> sprintf(__('There\'s no fee to remove the %s attribution. ;) Rebuild your footer in the <code>vol_site_info</code> hook.', 'volatyl'), THEME_NAME),
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
@@ -176,7 +176,7 @@ function volatyl_content() {
 		'Footer Menu' 		=> array(
 			'title'			=> 'footermenu',
 			'label'			=> __('Footer Menu - Displays above the site footer *', 'volatyl'),
-			'notes'			=> '<span class="notes">' . __('* Once activated, you must ', 'volatyl') . '<a href="nav-menus.php">' . __('create new menus', 'volatyl') . '</a>' . __(' and add them to their respective "Theme Locations."', 'volatyl') . '</span>',
+			'notes'			=> '<span class="notes">' . sprintf(__('* Once activated, you must %s and add them to their respective "Theme Locations."', 'volatyl'), '<a href="nav-menus.php">' . __('create new menus', 'volatyl') . '</a>') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>'
 		),
@@ -296,7 +296,7 @@ function volatyl_post() {
 			'td'			=> '<td>',
 			'title'			=> 'postpings',
 			'label'			=> __('Display trackbacks and pingbacks on posts below comments.', 'volatyl'),
-			'notes'			=> '<span class="notes">' . __('If pings already exist, choosing to no longer allow them on the "Edit Post" page will not remove the original ones from the Post. Checking this box will.', 'volatyl') . '</span>',
+			'notes'			=> '<span class="notes">' . __('If pings already exist, choosing to no longer allow them on the "Edit Post" page will not remove the original ones from the Post. Unchecking this box will.', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
@@ -342,7 +342,7 @@ function volatyl_page() {
 			'td'			=> '<td>',
 			'title'			=> 'pagecomments',
 			'label'			=> __('Display comments, trackbacks, and pingbacks on Pages. ', 'volatyl'),
-			'notes'			=> '<span class="notes">' . __('If comments, trackbacks, or pingbacks already exist, choosing to no longer allow them on the "Edit Page" page will not remove the original ones from the Page. Checking this box will.', 'volatyl') . '</span>',
+			'notes'			=> '<span class="notes">' . __('If comments, trackbacks, or pingbacks already exist, choosing to no longer allow them on the "Edit Page" page will not remove the original ones from the Page. Unchecking this box will.', 'volatyl') . '</span>',
 			'td_end'		=> '</td>',
 			'tr_end'		=> '</tr>',
 		),
@@ -504,124 +504,100 @@ function volatyl_hooks() {
  * that are called with a hook name from a WordPress action.
  * 
  * @since Volatyl 1.0
- */	
+ */
 function vol_before_html() { 
 	global $options; 
-	echo stripslashes($options['vol_before_html']); 
-	do_action('vol_before_html'); 
+	echo stripslashes($options['vol_before_html']);
 }
 function vol_after_html() { 
 	global $options; 
-	echo stripslashes($options['vol_after_html']); 
-	do_action('vol_after_html'); 
+	echo stripslashes($options['vol_after_html']);
 }
 function vol_header_top() { 
 	global $options; 
-	echo stripslashes($options['vol_header_top']); 
-	do_action('vol_header_top'); 
+	echo stripslashes($options['vol_header_top']);
 }
 function vol_header_bottom() { 
 	global $options; 
-	echo stripslashes($options['vol_header_bottom']); 
-	do_action('vol_header_bottom'); 
+	echo stripslashes($options['vol_header_bottom']);
 }
 function vol_header_after_title_tagline() { 
 	global $options; 
-	echo stripslashes($options['vol_header_after_title_tagline']); 
-	do_action('vol_header_after_title_tagline'); 
+	echo stripslashes($options['vol_header_after_title_tagline']);
 }
 function vol_footer_top() { 
 	global $options; 
-	echo stripslashes($options['vol_footer_top']); 
-	do_action('vol_footer_top'); 
+	echo stripslashes($options['vol_footer_top']);
 }
 function vol_footer_bottom() { 
 	global $options; 
-	echo stripslashes($options['vol_footer_bottom']); 
-	do_action('vol_footer_bottom'); 
+	echo stripslashes($options['vol_footer_bottom']);
 }
 function vol_site_info() { 
 	global $options; 
-	echo stripslashes($options['vol_site_info']); 
-	do_action('vol_site_info'); 
+	echo stripslashes($options['vol_site_info']);
 }
 function vol_headliner() { 
 	global $options; 
-	echo stripslashes($options['vol_headliner']); 
-	do_action('vol_headliner'); 
+	echo stripslashes($options['vol_headliner']);
 }
 function vol_footliner() {
 	global $options; 
-	echo stripslashes($options['vol_footliner']); 
-	do_action('vol_footliner'); 
+	echo stripslashes($options['vol_footliner']);
 }
 function vol_before_content_area() { 
 	global $options; 
-	echo stripslashes($options['vol_before_content_area']); 
-	do_action('vol_before_content_area'); 
+	echo stripslashes($options['vol_before_content_area']);
 }
 function vol_after_content_area() { 
 	global $options; 
-	echo stripslashes($options['vol_after_content_area']); 
-	do_action('vol_after_content_area'); 
+	echo stripslashes($options['vol_after_content_area']);
 }
 function vol_before_content() { 
 	global $options; 
-	echo stripslashes($options['vol_before_content']); 
-	do_action('vol_before_content'); 
+	echo stripslashes($options['vol_before_content']);
 }
 function vol_after_content() { 
 	global $options; 
-	echo stripslashes($options['vol_after_content']); 
-	do_action('vol_after_content'); 
+	echo stripslashes($options['vol_after_content']);
 }
 function vol_before_content_column() { 
 	global $options; 
-	echo stripslashes($options['vol_before_content_column']); 
-	do_action('vol_before_content_column'); 
+	echo stripslashes($options['vol_before_content_column']);
 }
 function vol_after_content_column() { 
 	global $options; 
-	echo stripslashes($options['vol_after_content_column']); 
-	do_action('vol_after_content_column'); 
+	echo stripslashes($options['vol_after_content_column']);
 }
 function vol_before_article_header() {
 	global $options; 
-	echo stripslashes($options['vol_before_article_header']); 
-	do_action('vol_before_article_header'); 
+	echo stripslashes($options['vol_before_article_header']);
 }
 function vol_after_article_header() {
 	global $options; 
-	echo stripslashes($options['vol_after_article_header']); 
-	do_action('vol_after_article_header'); 
+	echo stripslashes($options['vol_after_article_header']);
 }
 function vol_last_byline_item() {
 	global $options_hooks; 
-	echo stripslashes($options_hooks['vol_last_byline_item']); 
-	do_action('vol_last_byline_item'); 
+	echo stripslashes($options_hooks['vol_last_byline_item']);
 }
 function vol_post_footer() { 
 	global $options; 
-	echo stripslashes($options['vol_post_footer']); 
-	do_action('vol_post_footer'); 
+	echo stripslashes($options['vol_post_footer']);
 }
 function vol_before_sidebar_1() { 
 	global $options_hooks; 
-	echo stripslashes($options_hooks['vol_before_sidebar_1']); 
-	do_action('vol_before_sidebar_1'); 
+	echo stripslashes($options_hooks['vol_before_sidebar_1']);
 }
 function vol_after_sidebar_1() { 
 	global $options_hooks; 
-	echo stripslashes($options_hooks['vol_after_sidebar_1']); 
-	do_action('vol_after_sidebar_1'); 
+	echo stripslashes($options_hooks['vol_after_sidebar_1']);
 }
 function vol_before_sidebar_2() { 
 	global $options_hooks; 
-	echo stripslashes($options_hooks['vol_before_sidebar_2']); 
-	do_action('vol_before_sidebar_2'); 
+	echo stripslashes($options_hooks['vol_before_sidebar_2']);
 }
 function vol_after_sidebar_2() { 
 	global $options_hooks; 
-	echo stripslashes($options_hooks['vol_after_sidebar_2']); 
-	do_action('vol_after_sidebar_2'); 
+	echo stripslashes($options_hooks['vol_after_sidebar_2']);
 }

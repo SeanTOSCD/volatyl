@@ -16,8 +16,9 @@ $options_content = get_option('vol_content_options');
 // Add .top class to the first post in a loop
 function vol_first_post_class($classes) {
 	global $wp_query;
-	if (0 == $wp_query->current_post)
+	if (0 == $wp_query->current_post) {
 		$classes[] = 'top';
+	}
 	return $classes;
 }
 add_filter('post_class', 'vol_first_post_class');
@@ -59,8 +60,9 @@ function vol_comments_only_count($count) {
 // Show 'Pages' in search results? 
 if ($options_content['searchpages'] == 0) { 
 	function vol_search_filter($query) {
-		if ($query->is_search && !is_admin())
+		if ($query->is_search && !is_admin()) {
 			$query->set('post_type', 'post');
+		}
 		return $query;
 	}
 	add_filter('pre_get_posts','vol_search_filter');

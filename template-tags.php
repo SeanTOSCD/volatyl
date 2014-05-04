@@ -22,54 +22,69 @@ if (!function_exists('vol_comment')) {
 	 * @since Volatyl 1.0
 	 */
 	function vol_comment($comment, $args, $depth) {
-		global $tab3;
 		$GLOBALS['comment'] = $comment;
+		$avatar_size = apply_filters( 'avatar_size', 50 );
 		
 		switch ($comment->comment_type) {
 	
 			// Pings format
 			case 'pingback' :
-			case 'trackback' :
-				echo "<li class=\"post pingback\">",
-				"\t<p>", __('Pingback: ', 'volatyl'), comment_author_link(), edit_comment_link(__('(Edit)', 'volatyl'), ' '), "</p>\n";
-				break;
+			case 'trackback' : ?>
+				<li class="post pingback">
+					<p><?php echo __('Pingback: ', 'volatyl'), comment_author_link(), edit_comment_link(__('(Edit)', 'volatyl'), ' '); ?></p>
+					<?php 
+					break;
 		
 			// Comments format	
-			default :
-				echo "<li ", comment_class(), " id=\"li-comment-", comment_ID(), "\">\n
-				\t<article id=\"comment-", comment_ID(), "\" class=\"comment\">\n
-				\t\t<footer>\n
-				{$tab3}<div class=\"comment-author vcard\">\n
-				{$tab3}\t<div class=\"comment-avatar\">\n",
-				get_avatar($comment, 50),
-				"{$tab3}\t</div>\n
-				{$tab3}</div>\n" .
-				(($comment->comment_approved == '0') ? 
-					sprintf("{$tab3}<em>") . __('Your comment is awaiting moderation.', 'volatyl') . sprintf("</em><br />\n") : 
-				'') .
-				"{$tab3}<div class=\"comment-meta commentmetadata\">\n{$tab3}\t" .
-				sprintf('<cite class="fn">%s</cite>', get_comment_author_link()) .
-				"\n{$tab3}\t<div class=\"comment-date\">\n
-				{$tab3}\t\t<a href=\"", esc_url(get_comment_link($comment->comment_ID)), "\"><time pubdate datetime=\"", comment_time('c'), "\">";
-			
-				// translators: 1: date, 2: time
-				printf(__('%1$s', 'volatyl'), get_comment_date());
-				echo "</time></a>\n";
-				edit_comment_link(__('(Edit)', 'volatyl'), ' ');
-				echo "{$tab3}\t</div>",
-				"{$tab3}</div>",
-				"\t\t</footer>",
-				"\t\t<div class=\"comment-content\">\n{$tab3}", 
-				comment_text(),
-				"\n\t\t</div>\n",
-				"\t\t<div class=\"reply\">";
-				comment_reply_link(array_merge($args, array('depth' => $depth, 'max_depth' => $args['max_depth'])));
-				echo "\t\t</div>",
-				"\t</article>";
+			default : ?>
+				<li <?php comment_class(); ?> id="li-comment-<?php comment_ID(); ?>">
+					<article id="comment-<?php comment_ID(); ?>" class="comment">
+						<footer>
+							<div class="comment-author vcard">
+								<div class="comment-avatar">
+									<?php echo get_avatar($comment, $avatar_size); ?>
+								</div>
+							</div>
+							<?php
+								if ($comment->comment_approved == '0') { ?>
+									<em><?php _e('Your comment is awaiting moderation.', 'volatyl'); ?></em><br /> 
+									<?php
+								}
+							?>
+							<div class="comment-meta commentmetadata">
+								<cite class="fn"><?php echo get_comment_author_link(); ?></cite>
+								<div class="comment-date">
+									<a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
+										<time pubdate datetime="<?php comment_time('c'); ?>">
+										<?php
+											// translators: 1: date, 2: time
+											echo get_comment_date();
+										?>
+										</time>
+									</a>
+									<?php edit_comment_link(__('(Edit)', 'volatyl'), ' '); ?>
+								</div>
+							</div>
+						</footer>
+						<div class="comment-content"> 
+							<?php comment_text(); ?>
+						</div>
+						<div class="reply">
+							<?php 
+								comment_reply_link(
+									array_merge($args, array(
+										'depth' => $depth, 
+										'max_depth' => $args['max_depth']
+									))
+								);
+							?>
+						</div>
+					</article>
+				<?php
 				break;
 		}
-	}
-}
+	} // end vol_comment()
+} // end vol_comment() check
 
 
 /**
@@ -90,16 +105,17 @@ function vol_categorized_blog() {
 		set_transient('all_the_cool_cats', $all_the_cool_cats);
 	}
 
-	if ('1' != $all_the_cool_cats)
+	if ('1' != $all_the_cool_cats) {
 	
 		// This blog has more than 1 category 
 		// So vol_categorized_blog should return true
 		return true;
-	else
+	} else {
 	
 		// This blog has only 1 category
 		// So vol_categorized_blog should return false
 		return false;
+	}
 }
 
 
@@ -110,7 +126,7 @@ function vol_categorized_blog() {
  */
 function vol_category_transient_flusher() {
 
-	// Like, beat it. Dig?
+	// GTFO
 	delete_transient('all_the_cool_cats');
 }
 add_action('edit_category', 'vol_category_transient_flusher');

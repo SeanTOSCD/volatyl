@@ -1,3 +1,15 @@
+.volatyl-options {
+	max-width: 960px;
+}
+.volatyl-options .input-group {
+	display: block;
+	margin-bottom: 6px;
+}
+.volatyl-options form:not(.hooks-form) .notes {
+	display: block;
+	margin-top: 10px;
+}
+
 /* Save changes and changes saved alert boxes */
 .wrap.volatyl-options .half.updated,
 .wrap.volatyl-options .half.save-settings {
@@ -154,6 +166,46 @@ h2 .nav-tab {
 }
 
 /* Hooks form formatting */
+.hook-selector {
+	position: fixed;
+	background: #fff;
+	padding: 15px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	margin-left: 710px;
+	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	-moz-box-shadow: 0 1px 1px 0 rgba(0,0,0,.1);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.1);
+	width: 220px;
+}
+.hook-selector h2 {
+	padding-top: 0;
+}
+.hook-selector select {
+	margin-bottom: 10px;
+	max-width: 100%;
+}
+@media screen and (max-width: 1162px) {
+	.volatyl-options .instructions {
+		max-width: 558px;
+	}
+	.hook-selector {
+		width: 190px;
+		margin-left: 612px;
+	}
+}
+@media screen and (max-width: 880px) {
+	.hook-selector {
+		position: static;
+		width: 100%;
+		margin-left: 0;
+		margin-bottom: 20px;
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+}
 .volatyl-options .hook-field {
 	margin-top: 5px;
 }

@@ -71,15 +71,15 @@ if (!function_exists('vol_default_widget')) {
 		$options_content = get_option('vol_content_options');
 		
 		// Only show when selection is made in the options
-		if ($options_content['widgets'] == 1) : ?>
+		if ($options_content['widgets'] == 1) { ?>
 			<aside class="widget default-widget">
 				<h4 class="widget-title">
 					<?php _e('Default Widget', 'volatyl'); ?>
 				</h4>
 				<p><?php _e('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the ', 'volatyl'); ?><a href="<?php echo admin_url('/widgets.php'); ?>"><?php _e('widgets page', 'volatyl'); ?></a><?php _e(' of your WordPress dashboard.', 'volatyl'); ?></p>
 			</aside>
-		<?php
-		endif;
+			<?php
+		}
 	}
 }
 

@@ -27,23 +27,25 @@ $da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
 $page_page_nav = apply_filters('page_page_nav', __('Pages:', 'volatyl')); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
-	<?php if (0 == $da_title_or_no) : ?>
+	<?php if (0 == $da_title_or_no) { ?>
 		<header class="entry-header">
-			<h1 class="entry-title"><?php the_title(); ?></h1>
+			<?php the_title('<h1 class="entry-title">', '</h1>'); ?>
 		</header>
-	<?php endif; ?>
-	<section class="entry-content">
-	
+	<?php } ?>
+	<section class="entry-content">	
 		<?php 
-		// display page content
-		the_content(); 
+			// display page content
+			the_content(); 
+				
+			// internal page navigation
+			wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $page_page_nav, 'after' => '</nav>'));
 			
-		// internal page navigation
-		wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $page_page_nav, 'after' => '</nav>'));
-		
-		// page comments
-		if ($options['pagecomments'] == 1)
-			((comments_open() || '0' != get_comments_number()) ? comments_template('', true) : ''); ?>
-		
+			// page comments
+			if ($options['pagecomments'] == 1) {
+				if (comments_open() || '0' != get_comments_number()) {
+					comments_template('', true);
+				}
+			}
+		?>
 	</section>
 </article>

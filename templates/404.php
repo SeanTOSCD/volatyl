@@ -40,30 +40,26 @@ $error_404 = apply_filters('error_404_content', array(
 		the_widget('WP_Widget_Recent_Posts'); ?>
 		
 		<div class="widget">
-			<h2 class="widgettitle">
+			<h4 class="widget-title">
 				<?php _e('Most Used Categories', 'volatyl'); ?>
-			</h2>
-			<ul>
-			
+			</h4>
+			<ul>			
 				<?php
-				wp_list_categories(array(
-					'orderby' 	=> 'count', 
-					'order' 	=> 'DESC', 
-					'title_li' 	=> '', 
-					'number' 	=> 10, 
-					'depth' 	=> -1, 
-				)); ?>
-			
+					wp_list_categories(array(
+						'orderby' 	=> 'count', 
+						'order' 	=> 'DESC', 
+						'title_li' 	=> '', 
+						'number' 	=> 10, 
+						'depth' 	=> -1, 
+					)); 
+				?>			
 			</ul>
-		</div>
-		
+		</div>		
 		<?php 
-		// translators: %1$s: smilie
-		$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
-		// output archives widget
-		the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content");
-		
-		// output tag cloud widget
-		the_widget('WP_Widget_Tag_Cloud'); ?>
+			// translators: %1$s: smilie
+			$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
+			// output archives widget
+			the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content"); 
+		?>
 	</section>
 </article>
