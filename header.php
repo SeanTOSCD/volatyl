@@ -24,4 +24,4 @@ $ping = get_bloginfo('pingback_url');
 		<link rel="pingback" href="<?php echo $ping; ?>">
 		<?php wp_head(); ?>
 	</head>
-<body <?php body_class(); ?>>
+	<body <?php body_class(); ?>>
