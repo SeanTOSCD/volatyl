@@ -95,6 +95,7 @@ function vol_single_sidebar_posts( $meta_key = '' ) {
 
 		// our query args including the meta key that was passed
 		$args	= array(
+			'fields'		=> 'ids',
 			'post_type'		=> array( 'post', 'page' ),
 			'meta_key'		=> $meta_key,
 			'meta_value'	=> 1,
@@ -132,12 +133,14 @@ function singular_widgets_init() {
 	// proceed if we have custom 1st sidebar items
 	if ( ! empty( $sidebar_1_items ) ) {
 		// loop through our items and build the sidebars
-		foreach( $sidebar_1_items as $side1_item ) {
+		foreach( $sidebar_1_items as $side1_id ) {
+			// fetch the title
+			$side1_title	= get_the_title( $side1_id );
 			// build the sidebar
 			register_sidebar( array(
-				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side1_item->post_title ),
-				'id'				=> 'sidebar-1-' . absint( $side1_item->ID ),
-				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side1_item->post_title ) ),
+				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side1_title ),
+				'id'				=> 'sidebar-1-' . absint( $side1_id ),
+				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side1_title ) ),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',
@@ -150,12 +153,14 @@ function singular_widgets_init() {
 	// proceed if we have custom 2nd sidebar items
 	if ( ! empty( $sidebar_2_items ) ) {
 		// loop through our items and build the sidebars
-		foreach( $sidebar_2_items as $side2_item ) {
+		foreach( $sidebar_2_items as $side2_id ) {
+			// fetch the title
+			$side2_title	= get_the_title( $side2_id );
 			// build the sidebar
 			register_sidebar( array(
-				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side2_item->post_title ),
-				'id'				=> 'sidebar-1-' . absint( $side2_item->ID ),
-				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side2_item->post_title ) ),
+				'name'				=> 'Sidebar 2 &#8212; ' . esc_html( $side2_title ),
+				'id'				=> 'sidebar-2-' . absint( $side2_id ),
+				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 2 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side2_title ) ),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',
@@ -205,8 +210,8 @@ function vol_meta_box_save($post_id) {
 
 	// delete the transients for custom sidebars regardless of checkbox status
 	// since no checkmark still indicates a change
-	delete_transient( 'vol_single_sidebar_posts_create-sidebar-1' );
-	delete_transient( 'vol_single_sidebar_posts_create-sidebar-2' );
+	delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
+	delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
 
 }
 add_action('save_post', 'vol_meta_box_save');
