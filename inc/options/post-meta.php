@@ -203,12 +203,10 @@ function vol_meta_box_save($post_id) {
 	$da_title_ = isset($_POST['_singular-title']) ? 1 : 0;
 		update_post_meta($post_id, '_singular-title', $da_title_);
 
-	// check for custom sidebars and delete the transients
-	if ( isset( $_POST['_create-sidebar-1'] ) && ! empty( $_POST['_create-sidebar-1'] ) )
-		delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
-
-	if ( isset( $_POST['_create-sidebar-2'] ) && ! empty( $_POST['_create-sidebar-2'] ) )
-		delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
+	// delete the transients for custom sidebars regardless of checkbox status
+	// since no checkmark still indicates a change
+	delete_transient( 'vol_single_sidebar_posts_create-sidebar-1' );
+	delete_transient( 'vol_single_sidebar_posts_create-sidebar-2' );
 
 }
 add_action('save_post', 'vol_meta_box_save');
