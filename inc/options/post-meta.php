@@ -25,10 +25,10 @@ function vol_meta_box($post) {
 	global $post, $current_screen, $column_options;
 	$the_id = get_post_custom($post->ID);
 	$selected = isset($the_id['_singular-column']) ? esc_attr($the_id['_singular-column'][0]) : '';
-	$custom_class = isset($the_id['_custom-class']) ? esc_attr($the_id['_custom-class'][0]) : '' ;
-	$da_title = isset($the_id['_singular-title']) ? $the_id['_singular-title'][0] : 0 ;
-	$create_sidebar_1 = isset($the_id['_create-sidebar-1']) ? $the_id['_create-sidebar-1'][0] : 0 ;
-	$create_sidebar_2 = isset($the_id['_create-sidebar-2']) ? $the_id['_create-sidebar-2'][0] : 0 ;
+	$custom_class = isset($the_id['_custom-class']) ? esc_attr($the_id['_custom-class'][0]) : '';
+	$da_title = isset($the_id['_singular-title']) ? $the_id['_singular-title'][0] : 0;
+	$create_sidebar_1 = isset($the_id['_create-sidebar-1']) ? $the_id['_create-sidebar-1'][0] : 0;
+	$create_sidebar_2 = isset($the_id['_create-sidebar-2']) ? $the_id['_create-sidebar-2'][0] : 0;
 	$new_sidebars = array(
 		'Sidebar 1'		=> array(
 			'name'		=> '_create-sidebar-1',
@@ -50,130 +50,150 @@ function vol_meta_box($post) {
 	 * The first options is a standalone option - Site Default. It is not
 	 * included in the $column_options array and will only be used here.
 	 */
-	echo "<p><label for=\"_singular-column\">" . __('Select Column Layout: ', 'volatyl') . "</label>
-	<select name=\"_singular-column\" id=\"_singular-column\">
-	<option value=\"default\"";
-	selected($selected, 'default');
-	echo ">" . __('Site Default', 'volatyl') . "</option>";
-
-	// Create an option for each layout choice in the $column_options array
-	foreach ($column_options as $key) {
-		echo "<option value=\"", $key['value'], "\"";
-		selected($selected, $key['value']);
-		echo ">", $key['description'], "</option>";
-	}
-
-	echo "</select></p>
-	<p><label for=\"_custom-class\">" . __('CSS Class: ', 'volatyl') . "</label>
-	<input id=\"_custom-class\" class=\"custom-class\" name=\"_custom-class\" value=\"", $custom_class, "\" size=\"30\" type=\"text\" placeholder=\"" . __('No Periods! Separate by a Space', 'volatyl') . "\"></p>";
-
-	// Create sidebars per Page or Post
-	echo "<p>";
-	foreach ($new_sidebars as $ns) {
-		echo "<span class=\"input-group\"><label for=\"", $ns['name'], "\">", $ns['label'], " </label><input id=\"", $ns['name'], "\" class=\"create-sidebar\" name=\"", $ns['name'], "\" value=\"", $ns['state'], "\" type=\"checkbox\"",	checked('1', $ns['state'], '1'), "/></span>";
-	}
-	echo "<span style=\"display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;\">" . __('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl') . "</span>",
-	"</p>";
-
-	// only show the option to remove titles if on the edit PAGE screen
-	if ('page' == $current_screen->post_type) :
-		echo "<p><span class=\"input-group\"><label for=\"_singular-title\">" . __('Remove Page Title: ', 'volatyl') . "</label><input id=\"_singular-title\" name=\"_singular-title\" value=\"", $da_title, "\" size=\"30\" type=\"checkbox\"",	checked('1', $da_title, '1'), "/></span>";
-		echo "<span style=\"display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;\">" . __( 'Check this option if you&rsquo;d like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep SEO in mind. Your default title is an H1. It&rsquo;s best that you rebuild it somewhere in your content if you use this option.', 'volatyl' ) . "</span></p>";
-	endif;
+	?>
+	<p>
+		<label for="_singular-column"><?php _e('Select Column Layout: ', 'volatyl'); ?></label>
+		<select name="_singular-column" id="_singular-column">
+			<option value="default" <?php selected($selected, 'default'); ?>><?php _e('Site Default', 'volatyl'); ?></option>
+			<?php
+				// Create an option for each layout choice in the $column_options array
+				foreach ($column_options as $key) { ?>
+					<option value="<?php echo $key['value']; ?>" <?php selected($selected, $key['value']); ?>>
+						<?php echo $key['description']; ?>
+					</option>
+					<?php
+				}
+			?>
+		</select>
+	</p>
+	<p>
+		<label for="_custom-class"><?php _e('CSS Class: ', 'volatyl'); ?></label>
+		<input id="_custom-class" class="custom-class" name="_custom-class" value="<?php echo $custom_class; ?>" size="30" type="text" placeholder="<?php _e('No Periods! Separate by a Space', 'volatyl'); ?>">
+	</p>
+	<p>
+		<?php
+			// Create sidebars per Page or Post
+			foreach ($new_sidebars as $ns) { ?>
+				<span class="input-group">
+					<label for="<?php echo $ns['name']; ?>"><?php echo $ns['label']; ?> </label>
+					<input id="<?php echo $ns['name']; ?>" class="create-sidebar" name="<?php echo $ns['name']; ?>" value="<?php echo $ns['state']; ?>" type="checkbox" <?php checked('1', $ns['state'], '1'); ?>>
+				</span>
+				<?php
+			}
+		?>
+		<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
+			<?php _e('When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl'); ?>
+		</span>
+	</p>
+	<?php
+		// only show the option to remove titles if on the edit PAGE screen
+		if ('page' == $current_screen->post_type) { ?>
+			<p>
+				<span class="input-group">
+					<label for="_singular-title"><?php _e('Remove Page Title: ', 'volatyl'); ?></label>
+					<input id="_singular-title" name="_singular-title" value="<?php echo $da_title; ?>" size="30" type="checkbox" <?php checked('1', $da_title, '1'); ?>>
+				</span>
+				<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
+					<?php _e('Check this option if you&rsquo;d like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep SEO in mind. Your default title is an H1. It&rsquo;s best that you rebuild it somewhere in your content if you use this option.', 'volatyl' ); ?>
+				</span>
+			</p>
+			<?php
+		}
 }
 
 // pull the posts / pages for custom sidebars
-function vol_single_sidebar_posts( $meta_key = '' ) {
+function vol_single_sidebar_posts($meta_key = '') {
 
 	// quick check to bail if no key was passed
-	if ( empty( $meta_key ) ) {
+	if (empty($meta_key)) {
 		return false;
 	}
 
 	// check for the transient, only run if missing
-	if( false === get_transient( 'vol_single_sidebar_posts_'.$meta_key ) ) :
+	if (false === get_transient('vol_single_sidebar_posts_' . $meta_key)) {
 
 		// our query args including the meta key that was passed
-		$args	= array(
+		$args = array(
 			'fields'		=> 'ids',
-			'post_type'		=> array( 'post', 'page' ),
+			'post_type'		=> array('post', 'page'),
 			'meta_key'		=> $meta_key,
 			'meta_value'	=> 1,
 			'nopaging'		=> true
 		);
 
-		$items = get_posts( $args );
+		$items = get_posts($args);
 
 		// bail if none found
-		if ( ! $items ) {
+		if (!$items) {
 			return false;
 		}
 
 		// set our transient with no expiration since we will
 		// delete it when post meta is saved
-		set_transient( 'vol_single_sidebar_posts_'.$meta_key, $items, 0 );
-
-	endif;
+		set_transient('vol_single_sidebar_posts_' . $meta_key, $items, 0);
+	}
 
 	// retrieve our transient
-	$items = get_transient( 'vol_single_sidebar_posts_'.$meta_key );
+	$items = get_transient('vol_single_sidebar_posts_' . $meta_key);
 
 	// send it back
 	return $items;
-
 }
 
 // Register new sidebars "on the fly" when the option is selected on singulars
 function singular_widgets_init() {
 
 	// fetch our items for the first and second sidebar set
-	$sidebar_1_items	= vol_single_sidebar_posts( '_create-sidebar-1' );
-	$sidebar_2_items	= vol_single_sidebar_posts( '_create-sidebar-2' );
+	$sidebar_1_items = vol_single_sidebar_posts('_create-sidebar-1');
+	$sidebar_2_items = vol_single_sidebar_posts('_create-sidebar-2');
 
 	// proceed if we have custom 1st sidebar items
-	if ( ! empty( $sidebar_1_items ) ) {
+	if (!empty($sidebar_1_items)) {
+	
 		// loop through our items and build the sidebars
-		foreach( $sidebar_1_items as $side1_id ) {
+		foreach ($sidebar_1_items as $side1_id) {
+		
 			// fetch the title
-			$side1_title	= get_the_title( $side1_id );
+			$side1_title = get_the_title($side1_id);
+			
 			// build the sidebar
-			register_sidebar( array(
-				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side1_title ),
-				'id'				=> 'sidebar-1-' . absint( $side1_id ),
-				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side1_title ) ),
+			register_sidebar(array(
+				'name'				=> 'Sidebar 1 &#8212; ' . esc_html($side1_title),
+				'id'				=> 'sidebar-1-' . absint($side1_id),
+				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html($side1_title)),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',
 				'after_title' 		=> '</h4>',
 			));
 		}
-
 	}
 
 	// proceed if we have custom 2nd sidebar items
-	if ( ! empty( $sidebar_2_items ) ) {
+	if (!empty($sidebar_2_items)) {
+	
 		// loop through our items and build the sidebars
-		foreach( $sidebar_2_items as $side2_id ) {
+		foreach($sidebar_2_items as $side2_id) {
+		
 			// fetch the title
-			$side2_title	= get_the_title( $side2_id );
+			$side2_title = get_the_title($side2_id);
+			
 			// build the sidebar
-			register_sidebar( array(
-				'name'				=> 'Sidebar 2 &#8212; ' . esc_html( $side2_title ),
-				'id'				=> 'sidebar-2-' . absint( $side2_id ),
-				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 2 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html( $side2_title ) ),
+			register_sidebar(array(
+				'name'				=> 'Sidebar 2 &#8212; ' . esc_html($side2_title),
+				'id'				=> 'sidebar-2-' . absint($side2_id),
+				'description'   	=> sprintf(__('This sidebar is specific to the Post/Page titled "%s." Sidebar 2 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl'), esc_html($side2_title)),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',
 				'after_title' 		=> '</h4>',
 			));
 		}
-
 	}
-
 }
 add_action('widgets_init', 'singular_widgets_init', 20);
 
-// Validate singular layout options
+// validate singular quick settings
 function vol_meta_box_save($post_id) {
 	global $options;
 	$options_structure = get_option('vol_structure_options');
@@ -210,8 +230,8 @@ function vol_meta_box_save($post_id) {
 
 	// delete the transients for custom sidebars regardless of checkbox status
 	// since no checkmark still indicates a change
-	delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
-	delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
+	delete_transient('vol_single_sidebar_posts__create-sidebar-1');
+	delete_transient('vol_single_sidebar_posts__create-sidebar-2');
 
 }
 add_action('save_post', 'vol_meta_box_save');
