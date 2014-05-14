@@ -205,8 +205,8 @@ function vol_meta_box_save($post_id) {
 
 	// delete the transients for custom sidebars regardless of checkbox status
 	// since no checkmark still indicates a change
-	delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
-	delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
+	delete_transient( 'vol_single_sidebar_posts_create-sidebar-1' );
+	delete_transient( 'vol_single_sidebar_posts_create-sidebar-2' );
 
 }
 add_action('save_post', 'vol_meta_box_save');
