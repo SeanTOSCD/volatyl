@@ -44,15 +44,15 @@ function vol_meta_box($post) {
 
 	wp_nonce_field('vol_meta_box_nonce', 'meta_box_nonce');
 
-
-	/** Select option input for singular layout choices
+	/** 
+	 * Select option input for singular layout choices
 	 *
 	 * The first options is a standalone option - Site Default. It is not
 	 * included in the $column_options array and will only be used here.
 	 */
 	?>
 	<p>
-		<label for="_singular-column"><?php _e('Select Column Layout: ', 'volatyl'); ?></label>
+		<label for="_singular-column"><?php _e('Select Column Layout: ', 'volatyl'); ?> </label>
 		<select name="_singular-column" id="_singular-column">
 			<option value="default" <?php selected($selected, 'default'); ?>><?php _e('Site Default', 'volatyl'); ?></option>
 			<?php
@@ -67,7 +67,7 @@ function vol_meta_box($post) {
 		</select>
 	</p>
 	<p>
-		<label for="_custom-class"><?php _e('CSS Class: ', 'volatyl'); ?></label>
+		<label for="_custom-class"><?php _e('CSS Class: ', 'volatyl'); ?> </label>
 		<input id="_custom-class" class="custom-class" name="_custom-class" value="<?php echo $custom_class; ?>" size="30" type="text" placeholder="<?php _e('No Periods! Separate by a Space', 'volatyl'); ?>">
 	</p>
 	<p>
@@ -90,7 +90,7 @@ function vol_meta_box($post) {
 		if ('page' == $current_screen->post_type) { ?>
 			<p>
 				<span class="input-group">
-					<label for="_singular-title"><?php _e('Remove Page Title: ', 'volatyl'); ?></label>
+					<label for="_singular-title"><?php _e('Remove Page Title: ', 'volatyl'); ?> </label>
 					<input id="_singular-title" name="_singular-title" value="<?php echo $da_title; ?>" size="30" type="checkbox" <?php checked('1', $da_title, '1'); ?>>
 				</span>
 				<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
@@ -173,7 +173,7 @@ function singular_widgets_init() {
 	if (!empty($sidebar_2_items)) {
 	
 		// loop through our items and build the sidebars
-		foreach($sidebar_2_items as $side2_id) {
+		foreach ($sidebar_2_items as $side2_id) {
 		
 			// fetch the title
 			$side2_title = get_the_title($side2_id);
@@ -232,6 +232,5 @@ function vol_meta_box_save($post_id) {
 	// since no checkmark still indicates a change
 	delete_transient('vol_single_sidebar_posts__create-sidebar-1');
 	delete_transient('vol_single_sidebar_posts__create-sidebar-2');
-
 }
 add_action('save_post', 'vol_meta_box_save');
