@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.4.2');
+define ('THEME_VERSION', '1.4.3');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -142,7 +142,7 @@ function vol_back_scripts() {
 	}
 	
 	// load scripts and styles on options pages
-	if ('appearance_page_volatyl_options' == get_current_screen() -> id) {
+	if ('appearance_page_volatyl_options' == get_current_screen()->id) {
 		wp_enqueue_script('jquery');
 		wp_enqueue_script('thickbox');
 		wp_enqueue_style('thickbox');
