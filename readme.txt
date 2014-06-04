@@ -35,9 +35,3 @@ A. Certainly! Volatyl should always be used with a child theme. For information 
 Q. Do I have to have an activated license key to use Volatyl?
 
 A. Nope. It'll work just fine without a license key. However, you will not receive dashboard updates or support unless you have a valid license key. If you do not have a license key and you would like one (I love your integrity), please visit the pricing page. http://volatylthemes.com/pricing/
-
-
-
-== Changelog ==
-
-http://support.volatylthemes.com/change-log/
