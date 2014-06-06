@@ -16,26 +16,7 @@
  */
 
 // The standard header element
-function vol_header_element() {
-	global $options;
-	$options = get_option('vol_hooks_options');
-	$options_content = get_option('vol_content_options');
-	$title = $options_content['title'];
-	$logo = $options_content['logo'];
-	$tagline = $options_content['tagline'];
-	
-	// The following condition swaps the title and headline HTML tags like old school SEO required.
-	// Read the message below this condition.
-	if (is_home() || is_front_page()) {
-		$seotitle = "h1";
-		$seotagline = "h2";
-	} else {
-		$seotitle = "p";
-		$seotagline = "p";
-	}
-	// Please understand that Volatyl is written in HTML5. What you see above isn't even necessary. 
-	// The title and tagline will already be inside of a <header> so they can be H1s and H2s all day long!
-	?>
+function vol_header_element() { ?>
 	
 	<header class="site-header inner">
 		<?php
@@ -43,28 +24,28 @@ function vol_header_element() {
 			vol_header_top_output();				
 			
 			// Show site title? This controls the text title AND logo			
-			if ($title == 1) { ?>
-				<<?php echo $seotitle; ?> class="site-title">
-					<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php esc_attr_e(get_bloginfo('name')); ?>" rel="home">
+			if (vol_site_title_on()) { ?>
+				<h1 class="site-title">
+					<a href="<?php echo esc_url(home_url('/')); ?>" title="<?php esc_attr(get_bloginfo('name')); ?>" rel="home">
 						<?php
 							// If a logo is uploaded, show it. If not, show the site title.
-							if ($logo != '') { ?>
-								<img src="<?php echo $options_content['logo']; ?>" alt="<?php esc_attr_e(get_bloginfo('name')); ?>">
+							if (vol_has_logo()) { ?>
+								<img src="<?php echo esc_url(vol_get_logo()); ?>" alt="<?php esc_attr(get_bloginfo('name')); ?>">
 								<?php
 							} else {
 								echo get_bloginfo('name');
 							}
 						?>
 					</a>
-				</<?php echo $seotitle; ?>>
+				</h1>
 				<?php
 			}
 			
 			// Show site tagline? Always hide on landing page		
-			if ($tagline == 1 && ! is_page_template('custom-landing.php')) { ?>
-				<<?php echo $seotagline; ?> class="site-description">
+			if (vol_site_tagline_on() && ! is_page_template('custom-landing.php')) { ?>
+				<h2 class="site-description">
 					<?php echo esc_attr_e(get_bloginfo('description')); ?>
-				</<?php echo $seotagline; ?>>
+				</h2>
 				<?php
 			}
 		
@@ -83,10 +64,9 @@ function vol_header_element() {
 
 // The above <header> will display based on HTML structure options
 if (!function_exists('vol_header_frame')) {
-	function vol_header_frame() {
-		$options_structure = get_option('vol_structure_options'); ?>
+	function vol_header_frame() { ?>
 		
-		<?php if ($options_structure['wide'] == 1) { ?>
+		<?php if (vol_is_full_width()) { ?>
 			<div id="header-area" class="full">
 				<div class="main">
 					<?php vol_header_element(); ?> 

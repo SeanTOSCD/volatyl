@@ -16,7 +16,6 @@
 if (!function_exists('vol_header_menu')) {
 	function vol_header_menu() {
 		$header_menu_toggle = apply_filters('header_menu_toggle',  __('Menu', 'volatyl'));
-		$options_content = get_option('vol_content_options');
 	
 		/** Show header menu? - Always hide on landing page	
 		 * 
@@ -25,7 +24,7 @@ if (!function_exists('vol_header_menu')) {
 		 *
 		 * @since Volatyl 1.0
 		 */
-		if ($options_content['headermenu'] == 1 && !is_page_template('custom-landing.php') && (true == has_nav_menu('header'))) { ?>
+		if (vol_header_menu_on() && !is_page_template('custom-landing.php') && (true == has_nav_menu('header'))) { ?>
 			<nav id="header-menu-wrap" class="site-navigation header-navigation border-box">
 				<span class="header-menu-toggle"><?php echo $header_menu_toggle; ?></span>
 				<?php wp_nav_menu(array('theme_location' => 'header')); ?>
@@ -74,13 +73,11 @@ if (!function_exists('vol_footer_menu')) {
 }
  
 // Standard Menu
-function vol_standard_menu_on() {
-	$options_structure = get_option('vol_structure_options');
-	$options_content = get_option('vol_content_options');
+function vol_standard_menu_output() {
 	
 	// Wide Structure?
-	if ($options_structure['wide'] == 1) {
-		if ($options_content['standardmenu'] == 1) { ?>
+	if (vol_is_full_width()) {
+		if (vol_standard_menu_on()) { ?>
 			<div id="menu-area-standard" class="full">
 				<div class="main">
 					<?php vol_standard_menu(); ?>
@@ -89,20 +86,18 @@ function vol_standard_menu_on() {
 			<?php 
 		}
 	} else {
-		if ($options_content['standardmenu'] == 1) { 
+		if (vol_standard_menu_on()) { 
 			vol_standard_menu();
 		}
 	}
 }
 
 // Footer Menu
-function vol_footer_menu_on() {
-	$options_structure = get_option('vol_structure_options');
-	$options_content = get_option('vol_content_options');
+function vol_footer_menu_output() {
 	
 	// Wide Structure?
-	if ($options_structure['wide'] == 1) {
-		if ($options_content['footermenu'] == 1) { ?>
+	if (vol_is_full_width()) {
+		if (vol_footer_menu_on()) { ?>
 			<div id="menu-area-footer" class="full">
 				<div class="main">
 					<?php vol_footer_menu(); ?>
@@ -111,7 +106,7 @@ function vol_footer_menu_on() {
 			<?php
 		}
 	} else {
-		if ($options_content['footermenu'] == 1) {
+		if (vol_footer_menu_on()) {
 			vol_footer_menu();
 		}
 	}

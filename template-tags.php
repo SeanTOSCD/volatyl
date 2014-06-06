@@ -56,10 +56,10 @@ if (!function_exists('vol_comment')) {
 								<div class="comment-date">
 									<a href="<?php echo esc_url(get_comment_link($comment->comment_ID)); ?>">
 										<time pubdate datetime="<?php comment_time('c'); ?>">
-										<?php
-											// translators: 1: date, 2: time
-											echo get_comment_date();
-										?>
+											<?php
+												// translators: 1: date, 2: time
+												echo get_comment_date();
+											?>
 										</time>
 									</a>
 									<?php edit_comment_link(__('(Edit)', 'volatyl'), ' '); ?>

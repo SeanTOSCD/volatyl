@@ -21,7 +21,7 @@
 	<tr valign="top">
 		<th scope="row" valign="top"><?php _e('License Key', 'volatyl'); ?></th>
 		<td>
-			<input id="vol_license_key" name="vol_license_key" type="text" class="regular-text" value="<?php esc_attr_e($license, 'volatyl'); ?>" />
+			<input id="vol_license_key" name="vol_license_key" type="text" class="regular-text" value="<?php esc_attr($license, 'volatyl'); ?>" />
 			<label class="description" for="vol_license_key"><?php _e(' Enter your license key', 'volatyl'); ?></label>
 		</td>
 	</tr>
@@ -31,7 +31,7 @@
 				<th scope="row" valign="top"><?php _e('Activate License', 'volatyl'); ?></th>
 				<td>
 					<?php
-						if ($status !== false && $status == 'valid') { ?>
+						if (false !== $status && 'valid' == $status) { ?>
 							<span style="color: green;"><?php _e('active ', 'volatyl'); ?></span>
 							<?php wp_nonce_field('vol_nonce', 'vol_nonce'); ?>
 							<input type="submit" class="button-secondary" name="vol_license_deactivate" value="<?php _e('Deactivate License', 'volatyl'); ?>" />

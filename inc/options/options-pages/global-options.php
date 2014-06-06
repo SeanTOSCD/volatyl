@@ -17,7 +17,7 @@
 	<tr>
 		<th scope="row"><?php _e('Wide (100%) HTML Structure', 'volatyl'); ?></th>
 		<td>
-			<input class="checkbox-space" id="vol_structure_options[wide]" name="vol_structure_options[wide]" type="checkbox" value="1" <?php checked('1', $options_structure['wide'], true); ?>/>
+			<input class="checkbox-space" id="vol_structure_options[wide]" name="vol_structure_options[wide]" type="checkbox" value="1" <?php checked(1, vol_is_full_width(), true); ?>/>
 			<label class="description" for="vol_structure_options[wide]"> 
 				<?php _e('Activate (Recommended - A narrow structure look can still be achieved with the <em>.main</em> class.)', 'volatyl'); ?>
 			</label>

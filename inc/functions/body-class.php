@@ -48,7 +48,6 @@ add_filter('body_class', 'vol_page_template_body_class');
  */
 function vol_main_layout_class($classes) {
 	global $post;
-	$options = get_option('vol_structure_options');
 	
 	if (!is_404() && !is_search()) {
 		$single_layout = get_post_meta($post->ID, '_singular-column', true);
@@ -57,14 +56,14 @@ function vol_main_layout_class($classes) {
 	// add class name to the $classes array based on conditions
 	if (is_singular()) {
 		if ('default' == $single_layout || '' == $single_layout) {
-			if ($options['column'] == 'c1' || $options['column'] == 'c2') {
+			if (1 == vol_get_column_count()) {
 				$classes[] = 'one-col';
-			} elseif ($options['column'] == 'cs' || $options['column'] == 'sc') {
+			} elseif (2 == vol_get_column_count()) {
 				$classes[] = 'two-col';
-			} elseif ($options['column'] == 'css' || $options['column'] == 'scs' || $options['column'] == 'ssc') {
+			} elseif (3 == vol_get_column_count()) {
 				$classes[] = 'three-col';
 			}
-			$classes[] = $options['column'];
+			$classes[] = vol_get_layout();
 		} elseif ($single_layout == 'c1' || $single_layout == 'c2') {
 			$classes[] = 'one-col';
 			$classes[] = $single_layout;
@@ -76,14 +75,14 @@ function vol_main_layout_class($classes) {
 			$classes[] = $single_layout;
 		}
 	} else {
-		if ($options['column'] == 'c1' || $options['column'] == 'c2') {
+		if (1 == vol_get_column_count()) {
 			$classes[] = 'one-col';
-		} elseif ($options['column'] == 'cs' || $options['column'] == 'sc') {
+		} elseif (2 == vol_get_column_count()) {
 			$classes[] = 'two-col';
-		} elseif ($options['column'] == 'css' || $options['column'] == 'scs' || $options['column'] == 'ssc') {
+		} elseif (3 == vol_get_column_count()) {
 			$classes[] = 'three-col';
 		}
-		$classes[] = $options['column'];
+		$classes[] = vol_get_layout();
 	}
 	
 	// return the $classes array
@@ -114,7 +113,7 @@ function vol_singular_body_class($classes) {
 			$classes[] = $singular_body_class;
 		}
 			
-		if ($da_title_or_no == 1) {
+		if (is_page() && 1 == $da_title_or_no) {
 			$classes[] = 'no-title';
 		}
 	}

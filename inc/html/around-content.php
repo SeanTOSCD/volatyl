@@ -18,14 +18,13 @@
 function vol_html_before_content() {
 	global $options;
 	$options = get_option('vol_hooks_options');
-	$options_content = get_option('vol_content_options');
-	$options_structure = get_option('vol_structure_options');
 
 	// vol_before_html hook
 	vol_before_html_output();
-
+	
+	// header structure
 	vol_header_frame();
-	vol_standard_menu_on();
+	vol_standard_menu_output();
 
 	// vol_headliner hook
 	vol_headliner_output();
@@ -40,8 +39,6 @@ function vol_html_before_content() {
 function vol_html_after_content() {
 	global $options;
 	$options = get_option('vol_hooks_options');
-	$options_content = get_option('vol_content_options');
-	$options_structure = get_option('vol_structure_options');
 
 	// vol_after_content_area hook
 	vol_after_content_area_output();
@@ -52,7 +49,8 @@ function vol_html_after_content() {
 	// vol_footliner hook
 	vol_footliner_output();
 	
-	vol_footer_menu_on();
+	// footer structure
+	vol_footer_menu_output();
 	vol_footer_frame();
 
 	// vol_after_html hook

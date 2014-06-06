@@ -203,7 +203,7 @@ function vol_meta_box_save($post_id) {
 		return;
 
 	// if our nonce isn't there, or we can't verify it, bail
-	if (!isset($_POST['meta_box_nonce']) || ! wp_verify_nonce($_POST['meta_box_nonce'], 'vol_meta_box_nonce'))
+	if (!isset($_POST['meta_box_nonce']) || !wp_verify_nonce($_POST['meta_box_nonce'], 'vol_meta_box_nonce'))
 		return;
 
 	// if our current user can't edit this post, bail

@@ -16,12 +16,12 @@
 <table class="form-table">
 	<th scope="row"><?php _e('Upload Your Site Logo', 'volatyl'); ?></th>
 	<td>
-		<input type="hidden" id="logo_url" name="vol_content_options[logo]" value="<?php echo esc_url($options_content['logo']); ?>" />
+		<input type="hidden" id="logo_url" name="vol_content_options[logo]" value="<?php echo esc_url(vol_get_logo()); ?>" />
 		<input id="upload_logo_button" type="button" class="button logo-button" value="<?php esc_attr_e('Upload Logo', 'volatyl'); ?>" />
 		<span class="description label-space"><?php _e('Upload a logo image.', 'volatyl'); ?></span>		
 		<?php
 			// Show delete button if logo exists
-			if ('' != $options_content['logo']) { ?>
+			if (vol_has_logo()) { ?>
 				<input id="delete_logo_button" name="vol_content_options[delete_logo]" type="submit" class="button" value="<?php esc_attr_e('Delete Logo', 'volatyl'); ?>" />
 				<?php
 			}
@@ -36,12 +36,12 @@
 		 *
 		 * @since Volatyl 1.0
 		 */
-		if ('' != $options_content['logo']) { ?>
+		if (vol_has_logo()) { ?>
 			<tr>
 				<th scope="row"><?php _e('Logo Preview', 'volatyl'); ?></th>
 				<td>
 					<div id="upload_logo_preview">
-						<img style="max-width:100%;" src="<?php echo esc_url($options_content['logo']); ?>" />
+						<img style="max-width:100%;" src="<?php echo esc_url(vol_get_logo()); ?>" />
 					</div>
 				</td>
 			</tr>
@@ -58,7 +58,7 @@
  * Close out the table, display submit button to save
  * all options regardless of section, and close form.
  *
-	 * @since Volatyl 1.0
+ * @since Volatyl 1.0
  */
 foreach ($varrays as $va) {
 	echo 

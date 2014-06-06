@@ -231,7 +231,7 @@ function vol_options_validate($input) {
 	
 	// Validate and sanitize header logo input
 	if ($submit) {
-		if ($options_content['logo'] != $input['logo'] && $options_content['logo'] != '') {
+		if ($options_content['logo'] != $input['logo'] && '' != $options_content['logo']) {
 			vol_delete_image($options_content['logo']);
 			$valid_input['logo'] = $input['logo'];
 			return $valid_input['logo'];

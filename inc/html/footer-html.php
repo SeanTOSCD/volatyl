@@ -16,11 +16,7 @@
  */
 
 // The standard footer element
-function vol_footer_element() {
-	global $options;
-	$options = get_option('vol_hooks_options');
-	$options_content = get_option('vol_content_options');
-	$options_general = get_option('vol_general_options'); ?>
+function vol_footer_element() { ?>
 
 	<footer class="site-footer">
 	
@@ -65,9 +61,10 @@ function vol_footer_element() {
 		<div class="site-info">		
 		<?php
 			// Footer attribution
+			$options_general = get_option('vol_general_options');
 			if ($options_general['attribution'] == 1) { ?>
 				<p class="attribution">
-					<?php printf(__('Built with <a href="%1$s">%2$s</a> for WordPress', 'volatyl'), THEME_URI ,THEME_NAME ); ?>
+					<?php printf(__('Built with %s for WordPress', 'volatyl'), '<a href="' . THEME_URI . '">' . THEME_NAME . '</a>' ); ?>
 				</p>
 				<?php
 			}
@@ -82,10 +79,9 @@ function vol_footer_element() {
 
 // The above <footer> will display based on HTML structure options
 if (!function_exists('vol_footer_frame')) {
-	function vol_footer_frame() {
-		$options_structure = get_option('vol_structure_options'); ?>
+	function vol_footer_frame() { ?>
 		
-		<?php if ($options_structure['wide'] == 1) { ?>
+		<?php if (vol_is_full_width()) { ?>
 			<div id="footer-area" class="full">
 				<div class="main">
 					<?php vol_footer_element(); ?>

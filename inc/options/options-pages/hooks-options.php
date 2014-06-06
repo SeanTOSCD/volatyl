@@ -175,7 +175,7 @@ foreach ($vhooks as $hook) { ?>
 					</span>
 					<?php
 			}
-			?>
+		?>
 	<br>
 	<input id="vol_hooks_options[switch_<?php echo $hook['name']; ?>]" name="vol_hooks_options[switch_<?php echo $hook['name']; ?>]" type="checkbox" value="1" <?php checked('1', $options_hooks['switch_' . $hook['name']], true); ?> />
 	<label class="description label-space" for="vol_hooks_options[switch_<?php echo $hook['name']; ?>]">

@@ -12,6 +12,6 @@
  * @since Volatyl 1.0
  */
 
-		wp_footer(); ?>
+		wp_footer(); // do not remove ?>
 	</body>
 </html>

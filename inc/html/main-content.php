@@ -30,9 +30,7 @@
 
 // Full site content structure
 function vol_standard_content() {
-	$options_structure = get_option('vol_structure_options');
-	
-	if ($options_structure['wide'] == 1) { ?>
+	if (vol_is_full_width()) { ?>
 		<div id="main-content" class="full clearfix">
 			<div class="main clearfix">
 				<?php vol_columns(); ?>
@@ -51,9 +49,7 @@ add_action('main_content', 'vol_standard_content');
 
 // Singular option content structure
 function vol_singular_content() {
-	$options_structure = get_option('vol_structure_options');
-	
-	if ($options_structure['wide'] == 1) { ?>
+	if (vol_is_full_width()) { ?>
 		<div id="main-content" class="full clearfix">
 			<div class="main clearfix">
 				<?php vol_columns_singular(); ?>

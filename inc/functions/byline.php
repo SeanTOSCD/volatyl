@@ -22,7 +22,6 @@
 if (!function_exists('volatyl_post_meta')) {
 	function volatyl_post_meta() {
 		global $count, $options_hooks;
-		$options_content = get_option('vol_content_options');
 		$options_hooks = get_option('vol_hooks_options');
 		$byline_text = apply_filters('byline_text', array(
 			'publish_date'		=> __('Published on', 'volatyl'),	
@@ -33,16 +32,13 @@ if (!function_exists('volatyl_post_meta')) {
 			) 
 		);
 		
-		$byline_top_items	=	$options_content['by-date-post']		== 1 ||
-								$options_content['by-author-post']		== 1 ||
-								$options_content['by-comments-post']	== 1 ||
-								$options_content['by-edit-post']		== 1;
-		$byline_categories	=	$options_content['by-cats'] == 1;
+		$byline_top_items = vol_byline_date_on() || vol_byline_author_on() || vol_byline_comments_on() || vol_byline_edit_on();
+		$byline_categories = vol_byline_cats_on();
 		
 		if ($byline_top_items) echo '<div class="meta-top">';	
 
 		// Show post date
-		if ($options_content['by-date-post'] == 1) { ?>
+		if (vol_byline_date_on()) { ?>
 			<span class="posted-on">
 				<?php echo $byline_text['publish_date']; ?>
 			</span>
@@ -53,7 +49,7 @@ if (!function_exists('volatyl_post_meta')) {
 		}
 	
 		// Show post author
-		if ($options_content['by-author-post'] == 1) { ?>
+		if (vol_byline_author_on()) { ?>
 			<span class="post-by">
 				<?php echo $byline_text['author_text']; ?>
 			</span>
@@ -64,10 +60,10 @@ if (!function_exists('volatyl_post_meta')) {
 		}
 	
 		// Show post comment count
-		if ($options_content['by-comments-post'] == 1) {
+		if (vol_byline_comments_on()) {
 	
 			// Only show dash before comments if byline items are in front of it
-			if ($options_content['by-date-post'] == 0 && $options_content['by-author-post'] == 0) { ?>
+			if (!vol_byline_date_on() && !vol_byline_author_on()) { ?>
 				<span class="meta-comments">
 				<?php
 			} else { ?>
@@ -81,7 +77,7 @@ if (!function_exists('volatyl_post_meta')) {
 			$response_count = get_comments_number();
 			$comment_count = vol_comments_only_count($count);
 			
-			if (!comments_open() && $response_count == 0) {
+			if (!comments_open() && 0 == $response_count) {
 		
 				// No need to show a count if comments are off and there are none!
 				$comments = $byline_text['comments_off'] . ' ';
@@ -92,11 +88,11 @@ if (!function_exists('volatyl_post_meta')) {
 				 * If pings are disabled, only "comments" will show
 				 * See the functions/content.php file for more information
 				 */
-				if ($options_content['postpings'] == 1) { 
+				if (vol_pings_on()) { 
 		
 					// Get the total number of comments and pings
 					$num_comments = get_comments_number();
-					if ($num_comments == 0) {
+					if (0 == $num_comments) {
 						$comments = __('0 Responses ', 'volatyl');
 					} elseif ($num_comments > 1) {
 						$comments = $num_comments . __(' Responses ', 'volatyl');
@@ -107,7 +103,7 @@ if (!function_exists('volatyl_post_meta')) {
 		
 					// Only get the comments... no pings
 					$num_comments = vol_comments_only_count($count);
-					if ($num_comments == 0) {
+					if (0 == $num_comments) {
 						$comments = __('0 Comments ', 'volatyl');
 					} elseif ($num_comments > 1) {
 						$comments = $num_comments . __(' Comments ', 'volatyl');
@@ -123,7 +119,7 @@ if (!function_exists('volatyl_post_meta')) {
 		vol_last_byline_item_output();
 	
 		// Show post edit link
-		if ($options_content['by-edit-post'] == 1) {
+		if (vol_byline_edit_on()) {
 			edit_post_link(__('Edit', 'volatyl'), '<span class="edit-link"> ', '</span> ');
 		}
 		
@@ -132,7 +128,7 @@ if (!function_exists('volatyl_post_meta')) {
 		if ($byline_categories) echo '<div class="meta-bottom">';
 	
 			// Show post categories
-			if ($options_content['by-cats'] == 1) { ?>
+			if (vol_byline_cats_on()) { ?>
 				<span class="cat-title"><?php echo $byline_text['category_text']; ?></span>
 				 <span class="meta-category">
 				 	<?php the_category(', '); ?>

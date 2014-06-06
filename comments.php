@@ -12,7 +12,6 @@
  * @since Volatyl 1.0
  */
 global $count;
-$options = get_option('vol_content_options');
 $commenter = wp_get_current_commenter();
 $req = get_option('require_name_email');
 $aria_req = ($req ? " aria-required='true'" : '');
@@ -75,7 +74,7 @@ if (post_password_required()) return; ?>
 						 */
 						wp_list_comments(array('callback' => 'vol_comment', 'type' => 'comment')); 
 					
-						if ($options['postpings'] == 1) { // Only show pings if selected in the Volatyl options ?>
+						if (vol_pings_on()) { // Only show pings if selected in the Volatyl options ?>
 							<?php if ((get_comments_number() - vol_comments_only_count($count)) > 0) { // are there pings? ?>
 								<span class="comments-title">
 									<?php printf($pings_title, number_format_i18n(get_comments_number() - vol_comments_only_count($count))); ?>

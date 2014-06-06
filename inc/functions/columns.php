@@ -25,9 +25,7 @@
  * @since Volatyl 1.0
  */
 function vol_columns() {
-	$options = get_option('vol_structure_options');
-	
-	switch ($options['column']) {
+	switch (vol_get_layout()) {
 		case 'c1':
 			vol_content();
 			break;

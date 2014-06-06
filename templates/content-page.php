@@ -19,8 +19,6 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options;
-$options = get_option('vol_content_options');
 $da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
 
 // Custom filter
@@ -41,7 +39,7 @@ $page_page_nav = apply_filters('page_page_nav', __('Pages:', 'volatyl')); ?>
 			wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $page_page_nav, 'after' => '</nav>'));
 			
 			// page comments
-			if ($options['pagecomments'] == 1) {
+			if (vol_page_comments_on()) {
 				if (comments_open() || '0' != get_comments_number()) {
 					comments_template('', true);
 				}

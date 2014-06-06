@@ -18,6 +18,6 @@ $search_text = apply_filters('search_text', array(
 ?>
 <form method="get" id="searchform" action="<?php echo esc_url(home_url('/')); ?>" role="search">
 	<label for="s" class="assistive-text"><?php __('Search', 'volatyl'); ?></label>
-	<input type="search" class="field" name="s" value="<?php esc_attr_e(get_search_query()); ?>" id="s" placeholder="<?php esc_attr_e($search_text['search_field_text']); ?>">
-	<input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php esc_attr_e($search_text['search_submit_text']); ?>" />
+	<input type="search" class="field" name="s" value="<?php esc_attr(get_search_query()); ?>" id="s" placeholder="<?php esc_attr($search_text['search_field_text']); ?>">
+	<input type="submit" class="submit" name="submit" id="searchsubmit" value="<?php esc_attr($search_text['search_submit_text']); ?>" />
 </form>

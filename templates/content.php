@@ -17,8 +17,6 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-$options = get_option('vol_content_options');	
-$options_hooks = get_option('vol_hooks_options');
 
 // Custom filters
 $feed_tags_text = apply_filters('feed_tags_text', __('Tags: ', 'volatyl'));
@@ -35,8 +33,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', __('Pages: ', 'volatyl
 		<?php			
 			// display meta info
 			if ('post' == get_post_type()) { 
-				if ($options['by-date-post'] == 1 || $options['by-author-post'] == 1 || $options['by-comments-post'] == 1 || $options['by-edit-post'] == 1 || $options['by-cats'] == 1) { ?>
-				
+				if (vol_has_byline_items()) { ?>
 					<div class="entry-meta"> 
 						<?php volatyl_post_meta(); ?>
 					</div> 
@@ -51,7 +48,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', __('Pages: ', 'volatyl
 	vol_after_article_header_main_output();
 	
 	// Activate Featured Images
-	if ($options['feedfeaturedimage'] == 1) { 
+	if (vol_archive_featured_image_on()) { 
 
 		// If Featured Image is set for a post, show thumbnail.
 		if (has_post_thumbnail()) { ?>		
@@ -68,7 +65,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', __('Pages: ', 'volatyl
 	}
 
 	// Only display Excerpts for Search or Home if options is selected
-	if (is_search() || $options['homeexcerpt'] == 1) { ?>
+	if (is_search() || vol_excerpt_on()) { ?>
 	
 		<section class="entry-summary"> 
 			<?php the_excerpt(); ?>
@@ -86,7 +83,7 @@ $feed_post_page_nav = apply_filters('feed_post_page_nav', __('Pages: ', 'volatyl
 				wp_link_pages(array('before' => '<nav class="page-links">' . $feed_post_page_nav, 'after' => '</nav>'));
 		
 				// Show feed tags
-				if ($options['feedtags'] == 1) {
+				if (vol_archive_tags_on()) {
 					the_tags('<div class="entry-meta tags">' . $feed_tags_text, ', ', '<br /></div>');
 				}
 			?>				

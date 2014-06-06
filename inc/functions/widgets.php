@@ -68,15 +68,14 @@ add_action('widgets_init', 'vol_widgets_init', 10);
 // Default widget when no widgets are present in a widgetized area
 if (!function_exists('vol_default_widget')) {
 	function vol_default_widget() {
-		$options_content = get_option('vol_content_options');
 		
 		// Only show when selection is made in the options
-		if ($options_content['widgets'] == 1) { ?>
+		if (vol_default_widget_on()) { ?>
 			<aside class="widget default-widget">
 				<h4 class="widget-title">
 					<?php _e('Default Widget', 'volatyl'); ?>
 				</h4>
-				<p><?php _e('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. Add widgets in the ', 'volatyl'); ?><a href="<?php echo admin_url('/widgets.php'); ?>"><?php _e('widgets page', 'volatyl'); ?></a><?php _e(' of your WordPress dashboard.', 'volatyl'); ?></p>
+				<p><?php printf(__('This is a widget placeholder. You have a widgetized area activated with no assigned widgets. To add widgets, visit the %s of your WordPress dashboard.', 'volatyl'), '<a href="' . admin_url('/widgets.php') . '">' . __('widgets page', 'volatyl') . '</a>'); ?></p>
 			</aside>
 			<?php
 		}
@@ -92,18 +91,28 @@ if (!function_exists('vol_default_widget')) {
  * @since Volatyl 1.0
  */
 function vol_fat_footer_body_class($classes) {
+
+	// check to see how many footer widget areas are in use
+	$count = 0;
+	$footer_widgets = array('footer-left', 'footer-middle', 'footer-right');
+	foreach ($footer_widgets as $widget) {
+		if (is_active_sidebar($widget)) {
+			$count = $count + 1;
+		}
+	}
 	
-// add class name to the $classes array based on conditions
-if ((is_active_sidebar('footer-left') && !is_active_sidebar('footer-middle') && !is_active_sidebar('footer-right')) ||
-	(!is_active_sidebar('footer-left') && is_active_sidebar('footer-middle') && !is_active_sidebar('footer-right')) ||
-	(!is_active_sidebar('footer-left') && !is_active_sidebar('footer-middle') && is_active_sidebar('footer-right')))
-	$classes[] = "one-footer-col";
-elseif ((is_active_sidebar('footer-left') && is_active_sidebar('footer-middle') && !is_active_sidebar('footer-right')) ||
-	(is_active_sidebar('footer-left') && !is_active_sidebar('footer-middle') && is_active_sidebar('footer-right')) ||
-	(!is_active_sidebar('footer-left') && is_active_sidebar('footer-middle') && is_active_sidebar('footer-right')))
-	$classes[] = "two-footer-col";
-elseif ((is_active_sidebar('footer-left') && is_active_sidebar('footer-middle') && is_active_sidebar('footer-right')))
-	$classes[] = "three-footer-col";
+	// add class name to the $classes array based on footer widgets
+	switch ($count) {
+		case 1 :
+			$classes[] = "one-footer-col";
+			break;
+		case 2 :
+			$classes[] = "two-footer-col";
+			break;
+		case 3 :
+			$classes[] = "three-footer-col";
+			break;
+	}
 	
 	// return the $classes array
 	return $classes;

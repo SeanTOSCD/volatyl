@@ -16,10 +16,6 @@
  * @since Volatyl 1.0
  */
 
-// remove old fat footer option
-delete_option('fatfooter');
-delete_option('by-post-format');
-
 // Structure settings
 function vol_structure_default_settings() {
 	global $structure_options;
@@ -33,7 +29,7 @@ function vol_structure_default_settings() {
 // Initialize Structure Default Options
 function vol_structure_settings_init() {
 
-     // set structure options equal to defaults
+    // set structure options equal to defaults
 	global $structure_options;
 	$structure_options = get_option('vol_structure_options');
 	
@@ -90,7 +86,8 @@ function vol_content_default_settings() {
 		'by-cats'				=> 1,
 		'homeexcerpt'			=> 0,
 		'excerptlink'			=> 0,
-		'featuredimage'			=> 0,
+		'feedfeaturedimage'		=> 0,
+		'singlefeaturedimage'	=> 1,
 		'feedtags'				=> 1,
 		'singletags'			=> 1,
 		'postpings'				=> 1,

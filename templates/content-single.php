@@ -17,12 +17,10 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-global $options;
-$options_posts = get_option('vol_content_options');
 
 // Custom filters
-$single_tags_text = apply_filters('single_tags_text', __('Tags: ', 'volatyl'));
-$post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl')); ?>
+$post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl'));
+$single_tags_text = apply_filters('single_tags_text', __('Tags: ', 'volatyl')); ?>
 
 <article id="post-<?php echo the_ID(); ?>" <?php post_class(); ?>>
 	<?php
@@ -33,7 +31,7 @@ $post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl')); ?>
 		<?php the_title('<h1 class="entry-title">', '</h1>'); ?>		
 		<?php
 			// post meta info
-			if ($options_posts['by-date-post'] == 1 || $options_posts['by-author-post'] == 1 || $options_posts['by-comments-post'] == 1 || $options_posts['by-edit-post'] == 1 || $options_posts['by-cats'] == 1) { ?>
+			if (vol_has_byline_items()) { ?>
 				<div class="entry-meta">
 					<?php volatyl_post_meta(); ?>
 				</div>
@@ -46,7 +44,7 @@ $post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl')); ?>
 		vol_after_article_header_posts_output();
 		 
 		// Activate Featured Images
-		if ($options_posts['singlefeaturedimage'] == 1) {
+		if (vol_single_featured_image_on()) {
 			the_post_thumbnail('full', array(
 				'class'	=> 'featured-img', 
 				'alt'	=> the_title_attribute('echo=0') 
@@ -62,13 +60,14 @@ $post_page_nav = apply_filters('post_page_nav', __('Pages:', 'volatyl')); ?>
 			wp_link_pages(array('before' => '<nav class="page-links post-meta-footer">' . $post_page_nav, 'after' => '</nav>'));
 	
 			// Show feed tags
-			if ($options_posts['singletags'] == 1) {
+			if (vol_single_tags_on()) {
 				the_tags('<div class="entry-meta tags post-meta-footer">' . $single_tags_text, ', ', '<br /></div>');
 			}
 		?>		
 	</section>
 </article>
 <?php 
+
 // vol_post_footer hook
 vol_post_footer_output();
 
