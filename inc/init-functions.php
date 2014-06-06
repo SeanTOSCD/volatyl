@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.4.3');
+define ('THEME_VERSION', '1.4.4');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -36,6 +36,7 @@ require_once (THEME_HTML . '/main-content.php');
 require_once (THEME_HTML . '/footer-html.php');
 
 // Load theme goodies (options)
+require_once (THEME_OPTIONS . '/conditionals.php');
 require_once (THEME_OPTIONS . '/hook-output.php');
 require_once (THEME_OPTIONS . '/theme-options.php');
 require_once (THEME_OPTIONS . '/options-setup.php');
@@ -59,7 +60,9 @@ if (!function_exists('vol_setup')) {
 	function vol_setup() {
 
 		// WordPress says it's required. *Shoulder shrug*
-		if (!isset($content_width)) $content_width = 960;
+		if (!isset($content_width)) {
+			$content_width = apply_filters( 'vol_content_width', 580 );
+		}
 		
 		// Translations can be filed in the /languages/ directory
 		load_theme_textdomain('volatyl', THEME_PATH . '/inc/languages');
@@ -86,18 +89,18 @@ if (!function_exists('vol_setup')) {
 		$options = get_option('vol_content_options');
 	
 		// Register wp_nav_menu() below header (standard menu) if selected	
-		if ($options['standardmenu'] == 1) :
+		if (vol_standard_menu_on()) {
 			register_nav_menus(array(
 				'standard' => $menu_descriptions['standard_menu_description']
 			)); 
-		endif;
+		}
 	
 		// Register wp_nav_menu() above footer (footer menu) if selected	
-		if ($options['footermenu'] == 1) :
+		if (vol_footer_menu_on()) {
 			register_nav_menus(array(
 				'footer' => $menu_descriptions['footer_menu_description']
 			));
-		endif;
+		}
 	}
 }
 add_action('after_setup_theme', 'vol_setup');
@@ -107,8 +110,7 @@ add_action('after_setup_theme', 'vol_setup');
  *
  * @since Volatyl 1.0
  */
-function vol_front_scripts() {	
-	$options = get_option('vol_general_options');
+function vol_front_scripts() {
 	
 	// Default stylesheet
 	wp_enqueue_style('style', THEME_PATH_URI . '/style.css');
@@ -117,9 +119,10 @@ function vol_front_scripts() {
 	wp_enqueue_script('navigation', THEME_PATH_URI . '/inc/js/navigation.js', array(), THEME_VERSION, true);
 	
 	// Responsive stylesheet
-	if ($options['responsive'] == 1) {
+	if (vol_is_responsive()) {
 		wp_enqueue_style('responsive', THEME_PATH_URI . '/responsive.css');
 	}
+	
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
