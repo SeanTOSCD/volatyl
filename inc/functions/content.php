@@ -57,7 +57,7 @@ function vol_comments_only_count($count) {
 }
 
 // Show 'Pages' in search results? 
-if (vol_search_pages_on()) { 
+if (!vol_search_pages_on()) { 
 	function vol_search_filter($query) {
 		if ($query->is_search && !is_admin()) {
 			$query->set('post_type', 'post');
