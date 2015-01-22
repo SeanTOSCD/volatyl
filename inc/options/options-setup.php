@@ -325,18 +325,9 @@ function volatyl_post() {
  */
 function volatyl_page() {
 	$vol_page = array(
-		'Search Pages'		=> array(
+		'Page Comments' 	=> array(
 			'table_name'	=> '</table><h3>' . __('Page Settings', 'volatyl') . '</h3>',
 			'table'			=> '<table class="form-table">',
-			'tr'			=> '<tr>',
-			'th'			=> '<th scope="row">' . __('Display Pages in Search Results', 'volatyl') . '</th>',
-			'td'			=> '<td>',
-			'title'			=> 'searchpages',
-			'label'			=> __('Search results are usually limited to posts. Consider leaving this unchecked.', 'volatyl'),
-			'td_end'		=> '</td>',
-			'tr_end'		=> '</tr>',
-		),
-		'Page Comments' 	=> array(
 			'tr'			=> '<tr>',
 			'th'			=> '<th scope="row">' . __('Display Comments on all Pages', 'volatyl') . '</th>',
 			'td'			=> '<td>',
