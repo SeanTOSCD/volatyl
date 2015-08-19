@@ -44,6 +44,7 @@ require_once (THEME_OPTIONS . '/option-defaults.php');
 require_once (THEME_OPTIONS . '/admin-menu.php');
 require_once (THEME_OPTIONS . '/logo-uploader.php');
 require_once (THEME_OPTIONS . '/post-meta.php');
+require_once (THEME_OPTIONS . '/customizer.php');
 
 // Various functions used around Volatyl
 require_once (THEME_FUNCTIONS . '/menus.php');
