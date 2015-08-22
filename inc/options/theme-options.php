@@ -15,10 +15,10 @@
  */ 
 
 /** 
- * Load the Volatyl Options page 
+ * Load the Volatyl Settings page 
  *
- * Creates the Volatyl Options page located in the 'Appearance'
- * section of the dashboard. The Volatyl Options use a tabbed
+ * Creates the Volatyl Settings page located in the 'Appearance'
+ * section of the dashboard. The Volatyl Settings use a tabbed
  * structure with one or more sections on each tab.
  *
  * For each clearly defined section of options, register_setting()
@@ -27,7 +27,7 @@
  * @since Volatyl 1.0
  */ 
 function vol_options_add_page() {
-	add_theme_page(THEME_NAME . __(' Options', 'volatyl'), THEME_NAME . __(' Options', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
+	add_theme_page(THEME_NAME . __(' Settings', 'volatyl'), THEME_NAME . __(' Settings', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
 	// Init hook options
 	register_setting('volatyl_hooks_options', 'vol_hooks_options', 'vol_options_validate');
 	// Init license key
@@ -36,9 +36,9 @@ function vol_options_add_page() {
 add_action('admin_menu', 'vol_options_add_page');
 
 
-/* Volatyl Options Form (all tabs included)
+/* Volatyl Settings Form (all tabs included)
  *
- * The Volatyl Options page uses a tabbed structure with one
+ * The Volatyl Settings page uses a tabbed structure with one
  * or more sections on each tab.
  *
  * Each tab is its own separate page. Therefore, each tab has
@@ -55,7 +55,7 @@ function vol_options_do_page() {
 	}
 	?>	
 	<div class="wrap volatyl-options">
-		<h2 class="vol-options-title"><?php printf(__('%1$s %2$s Options', 'volatyl'), THEME_NAME, THEME_VERSION); ?></h2>
+		<h2 class="vol-options-title"><?php printf(__('%1$s %2$s Settings', 'volatyl'), THEME_NAME, THEME_VERSION); ?></h2>
 		<?php if (false !== $_REQUEST['settings-updated']) { ?>
 			<div class="updated fade radius">
 				<p><strong><?php _e('Your settings have been updated.', 'volatyl'); ?></strong></p>
@@ -126,7 +126,7 @@ function vol_options_do_page() {
 		 * Tabbed - {...?...} Settings
 		 */
 		} else { ?>	
-			<p><?php printf(__('How did you get here? Get back to the %s Options please.', 'volatyl'), '<a href="themes.php?page=volatyl_options&tab=hooks">' . THEME_NAME . '</a>'); ?></p>
+			<p><?php printf(__('How did you get here? Get back to the %s Settings please.', 'volatyl'), '<a href="themes.php?page=volatyl_options&tab=hooks">' . THEME_NAME . '</a>'); ?></p>
 			<?php		
 		}	
 		?>
@@ -161,7 +161,7 @@ add_filter('admin_footer_text', 'vol_adjust_footer_admin');
 /**
  * Sanitize and validate all user input!
  *
- * The Volatyl Options are built mainly with checkbox options 
+ * The Volatyl Settings are built mainly with checkbox options 
  * making sanitization extremely simple.
  *
  * For all other option types, the appropriate sanitization and

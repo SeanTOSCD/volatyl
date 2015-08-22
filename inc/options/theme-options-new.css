@@ -88,6 +88,7 @@ h2 .nav-tab {
 .volatyl-options h2.vol-options-title {
 	background: transparent url('images/volatyl-admin-icon.png') no-repeat 0 13px;
 	padding-left: 30px;
+	margin-bottom: 30px;
 }
 
 .volatyl-options .notes {
