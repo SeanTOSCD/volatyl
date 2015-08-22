@@ -56,17 +56,6 @@ function vol_comments_only_count($count) {
     }
 }
 
-// Show 'Pages' in search results? 
-if (!vol_search_pages_on()) { 
-	function vol_search_filter($query) {
-		if ($query->is_search && !is_admin()) {
-			$query->set('post_type', 'post');
-		}
-		return $query;
-	}
-	add_filter('pre_get_posts','vol_search_filter');
-}
-
 // Show excerpt/post link instead of [...]
 if (vol_excerpt_link_on()) {
 

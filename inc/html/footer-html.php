@@ -61,8 +61,7 @@ function vol_footer_element() { ?>
 		<div class="site-info">		
 		<?php
 			// Footer attribution
-			$options_general = get_option('vol_general_options');
-			if ($options_general['attribution'] == 1) { ?>
+			if (get_theme_mod('volatyl_attribution')) { ?>
 				<p class="attribution">
 					<?php printf(__('Built with %s for WordPress', 'volatyl'), '<a href="' . THEME_URI . '">' . THEME_NAME . '</a>' ); ?>
 				</p>

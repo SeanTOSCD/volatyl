@@ -11,14 +11,6 @@
 }
 
 /* Save changes and changes saved alert boxes */
-.wrap.volatyl-options .half.updated,
-.wrap.volatyl-options .half.save-settings {
-	float: left;
-	width: 35%;
-	min-width: 240px;
-	margin-right: 10px;
-}
-
 .save-settings {
 	background: #fff;
 	border-left: 4px solid #2ea2cc;
@@ -92,36 +84,11 @@ h2 .nav-tab {
 	margin-right: 3px;
 }
 
-/* Columns layout images and radio buttons */
-.volatyl-options .layout-label {
-	position: relative;
-	margin: 0 10px 18px 0 !important;
-	display: inline-block;
-	width: 90px;
-	height: 60px;
-}
-
-.volatyl-options .layout-label input + img {
-	background: #ccc;
-	padding: 2px;
-}
-
-.volatyl-options .layout-label input + img:hover {
-	background: #aaa;
-}
-
-.volatyl-options .layout-label input:checked + img {
-	background: #63aa9c;
-}
-
-.volatyl-options .layout-radio {
-	display: none;
-}
-
 /* Additional options information */
 .volatyl-options h2.vol-options-title {
 	background: transparent url('images/volatyl-admin-icon.png') no-repeat 0 13px;
 	padding-left: 30px;
+	margin-bottom: 30px;
 }
 
 .volatyl-options .notes {
