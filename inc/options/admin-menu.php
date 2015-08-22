@@ -13,9 +13,8 @@
  *
  * @since Volatyl 1.0
  */
-$options = get_option('vol_general_options');
 
-if (1 == $options['adminmenu']) {
+if (get_theme_mod('volatyl_toolbar')) {
 	function vol_toolbar($admin_bar) {
 		$admin_bar->add_menu(array(
 			'id'			=> 'volatyl',

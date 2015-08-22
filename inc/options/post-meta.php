@@ -196,7 +196,6 @@ add_action('widgets_init', 'singular_widgets_init', 20);
 // validate singular quick settings
 function vol_meta_box_save($post_id) {
 	global $options;
-	$options_structure = get_option('vol_structure_options');
 
 	// Bail if we're doing an auto save
 	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE)
@@ -211,7 +210,7 @@ function vol_meta_box_save($post_id) {
 		update_post_meta($post_id, '_singular-column', esc_attr($_POST['_singular-column']));
 
 	elseif (!isset($_POST['_singular-column']))
-		$_POST['_singular-column'] == $options_structure['column'];
+		$_POST['_singular-column'] == get_theme_mod('volatyl_content_layout');
 
 	// Allowed HTML in custom class field... which is none
 	$allowed = array();

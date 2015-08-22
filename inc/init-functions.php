@@ -14,7 +14,7 @@
  
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.4.6');
+define ('THEME_VERSION', '2.0-a1');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -23,6 +23,13 @@ define ('THEME_STYLESHEET', get_stylesheet_uri());
 define ('THEME_HTML', THEME_PATH . '/inc/html');
 define ('THEME_OPTIONS', THEME_PATH . '/inc/options');
 define ('THEME_FUNCTIONS', THEME_PATH . '/inc/functions');
+
+// Volatyl 2.0 Update Script!
+$vol_info = wp_get_theme();
+$vol_version = $vol_info->get('Version');
+if (version_compare($vol_version, '1.9', '<')) {
+	require_once (THEME_OPTIONS . '/update-options.php');
+}
 
 // Load pretty important files
 require_once (THEME_PATH . '/loops.php');
@@ -82,21 +89,19 @@ if (!function_exists('vol_setup')) {
 			) 
 		);
 
-		// Register wp_nav_menu() in header. This is the only default menu.	 
+		// Register wp_nav_menu() in header. This is the only default menu.	
 		register_nav_menus(array(
 			'header' => $menu_descriptions['header_menu_description']
 		));
 	
-		$options = get_option('vol_content_options');
-	
-		// Register wp_nav_menu() below header (standard menu) if selected	
+		// Register wp_nav_menu() below header (standard menu) if selected
 		if (vol_standard_menu_on()) {
 			register_nav_menus(array(
 				'standard' => $menu_descriptions['standard_menu_description']
-			)); 
+			));
 		}
 	
-		// Register wp_nav_menu() above footer (footer menu) if selected	
+		// Register wp_nav_menu() above footer (footer menu) if selected
 		if (vol_footer_menu_on()) {
 			register_nav_menus(array(
 				'footer' => $menu_descriptions['footer_menu_description']
