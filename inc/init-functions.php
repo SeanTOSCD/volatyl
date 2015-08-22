@@ -47,9 +47,7 @@ require_once (THEME_OPTIONS . '/conditionals.php');
 require_once (THEME_OPTIONS . '/hook-output.php');
 require_once (THEME_OPTIONS . '/theme-options.php');
 require_once (THEME_OPTIONS . '/options-setup.php');
-require_once (THEME_OPTIONS . '/option-defaults.php');
 require_once (THEME_OPTIONS . '/admin-menu.php');
-require_once (THEME_OPTIONS . '/logo-uploader.php');
 require_once (THEME_OPTIONS . '/post-meta.php');
 require_once (THEME_OPTIONS . '/customizer.php');
 
@@ -149,28 +147,5 @@ function vol_back_scripts() {
 	} else {
 		wp_enqueue_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
 	}
-	
-	// load scripts and styles on options pages
-	if ('appearance_page_volatyl_options' == get_current_screen()->id) {
-		wp_enqueue_script('jquery');
-		wp_enqueue_script('thickbox');
-		wp_enqueue_style('thickbox');
-		wp_enqueue_script('media-upload');
-		wp_enqueue_script('logo-upload', THEME_PATH_URI . '/inc/js/logo-upload.js', array('jquery','media-upload','thickbox'));
-	}
 }
 add_action('admin_enqueue_scripts', 'vol_back_scripts');
-
-
-/**
- * Tabs are so annoying sometimes
- *
- * This is only still here for backwards compatibility. If you're building child
- * themes for Volatyl, make sure all of your template files and the like are updated
- * without the $tab3, $tab6, $tab9 variables. They will be removed in future updates.
- * Volatyl core no longer uses these variables.
- */
-$indent = 3;
-$tab3 = str_repeat("\t", $indent);
-$tab6 = str_repeat("\t", $indent + 3);
-$tab9 = str_repeat("\t", $indent + 6);

@@ -1,12 +1,4 @@
 /* Save changes and changes saved alert boxes */
-.wrap.volatyl-options .half.updated,
-.wrap.volatyl-options .half.save-settings {
-	float: left;
-	width: 35%;
-	min-width: 240px;
-	margin-right: 10px;
-}
-
 .save-settings {
 	background: #eef4ff;
 	border: 1px solid rgba(0,0,0,.1);
@@ -72,30 +64,6 @@ h2 .nav-tab {
 
 .volatyl-options .checkbox-space {
 	margin-right: 3px;
-}
-
-/* Columns layout images and radio buttons */
-.volatyl-options .layout-label {
-	position: relative;
-	margin: 0 10px 13px 0;
-	display: inline-block;
-	width: 90px;
-	height: 60px;
-}
-
-.volatyl-options .layout-label input + img {
-	background: #ccc;
-	padding: 2px;
-}
-
-.volatyl-options .layout-label input + img:hover {
-	background: #aaa;
-}
-
-.volatyl-options .layout-radio {
-	position: absolute;
-	left: -2px;
-	top: -4px;
 }
 
 /* Additional options information */
