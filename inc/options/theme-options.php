@@ -15,10 +15,10 @@
  */ 
 
 /** 
- * Load the Volatyl Options page 
+ * Load the Volatyl Settings page 
  *
- * Creates the Volatyl Options page located in the 'Appearance'
- * section of the dashboard. The Volatyl Options use a tabbed
+ * Creates the Volatyl Settings page located in the 'Appearance'
+ * section of the dashboard. The Volatyl Settings use a tabbed
  * structure with one or more sections on each tab.
  *
  * For each clearly defined section of options, register_setting()
@@ -27,24 +27,18 @@
  * @since Volatyl 1.0
  */ 
 function vol_options_add_page() {
-	add_theme_page(THEME_NAME . __(' Options', 'volatyl'), THEME_NAME . __(' Options', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
-	// Init general options
-	register_setting('volatyl_global_options', 'vol_general_options', 'vol_options_validate');
-	// Init structure options
-	register_setting('volatyl_global_options', 'vol_structure_options', 'vol_options_validate');
+	add_theme_page(THEME_NAME . __(' Settings', 'volatyl'), THEME_NAME . __(' Settings', 'volatyl'), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page');
 	// Init hook options
 	register_setting('volatyl_hooks_options', 'vol_hooks_options', 'vol_options_validate');
-	// Init content options
-	register_setting('volatyl_content_options', 'vol_content_options', 'vol_options_validate');
 	// Init license key
 	register_setting('volatyl_license_key', 'vol_license_key', 'vol_sanitize_license');
 }
 add_action('admin_menu', 'vol_options_add_page');
 
 
-/* Volatyl Options Form (all tabs included)
+/* Volatyl Settings Form (all tabs included)
  *
- * The Volatyl Options page uses a tabbed structure with one
+ * The Volatyl Settings page uses a tabbed structure with one
  * or more sections on each tab.
  *
  * Each tab is its own separate page. Therefore, each tab has
@@ -61,19 +55,16 @@ function vol_options_do_page() {
 	}
 	?>	
 	<div class="wrap volatyl-options">
-		<h2 class="vol-options-title"><?php printf(__('%1$s %2$s Options', 'volatyl'), THEME_NAME, THEME_VERSION); ?></h2>
-		<div class="save-settings half radius">
-			<p><strong><?php _e('Save changes before switching tabs.', 'volatyl'); ?></strong></p>
-		</div>
+		<h2 class="vol-options-title"><?php printf(__('%1$s %2$s Settings', 'volatyl'), THEME_NAME, THEME_VERSION); ?></h2>
 		<?php if (false !== $_REQUEST['settings-updated']) { ?>
-			<div class="updated half fade radius">
+			<div class="updated fade radius">
 				<p><strong><?php _e('Your settings have been updated.', 'volatyl'); ?></strong></p>
 			</div>
 		<?php } ?>	
 		<?php
 			// build tabs
-			$active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'global';
-			$add_tab = array('global', 'content', 'hooks', 'license', 'information');
+			$active_tab = isset($_GET['tab']) ? $_GET['tab'] : 'hooks';
+			$add_tab = array('hooks', 'license', 'information');
 		?>		
 		<h2 class="nav-tab-wrapper">		
 			<?php
@@ -86,55 +77,11 @@ function vol_options_do_page() {
 		</h2>
 		<?php
 		/**
-		 * Tabbed - Global Settings (default)
-		 *
-		 * Display the options for site structure and general settings
-		 */
-		if ($active_tab == 'global') {
-			$options_structure = get_option('vol_structure_options'); 
-			$options_general = get_option('vol_general_options'); 
-			$vgeneral = volatyl_general();
-			?>			
-			<form method="post" action="options.php">
-				<?php
-					settings_fields('volatyl_global_options');
-					do_settings_sections('volatyl_global_options');
-					
-					// form output for the Global options tab
-					require_once(THEME_OPTIONS . '/options-pages/global-options.php');
-				?>			
-			</form>		
-		<?php	
-		/**
-		 * Tabbed - Content Settings
-		 *
-		 * Display the options for content settings
-		 */	
-		} elseif ($active_tab == 'content') {
-			$options_content = get_option('vol_content_options');
-			
-			// Collect all settings arrays
-			$vcontent = volatyl_content();
-			$vpost = volatyl_post();
-			$vpage = volatyl_page();
-			$varrays = array_merge($vcontent, $vpost, $vpage);
-			?>		
-			<form method="post" action="options.php">
-				<?php
-					settings_fields('volatyl_content_options');
-					do_settings_sections('volatyl_content_options');
-			
-					// form output for the Content options tab
-					require_once(THEME_OPTIONS . '/options-pages/content-options.php');
-				?>
-			</form>
-		<?php
-		/**
 		 * Tabbed - Hooks Settings
 		 *
 		 * Display various hooks fields and hook options
 		 */	
-		} elseif ($active_tab == 'hooks') {
+		if ($active_tab == 'hooks') {
 			$options_hooks = get_option('vol_hooks_options');
 			$vhooks = volatyl_hooks();
 			?>			
@@ -176,10 +123,10 @@ function vol_options_do_page() {
 			require_once(THEME_OPTIONS . '/options-pages/information.php');
 	
 		/**
-		 * Tabbed - WTF? Settings
+		 * Tabbed - {...?...} Settings
 		 */
 		} else { ?>	
-			<p><?php printf(__('How did you get here? Get back to the %s Options please.', 'volatyl'), '<a href="themes.php?page=volatyl_options&tab=global">' . THEME_NAME . '</a>'); ?></p>
+			<p><?php printf(__('How did you get here? Get back to the %s Settings please.', 'volatyl'), '<a href="themes.php?page=volatyl_options&tab=hooks">' . THEME_NAME . '</a>'); ?></p>
 			<?php		
 		}	
 		?>
@@ -197,14 +144,15 @@ function submit_hooks() { ?>
 }
 
 
-/** Change WordPress admin footer
+/**
+ * Change WordPress admin footer
  *
  * @since Volatyl 1.2.8
  */
 function vol_adjust_footer_admin() {
 	echo sprintf(__('Powered by %1$s and %2$s', 'volatyl'), 
 		'<a href="http://www.wordpress.org" target="_blank">WordPress</a> ',
-		'<a href="http://volatylthemes.com" target="_blank">Volatyl</a>'
+		'<a href="http://volatylthemes.com" target="_blank">' . THEME_NAME . '</a>'
 	);
 }
 add_filter('admin_footer_text', 'vol_adjust_footer_admin');
@@ -213,7 +161,7 @@ add_filter('admin_footer_text', 'vol_adjust_footer_admin');
 /**
  * Sanitize and validate all user input!
  *
- * The Volatyl Options are built mainly with checkbox options 
+ * The Volatyl Settings are built mainly with checkbox options 
  * making sanitization extremely simple.
  *
  * For all other option types, the appropriate sanitization and
@@ -222,57 +170,9 @@ add_filter('admin_footer_text', 'vol_adjust_footer_admin');
  * @since Volatyl 1.0
  */
 function vol_options_validate($input) {
-	global $column_options;
-	$options_structure = get_option('vol_structure_options');
-	$options_content = get_option('vol_content_options');
 	$submit = ! empty($input['submit']) ? true : false; 
-	$delete_logo = ! empty($input['delete_logo']) ? true : false;
-	
-	
-	// Validate and sanitize header logo input
-	if ($submit) {
-		if ($options_content['logo'] != $input['logo'] && '' != $options_content['logo']) {
-			vol_delete_image($options_content['logo']);
-			$valid_input['logo'] = $input['logo'];
-			return $valid_input['logo'];
-		}
-	}
-	
-	// Delete uploaded logo
-	if ($delete_logo) {
-		vol_delete_image($options_content['logo']);
-		$input['logo'] = '';
-	}
-	
-	
-	/** Validate and sanitize Volatyl structure options for
-	 * HTML framework and column layouts
- 	 */
-	if (!isset($input['wide']))
-		$input['wide'] = null;
-	$input['wide'] = ($input['wide'] == 1 ? 1 : 0);
 
-	if (!isset($options_structure['column']))
-		$input['column'] == $options_structure['column'];
-	if (!array_key_exists($options_structure['column'], $column_options))
-		$input['column'] == 'cs';
-	
-	
-	/** Validate and sanitize Volatyl content options for each
-	 *  item in the content settings arrays
- 	 */
-	$vgeneral = volatyl_general();
-	$vcontent = volatyl_content();
-	$vpost = volatyl_post();
-	$vpage = volatyl_page();
-	$varrays = array_merge($vgeneral, $vcontent, $vpost, $vpage);
-	foreach ($varrays as $va) { 
-		if (!isset($input[$va['title']]))
-			$input[$va['title']] = null;
-		$input[$va['title']] = ($input[$va['title']] == 1 ? 1 : 0);
-	}
-	
-	
+
 	/** Validate and sanitize Volatyl hooks for each item in 
 	 *  volatyl_hooks() array
  	 */

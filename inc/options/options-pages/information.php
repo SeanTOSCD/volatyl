@@ -24,7 +24,7 @@
 					),
 					'Support'	=> array(
 						'name'	=> __('Support', 'volatyl'),
-						'url'	=> 'http://support.volatylthemes.com/forums/'
+						'url'	=> 'http://volatylthemes.com/support/'
 					),
 					'Members'	=> array(
 						'name'	=> __('Members Area', 'volatyl'),
