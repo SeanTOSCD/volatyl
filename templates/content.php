@@ -68,7 +68,14 @@ $feed_post_page_nav = apply_filters( 'feed_post_page_nav', __( 'Pages: ', 'volat
 	if ( is_search() || vol_excerpt_on() ) { ?>
 
 		<section class="entry-summary">
-			<?php the_excerpt(); ?>
+			<?php
+				the_excerpt();
+
+				// Show feed tags
+				if ( vol_archive_tags_on() ) {
+					the_tags( '<div class="entry-meta tags">' . $feed_tags_text, ', ', '<br /></div>' );
+				}
+			?>
 		</section>
 		<?php
 
