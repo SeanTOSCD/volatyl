@@ -59,19 +59,19 @@ function vol_comments_only_count( $count ) {
 }
 
 // Show excerpt/post link instead of [...]
-if ( vol_excerpt_link_on() ) {
+function vol_replace_excerpt( $content ) {
+	global $excerpt_link;
 
-	// create a permalink after the excerpt
-	function vol_replace_excerpt( $content ) {
-		global $excerpt_link;
+	if ( vol_excerpt_link_on() ) {
 		$excerpt_link = apply_filters( 'excerpt_link', __( 'Read More', 'volatyl' ) . ' &rarr;' );
 		return str_replace( '[&hellip;]',
 			'<p class="excerpt-link"><a class="read-more" href="' . get_permalink() . '">' . $excerpt_link . '</a></p>',
 			$content
 		);
 	}
-	add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
+	return $content;
 }
+add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
 
 // Filters wp_title to print a neat <title> tag based on what is being viewed.
 function vol_wp_title( $title, $sep ) {
