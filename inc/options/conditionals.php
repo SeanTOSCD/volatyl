@@ -19,8 +19,8 @@
  * @return bool The option checkbox state
  */
 function vol_is_full_width() {
-	$option = get_option('vol_structure_options');
-	if (1 == $option['wide']) {
+	$option = get_theme_mod('volatyl_html_structure', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -33,8 +33,8 @@ function vol_is_full_width() {
  * @return string The value based on selected column configuration
  */
 function vol_get_layout() {
-	$option = get_option('vol_structure_options');
-	switch ($option['column']) {
+	$option = get_theme_mod('volatyl_content_layout', 'sc');
+	switch ($option) {
 		case 'c1':
 			$layout = 'c1';
 			break;
@@ -66,12 +66,12 @@ function vol_get_layout() {
  * @return integer The total number of layout columns
  */
 function vol_get_column_count() {
-	$options = get_option('vol_structure_options');
-	if ('c1' == $options['column'] || 'c2' == $options['column']) {
+	$option = get_theme_mod('volatyl_content_layout');
+	if ('c1' == $option || 'c2' == $option) {
 		return 1;
-	} elseif ('sc' == $options['column'] || 'cs' == $options['column']) {
+	} elseif ('sc' == $option || 'cs' == $option) {
 		return 2;
-	} elseif ('css' == $options['column'] || 'scs' == $options['column'] || 'ssc' == $options['column']) {
+	} elseif ('css' == $option || 'scs' == $option || 'ssc' == $option) {
 		return 3;
 	}
 }
@@ -82,8 +82,8 @@ function vol_get_column_count() {
  * @return bool The option checkbox state
  */
 function vol_updates_on() {
-	$option = get_option('vol_general_options');
-	if (1 == $option['updates']) {
+	$option = get_theme_mod('volatyl_framework_updates', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -96,8 +96,8 @@ function vol_updates_on() {
  * @return bool The option checkbox state
  */
 function vol_is_responsive() {
-	$option = get_option('vol_general_options');
-	if (1 == $option['responsive']) {
+	$option = get_theme_mod('volatyl_responsive_css', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -110,8 +110,8 @@ function vol_is_responsive() {
  * @return bool Whether or not a logo has been uploaded
  */
 function vol_has_logo() {
-	$option = get_option('vol_content_options');
-	if ('' != $option['logo']) {
+	$option = get_theme_mod('volatyl_logo', '');
+	if ('' != $option) {
 		return true;
 	} else {
 		return false;
@@ -124,9 +124,9 @@ function vol_has_logo() {
  * @return mixed The logo URL or false if no logo uploaded
  */
 function vol_get_logo() {
-	$option = get_option('vol_content_options');
+	$option = get_theme_mod('volatyl_logo', '');
 	if (vol_has_logo()) {
-		return $option['logo'];
+		return $option;
 	} else {
 		return false;
 	}
@@ -138,8 +138,8 @@ function vol_get_logo() {
  * @return bool The option checkbox state
  */
 function vol_site_title_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['title']) {
+	$option = get_theme_mod('volatyl_site_title', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -152,8 +152,8 @@ function vol_site_title_on() {
  * @return bool The option checkbox state
  */
 function vol_site_tagline_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['tagline']) {
+	$option = get_theme_mod('volatyl_site_tagline', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -166,8 +166,8 @@ function vol_site_tagline_on() {
  * @return bool The option checkbox state
  */
 function vol_header_menu_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['headermenu']) {
+	$option = get_theme_mod('volatyl_header_menu', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -180,8 +180,8 @@ function vol_header_menu_on() {
  * @return bool The option checkbox state
  */
 function vol_standard_menu_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['standardmenu']) {
+	$option = get_theme_mod('volatyl_standard_menu', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -194,8 +194,8 @@ function vol_standard_menu_on() {
  * @return bool The option checkbox state
  */
 function vol_footer_menu_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['footermenu']) {
+	$option = get_theme_mod('volatyl_footer_menu', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -208,8 +208,8 @@ function vol_footer_menu_on() {
  * @return bool The option checkbox state
  */
 function vol_default_widget_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['widgets']) {
+	$option = get_theme_mod('volatyl_default_widgets', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -222,8 +222,8 @@ function vol_default_widget_on() {
  * @return bool The option checkbox state
  */
 function vol_pagination_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['pagination']) {
+	$option = get_theme_mod('volatyl_enhanced_pagination', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -236,8 +236,8 @@ function vol_pagination_on() {
  * @return bool The option checkbox state
  */
 function vol_byline_date_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['by-date-post']) {
+	$option = get_theme_mod('volatyl_byline_date', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -250,8 +250,8 @@ function vol_byline_date_on() {
  * @return bool The option checkbox state
  */
 function vol_byline_author_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['by-author-post']) {
+	$option = get_theme_mod('volatyl_byline_author', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -264,8 +264,8 @@ function vol_byline_author_on() {
  * @return bool The option checkbox state
  */
 function vol_byline_comments_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['by-comments-post']) {
+	$option = get_theme_mod('volatyl_byline_responses_comments', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -278,8 +278,8 @@ function vol_byline_comments_on() {
  * @return bool The option checkbox state
  */
 function vol_byline_edit_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['by-edit-post']) {
+	$option = get_theme_mod('volatyl_byline_edit_link', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -292,8 +292,8 @@ function vol_byline_edit_on() {
  * @return bool The option checkbox state
  */
 function vol_byline_cats_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['by-cats']) {
+	$option = get_theme_mod('volatyl_byline_categories', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -319,8 +319,8 @@ function vol_has_byline_items() {
  * @return bool The option checkbox state
  */
 function vol_excerpt_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['homeexcerpt']) {
+	$option = get_theme_mod('volatyl_post_excerpts', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -333,8 +333,8 @@ function vol_excerpt_on() {
  * @return bool The option checkbox state
  */
 function vol_excerpt_link_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['excerptlink']) {
+	$option = get_theme_mod('volatyl_post_excerpt_link', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -347,8 +347,8 @@ function vol_excerpt_link_on() {
  * @return bool The option checkbox state
  */
 function vol_archive_featured_image_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['feedfeaturedimage']) {
+	$option = get_theme_mod('volatyl_feed_featured_images', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -361,8 +361,8 @@ function vol_archive_featured_image_on() {
  * @return bool The option checkbox state
  */
 function vol_single_featured_image_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['singlefeaturedimage']) {
+	$option = get_theme_mod('volatyl_post_featured_image', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -375,8 +375,8 @@ function vol_single_featured_image_on() {
  * @return bool The option checkbox state
  */
 function vol_archive_tags_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['feedtags']) {
+	$option = get_theme_mod('volatyl_feed_tags', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -389,8 +389,8 @@ function vol_archive_tags_on() {
  * @return bool The option checkbox state
  */
 function vol_single_tags_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['singletags']) {
+	$option = get_theme_mod('volatyl_post_tags', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -403,22 +403,8 @@ function vol_single_tags_on() {
  * @return bool The option checkbox state
  */
 function vol_pings_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['postpings']) {
-		return true;
-	} else {
-		return false;
-	}
-}
-
-/**
- * Search Pages
- *
- * @return bool The option checkbox state
- */
-function vol_search_pages_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['searchpages']) {
+	$option = get_theme_mod('volatyl_pings', 1);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;
@@ -431,8 +417,8 @@ function vol_search_pages_on() {
  * @return bool The option checkbox state
  */
 function vol_page_comments_on() {
-	$option = get_option('vol_content_options');
-	if (1 == $option['pagecomments']) {
+	$option = get_theme_mod('volatyl_page_comments', 0);
+	if (1 == $option) {
 		return true;
 	} else {
 		return false;

@@ -38,11 +38,14 @@ function volatyl_customize_register( $wp_customize ) {
 	}
 
 
+	// Site Identity - Priority 10
+
+
 	/** ===============
 	 * Global Settings
 	 */
 	$wp_customize->add_section( 'volatyl_global', array(
-		'title'         => __( 'Global Settings', 'volatyl' ),
+		'title'         => THEME_NAME . ' ' . __( 'Global Settings', 'volatyl' ),
 		'description'   => __( 'Site-wide settings and behavior.', 'volatyl' ),
 		'priority'      => 20,
 	) );
@@ -88,9 +91,9 @@ function volatyl_customize_register( $wp_customize ) {
 	 * Design Settings
 	 */
 	$wp_customize->add_section( 'volatyl_design', array(
-		'title'         => __( 'Design Settings', 'volatyl' ),
+		'title'         => THEME_NAME . ' ' . __( 'Design Settings', 'volatyl' ),
 		'description'   => __( 'Structural and visual settings.', 'volatyl' ),
-		'priority'      => 30,
+		'priority'      => 20,
 	) );
 
 	// logo
@@ -120,7 +123,7 @@ function volatyl_customize_register( $wp_customize ) {
 			'sc'  => __( 'Sidebar / Content', 'volatyl' ),
 			'css' => __( 'Content / Sidebar / Sidebar', 'volatyl' ),
 			'scs' => __( 'Sidebar / Content / Sidebar', 'volatyl' ),
-			'ssc' => __( 'Content / Sidebar / Sidebar', 'volatyl' ),
+			'ssc' => __( 'Sidebar / Sidebar / Content', 'volatyl' ),
 	) ) );
 
 	// HTML Structure
@@ -152,9 +155,9 @@ function volatyl_customize_register( $wp_customize ) {
 	 * Content Settings
 	 */
 	$wp_customize->add_section( 'volatyl_content', array(
-		'title'         => __( 'Content Settings', 'volatyl' ),
+		'title'         => THEME_NAME . ' ' . __( 'Content Settings', 'volatyl' ),
 		'description'   => __( 'General site content settings.', 'volatyl' ),
-		'priority'      => 40,
+		'priority'      => 20,
 	) );
 
 	// Header elements section
@@ -212,7 +215,7 @@ function volatyl_customize_register( $wp_customize ) {
 
 	// Standard menu
 	$wp_customize->add_setting( 'volatyl_standard_menu', array( 
-		'default'           => 1,
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_standard_menu', array(
@@ -224,7 +227,7 @@ function volatyl_customize_register( $wp_customize ) {
 
 	// Footer menu
 	$wp_customize->add_setting( 'volatyl_footer_menu', array( 
-		'default'           => 1,
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_footer_menu', array(
@@ -264,8 +267,8 @@ function volatyl_customize_register( $wp_customize ) {
 	) ) );
 
 	// Pagination
-	$wp_customize->add_setting( 'volatyl_enhanced_pagination', array( 
-		'default'           => 1,
+	$wp_customize->add_setting( 'volatyl_enhanced_pagination', array(
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_enhanced_pagination', array(
@@ -352,8 +355,8 @@ function volatyl_customize_register( $wp_customize ) {
 	) ) );
 
 	// Excerpts
-	$wp_customize->add_setting( 'volatyl_post_excerpts', array( 
-		'default'           => 1,
+	$wp_customize->add_setting( 'volatyl_post_excerpts', array(
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_post_excerpts', array(
@@ -364,8 +367,8 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Excerpt link
-	$wp_customize->add_setting( 'volatyl_post_excerpt_link', array( 
-		'default'           => 1,
+	$wp_customize->add_setting( 'volatyl_post_excerpt_link', array(
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_post_excerpt_link', array(
@@ -384,8 +387,8 @@ function volatyl_customize_register( $wp_customize ) {
 	) ) );
 
 	// Post feed featured images
-	$wp_customize->add_setting( 'volatyl_feed_featured_images', array( 
-		'default'           => 1,
+	$wp_customize->add_setting( 'volatyl_feed_featured_images', array(
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_feed_featured_images', array(
@@ -470,8 +473,8 @@ function volatyl_customize_register( $wp_customize ) {
 	) ) );
 
 	// Page comments
-	$wp_customize->add_setting( 'volatyl_page_comments', array( 
-		'default'           => 1,
+	$wp_customize->add_setting( 'volatyl_page_comments', array(
+		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
 	$wp_customize->add_control( 'volatyl_page_comments', array(
@@ -496,14 +499,14 @@ function volatyl_sanitize_checkbox( $input ) {
  * Sanitize the content layout select option
  */
 function volatyl_sanitize_content_layout( $input ) {
-    $valid = array(
-		'c1'  => 'c1',
-		'c2'  => 'c2',
-		'cs'  => 'cs',
-		'sc'  => 'sc',
-		'css' => 'css',
-		'scs' => 'scs',
-		'ssc' => 'ssc',
+	$valid = array(
+		'c1'  => __( 'Content (no sidebars)', 'volatyl' ),
+		'c2'  => __( 'Content (sidebars below)', 'volatyl' ),
+		'cs'  => __( 'Content / Sidebar', 'volatyl' ),
+		'sc'  => __( 'Sidebar / Content', 'volatyl' ),
+		'css' => __( 'Content / Sidebar / Sidebar', 'volatyl' ),
+		'scs' => __( 'Sidebar / Content / Sidebar', 'volatyl' ),
+		'ssc' => __( 'Sidebar / Sidebar / Content', 'volatyl' ),
 	);
 	
 	if ( array_key_exists( $input, $valid ) ) {
