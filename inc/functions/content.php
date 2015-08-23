@@ -47,7 +47,7 @@ function vol_comments_only_count( $count ) {
 	// Filter the comments count in the front-end only
 	if ( !is_admin() ) {
 		global $id;
-		$status = get_comments( 'status=approve&post_id=' . $id );
+		$status = get_comments('status=approve&post_id=' . $id );
 		$comments_by_type = separate_comments( $status );
 		return count( $comments_by_type['comment'] );
 	}
