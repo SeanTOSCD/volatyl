@@ -17,11 +17,11 @@
 
 function vol_html_before_content() {
 	global $options;
-	$options = get_option('vol_hooks_options');
+	$options = get_option( 'vol_hooks_options' );
 
 	// vol_before_html hook
 	vol_before_html_output();
-	
+
 	// header structure
 	vol_header_frame();
 	vol_standard_menu_output();
@@ -33,12 +33,12 @@ function vol_html_before_content() {
 	vol_before_content_output();
 
 	// vol_before_content_area hook
-	vol_before_content_area_output();	
+	vol_before_content_area_output();
 }
 
 function vol_html_after_content() {
 	global $options;
-	$options = get_option('vol_hooks_options');
+	$options = get_option( 'vol_hooks_options' );
 
 	// vol_after_content_area hook
 	vol_after_content_area_output();
@@ -48,7 +48,7 @@ function vol_html_after_content() {
 
 	// vol_footliner hook
 	vol_footliner_output();
-	
+
 	// footer structure
 	vol_footer_menu_output();
 	vol_footer_frame();

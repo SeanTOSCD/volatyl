@@ -7,7 +7,7 @@
  *******************************************************************
  *
  * On various pages of your site, different body classes are needed
- * for styling purposes. That happens here. 
+ * for styling purposes. That happens here.
  *
  * @package Volatyl
  * @since Volatyl 1.0
@@ -21,19 +21,19 @@
  *
  * @since Volatyl 1.0
  */
-function vol_page_template_body_class($classes) {
-	
+function vol_page_template_body_class( $classes ) {
+
 	// add class name to the $classes array based on conditions
-	if (is_page_template('custom-landing.php')) {
+	if ( is_page_template( 'custom-landing.php' ) ) {
 		$classes[] = "landing";
-	} elseif (is_page_template('custom-squeeze.php')) {
+	} elseif ( is_page_template( 'custom-squeeze.php' ) ) {
 		$classes[] = "squeeze";
 	}
-	
+
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'vol_page_template_body_class');
+add_filter( 'body_class', 'vol_page_template_body_class' );
 
 
 /** Body class based on column structure
@@ -46,49 +46,49 @@ add_filter('body_class', 'vol_page_template_body_class');
  *
  * @since Volatyl 1.0
  */
-function vol_main_layout_class($classes) {
+function vol_main_layout_class( $classes ) {
 	global $post;
-	
-	if (!is_404() && !is_search()) {
-		$single_layout = get_post_meta($post->ID, '_singular-column', true);
+
+	if ( !is_404() && !is_search() ) {
+		$single_layout = get_post_meta( $post->ID, '_singular-column', true );
 	}
-	
+
 	// add class name to the $classes array based on conditions
-	if (is_singular()) {
-		if ('default' == $single_layout || '' == $single_layout) {
-			if (1 == vol_get_column_count()) {
+	if ( is_singular() ) {
+		if ( 'default' == $single_layout || '' == $single_layout ) {
+			if ( 1 == vol_get_column_count() ) {
 				$classes[] = 'one-col';
-			} elseif (2 == vol_get_column_count()) {
+			} elseif ( 2 == vol_get_column_count() ) {
 				$classes[] = 'two-col';
-			} elseif (3 == vol_get_column_count()) {
+			} elseif ( 3 == vol_get_column_count() ) {
 				$classes[] = 'three-col';
 			}
 			$classes[] = vol_get_layout();
-		} elseif ($single_layout == 'c1' || $single_layout == 'c2') {
+		} elseif ( $single_layout == 'c1' || $single_layout == 'c2' ) {
 			$classes[] = 'one-col';
 			$classes[] = $single_layout;
-		} elseif ($single_layout == 'cs' || $single_layout == 'sc') {
+		} elseif ( $single_layout == 'cs' || $single_layout == 'sc' ) {
 			$classes[] = 'two-col';
 			$classes[] = $single_layout;
-		} elseif ($single_layout == 'css' || $single_layout == 'scs' || $single_layout == 'ssc') {
+		} elseif ( $single_layout == 'css' || $single_layout == 'scs' || $single_layout == 'ssc' ) {
 			$classes[] = 'three-col';
 			$classes[] = $single_layout;
 		}
 	} else {
-		if (1 == vol_get_column_count()) {
+		if ( 1 == vol_get_column_count() ) {
 			$classes[] = 'one-col';
-		} elseif (2 == vol_get_column_count()) {
+		} elseif ( 2 == vol_get_column_count() ) {
 			$classes[] = 'two-col';
-		} elseif (3 == vol_get_column_count()) {
+		} elseif ( 3 == vol_get_column_count() ) {
 			$classes[] = 'three-col';
 		}
 		$classes[] = vol_get_layout();
 	}
-	
+
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'vol_main_layout_class');
+add_filter( 'body_class', 'vol_main_layout_class' );
 
 
 /** Body class by singular metabox options
@@ -97,28 +97,28 @@ add_filter('body_class', 'vol_main_layout_class');
  *
  * @since Volatyl 1.0
  */
-function vol_singular_body_class($classes) {
+function vol_singular_body_class( $classes ) {
 	global $post;
-	$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
-	
-	if (!is_404() && !is_search()) {
-		$singular_body_class = get_post_meta($post->ID, '_custom-class', true);
+	$da_title_or_no = get_post_meta( $post->ID, '_singular-title', true );
+
+	if ( !is_404() && !is_search() ) {
+		$singular_body_class = get_post_meta( $post->ID, '_custom-class', true );
 	}
-	
+
 	// add class name to the $classes array based on conditions
-	if (is_singular()) {
-	
+	if ( is_singular() ) {
+
 		// Add the body class if it exists
-		if ('' !== $singular_body_class) {
+		if ( '' !== $singular_body_class ) {
 			$classes[] = $singular_body_class;
 		}
-			
-		if (is_page() && 1 == $da_title_or_no) {
+
+		if ( is_page() && 1 == $da_title_or_no ) {
 			$classes[] = 'no-title';
 		}
 	}
-	
+
 	// return the $classes array
 	return $classes;
 }
-add_filter('body_class', 'vol_singular_body_class');
+add_filter( 'body_class', 'vol_singular_body_class' );

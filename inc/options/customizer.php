@@ -45,9 +45,9 @@ function volatyl_customize_register( $wp_customize ) {
 	 * Global Settings
 	 */
 	$wp_customize->add_section( 'volatyl_global', array(
-		'title'         => THEME_NAME . ' ' . __( 'Global Settings', 'volatyl' ),
-		'description'   => __( 'Site-wide settings and behavior.', 'volatyl' ),
-		'priority'      => 20,
+		'title'       => THEME_NAME . ' ' . __( 'Global Settings', 'volatyl' ),
+		'description' => __( 'Site-wide settings and behavior.', 'volatyl' ),
+		'priority'    => 20,
 	) );
 
 	// Framework updates
@@ -63,7 +63,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Toolbar
-	$wp_customize->add_setting( 'volatyl_toolbar', array( 
+	$wp_customize->add_setting( 'volatyl_toolbar', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -75,7 +75,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Attribution
-	$wp_customize->add_setting( 'volatyl_attribution', array( 
+	$wp_customize->add_setting( 'volatyl_attribution', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -107,27 +107,27 @@ function volatyl_customize_register( $wp_customize ) {
 	) ) );
 
 	// Content Layout
-	$wp_customize->add_setting( 'volatyl_content_layout', array( 
+	$wp_customize->add_setting( 'volatyl_content_layout', array(
 		'default'           => 'sc', 
-		'sanitize_callback' => 'volatyl_sanitize_content_layout' 
+		'sanitize_callback' => 'volatyl_sanitize_content_layout'
 	) );
 	$wp_customize->add_control( 'volatyl_content_layout', array(
-		'label'   => __( 'Choose a content layout:', 'shoppette' ),
-		'section' => 'volatyl_design',
+		'label'    => __( 'Choose a content layout:', 'shoppette' ),
+		'section'  => 'volatyl_design',
 		'priority'  => 20,
-		'type'    => 'select',
-		'choices' => array(
-			'c1'  => __( 'Content (no sidebars)', 'volatyl' ),
-			'c2'  => __( 'Content (sidebars below)', 'volatyl' ),
-			'cs'  => __( 'Content / Sidebar', 'volatyl' ),
-			'sc'  => __( 'Sidebar / Content', 'volatyl' ),
-			'css' => __( 'Content / Sidebar / Sidebar', 'volatyl' ),
-			'scs' => __( 'Sidebar / Content / Sidebar', 'volatyl' ),
-			'ssc' => __( 'Sidebar / Sidebar / Content', 'volatyl' ),
+		'type'     => 'select',
+		'choices'  => array(
+			'c1'   => __( 'Content (no sidebars)', 'volatyl' ),
+			'c2'   => __( 'Content (sidebars below)', 'volatyl' ),
+			'cs'   => __( 'Content / Sidebar', 'volatyl' ),
+			'sc'   => __( 'Sidebar / Content', 'volatyl' ),
+			'css'  => __( 'Content / Sidebar / Sidebar', 'volatyl' ),
+			'scs'  => __( 'Sidebar / Content / Sidebar', 'volatyl' ),
+			'ssc'  => __( 'Sidebar / Sidebar / Content', 'volatyl' ),
 	) ) );
 
 	// HTML Structure
-	$wp_customize->add_setting( 'volatyl_html_structure', array( 
+	$wp_customize->add_setting( 'volatyl_html_structure', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -139,7 +139,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Responsive CSS
-	$wp_customize->add_setting( 'volatyl_responsive_css', array( 
+	$wp_customize->add_setting( 'volatyl_responsive_css', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -163,13 +163,13 @@ function volatyl_customize_register( $wp_customize ) {
 	// Header elements section
 	$wp_customize->add_setting( 'volatyl_header_elements', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_header_elements', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 10,
-		'label' => __( 'Default Header Elements', 'volatyl' ),
+		'label'    => __( 'Default Header Elements', 'volatyl' ),
 	) ) );
 
 	// Site title
-	$wp_customize->add_setting( 'volatyl_site_title', array( 
+	$wp_customize->add_setting( 'volatyl_site_title', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -181,7 +181,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Site tagline
-	$wp_customize->add_setting( 'volatyl_site_tagline', array( 
+	$wp_customize->add_setting( 'volatyl_site_tagline', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -193,7 +193,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Header menu
-	$wp_customize->add_setting( 'volatyl_header_menu', array( 
+	$wp_customize->add_setting( 'volatyl_header_menu', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -209,12 +209,12 @@ function volatyl_customize_register( $wp_customize ) {
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_menus', array(
 		'section'     => 'volatyl_content',
 		'priority'    => 50,
-		'label' => __( 'Activate Additional Menus', 'volatyl' ),
+		'label'       => __( 'Activate Additional Menus', 'volatyl' ),
 		'description' => __( 'Once activated, you must create new menus and add them to their respective "Theme Locations."', 'volatyl' )
 	) ) );
 
 	// Standard menu
-	$wp_customize->add_setting( 'volatyl_standard_menu', array( 
+	$wp_customize->add_setting( 'volatyl_standard_menu', array(
 		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -226,7 +226,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Footer menu
-	$wp_customize->add_setting( 'volatyl_footer_menu', array( 
+	$wp_customize->add_setting( 'volatyl_footer_menu', array(
 		'default'           => 0,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -240,14 +240,14 @@ function volatyl_customize_register( $wp_customize ) {
 	// Widgets section
 	$wp_customize->add_setting( 'volatyl_widgets', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_widgets', array(
-		'section' => 'volatyl_content',
-		'priority' => 80,
-		'label' => __( 'Default Widgets', 'volatyl' ),
+		'section'     => 'volatyl_content',
+		'priority'    => 80,
+		'label'       => __( 'Default Widgets', 'volatyl' ),
 		'description' => __( 'The default widget does not show in footer widgetized areas because they only display if an actual widget is used.', 'volatyl' ),
 	) ) );
 
 	// Default widgets
-	$wp_customize->add_setting( 'volatyl_default_widgets', array( 
+	$wp_customize->add_setting( 'volatyl_default_widgets', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -261,9 +261,9 @@ function volatyl_customize_register( $wp_customize ) {
 	// Pagination section
 	$wp_customize->add_setting( 'volatyl_pagination', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_pagination', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 100,
-		'label' => __( 'Pagination', 'volatyl' ),
+		'label'    => __( 'Pagination', 'volatyl' ),
 	) ) );
 
 	// Pagination
@@ -281,13 +281,13 @@ function volatyl_customize_register( $wp_customize ) {
 	// Byline section
 	$wp_customize->add_setting( 'volatyl_posts', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_posts', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 120,
-		'label' => __( 'Post Byline Elements', 'volatyl' ),
+		'label'    => __( 'Post Byline Elements', 'volatyl' ),
 	) ) );
 
 	// Byline date
-	$wp_customize->add_setting( 'volatyl_byline_date', array( 
+	$wp_customize->add_setting( 'volatyl_byline_date', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -299,7 +299,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Byline author
-	$wp_customize->add_setting( 'volatyl_byline_author', array( 
+	$wp_customize->add_setting( 'volatyl_byline_author', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -311,7 +311,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Byline responses/comments
-	$wp_customize->add_setting( 'volatyl_byline_responses_comments', array( 
+	$wp_customize->add_setting( 'volatyl_byline_responses_comments', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -323,7 +323,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Byline edit link
-	$wp_customize->add_setting( 'volatyl_byline_edit_link', array( 
+	$wp_customize->add_setting( 'volatyl_byline_edit_link', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -335,7 +335,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Byline responses/comments
-	$wp_customize->add_setting( 'volatyl_byline_categories', array( 
+	$wp_customize->add_setting( 'volatyl_byline_categories', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -349,9 +349,9 @@ function volatyl_customize_register( $wp_customize ) {
 	// Post excerpts
 	$wp_customize->add_setting( 'volatyl_excerpts', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_excerpts', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 180,
-		'label' => __( 'Post Excerpts', 'volatyl' ),
+		'label'    => __( 'Post Excerpts', 'volatyl' ),
 	) ) );
 
 	// Excerpts
@@ -381,9 +381,9 @@ function volatyl_customize_register( $wp_customize ) {
 	// Featured images
 	$wp_customize->add_setting( 'volatyl_featured_images', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_featured_images', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 210,
-		'label' => __( 'Featured Images', 'volatyl' ),
+		'label'    => __( 'Featured Images', 'volatyl' ),
 	) ) );
 
 	// Post feed featured images
@@ -399,7 +399,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Single post featured images
-	$wp_customize->add_setting( 'volatyl_post_featured_image', array( 
+	$wp_customize->add_setting( 'volatyl_post_featured_image', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -413,13 +413,13 @@ function volatyl_customize_register( $wp_customize ) {
 	// Tags
 	$wp_customize->add_setting( 'volatyl_tags', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_tags', array(
-		'section' => 'volatyl_content',
+		'section'  => 'volatyl_content',
 		'priority' => 240,
-		'label' => __( 'Tags', 'volatyl' ),
+		'label'    => __( 'Tags', 'volatyl' ),
 	) ) );
 
 	// Post feed tags
-	$wp_customize->add_setting( 'volatyl_feed_tags', array( 
+	$wp_customize->add_setting( 'volatyl_feed_tags', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -431,7 +431,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Single post tags
-	$wp_customize->add_setting( 'volatyl_post_tags', array( 
+	$wp_customize->add_setting( 'volatyl_post_tags', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -445,14 +445,14 @@ function volatyl_customize_register( $wp_customize ) {
 	// Pings
 	$wp_customize->add_setting( 'volatyl_pings_section', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_pings_section', array(
-		'section' => 'volatyl_content',
-		'priority' => 270,
-		'label' => __( 'Pingbacks / Trackbacks', 'volatyl' ),
+		'section'     => 'volatyl_content',
+		'priority'    => 270,
+		'label'       => __( 'Pingbacks / Trackbacks', 'volatyl' ),
 		'description' => __( 'If pings already exist, choosing to no longer allow them on the "Edit Post" page will not remove the original ones from the Post. Unchecking this box will.', 'volatyl' ),
 	) ) );
 
 	// Post pings
-	$wp_customize->add_setting( 'volatyl_pings', array( 
+	$wp_customize->add_setting( 'volatyl_pings', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -466,9 +466,9 @@ function volatyl_customize_register( $wp_customize ) {
 	// Pages
 	$wp_customize->add_setting( 'volatyl_pages', array() );
 	$wp_customize->add_control( new Volatyl_Customizer_HTML( $wp_customize, 'volatyl_pages', array(
-		'section' => 'volatyl_content',
-		'priority' => 290,
-		'label' => __( 'Page Settings', 'volatyl' ),
+		'section'     => 'volatyl_content',
+		'priority'    => 290,
+		'label'       => __( 'Page Settings', 'volatyl' ),
 		'description' => __( 'If comments, trackbacks, or pingbacks already exist, choosing to no longer allow them on the "Edit Page" page will not remove the original ones from the Page. Unchecking this box will.', 'volatyl' ),
 	) ) );
 

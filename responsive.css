@@ -9,40 +9,40 @@
  * CSS in your child theme's style.css file. To completely disable
  * this responsive CSS to use your own, use the General Settings
  * option to disable this CSS and then start from scratch in your
- * child theme's style.css file. 
+ * child theme's style.css file.
 -------------------------------------------------------------- */
 
-@media screen and (max-width: 960px) 
+@media screen and (max-width: 960px)
 {
 	.main,
 	#container {
 		width: 100%;
 	}
-	.two-col #content { 
-		width: 65%; 
+	.two-col #content {
+		width: 65%;
 	}
-	.two-col #sidebars { 
-		width: 35%; 
+	.two-col #sidebars {
+		width: 35%;
 	}
-	.css #content, 
-	.ssc #content { 
-		width: 55%; 
+	.css #content,
+	.ssc #content {
+		width: 55%;
 	}
-	.three-col #sidebars { 
-		width: 22.5%; 
+	.three-col #sidebars {
+		width: 22.5%;
 	}
-	.scs #sidebars.sidebar-1 { 
-		width: 32.41379%; 
+	.scs #sidebars.sidebar-1 {
+		width: 32.41379%;
 	}
-	.scs #sidebars.sidebar-2 { 
-		width: 24.47917%; 
+	.scs #sidebars.sidebar-2 {
+		width: 24.47917%;
 	}
-	.scs #wrap { 
-		width: 75.52083%; 
-		padding: 0; 
+	.scs #wrap {
+		width: 75.52083%;
+		padding: 0;
 	}
-	.scs #content { 
-		width: 67.58621%; 
+	.scs #content {
+		width: 67.58621%;
 	}
 	#container > .site-header,
 	#container > .site-footer {
@@ -52,25 +52,25 @@
 	.landing .main #content,
 	.squeeze .main #content,
 	.landing #container #content,
-	.squeeze #container #content { 
+	.squeeze #container #content {
 		width: 100%;
 	}
 }
 
-@media screen and (max-width: 850px) 
+@media screen and (max-width: 850px)
 {
 	.squeeze #main-content .main,
-	.squeeze #main-content { 
+	.squeeze #main-content {
 		width: 100%;
 	}
 }
 
-@media screen and (max-width: 768px) 
+@media screen and (max-width: 768px)
 {
-	
+
 	/* =Responsive Menus
 	-------------------------------------------------------------- */
-	
+
 	.header-menu-toggle,
 	.standard-menu-toggle,
 	.footer-menu-toggle,
@@ -83,12 +83,10 @@
 	.secondary-navigation .menu a {
 		display: block;
 	}
-	
 	.header-navigation,
 	.secondary-navigation {
 		padding: 0;
 	}
-	
 	.header-navigation,
 	.secondary-navigation,
 	.header-navigation .menu li ul,
@@ -97,33 +95,27 @@
 		text-align: center;
 		padding: 0;
 	}
-
 	.header-navigation ul,
 	.secondary-navigation ul {
 		display: none;
 	}
-	
 	.header-navigation.toggled .nav-menu {
 		background: #fff;
 		border: 1px solid rgba(0, 0, 0, 0.1);
 		margin: 1em 0;
 	}
-	
 	.secondary-navigation.toggled .nav-menu {
 		margin: 0 0 1em;
 	}
-	
 	.header-navigation .menu li,
 	.secondary-navigation .menu li {
 		display: block;
 		padding: 0;
 	}
-
 	.header-navigation .menu li ul li,
 	.secondary-navigation .menu li ul li {
 		padding: 0;
 	}
-	
 	.header-navigation .menu a,
 	.secondary-navigation .menu a,
 	.header-navigation .menu li ul a,
@@ -132,27 +124,26 @@
 		width: 100%;
 		box-sizing: border-box;
 	}
-	
 	.header-navigation .menu li ul a,
 	.secondary-navigation .menu li ul li a {
 		background: none;
 		border: 0;
 	}
-	
+
 	/* all other styles */
-	
+
 	.landing #main-content .main,
 	.landing #container #main-content {
 		width: 100%;
 	}
 	.landing #main-content .main,
-	.landing #container #main-content { 
-		margin: 0 auto; 
+	.landing #container #main-content {
+		margin: 0 auto;
 	}
 	#main-content #content,
 	#main-content #sidebars,
 	.scs #wrap,
-	.nav-previous, 
+	.nav-previous,
 	.nav-next {
 		float: none;
 		width: 100%;
@@ -161,8 +152,8 @@
 		padding-right: 0;
 	}
 	.nav-next,
-	.paging-navigation .nav-next, 
-	.comment-navigation .nav-next, 
+	.paging-navigation .nav-next,
+	.comment-navigation .nav-next,
 	.image-navigation .nav-next {
 		padding-left: 0;
 		text-align: left;
@@ -171,8 +162,8 @@
 		text-align: center;
 		padding-bottom: 1em;
 	}
-	.site-description { 
-		margin-bottom: .66667em; 
+	.site-description {
+		margin-bottom: .66667em;
 	}
 	#content .pagination {
 		float: none;
@@ -185,13 +176,13 @@
 	}
 }
 
-@media screen and (max-width: 480px) 
+@media screen and (max-width: 480px)
 {
 	.site-footer {
 		text-align: center;
 	}
 	img[class*="wp-image-"] {
-		float: none; 
+		float: none;
 		display: block;
 		margin-left: auto;
 		margin-right: auto;

@@ -19,7 +19,7 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
-$options = get_option('vol_hooks_options');
+$options = get_option( 'vol_hooks_options' );
 
 // header.php
 get_header();
@@ -29,20 +29,20 @@ vol_header_frame();
 
 // build the container for the main content area based on HTML structure setting
 // call vol_content() from loops.php to build the content column
-if (vol_is_full_width()) : ?>
+if ( vol_is_full_width() ) : ?>
 
 	<div id="main-content" class="full clearfix">
 		<div class="main clearfix">
 			<?php vol_content(); ?>
 		</div>
 	</div>
-	
+
 <?php else : ?>
 
 	<div id="main-content" class="clearfix">
 		<?php vol_content(); ?>
 	</div>
-	
+
 <?php endif;
 
 // inc/html/footer-html.php

@@ -1,27 +1,24 @@
 /* Save changes and changes saved alert boxes */
 .save-settings {
 	background: #eef4ff;
-	border: 1px solid rgba(0,0,0,.1);
+	border: 1px solid rgba(0, 0, 0, .1);
 	padding: 0 .6em;
 	margin: 5px 0 15px;
 }
-
 .save-settings p {
 	margin: .5em 0;
 	padding: 2px;
 }
-
-.volatyl-options .radius { 
-	-webkit-border-radius: 3px; 
-	-moz-border-radius:    3px; 
-	border-radius:         3px; 
+.volatyl-options .radius {
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
 
 /* Keep tabbed options below alert messages */
 .nav-tab-wrapper {
 	clear: both;
 }
-
 h2 .nav-tab {
 	text-transform: capitalize;
 }
@@ -35,19 +32,17 @@ h2 .nav-tab {
 	padding: 10px;
 	margin-top: 30px;
 	border: 1px solid rgba(0, 0, 0, .1);
-	-webkit-border-radius: 3px; 
-	-moz-border-radius:    3px; 
-	border-radius:         3px; 
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
 }
-
 .volatyl-options hr {
 	clear: both;
-	background: #f1f1f1; 
-	border: 0; 
-	height: 3px; 
+	background: #f1f1f1;
+	border: 0;
+	height: 3px;
 	margin: 2em 0;
 }
-
 .volatyl-options ul.list {
 	margin-top: 0;
 }
@@ -57,11 +52,9 @@ h2 .nav-tab {
 .volatyl-options .logo-button {
 	margin-right: 20px;
 }
-
 .volatyl-options .hook-label-space {
 	margin-right: 12px;
 }
-
 .volatyl-options .checkbox-space {
 	margin-right: 3px;
 }
@@ -71,18 +64,15 @@ h2 .nav-tab {
 	color: #999;
 	font-style: italic;
 }
-
 .volatyl-options .instructions {
 	background: #fafafa;
-	border: 1px solid rgba(0,0,0,.1);
+	border: 1px solid rgba(0, 0, 0, .1);
 	padding: 15px;
 	max-width: 650px;
 }
-
 .volatyl-options .instructions p {
 	margin: 0 0 1.5em;
 }
-
 .volatyl-options .instructions p:last-of-type {
 	margin-bottom: 0;
 }
@@ -91,17 +81,14 @@ h2 .nav-tab {
 .volatyl-options .hook-field {
 	margin-top: 5px;
 }
-
 .volatyl-options .hook-title {
 	font-size: 18px;
 	font-weight: bold;
 	margin: 20px 0 10px;
 }
-
 .volatyl-options .hook-info {
 	display: block;
 }
-
 .volatyl-options .submit-hooks {
 	margin-bottom: 30px;
 }
