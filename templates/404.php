@@ -15,11 +15,11 @@
  * @since Volatyl 1.0
  */
 
-// Custom filters 
-$error_404 = apply_filters('error_404_content', array(
-	'error_title'	=> __('Oops! Looks like we have an error.', 'volatyl'),
-	'error_content'	=> __('Use the search form and other tools below to find what you were looking for.', 'volatyl')
-)); ?>
+// Custom filters
+$error_404 = apply_filters( 'error_404_content', array(
+	'error_title'   => __( 'Oops! Looks like we have an error.', 'volatyl' ),
+	'error_content' => __( 'Use the search form and other tools below to find what you were looking for.', 'volatyl' )
+) ); ?>
 
 <article id="post-0" class="post error404 not-found">
 	<header class="entry-header">
@@ -31,35 +31,35 @@ $error_404 = apply_filters('error_404_content', array(
 		<p>
 			<?php echo $error_404['error_content']; ?>
 		</p>
-		
+
 		<?php 
 		// output search form
 		get_search_form();
-		
+
 		// output recent posts and categories widgets
-		the_widget('WP_Widget_Recent_Posts'); ?>
-		
+		the_widget( 'WP_Widget_Recent_Posts' ); ?>
+
 		<div class="widget">
 			<h4 class="widget-title">
-				<?php _e('Most Used Categories', 'volatyl'); ?>
+				<?php _e( 'Most Used Categories', 'volatyl' ); ?>
 			</h4>
-			<ul>			
+			<ul>
 				<?php
-					wp_list_categories(array(
-						'orderby' 	=> 'count', 
-						'order' 	=> 'DESC', 
-						'title_li' 	=> '', 
-						'number' 	=> 10, 
-						'depth' 	=> -1, 
-					)); 
-				?>			
+					wp_list_categories( array(
+						'orderby'  => 'count',
+						'order'    => 'DESC',
+						'title_li' => '',
+						'number'   => 10,
+						'depth'    => -1,
+					));
+				?>
 			</ul>
-		</div>		
-		<?php 
+		</div>
+		<?php
 			// translators: %1$s: smilie
-			$archive_content = '<p>' . sprintf(__('Try looking in the monthly archives. %1$s', 'volatyl'), convert_smilies(':)')) . '</p>';
+			$archive_content = '<p>' . sprintf( __( 'Try looking in the monthly archives. %1$s', 'volatyl' ), convert_smilies( ':)' ) ) . '</p>';
 			// output archives widget
-			the_widget('WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content"); 
+			the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$archive_content" ); 
 		?>
 	</section>
 </article>

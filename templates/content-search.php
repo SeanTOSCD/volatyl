@@ -17,7 +17,7 @@
  * @since Volatyl 1.0
  */
 global $post;
-$search_title = apply_filters('search_title', __('Search Results for:', 'volatyl')); ?>
+$search_title = apply_filters( 'search_title', __( 'Search Results for:', 'volatyl' ) ); ?>
 
 <header class="page-header">
 	<h1 class="page-title">
@@ -26,9 +26,9 @@ $search_title = apply_filters('search_title', __('Search Results for:', 'volatyl
 </header>
 
 <?php
-// da loop		
-while (have_posts()) { 
+// da loop
+while ( have_posts() ) {
 	the_post();
-	get_template_part('templates/content', get_post_format());
+	get_template_part( 'templates/content', get_post_format() );
 }
 vol_pagination_type();

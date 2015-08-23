@@ -11,9 +11,9 @@
  * is whatever you want it to be. Most people collect email
  * addresses or show a video. Something simple.
  *
- * There are no exit links form this page. Header, footer, 
+ * There are no exit links form this page. Header, footer,
  * sidebars, etc... they're all gone. Set your title and your
- * content. That's all you've got to work with. 
+ * content. That's all you've got to work with.
  *
  * @package Volatyl
  * @since Volatyl 1.0
@@ -24,20 +24,20 @@ get_header();
 
 // build the container for the main content area based on HTML structure setting
 // call vol_content() from loops.php to build the content column
-if (vol_is_full_width()) : ?>
+if ( vol_is_full_width() ) : ?>
 
 	<div id="main-content" class="full clearfix">
 		<div class="main clearfix">
 			<?php vol_content(); ?>
 		</div>
 	</div>
-	
+
 <?php else : ?>
 
 	<div id="main-content" class="clearfix">
 		<?php vol_content(); ?>
 	</div>
-	
+
 <?php endif;
 
 // footer.php

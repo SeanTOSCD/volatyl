@@ -13,17 +13,18 @@
  */
 
 // Add .top class to the first post in a loop
-function vol_first_post_class($classes) {
+function vol_first_post_class( $classes ) {
 	global $wp_query;
-	if (0 == $wp_query->current_post) {
+	if ( 0 == $wp_query->current_post ) {
 		$classes[] = 'top';
 	}
 	return $classes;
 }
-add_filter('post_class', 'vol_first_post_class');
+add_filter( 'post_class', 'vol_first_post_class' );
 
 
-/** Separate comments and pings
+/**
+ * Separate comments and pings
  *
  * Comments are a collection of comments and pings (pingbacks and
  * trackbacks). When the number of comments is displayed, the sum
@@ -41,58 +42,58 @@ add_filter('post_class', 'vol_first_post_class');
  *
  * @since Volatyl 1.0
  */
-function vol_comments_only_count($count) {
+function vol_comments_only_count( $count ) {
 
-    // Filter the comments count in the front-end only
-    if (!is_admin()) {
-        global $id;
-        $comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
-        return count($comments_by_type['comment']);
-    }
-    
-    // When in the WP-admin back end, do NOT filter comments (and pings) count.
-    else {
-        return $count;
-    }
+	// Filter the comments count in the front-end only
+	if ( !is_admin() ) {
+		global $id;
+		$comments_by_type = &separate_comments( get_comments('status=approve&post_id=' . $id ) );
+		return count( $comments_by_type['comment'] );
+	}
+
+	// When in the WP-admin back end, do NOT filter comments (and pings) count.
+	else {
+		return $count;
+	}
 }
 
 // Show excerpt/post link instead of [...]
-if (vol_excerpt_link_on()) {
+if ( vol_excerpt_link_on() ) {
 
 	// create a permalink after the excerpt
-	function vol_replace_excerpt($content) {
+	function vol_replace_excerpt( $content ) {
 		global $excerpt_link;
-		$excerpt_link = apply_filters('excerpt_link', __('Read More', 'volatyl') . ' &rarr;');
-		return str_replace('[&hellip;]',
+		$excerpt_link = apply_filters( 'excerpt_link', __( 'Read More', 'volatyl' ) . ' &rarr;' );
+		return str_replace( '[&hellip;]',
 			'<p class="excerpt-link"><a class="read-more" href="' . get_permalink() . '">' . $excerpt_link . '</a></p>',
 			$content
 		);
 	}
-	add_filter('get_the_excerpt', 'vol_replace_excerpt');
+	add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
 }
 
 // Filters wp_title to print a neat <title> tag based on what is being viewed.
 function vol_wp_title( $title, $sep ) {
-	if (is_feed()) {
+	if ( is_feed() ) {
 		return $title;
 	}
 
 	global $page, $paged;
 
 	// Add the blog name
-	$title .= get_bloginfo('name', 'display');
+	$title .= get_bloginfo( 'name', 'display' );
 
 	// Add the blog description for the home/front page.
 	$site_description = get_bloginfo('description', 'display');
-	if ($site_description && (is_home() || is_front_page())) {
+	if ( $site_description && ( is_home() || is_front_page() ) ) {
 		$title .= " $sep $site_description";
 	}
 
 	// Add a page number if necessary:
-	if (($paged >= 2 || $page >= 2 ) && ! is_404()) {
-		$title .= " $sep " . sprintf(__('Page %s', '_s'), max($paged, $page));
+	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
+		$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
 	}
 
 	return $title;
 }
-add_filter('wp_title', 'vol_wp_title', 10, 2);
+add_filter( 'wp_title', 'vol_wp_title', 10, 2 );

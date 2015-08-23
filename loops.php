@@ -31,98 +31,98 @@ function vol_content() {
 	?>
 	<div id="content" class="site-content border-box clearfix">
 		<?php
-			if (have_posts()) { // start the loop for ALL THE THINGS
-				
+			if ( have_posts() ) { // start the loop for ALL THE THINGS
+
 				// blog home
-				if (is_home()) {
-		
+				if ( is_home() ) {
+
 					// vol_before_content_column hook
 					vol_before_content_column_home_output();
-					
+
 					// da loop
-					while (have_posts()) { 
+					while ( have_posts() ) {
 						the_post();
-						get_template_part('templates/content');
+						get_template_part( 'templates/content' );
 					}
-					
+
 					vol_pagination_type(); // /inc/functions/page-nav.php
-					
+
 					// vol_after_content_column hook
 					vol_after_content_column_home_output();
-					
+
 				// Single posts
-				} elseif (is_single() && !is_attachment()) {
-		
+				} elseif ( is_single() && !is_attachment() ) {
+
 					// vol_before_content_column hook
 					vol_before_content_column_posts_output();
-								
-					$postformat = (get_post_format() ? get_post_format() : 'single');
+
+					$postformat = ( get_post_format() ? get_post_format() : 'single' );
 				
 					// da loop
-					while (have_posts()) { 
+					while (have_posts()) {
 						the_post();
-						get_template_part('templates/content', $postformat);
+						get_template_part( 'templates/content', $postformat );
 					}
-					
+
 					// vol_after_content_column hook
 					vol_after_content_column_post_output();
-					
+
 				// Pages
-				} elseif (is_page()) {
+				} elseif ( is_page() ) {
 			
 					// da loop
-					while (have_posts()) {
+					while ( have_posts() ) {
 						the_post();
-						get_template_part('templates/content', 'page');
+						get_template_part( 'templates/content', 'page' );
 					}
-			
+
 				// Search results
-				} elseif (is_search()) {
-					
-					get_template_part('templates/content', 'search');
-		
+				} elseif ( is_search() ) {
+
+					get_template_part( 'templates/content', 'search' );
+
 				// Archives including categories, tags, authors, dates, and bears. Oh my!
 				} elseif (is_archive()) {
-		
+
 					// vol_before_content_column hook
 					vol_before_content_column_archive_output();
-									
-					get_template_part('templates/content', 'archive');
-					
+
+					get_template_part( 'templates/content', 'archive' );
+
 					// vol_after_content_column hook
 					vol_after_content_column_archive_output();
-			
+
 				// Attachment pages
-				} elseif (is_attachment()) {
-				
+				} elseif ( is_attachment() ) {
+
 					// da loop
-					while (have_posts()) {
+					while ( have_posts() ) {
 						the_post();
-						get_template_part('templates/content', 'attachment');
+						get_template_part( 'templates/content', 'attachment' );
 					}
-			
+
 				// 404 error page
-				} elseif (is_404()) {
-				
+				} elseif ( is_404() ) {
+
 					// da loop
-					while (have_posts()) {
+					while ( have_posts() ) {
 						the_post();
-						get_template_part('templates/404', 'index');
+						get_template_part( 'templates/404', 'index' );
 					}
-			
+
 				// Stray template (can that even happen?) floating around? I got this.
 				} else {
-				
+
 					// da loop
-					while (have_posts()) {
+					while ( have_posts() ) {
 						the_post();
-						get_template_part('templates/content', get_post_format());
+						get_template_part( 'templates/content', get_post_format() );
 					}
-				}	
+				}
 			} else {
-				get_template_part('templates/no-results', 'index');
+				get_template_part( 'templates/no-results', 'index' );
 			}
 		?>
 	</div>
-<?php 
+<?php
 }

@@ -6,7 +6,6 @@
 
 	container = document.getElementById( 'header-menu-wrap' );
 	if ( ! container ) return;
-	
 
 	button = container.getElementsByTagName( 'span' )[0];
 	if ( 'undefined' === typeof button ) return;
@@ -34,7 +33,6 @@
 
 	s_container = document.getElementById( 'standard-menu-wrap' );
 	if ( ! s_container ) return;
-	
 
 	s_button = s_container.getElementsByTagName( 'span' )[0];
 	if ( 'undefined' === typeof s_button ) return;
@@ -72,7 +70,7 @@
 	if ( 'undefined' === typeof f_menu ) {
 		f_button.style.display = 'none';
 		return;
-	}	
+	}
 
 	if ( -1 === f_menu.className.indexOf( 'nav-menu' ) ) f_menu.className += ' nav-menu';
 	
