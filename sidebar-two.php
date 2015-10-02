@@ -19,9 +19,9 @@
 		vol_before_sidebar_2_output();
 		
 		// Display Sidebar 2 only if there is no post/page specific sidebar with content
-		$singular_sidebar_2 = get_post_meta($post->ID, '_create-sidebar-2', true);
+		$singular_sidebar_2 = get_post_meta(get_the_ID(), '_create-sidebar-2', true);
 		if ('' !== $singular_sidebar_2 || 0 !== $singular_sidebar_2) {
-			if (!dynamic_sidebar('sidebar-2-' . $post->ID)) { 
+			if (!dynamic_sidebar('sidebar-2-' . get_the_ID())) { 
 				if (!dynamic_sidebar('sidebar-2')) {
 					vol_default_widget();
 				}

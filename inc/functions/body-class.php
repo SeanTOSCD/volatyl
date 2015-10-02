@@ -99,7 +99,9 @@ add_filter('body_class', 'vol_main_layout_class');
  */
 function vol_singular_body_class($classes) {
 	global $post;
-	$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
+	if (!is_404() && !is_search()) {
+		$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
+	}
 	
 	if (!is_404() && !is_search()) {
 		$singular_body_class = get_post_meta($post->ID, '_custom-class', true);
