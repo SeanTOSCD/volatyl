@@ -96,8 +96,4 @@ function vol_wp_title( $title, $sep ) {
 
 	return $title;
 }
-<<<<<<< HEAD
 add_filter('wp_title', 'vol_wp_title', 10, 2);
-=======
-add_filter( 'wp_title', 'vol_wp_title', 10, 2 );
->>>>>>> 3eaa8fa... Update content.php
