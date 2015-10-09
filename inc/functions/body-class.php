@@ -97,28 +97,25 @@ add_filter('body_class', 'vol_main_layout_class');
  *
  * @since Volatyl 1.0
  */
-function vol_singular_body_class($classes) {
-	global $post;
-	$da_title_or_no = get_post_meta($post->ID, '_singular-title', true);
-	
-	if (!is_404() && !is_search()) {
-		$singular_body_class = get_post_meta($post->ID, '_custom-class', true);
-	}
-	
-	// add class name to the $classes array based on conditions
-	if (is_singular()) {
-	
-		// Add the body class if it exists
-		if ('' !== $singular_body_class) {
-			$classes[] = $singular_body_class;
-		}
-			
-		if (is_page() && 1 == $da_title_or_no) {
-			$classes[] = 'no-title';
-		}
-	}
-	
-	// return the $classes array
-	return $classes;
+function vol_singular_body_class( $classes ) {
+    global $post;
+
+    // get the post meta only if on a post type
+    if ( is_singular() ) {
+        $da_title_or_no = get_post_meta( $post->ID, '_singular-title', true );
+        $singular_body_class = get_post_meta( $post->ID, '_custom-class', true );
+
+        // Add the body classes if they exist
+        if ( '' !== $singular_body_class ) {
+            $classes[] = $singular_body_class;
+        }
+
+        if ( is_page() && 1 == $da_title_or_no ) {
+            $classes[] = 'no-title';
+        }
+    }
+
+    // return the $classes array
+    return $classes;
 }
-add_filter('body_class', 'vol_singular_body_class');
+add_filter( 'body_class', 'vol_singular_body_class' );
