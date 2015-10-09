@@ -22,7 +22,7 @@ add_action( 'add_meta_boxes', 'vol_add_meta_box' );
 
 // Callback for the above meta boxes. Posts and Pages share the same function.
 function vol_meta_box( $post ) {
-	global $post, $current_screen, $column_options;
+	global $post, $current_screen;
 	$the_id = get_post_custom( $post->ID );
 	$selected = isset( $the_id['_singular-column'] ) ? esc_attr( $the_id['_singular-column'][0] ) : '';
 	$custom_class = isset( $the_id['_custom-class'] ) ? esc_attr( $the_id['_custom-class'][0] ) : '';
@@ -39,6 +39,44 @@ function vol_meta_box( $post ) {
 			'name'   => '_create-sidebar-2',
 			'label'  => __( 'Create Sidebar 2:', 'volatyl' ),
 			'state'  => $create_sidebar_2
+		)
+	);
+	$column_image = '<img src="' . THEME_PATH_URI . '/inc/options/images';
+	$column_options = array(
+		'c1' => array(
+			'value' 		=> 'c1',
+			'description' 	=> __('Content (No Sidebars)', 'volatyl'),
+			'label' 		=> $column_image . '/c1.png">'
+		),
+		'c2' => array(
+			'value' 		=> 'c2',
+			'description' 	=> __('Content (Sidebars below)', 'volatyl'),
+			'label' 		=> $column_image . '/c2.png">'
+		),
+		'cs' => array(
+			'value' 		=> 'cs',
+			'description' 	=> __('Content - Sidebar', 'volatyl'),
+			'label' 		=> $column_image . '/cs.png">'
+		),
+		'sc' => array(
+			'value' 		=> 'sc',
+			'description' 	=> __('Sidebar - Content', 'volatyl'),
+			'label' 		=> $column_image . '/sc.png">'
+		),
+		'css' => array(
+			'value' 		=> 'css',
+			'description' 	=> __('Content - Sidebar - Sidebar', 'volatyl'),
+			'label' 		=> $column_image . '/css.png">'
+		),
+		'scs' => array(
+			'value' 		=> 'scs',
+			'description' 	=> __('Sidebar - Content - Sidebar', 'volatyl'),
+			'label' 		=> $column_image . '/scs.png">'
+		),
+		'ssc' => array(
+			'value' 		=> 'ssc',
+			'description' 	=> __('Sidebar - Sidebar - Content', 'volatyl'),
+			'label' 		=> $column_image . '/ssc.png">'
 		)
 	);
 
