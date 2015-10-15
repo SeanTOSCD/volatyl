@@ -66,7 +66,7 @@ function vol_get_layout() {
  * @return integer The total number of layout columns
  */
 function vol_get_column_count() {
-	$option = get_theme_mod( 'volatyl_content_layout' );
+	$option = get_theme_mod( 'volatyl_content_layout', 'sc' );
 	if ( 'c1' == $option || 'c2' == $option ) {
 		return 1;
 	} elseif ( 'sc' == $option || 'cs' == $option ) {
