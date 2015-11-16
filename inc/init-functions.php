@@ -11,10 +11,10 @@
  * @package Volatyl
  * @since Volatyl 1.0
  */
- 
+
 // Constants
 define ('THEME_NAME', 'Volatyl');
-define ('THEME_VERSION', '1.4.6');
+define ('THEME_VERSION', '1.4.7');
 define ('THEME_URI', 'http://volatylthemes.com');
 define ('THEME_PATH', get_template_directory());
 define ('THEME_PATH_CHILD', get_stylesheet_directory());
@@ -26,7 +26,7 @@ define ('THEME_FUNCTIONS', THEME_PATH . '/inc/functions');
 
 // Load pretty important files
 require_once (THEME_PATH . '/loops.php');
-require_once (THEME_PATH . '/structure.php');	 
+require_once (THEME_PATH . '/structure.php');
 require_once (THEME_PATH . '/template-tags.php');
 
 // Load site structure
@@ -63,7 +63,7 @@ if (!function_exists('vol_setup')) {
 		if (!isset($content_width)) {
 			$content_width = apply_filters( 'vol_content_width', 580 );
 		}
-		
+
 		// Translations can be filed in the /languages/ directory
 		load_theme_textdomain('volatyl', THEME_PATH . '/inc/languages');
 
@@ -72,30 +72,30 @@ if (!function_exists('vol_setup')) {
 
 		// Support for Post Thumbnails
 		add_theme_support('post-thumbnails');
-		
+
 		// Custom Menu filters
 		$menu_descriptions = apply_filters('menu_descriptions', array(
 			'header_menu_description'		=> __('Header Menu (Supports 1 drop-down level)', 'volatyl'),
 			'standard_menu_description'		=> __('Standard Menu (unlimited drop-downs)', 'volatyl'),
 			'footer_menu_description'		=> __('Footer Menu (unlimited drop-downs)', 'volatyl')
-			) 
+			)
 		);
 
-		// Register wp_nav_menu() in header. This is the only default menu.	 
+		// Register wp_nav_menu() in header. This is the only default menu.
 		register_nav_menus(array(
 			'header' => $menu_descriptions['header_menu_description']
 		));
-	
+
 		$options = get_option('vol_content_options');
-	
-		// Register wp_nav_menu() below header (standard menu) if selected	
+
+		// Register wp_nav_menu() below header (standard menu) if selected
 		if (vol_standard_menu_on()) {
 			register_nav_menus(array(
 				'standard' => $menu_descriptions['standard_menu_description']
-			)); 
+			));
 		}
-	
-		// Register wp_nav_menu() above footer (footer menu) if selected	
+
+		// Register wp_nav_menu() above footer (footer menu) if selected
 		if (vol_footer_menu_on()) {
 			register_nav_menus(array(
 				'footer' => $menu_descriptions['footer_menu_description']
@@ -111,18 +111,18 @@ add_action('after_setup_theme', 'vol_setup');
  * @since Volatyl 1.0
  */
 function vol_front_scripts() {
-	
+
 	// Default stylesheet
 	wp_enqueue_style('style', THEME_PATH_URI . '/style.css');
-	
+
 	// Navigation JS
 	wp_enqueue_script('navigation', THEME_PATH_URI . '/inc/js/navigation.js', array(), THEME_VERSION, true);
-	
+
 	// Responsive stylesheet
 	if (vol_is_responsive()) {
 		wp_enqueue_style('responsive', THEME_PATH_URI . '/responsive.css');
 	}
-	
+
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
 		wp_enqueue_script('comment-reply');
 	}
@@ -136,14 +136,14 @@ add_action('wp_enqueue_scripts', 'vol_front_scripts', 1);
  */
 function vol_back_scripts() {
 	global $wp_version;
-	
+
 	// register Volatyl Options CSS file based on WP version (new admin styles!!!)
 	if (version_compare($wp_version, '3.8', '>=')) {
 		wp_enqueue_style('theme-options-new', THEME_PATH_URI . '/inc/options/theme-options-new.css');
 	} else {
 		wp_enqueue_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
 	}
-	
+
 	// load scripts and styles on options pages
 	if ('appearance_page_volatyl_options' == get_current_screen()->id) {
 		wp_enqueue_script('jquery');
