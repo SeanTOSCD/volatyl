@@ -15,7 +15,7 @@
 <h3><?php _e('License Key Settings', 'volatyl'); ?></h3>
 <div class="instructions radius">
 	<p><?php _e('Step 1: Enter your license key.<br>Step 2: Click the "Send License Key Changes to Database" button.<br>Step 3: Click the "Activate license" button and you&rsquo;re done!', 'volatyl'); ?></p>
-	<p><?php printf(__('You can use this exact license key on as many installs as you would like. Also, your license is valid for all of eternity. If you deactivate your license or you stole %s and you don\'t have one, you will not receive updates to the Framework. In other words, the fun will not last forever!', 'volatyl'), THEME_NAME); ?></p>
+	<p><?php printf(__('You can use your license on as many installs as your purchase allows. Your license is valid for 1 year. If you deactivate your license or you do not have a valid copy of %s, and therefore you do not have a valid license, you will not receive automatic updates to the Framework.', 'volatyl'), THEME_NAME); ?></p>
 </div>
 <table class="form-table">
 	<tr valign="top">

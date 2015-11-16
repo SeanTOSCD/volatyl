@@ -43,17 +43,18 @@ add_filter('post_class', 'vol_first_post_class');
  */
 function vol_comments_only_count($count) {
 
-    // Filter the comments count in the front-end only
-    if (!is_admin()) {
-        global $id;
-        $comments_by_type = &separate_comments(get_comments('status=approve&post_id=' . $id));
-        return count($comments_by_type['comment']);
-    }
-    
-    // When in the WP-admin back end, do NOT filter comments (and pings) count.
-    else {
-        return $count;
-    }
+	// Filter the comments count in the front-end only
+	if ( !is_admin() ) {
+		global $id;
+		$status = get_comments('status=approve&post_id=' . $id );
+		$comments_by_type = separate_comments( $status );
+		return count( $comments_by_type['comment'] );
+	}
+
+	// When in the WP-admin back end, do NOT filter comments (and pings) count.
+	else {
+		return $count;
+	}
 }
 
 // Show excerpt/post link instead of [...]
@@ -95,4 +96,4 @@ function vol_wp_title( $title, $sep ) {
 
 	return $title;
 }
-add_filter('wp_title', 'vol_wp_title', 10, 2);
+add_filter( 'wp_title', 'vol_wp_title', 10, 2 );
