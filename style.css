@@ -99,7 +99,8 @@ textarea {
 	background: rgba(0,0,0,.05);
 }
 
-#menu-area-standard {
+#menu-area-standard,
+#container > .site-navigation {
 	background: rgba(0,0,0,.02);
 }
 
@@ -279,7 +280,7 @@ blockquote {
 }
 
 pre {
-	background: rgba(0,0,0,.1);
+	background: rgba(0,0,0,.03);
 	font-family: "Courier 10 Pitch", Courier, monospace;
 	padding: 1em;
 	overflow: auto;
