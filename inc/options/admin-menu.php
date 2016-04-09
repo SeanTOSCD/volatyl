@@ -11,7 +11,7 @@
  * @since Volatyl 1.0
  */
 
-if ( get_theme_mod( 'volatyl_toolbar' ) ) {
+if ( get_theme_mod( 'volatyl_toolbar', 1 ) ) {
 	function vol_toolbar( $admin_bar ) {
 		$admin_bar->add_menu( array(
 			'id'        => 'volatyl',

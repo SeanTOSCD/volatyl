@@ -187,13 +187,13 @@ function singular_widgets_init() {
 
 	// proceed if we have custom 1st sidebar items
 	if ( !empty( $sidebar_1_items ) ) {
-	
+
 		// loop through our items and build the sidebars
 		foreach ( $sidebar_1_items as $side1_id ) {
-		
+
 			// fetch the title
 			$side1_title = get_the_title( $side1_id );
-			
+
 			// build the sidebar
 			register_sidebar( array(
 				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side1_title ),
@@ -209,13 +209,13 @@ function singular_widgets_init() {
 
 	// proceed if we have custom 2nd sidebar items
 	if ( !empty( $sidebar_2_items ) ) {
-	
+
 		// loop through our items and build the sidebars
 		foreach ( $sidebar_2_items as $side2_id ) {
-		
+
 			// fetch the title
 			$side2_title = get_the_title( $side2_id );
-			
+
 			// build the sidebar
 			register_sidebar( array(
 				'name'				=> 'Sidebar 2 &#8212; ' . esc_html( $side2_title ),
@@ -248,7 +248,7 @@ function vol_meta_box_save( $post_id ) {
 		update_post_meta( $post_id, '_singular-column', esc_attr( $_POST['_singular-column'] ) );
 
 	elseif ( !isset( $_POST['_singular-column'] ) )
-		$_POST['_singular-column'] == get_theme_mod( 'volatyl_content_layout' );
+		$_POST['_singular-column'] == get_theme_mod( 'volatyl_content_layout', 'sc' );
 
 	// Allowed HTML in custom class field... which is none
 	$allowed = array();

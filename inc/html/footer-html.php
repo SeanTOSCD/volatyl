@@ -29,7 +29,7 @@ function vol_footer_element() { ?>
 		 *
 		 * If the fat footer option is selected, three widgetized columns
 		 * will display.
-		 * 
+		 *
 		 * Always hide on landing page
 		 *
 		 * @since Volatyl 1.0
@@ -62,7 +62,7 @@ function vol_footer_element() { ?>
 		<div class="site-info">
 		<?php
 			// Footer attribution
-			if ( get_theme_mod( 'volatyl_attribution' ) ) { ?>
+			if ( get_theme_mod( 'volatyl_attribution', 1 ) ) { ?>
 				<p class="attribution">
 					<?php printf( __( 'Built with %s for WordPress', 'volatyl' ), '<a href="' . THEME_URI . '">' . THEME_NAME . '</a>' ); ?>
 				</p>
@@ -88,7 +88,7 @@ if ( !function_exists( 'vol_footer_frame' ) ) {
 				</div>
 			</div>
 		<?php } else { ?>
-				<?php vol_footer_element(); ?> 
+				<?php vol_footer_element(); ?>
 			</div>
 		<?php }
 	}
