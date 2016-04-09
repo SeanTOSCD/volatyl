@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** content.php
  *
  ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
@@ -29,7 +29,7 @@ add_filter( 'post_class', 'vol_first_post_class' );
  * Comments are a collection of comments and pings (pingbacks and
  * trackbacks). When the number of comments is displayed, the sum
  * total includes all three types of comments.
- * 
+ *
  * In the comments.php file, the regular comments have been
  * separated from the pings for organizational purposes and to
  * allow users to hide pings while still displaying comments. So,
@@ -73,28 +73,14 @@ function vol_replace_excerpt( $content ) {
 }
 add_filter( 'get_the_excerpt', 'vol_replace_excerpt' );
 
-// Filters wp_title to print a neat <title> tag based on what is being viewed.
-function vol_wp_title( $title, $sep ) {
-	if ( is_feed() ) {
-		return $title;
+/**
+ * Title tag support with backwards compatibility
+ */
+if ( ! function_exists( '_wp_render_title_tag' ) ) {
+	function vol_render_title() {
+		?>
+		<title><?php wp_title( '|', true, 'right' ); ?></title>
+		<?php
 	}
-
-	global $page, $paged;
-
-	// Add the blog name
-	$title .= get_bloginfo( 'name', 'display' );
-
-	// Add the blog description for the home/front page.
-	$site_description = get_bloginfo('description', 'display');
-	if ( $site_description && ( is_home() || is_front_page() ) ) {
-		$title .= " $sep $site_description";
-	}
-
-	// Add a page number if necessary:
-	if ( ( $paged >= 2 || $page >= 2 ) && ! is_404() ) {
-		$title .= " $sep " . sprintf( __( 'Page %s', '_s' ), max( $paged, $page ) );
-	}
-
-	return $title;
+	add_action( 'wp_head', 'vol_render_title' );
 }
-add_filter( 'wp_title', 'vol_wp_title', 10, 2 );
