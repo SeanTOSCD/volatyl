@@ -100,7 +100,7 @@ textarea {
 }
 
 #menu-area-standard,
-#container > .site-navigation {
+#container > #standard-menu-wrap {
 	background: rgba(0,0,0,.02);
 }
 
