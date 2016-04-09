@@ -28,7 +28,7 @@
  * @since Volatyl 1.0
  */
 function vol_options_add_page() {
-	add_theme_page( THEME_NAME . __( ' Settings', 'volatyl' ), THEME_NAME . __( ' Settings', 'volatyl' ), 'edit_theme_options', 'volatyl_options', 'vol_options_do_page' );
+	add_theme_page( THEME_NAME, THEME_NAME, 'edit_theme_options', 'volatyl_options', 'vol_options_do_page' );
 	// Init hook options
 	register_setting( 'volatyl_hooks_options', 'vol_hooks_options', 'vol_options_validate' );
 	// Init license key
@@ -86,12 +86,12 @@ function vol_options_do_page() {
 		if ( $active_tab == 'hooks' ) {
 			$options_hooks = get_option( 'vol_hooks_options' );
 			$vhooks = volatyl_hooks();
-			?>			
+			?>
 			<form method="post" action="options.php" class="hooks-form">
 				<?php
 					settings_fields( 'volatyl_hooks_options' );
 					do_settings_sections( 'volatyl_hooks_options' );
-			
+
 					// form output for the Hooks options tab
 					require_once( THEME_OPTIONS . '/options-pages/hooks-options.php' );
 				?>
@@ -105,12 +105,12 @@ function vol_options_do_page() {
 		} elseif ( $active_tab == 'license' ) {
 			$license = get_option( 'vol_license_key' );
 			$status = get_option( 'vol_license_key_status' );
-			?>		
+			?>
 			<form method="post" action="options.php">
 				<?php
 					settings_fields( 'volatyl_license_key' );
 					do_settings_sections( 'volatyl_license_key' );
-			
+
 					// form output for the License options tab
 					require_once( THEME_OPTIONS . '/options-pages/license-options.php' );
 				?>
@@ -127,7 +127,7 @@ function vol_options_do_page() {
 		/**
 		 * Tabbed - {...?...} Settings
 		 */
-		} else { ?>	
+		} else { ?>
 			<p><?php printf( __( 'How did you get here? Get back to the %s Settings please.', 'volatyl' ), '<a href="themes.php?page=volatyl_options&tab=hooks">' . THEME_NAME . '</a>' ); ?></p>
 			<?php
 		}
@@ -152,7 +152,7 @@ function submit_hooks() { ?>
  * @since Volatyl 1.2.8
  */
 function vol_adjust_footer_admin() {
-	echo sprintf( __( 'Powered by %1$s and %2$s', 'volatyl' ), 
+	echo sprintf( __( 'Powered by %1$s and %2$s', 'volatyl' ),
 		'<a href="http://www.wordpress.org" target="_blank">WordPress</a> ',
 		'<a href="http://volatylthemes.com" target="_blank">' . THEME_NAME . '</a>'
 	);
@@ -163,7 +163,7 @@ add_filter( 'admin_footer_text', 'vol_adjust_footer_admin' );
 /**
  * Sanitize and validate all user input!
  *
- * The Volatyl Settings are built mainly with checkbox options 
+ * The Volatyl Settings are built mainly with checkbox options
  * making sanitization extremely simple.
  *
  * For all other option types, the appropriate sanitization and
@@ -182,11 +182,11 @@ function vol_options_validate( $input) {
  	 */
 	$vhooks = volatyl_hooks();
 	$hook_conditions = array( 'switch_', 'home_', 'front_', 'posts_', 'pages_', 'archive_', 'search_', '404_' );
-	
-	foreach ( $vhooks as $hook) { 
+
+	foreach ( $vhooks as $hook) {
 		if ( isset ( $input[$hook['name']] ) )
 			$input[$hook['name']] = stripslashes( $input[$hook['name']] );
-		
+
 		// Conditionals and disable option for each hook
 		foreach ( $hook_conditions as $hc) {
 			if ( !isset( $input[$hc . $hook['name']] ) )
@@ -203,9 +203,9 @@ function vol_options_validate( $input) {
  */
 function vol_sanitize_license( $new ) {
 	$old = get_option( 'vol_license_key' );
-	
+
 	if ( $old && $old != $new ) {
-	
+
 		// new license has been entered, so must reactivate
 		delete_option( 'vol_license_key_status' );
 	}
