@@ -10,6 +10,16 @@
 	Tags: white, one-column, two-columns, three-columns, left-sidebar, right-sidebar, featured-images, rtl-language-support, threaded-comments, translation-ready
 */
 
+*,
+*:before,
+*:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	-ms-word-wrap: break-word;
+	word-wrap: break-word;
+}
+
 html {
 	-webkit-text-size-adjust: 100%;
 	-ms-text-size-adjust: 100%;
@@ -228,21 +238,6 @@ a,
 
 #main-content pre {
 	word-break: normal;
-}
-
-.border-box,
-#main-content .main,
-input,
-#comment,
-textarea,
-.site-header img,
-.entry-content img,
-.featured-img,
-.comment-content img,
-.widget img {
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing:    border-box;
-	box-sizing:         border-box;
 }
 
 .clearfix:after,

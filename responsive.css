@@ -43,11 +43,6 @@
 	.scs #content {
 		width: 67.58621%;
 	}
-	#container > .site-header,
-	#container > .site-footer {
-		border-left: 0;
-		border-right: 0;
-	}
 	.landing .main #content,
 	.squeeze .main #content,
 	.landing #container #content,
@@ -100,7 +95,6 @@
 	}
 	.header-navigation.toggled .nav-menu {
 		background: #fff;
-		border: 1px solid rgba(0, 0, 0, 0.1);
 		margin: 1em 0;
 	}
 	.secondary-navigation.toggled .nav-menu {
@@ -121,12 +115,10 @@
 	.secondary-navigation .menu li ul li a {
 		padding: 1em .66667em;
 		width: 100%;
-		box-sizing: border-box;
 	}
 	.header-navigation .menu li ul a,
 	.secondary-navigation .menu li ul li a {
 		background: none;
-		border: 0;
 	}
 
 	/* all other styles */

@@ -8,11 +8,11 @@
  *
  * Volatyl supports multiple menus. If the additional menus are turned on,
  * their structures are determined here and called from the structure.php file.
- * 
+ *
  * @package Volatyl
  * @since Volatyl 1.0
  */
- 
+
 if ( !function_exists( 'vol_header_menu' ) ) {
 	function vol_header_menu() {
 		$header_menu_toggle = apply_filters( 'header_menu_toggle',  __( 'Menu', 'volatyl' ) );
@@ -26,7 +26,7 @@ if ( !function_exists( 'vol_header_menu' ) ) {
 		 * @since Volatyl 1.0
 		 */
 		if ( vol_header_menu_on() && !is_page_template( 'custom-landing.php' ) && ( true == has_nav_menu( 'header' ) ) ) { ?>
-			<nav id="header-menu-wrap" class="site-navigation header-navigation border-box">
+			<nav id="header-menu-wrap" class="site-navigation header-navigation">
 				<span class="header-menu-toggle"><?php echo $header_menu_toggle; ?></span>
 				<?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
 			</nav>
@@ -47,7 +47,7 @@ if ( !function_exists( 'vol_standard_menu' ) ) {
 		 * @since Volatyl 1.0
 		 */
 		?>
-		<nav id="standard-menu-wrap" class="site-navigation secondary-navigation standard-navigation border-box">
+		<nav id="standard-menu-wrap" class="site-navigation secondary-navigation standard-navigation">
 			<span class="standard-menu-toggle secondary-menu-toggle"><?php echo $standard_menu_toggle; ?></span>
 			<?php wp_nav_menu( array( 'theme_location' => 'standard' ) ); ?>
 		</nav>
@@ -67,7 +67,7 @@ if ( !function_exists( 'vol_footer_menu' ) ) {
 		 * @since Volatyl 1.0
 		 */
 		?>
-		<nav id="footer-menu-wrap" class="site-navigation secondary-navigation footer-navigation border-box">
+		<nav id="footer-menu-wrap" class="site-navigation secondary-navigation footer-navigation">
 			<span class="footer-menu-toggle secondary-menu-toggle"><?php echo $footer_menu_toggle; ?></span>
 			<?php wp_nav_menu( array( 'theme_location' => 'footer' ) ); ?>
 		</nav>
@@ -86,7 +86,7 @@ function vol_standard_menu_output() {
 					<?php vol_standard_menu(); ?>
 				</div>
 			</div>
-			<?php 
+			<?php
 		}
 	} else {
 		if ( vol_standard_menu_on() ) {

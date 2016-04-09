@@ -1,4 +1,4 @@
-<?php 
+<?php
 /** columns.php
  *
  ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
@@ -80,7 +80,7 @@ function vol_columns_singular() {
 			break;
 		case 'c2':
 			vol_content(); ?>
-			<div id="sidebars-wrap" class="border-box clearfix">
+			<div id="sidebars-wrap" class="clearfix">
 				<?php get_sidebar( 'one' ); get_sidebar( 'two' ); ?>
 			</div>
 			<?php
@@ -92,8 +92,8 @@ function vol_columns_singular() {
 			break;
 		case 'css':
 		case 'ssc':
-			vol_content(); 
-			get_sidebar( 'one' ); 
+			vol_content();
+			get_sidebar( 'one' );
 			get_sidebar( 'two' );
 			break;
 		case 'scs': ?>

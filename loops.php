@@ -29,7 +29,7 @@
 function vol_content() {
 	global $options;
 	?>
-	<div id="content" class="site-content border-box clearfix">
+	<div id="content" class="site-content clearfix">
 		<?php
 			if ( have_posts() ) { // start the loop for ALL THE THINGS
 
@@ -57,7 +57,7 @@ function vol_content() {
 					vol_before_content_column_posts_output();
 
 					$postformat = ( get_post_format() ? get_post_format() : 'single' );
-				
+
 					// da loop
 					while (have_posts()) {
 						the_post();
@@ -69,7 +69,7 @@ function vol_content() {
 
 				// Pages
 				} elseif ( is_page() ) {
-			
+
 					// da loop
 					while ( have_posts() ) {
 						the_post();

@@ -13,7 +13,7 @@
  */
 ?>
 
-<div id="sidebars" class="widget-area sidebar-1 border-box">
+<div id="sidebars" class="widget-area sidebar-1">
 	<?php
 		// vol_before_sidebar_1 hook
 		vol_before_sidebar_1_output();

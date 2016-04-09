@@ -42,7 +42,6 @@ add_action( 'admin_menu', 'vol_options_add_page' );
  * @since Volatyl 1.0
  */
 function vol_options_do_page() {
-	global $column_options;
 
 	// Check to see if settings are updated
 	if ( !isset( $_REQUEST['settings-updated'] ) ) {
@@ -50,7 +49,7 @@ function vol_options_do_page() {
 	}
 	?>
 	<div class="wrap volatyl-options">
-		<h2 class="vol-options-title"><?php printf( __( '%1$s %2$s Settings', 'volatyl' ), THEME_NAME, THEME_VERSION ); ?></h2>
+		<h2 class="vol-options-title"><?php echo THEME_NAME . __( ' Framework', 'volatyl' ); ?></h2>
 		<?php if ( false !== $_REQUEST['settings-updated'] ) { ?>
 			<div class="updated fade radius">
 				<p><strong><?php _e( 'Your settings have been updated.', 'volatyl' ); ?></strong></p>
@@ -164,7 +163,7 @@ add_filter( 'admin_footer_text', 'vol_adjust_footer_admin' );
  *
  * @since Volatyl 1.0
  */
-function vol_options_validate( $input) {
+function vol_options_validate( $input ) {
 	$submit = ! empty( $input['submit'] ) ? true : false;
 
 
@@ -176,7 +175,7 @@ function vol_options_validate( $input) {
 	$vhooks = volatyl_hooks();
 	$hook_conditions = array( 'switch_', 'home_', 'front_', 'posts_', 'pages_', 'archive_', 'search_', '404_' );
 
-	foreach ( $vhooks as $hook) {
+	foreach ( $vhooks as $hook ) {
 		if ( isset ( $input[$hook['name']] ) )
 			$input[$hook['name']] = stripslashes( $input[$hook['name']] );
 

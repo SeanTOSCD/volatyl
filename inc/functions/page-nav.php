@@ -49,22 +49,22 @@ if ( !function_exists( 'volatyl_content_nav' ) ) {
 		<nav role="navigation" id="<?php echo $nav_id; ?>" class="<?php echo $nav_class; ?>">
 			<?php
 				if ( is_single() ) { ?>
-					<div class="nav-previous post-nav border-box">
+					<div class="nav-previous post-nav">
 						<?php previous_post_link( '<span class="post-nav-title">' . $post_navigation['previous_post'] . '</span>%link' ); ?>
 					</div>
-					<div class="nav-next post-nav border-box">
+					<div class="nav-next post-nav">
 						<?php next_post_link( '<span class="post-nav-title">' . $post_navigation['next_post'] . '</span>%link' ); ?>
 					</div>
 					<?php
 				} elseif ( $wp_query->max_num_pages > 1 && (is_home() || is_archive() || is_search() ) ) {
 					if ( get_next_posts_link() ) { ?>
-						<div class="nav-previous border-box">
+						<div class="nav-previous">
 							<?php next_posts_link( $post_navigation['older_posts'] ); ?>
 						</div>
 						<?php
 					}
 					if ( get_previous_posts_link() ) { ?>
-						<div class="nav-next border-box">
+						<div class="nav-next">
 							<?php previous_posts_link( $post_navigation['newer_posts'] ); ?>
 						</div>
 						<?php

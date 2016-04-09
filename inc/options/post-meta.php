@@ -55,27 +55,27 @@ function vol_meta_box( $post ) {
 		),
 		'cs' => array(
 			'value' 		=> 'cs',
-			'description' 	=> __('Content - Sidebar', 'volatyl'),
+			'description' 	=> __('Content / Sidebar', 'volatyl'),
 			'label' 		=> $column_image . '/cs.png">'
 		),
 		'sc' => array(
 			'value' 		=> 'sc',
-			'description' 	=> __('Sidebar - Content', 'volatyl'),
+			'description' 	=> __('Sidebar / Content', 'volatyl'),
 			'label' 		=> $column_image . '/sc.png">'
 		),
 		'css' => array(
 			'value' 		=> 'css',
-			'description' 	=> __('Content - Sidebar - Sidebar', 'volatyl'),
+			'description' 	=> __('Content / Sidebar / Sidebar', 'volatyl'),
 			'label' 		=> $column_image . '/css.png">'
 		),
 		'scs' => array(
 			'value' 		=> 'scs',
-			'description' 	=> __('Sidebar - Content - Sidebar', 'volatyl'),
+			'description' 	=> __('Sidebar / Content / Sidebar', 'volatyl'),
 			'label' 		=> $column_image . '/scs.png">'
 		),
 		'ssc' => array(
 			'value' 		=> 'ssc',
-			'description' 	=> __('Sidebar - Sidebar - Content', 'volatyl'),
+			'description' 	=> __('Sidebar / Sidebar / Content', 'volatyl'),
 			'label' 		=> $column_image . '/ssc.png">'
 		)
 	);
@@ -106,7 +106,7 @@ function vol_meta_box( $post ) {
 	</p>
 	<p>
 		<label for="_custom-class"><?php _e( 'CSS Class: ', 'volatyl' ); ?> </label>
-		<input id="_custom-class" class="custom-class" name="_custom-class" value="<?php echo $custom_class; ?>" size="30" type="text" placeholder="<?php _e( 'No Periods! Separate by a Space', 'volatyl' ); ?>">
+		<input id="_custom-class" class="custom-class" name="_custom-class" value="<?php echo $custom_class; ?>" size="30" type="text" placeholder="<?php _e( 'Separate by space. No periods.', 'volatyl' ); ?>">
 	</p>
 	<p>
 		<?php
@@ -132,7 +132,7 @@ function vol_meta_box( $post ) {
 					<input id="_singular-title" name="_singular-title" value="<?php echo $da_title; ?>" size="30" type="checkbox" <?php checked( '1', $da_title, '1' ); ?>>
 				</span>
 				<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
-					<?php _e( 'Check this option if you&rsquo;d like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep SEO in mind. Your default title is an H1. It&rsquo;s best that you rebuild it somewhere in your content if you use this option.', 'volatyl' ); ?>
+					<?php _e( "Check this option if you would like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep Search Engine Optimization in mind. Your default title is an H1. It's best that you rebuild it somewhere in your content if you use this option.", 'volatyl' ); ?>
 				</span>
 			</p>
 			<?php
@@ -198,7 +198,7 @@ function singular_widgets_init() {
 			register_sidebar( array(
 				'name'				=> 'Sidebar 1 &#8212; ' . esc_html( $side1_title ),
 				'id'				=> 'sidebar-1-' . absint( $side1_id ),
-				'description'   	=> sprintf( __( 'This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl' ), esc_html( $side1_title ) ),
+				'description'   	=> sprintf( __( 'This sidebar is specific to the Post/Page titled "%s." Sidebar 1 will always be the leftmost sidebar, the first sidebar in the HTML flow.', 'volatyl' ), esc_html( $side1_title ) ),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',
@@ -220,7 +220,7 @@ function singular_widgets_init() {
 			register_sidebar( array(
 				'name'				=> 'Sidebar 2 &#8212; ' . esc_html( $side2_title ),
 				'id'				=> 'sidebar-2-' . absint( $side2_id ),
-				'description'   	=> sprintf( __( 'This sidebar is specific to the Post/Page titled "%s." Sidebar 2 will always be the leftmost sidebar, first in the HTML flow.', 'volatyl' ), esc_html( $side2_title ) ),
+				'description'   	=> sprintf( __( 'This sidebar is specific to the Post/Page titled "%s." Sidebar 2 will always be the rightmost sidebar, the last sidebar in the HTML flow.', 'volatyl' ), esc_html( $side2_title ) ),
 				'before_widget' 	=> '<aside id="%1$s" class="widget %2$s">',
 				'after_widget' 		=> '</aside>',
 				'before_title' 		=> '<h4 class="widget-title">',

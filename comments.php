@@ -58,10 +58,10 @@ if ( post_password_required() ) {
 
 				<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { // Are there comments? ?>
 					<nav role="navigation" id="comment-nav-above" class="site-navigation comment-navigation clearfix">
-						<div class="nav-previous comment-nav border-box">
+						<div class="nav-previous comment-nav">
 							<?php previous_comments_link($comments_text['older_comments']); ?>
 						</div>
-						<div class="nav-next comment-nav border-box">
+						<div class="nav-next comment-nav">
 							<?php next_comments_link($comments_text['newer_comments']); ?>
 						</div>
 					</nav>
@@ -88,16 +88,16 @@ if ( post_password_required() ) {
 
 							// Here are the trackbacks and pingbacks
 							wp_list_comments( array( 'callback' => 'vol_comment', 'type' => 'pings' ) );
-						} // end postpings check 
+						} // end postpings check
 					?>
 				</ol><!-- .commentlist -->
 
 				<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) { // Are there comments? ?>
 					<nav role="navigation" id="comment-nav-below" class="site-navigation comment-navigation clearfix">
-						<div class="nav-previous comment-nav border-box">
+						<div class="nav-previous comment-nav">
 							<?php previous_comments_link( $comments_text['older_comments'] ); ?>
 						</div>
-						<div class="nav-next comment-nav border-box">
+						<div class="nav-next comment-nav">
 							<?php next_comments_link( $comments_text['newer_comments'] ); ?>
 						</div>
 					</nav>
@@ -121,7 +121,7 @@ if ( post_password_required() ) {
 			 * defaults like the <textarea> label or the "cancel reply" link when
 			 * replying to another person's comment.
 			 *
-			 * All of these have a default value, however, they can be changed. 
+			 * All of these have a default value, however, they can be changed.
 			 * Below are the changes implemented by Volatyl.
 			 *
 			 * If you want to overload this in a child theme then you can

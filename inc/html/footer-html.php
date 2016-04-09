@@ -37,19 +37,19 @@ function vol_footer_element() { ?>
 		if ( !is_page_template( 'custom-landing.php' ) && ( is_active_sidebar( 'footer-left' ) || is_active_sidebar( 'footer-middle' ) || is_active_sidebar( 'footer-right' ) ) ) : ?>
 			<div id="fat-footer" class="clearfix">
 				<?php if ( is_active_sidebar( 'footer-left' ) ) { ?>
-					<div class="footer-widget border-box">
+					<div class="footer-widget">
 						<?php dynamic_sidebar( 'footer-left' ); ?>
 					</div>
 				<?php } ?>
 
 				<?php if ( is_active_sidebar( 'footer-middle' ) ) { ?>
-						<div class="footer-widget border-box">
+						<div class="footer-widget">
 							<?php dynamic_sidebar( 'footer-middle' ); ?>
 						</div>
 				<?php } ?>
 
 				<?php if ( is_active_sidebar( 'footer-right' ) ) { ?>
-					<div class="footer-widget border-box">
+					<div class="footer-widget">
 						<?php dynamic_sidebar( 'footer-right' ); ?>
 					</div>
 				<?php } ?>

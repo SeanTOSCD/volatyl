@@ -92,10 +92,10 @@ $attachment_navigation = apply_filters( 'attachment_navigation', array(
 			?>
 		</div>
 		<nav class="site-navigation image-navigation clearfix">
-			<div class="nav-previous image-nav border-box">
+			<div class="nav-previous image-nav">
 				<?php previous_image_link( false, $attachment_navigation['previous_image'] ); ?>
 			</div>
-			<div class="nav-next image-nav border-box">
+			<div class="nav-next image-nav">
 				<?php next_image_link( false, $attachment_navigation['next_image'] ); ?>
 			</div>
 		</nav>
