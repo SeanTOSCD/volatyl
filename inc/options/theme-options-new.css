@@ -1,10 +1,6 @@
 .volatyl-options {
 	max-width: 960px;
 }
-.volatyl-options .input-group {
-	display: block;
-	margin-bottom: 6px;
-}
 .volatyl-options form:not(.hooks-form) .notes {
 	display: block;
 	margin-top: 10px;
@@ -39,21 +35,6 @@ h2 .nav-tab {
 }
 
 /* Form content formattings */
-.volatyl-options form h3 {
-	background: #fff;
-	font-size: 18px;
-	text-shadow: white 0 1px 0;
-	font-weight: normal;
-	padding: 10px;
-	margin-top: 30px;
-	border-left: 4px solid #7ad03a;
-	-webkit-border-radius: 3px;
-	-moz-border-radius: 3px;
-	border-radius: 3px;
-	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-	-moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-}
 .volatyl-options hr {
 	clear: both;
 	background: rgba(0, 0, 0, .05);
@@ -64,17 +45,8 @@ h2 .nav-tab {
 .volatyl-options ul.list {
 	margin-top: 0;
 }
-
-/* For multiple radio buttons and labels on one line, create spacing */
-.volatyl-options .label-space,
-.volatyl-options .logo-button {
-	margin-right: 20px;
-}
 .volatyl-options .hook-label-space {
 	margin-right: 12px;
-}
-.volatyl-options .checkbox-space {
-	margin-right: 3px;
 }
 
 /* Additional options information */
@@ -105,18 +77,6 @@ h2 .nav-tab {
 }
 .volatyl-options .instructions p:last-of-type {
 	margin-bottom: 0;
-}
-#upload_logo_preview {
-	display: inline-block;
-	background: #fff;
-	padding: 1em;
-	border-radius: 5px;
-	-webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-	-moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, .1);
-}
-#delete_logo_button {
-	color: red;
 }
 
 /* Hooks form formatting */
@@ -189,24 +149,24 @@ h2 .nav-tab {
 	.save-settings {
 		padding: 5px 10px;
 		margin: 20px 0 5px;
-	}	
+	}
 	h2.nav-tab-wrapper {
 		padding: 10px 0 0;
 		width: 100%;
-	}	
+	}
 	h2 .nav-tab {
 		display: block;
 		margin: 0;
-	}	
+	}
 	.nav-tab-active,
 	.nav-tab-active:hover {
 		border-width: 1px 1px 0;
-	}	
+	}
 	.input-group,
 	.input-hook-conditions {
 		display: block;
 		margin-bottom: 10px;
-	}	
+	}
 	.hook-field,
 	.custom-class {
 		max-width: 100%;
