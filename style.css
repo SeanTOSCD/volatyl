@@ -82,22 +82,11 @@ pre,
 	line-height: 1.6em;
 }
 
-.header-navigation .menu li ul a,
-.secondary-navigation .menu li ul li a,
-.comments-content > ol > li.comment,
-.comments-content > ol > li.pingback,
-.children > li > .comment,
-.comment-avatar,
-.wp-caption,
 abbr,
 acronym,
 pre,
-.form-allowed-tags,
-.note,
 input,
-textarea,
-#comment,
-.cancel-reply {
+textarea {
 	border: 1px solid rgba(0,0,0,.1);
 }
 
@@ -378,10 +367,6 @@ td {
 
 #main-content {
 	padding: 1.33334em 0;
-}
-
-#container > .site-header {
-	border-width: 0 1px 1px;
 }
 
 .site-footer {
@@ -691,7 +676,6 @@ h5,
 }
 
 #comments .children > li > .comment {
-	border-width: 0 0 0 1px;
 	padding-left: 1em;
 }
 
