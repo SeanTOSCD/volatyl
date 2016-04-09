@@ -622,12 +622,12 @@ h5,
 	border-width: 1px 0 0;
 	border-style: solid;
 }
-	
+
 .pagination {
 	position: relative;
 	padding: 1.33334em 0;
 }
- 
+
 .pagination span,
 .pagination a {
 	float: left;
@@ -660,7 +660,7 @@ h5,
 	float: left;
 	padding-right: .66667em;
 }
- 
+
 .nav-next {
 	float: right;
 	padding-left: .66667em;
@@ -975,7 +975,7 @@ select {
 .ssc #content {
 	float: right;
 	padding: 1.33334em;
-} 
+}
 
 .ssc .pagination,
 .sc .pagination {

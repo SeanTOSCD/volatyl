@@ -51,7 +51,7 @@ function volatyl_customize_register( $wp_customize ) {
 	) );
 
 	// Framework updates
-	$wp_customize->add_setting( 'volatyl_framework_updates', array( 
+	$wp_customize->add_setting( 'volatyl_framework_updates', array(
 		'default'           => 1,
 		'sanitize_callback' => 'volatyl_sanitize_checkbox'
 	) );
@@ -108,13 +108,13 @@ function volatyl_customize_register( $wp_customize ) {
 
 	// Content Layout
 	$wp_customize->add_setting( 'volatyl_content_layout', array(
-		'default'           => 'sc', 
+		'default'           => 'sc',
 		'sanitize_callback' => 'volatyl_sanitize_content_layout'
 	) );
 	$wp_customize->add_control( 'volatyl_content_layout', array(
 		'label'    => __( 'Choose a content layout:', 'shoppette' ),
 		'section'  => 'volatyl_design',
-		'priority'  => 20,
+		'priority' => 20,
 		'type'     => 'select',
 		'choices'  => array(
 			'c1'   => __( 'Content (no sidebars)', 'volatyl' ),
@@ -487,7 +487,7 @@ function volatyl_customize_register( $wp_customize ) {
 add_action( 'customize_register', 'volatyl_customize_register' );
 
 
-/** 
+/**
  * Sanitize checkbox options
  */
 function volatyl_sanitize_checkbox( $input ) {
@@ -508,7 +508,7 @@ function volatyl_sanitize_content_layout( $input ) {
 		'scs' => __( 'Sidebar / Content / Sidebar', 'volatyl' ),
 		'ssc' => __( 'Sidebar / Sidebar / Content', 'volatyl' ),
 	);
-	
+
 	if ( array_key_exists( $input, $valid ) ) {
 		return $input;
 	} else {
@@ -526,7 +526,7 @@ function volatyl_customize_preview_js() {
 add_action( 'customize_preview_init', 'volatyl_customize_preview_js' );
 
 
-/** 
+/**
  * Add Customizer UI styles to the <head> only on Customizer page
  */
 function volatyl_customizer_styles() { ?>
