@@ -16,14 +16,7 @@
 
 
 /**
- * Load the Volatyl Settings page
- *
- * Creates the Volatyl Settings page located in the 'Appearance'
- * section of the dashboard. The Volatyl Settings use a tabbed
- * structure with one or more sections on each tab.
- *
- * For each clearly defined section of options, register_setting()
- * is used to establish the options.
+ * Load the Volatyl admin page
  *
  * @since Volatyl 1.0
  */
