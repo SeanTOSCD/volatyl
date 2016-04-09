@@ -2,14 +2,13 @@
  *
  * This file is called from the /inc/init-functions.php file
  * specifically for core Volatyl responsive CSS. Whether or
- * not this stylesheet is used is determined by the Responsive
- * CSS option in the Volatyl General Settings.
+ * not this stylesheet is used is determined by the Enable Responsive
+ * CSS option in the Customizer  under the Volatyl Design Settings section.
  *
  * To alter this CSS in a child theme, simply write new responsive
  * CSS in your child theme's style.css file. To completely disable
- * this responsive CSS to use your own, use the General Settings
- * option to disable this CSS and then start from scratch in your
- * child theme's style.css file.
+ * this responsive CSS to use your own, disable the responsive CSS
+ * and then start from scratch in your child theme's style.css file.
 -------------------------------------------------------------- */
 
 @media screen and (max-width: 960px)
