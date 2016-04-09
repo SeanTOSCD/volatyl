@@ -6,8 +6,8 @@
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * Move theme option values from old location to new location for for
- * Volatyl 2.0. Only run if the current theme version is older than
+ * Move theme option values from old location to new location for
+ * Volatyl 2.0. Only runs if the current theme version is older than
  * version 2.0.
  *
  * @package Volatyl
