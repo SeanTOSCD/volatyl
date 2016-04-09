@@ -82,10 +82,6 @@ pre,
 	line-height: 1.6em;
 }
 
-#header-area,
-.site-footer,
-#container > .site-header,
-#menu-area-standard,
 .header-navigation .menu li ul a,
 .secondary-navigation .menu li ul li a,
 .comments-content > ol > li.comment,
@@ -97,8 +93,6 @@ abbr,
 acronym,
 pre,
 .form-allowed-tags,
-.default-widget,
-.paging-navigation,
 .note,
 input,
 textarea,
@@ -112,13 +106,11 @@ textarea,
 .comments-content > ol > li.comment,
 .comments-content > ol > li.pingback,
 .wp-caption,
-.form-allowed-tags,
-.default-widget {
+.form-allowed-tags {
 	background: rgba(0,0,0,.05);
 }
 
-#menu-area-standard,
-#fat-footer .default-widget {
+#menu-area-standard {
 	background: rgba(0,0,0,.02);
 }
 
@@ -139,9 +131,7 @@ pre,
 }
 
 abbr,
-acronym,
-#header-area,
-#menu-area-standard {
+acronym {
 	border-width: 0 0 1px;
 }
 
@@ -396,7 +386,6 @@ td {
 
 .site-footer {
 	padding: .66667em 1.33334em;
-	border-width: 1px 0 0;
 }
 
 
@@ -439,10 +428,6 @@ td {
 
 .secondary-menu-toggle {
 	padding: 1em .66667em;
-}
-
-#menu-area-footer {
-	border-width: 1px 0 0;
 }
 
 .header-navigation,
@@ -618,11 +603,6 @@ h5,
 	border: none;
 }
 
-.paging-navigation {
-	border-width: 1px 0 0;
-	border-style: solid;
-}
-
 .pagination {
 	position: relative;
 	padding: 1.33334em 0;
@@ -788,10 +768,6 @@ cite.fn {
 
 .widget li {
 	margin-bottom: .66667em;
-}
-
-.default-widget {
-	padding: 1em;
 }
 
 
