@@ -34,8 +34,8 @@ input,
 textarea,
 .cancel-reply {
 	font-size: 15px;
-	line-height: 1.6em;
-	font-family: Georgia, "Times New Roman", Times, serif;
+	line-height: 1.6;
+	font-family: "Open Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 	margin: 0;
 }
 
@@ -62,7 +62,6 @@ h6,
 .entry-title a,
 .comments-title,
 cite.fn {
-	font-weight: normal;
 	margin: 0 0 1em;
 }
 
@@ -97,21 +96,7 @@ acronym,
 pre,
 input,
 textarea {
-	border: 1px solid rgba(0,0,0,.1);
-}
-
-#header-area,
-#container > .site-header,
-.comments-content > ol > li.comment,
-.comments-content > ol > li.pingback,
-.wp-caption,
-.form-allowed-tags {
-	background: rgba(0,0,0,.05);
-}
-
-#menu-area-standard,
-#container > #standard-menu-wrap {
-	background: rgba(0,0,0,.02);
+	border: 1px solid #e5e5e5;
 }
 
 .nav-previous,
@@ -350,23 +335,26 @@ td {
 	width: 100%;
 }
 
+.main {
+	padding: 1.33334em;
+}
+
 .main,
 #container {
-	width: 960px;
+	width: 100%;
+	max-width: 1140px;
 	margin: 0 auto;
 }
 
 .inner {
 	position: relative;
-	padding: .66667em 1.33334em;
 }
 
-#main-content {
-	padding: 1.33334em 0;
-}
-
-.site-footer {
-	padding: .66667em 1.33334em;
+#container .site-header,
+#container #main-content,
+#container .site-footer,
+#container .secondary-navigation {
+	padding: 1.33334em;
 }
 
 
@@ -397,6 +385,11 @@ td {
 	right: 0;
 }
 
+#container .header-navigation {
+	top: 2.8em;
+	right: 1.33334em;
+}
+
 
 /* =Menus
 -------------------------------------------------------------- */
@@ -405,15 +398,6 @@ td {
 .secondary-menu-toggle {
 	display: none;
 	cursor: pointer;
-}
-
-.secondary-menu-toggle {
-	padding: 1em .66667em;
-}
-
-.header-navigation,
-.secondary-navigation {
-	padding: 0 .66667em;
 }
 
 .menu {
@@ -430,7 +414,15 @@ td {
 	position: relative;
 	display: inline-block;
 	list-style: none;
-	padding: 1em .66667em;
+}
+
+.menu > li {
+	margin-right: 1rem;
+}
+
+.menu > li > a {
+	display: inline-block;
+	line-height: 1.6;
 }
 
 .header-navigation .menu li {
@@ -457,10 +449,11 @@ td {
 .header-navigation .menu li ul,
 .secondary-navigation .menu li ul {
 	position: absolute;
-	padding-left: 0;
+	padding: .6em 0 0 0;
 	top: 100%;
 	left: 0;
 	z-index: 999;
+	cursor: pointer;
 }
 
 .secondary-navigation .menu li ul li ul {
@@ -490,12 +483,9 @@ td {
 .header-navigation .menu li ul a,
 .secondary-navigation .menu li ul li a {
 	background: #fafafa;
+	font-size: .86667em;
 	padding: .66667em;
 	width: 180px;
-}
-
-.header-navigation .menu li ul a {
-	width: 120px;
 }
 
 
@@ -639,7 +629,6 @@ h5,
 
 .comments-content > ol > li,
 .form-allowed-tags {
-	padding: 1em;
 	margin: 1em 0;
 }
 
@@ -734,16 +723,6 @@ cite.fn {
 
 .footer-widget .widget {
 	margin-bottom: 2em;
-}
-
-.widget,
-.attribution {
-	font-size: .86667em;
-	line-height: 1.6em;
-}
-
-.widget h4 {
-	font-weight: normal;
 }
 
 .widget li {
@@ -920,7 +899,6 @@ select {
 .css .sidebar-2,
 .ssc .sidebar-2 {
 	float: left;
-	padding: 1.33334em;
 }
 
 .c2 .sidebar-2,
@@ -930,7 +908,6 @@ select {
 .scs .sidebar-2,
 .ssc #content {
 	float: right;
-	padding: 1.33334em;
 }
 
 .ssc .pagination,
@@ -940,7 +917,6 @@ select {
 
 .one-col #content {
 	width: 100%;
-	padding: 1.33334em;
 }
 
 .c2 .sidebar-1,
@@ -949,42 +925,50 @@ select {
 }
 
 .two-col #content {
-	width: 620px;
+	width: 65%;
 }
 
 .two-col #sidebars {
-	width: 340px;
+	width: 31.3%;
+}
+
+.three-col #sidebars {
+	width: 22.5%;
 }
 
 .css #content,
 .ssc #content {
-	width: 528px;
+	width: 55%;
 }
 
-.three-col #sidebars {
-	width: 216px;
+.css #content,
+.scs #content,
+.scs #sidebars.sidebar-1,
+.ssc #sidebars {
+	padding-right: 1.33334em;
 }
 
-.scs #sidebars {
-	width: 235px;
+.css #sidebars,
+.scs #content,
+.scs #sidebars.sidebar-2,
+.ssc #content {
+	padding-left: 1.33334em;
 }
 
 .scs #wrap {
-	width: 725px;
-	padding: 0;
+	width: 75.52083%;
 }
 
 .scs #content {
-	width: 490px;
+	width: 67.58621%;
 }
 
-#main-content #content {
-	padding-top: 0;
-	padding-bottom: 1.33334em;
+.scs #sidebars.sidebar-1 {
+	width: 32.41379%;
 }
 
-#main-content #sidebars {
-	padding-top: .66667em;
+.scs #sidebars.sidebar-2 {
+	width: 24.47917%;
 }
 
 
@@ -1004,20 +988,21 @@ select {
 
 .landing #main-content .main,
 .landing #container #main-content {
-	width: 650px;
+	width: 100%;
+	max-width: 745px;
 	margin: 0 auto;
 }
 
 .squeeze #main-content .main,
 .squeeze #main-content {
-	width: 850px;
+	width: 100%;
+	max-width: 850px;
 	margin: 0 auto;
 }
 
 .landing #content,
 .squeeze #content {
 	width: 100%;
-	padding-bottom: 0;
 }
 
 

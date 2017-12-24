@@ -11,60 +11,25 @@
  * and then start from scratch in your child theme's style.css file.
 -------------------------------------------------------------- */
 
-@media screen and (max-width: 960px)
-{
-	.main,
-	#container {
-		width: 100%;
-	}
-	.two-col #content {
-		width: 65%;
-	}
-	.two-col #sidebars {
-		width: 35%;
-	}
-	.css #content,
-	.ssc #content {
-		width: 55%;
-	}
-	.three-col #sidebars {
-		width: 22.5%;
-	}
-	.scs #sidebars.sidebar-1 {
-		width: 32.41379%;
-	}
-	.scs #sidebars.sidebar-2 {
-		width: 24.47917%;
-	}
-	.scs #wrap {
-		width: 75.52083%;
-		padding: 0;
-	}
-	.scs #content {
-		width: 67.58621%;
-	}
-	.landing .main #content,
-	.squeeze .main #content,
-	.landing #container #content,
-	.squeeze #container #content {
-		width: 100%;
-	}
-}
-
-@media screen and (max-width: 850px)
-{
-	.squeeze #main-content .main,
-	.squeeze #main-content {
-		width: 100%;
-	}
-}
-
 @media screen and (max-width: 768px)
 {
 
 	/* =Responsive Menus
 	-------------------------------------------------------------- */
 
+	#menu-area-standard .main,
+	#menu-area-footer .main,
+	#container #standard-menu-wrap,
+	#container #footer-menu-wrap {
+		border-width: 1px 0;
+		border-style: solid;
+		border-color: #e5e5e5;
+	}
+	.header-menu-toggle,
+	.standard-menu-toggle,
+	.footer-menu-toggle {
+		text-align: center;
+	}
 	.header-menu-toggle,
 	.standard-menu-toggle,
 	.footer-menu-toggle,
@@ -86,7 +51,7 @@
 	.header-navigation .menu li ul,
 	.secondary-navigation .menu li ul {
 		position: static;
-		text-align: center;
+		text-align: left;
 		padding: 0;
 	}
 	.header-navigation ul,
@@ -95,15 +60,12 @@
 	}
 	.header-navigation.toggled .nav-menu {
 		background: #fff;
-		margin: 1em 0;
-	}
-	.secondary-navigation.toggled .nav-menu {
-		margin: 0 0 1em;
 	}
 	.header-navigation .menu li,
 	.secondary-navigation .menu li {
 		display: block;
 		padding: 0;
+		margin-right: 0;
 	}
 	.header-navigation .menu li ul li,
 	.secondary-navigation .menu li ul li {
@@ -113,19 +75,20 @@
 	.secondary-navigation .menu a,
 	.header-navigation .menu li ul a,
 	.secondary-navigation .menu li ul li a {
-		padding: 1em .66667em;
+		padding: .66667em 0;
 		width: 100%;
 	}
 	.header-navigation .menu li ul a,
 	.secondary-navigation .menu li ul li a {
 		background: none;
+		padding-left: .66667em;
 	}
 
 	/* all other styles */
 
-	.landing #main-content .main,
-	.landing #container #main-content {
-		width: 100%;
+	.three-col #content,
+	.three-col #sidebars {
+		padding: 0;
 	}
 	.landing #main-content .main,
 	.landing #container #main-content {
@@ -151,7 +114,6 @@
 	}
 	.site-header {
 		text-align: center;
-		padding-bottom: 1em;
 	}
 	.site-description {
 		margin-bottom: .66667em;
@@ -169,9 +131,6 @@
 
 @media screen and (max-width: 480px)
 {
-	.site-footer {
-		text-align: center;
-	}
 	img[class*="wp-image-"] {
 		float: none;
 		display: block;
