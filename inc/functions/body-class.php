@@ -24,10 +24,14 @@
 function vol_page_template_body_class( $classes ) {
 
 	// add class name to the $classes array based on conditions
-	if ( is_page_template( 'custom-landing.php' ) ) {
-		$classes[] = "landing";
-	} elseif ( is_page_template( 'custom-squeeze.php' ) ) {
-		$classes[] = "squeeze";
+	if ( is_page_template( 'page_templates/custom-landing.php' ) ) {
+		$classes[] = "landing vol-landing"; // non-branded class for back compat
+	} elseif ( is_page_template( 'page_templates/custom-squeeze.php' ) ) {
+		$classes[] = "squeeze vol-squeeze"; // non-branded class for back compat
+	} elseif ( is_page_template( 'page_templates/custom-full-width.php' ) ) {
+		$classes[] = "vol-full-width";
+	} elseif ( is_page_template( 'page_templates/custom-focus.php' ) ) {
+		$classes[] = "vol-focus";
 	}
 
 	// return the $classes array
@@ -132,17 +136,17 @@ add_filter( 'body_class', 'vol_singular_body_class' );
  */
 function vol_edd_body_classes( $classes ) {
 	global $post;
-	
+
 	// Add .store-item body class for individual download pages
 	if ( 'download' === get_query_var( 'post_type' ) ) {
 		$classes[] = 'store-item';
 	}
-	
+
 	// Add .store-front body class for Store Front page template
-	if ( is_page_template( 'custom-store-front.php' ) ) {
+	if ( is_page_template( 'page_templates/custom-store-front.php' ) ) {
 		$classes[] = "store-front";
 	}
-	
+
 	// return the $classes array
 	return $classes;
 }

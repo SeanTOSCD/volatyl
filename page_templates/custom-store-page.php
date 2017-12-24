@@ -16,7 +16,7 @@ get_header();
 vol_html_before_content();
 
 // Set by the post meta layout selector on Pages, Posts, and Downloads
-do_action('main_content_singular');
+do_action( 'main_content_singular' );
 
 vol_html_after_content();
 get_footer();

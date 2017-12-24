@@ -22,7 +22,7 @@
  * and attachment files. "main_content_custom_layout" is a blank canvas
  * used for custom templates. More conditions can be added to accomodate more
  * layout options!
- * 
+ *
  * @package Volatyl
  * @since Volatyl 1.0
  */
@@ -32,7 +32,7 @@ function volatyl() {
 
 	get_header();
 	vol_html_before_content();
-	if ( is_page_template( 'custom-layout.php' ) )
+	if ( is_page_template( 'page_templates/custom-layout.php' ) )
 
 		// Activated when the "Custom Layout" Template is used on a Page
 		do_action( 'main_content_custom_layout' );

@@ -34,7 +34,7 @@ function vol_footer_element() { ?>
 		 *
 		 * @since Volatyl 1.0
 		 */
-		if ( !is_page_template( 'custom-landing.php' ) && ( is_active_sidebar( 'footer-left' ) || is_active_sidebar( 'footer-middle' ) || is_active_sidebar( 'footer-right' ) ) ) : ?>
+		if ( !is_page_template( 'page_templates/custom-landing.php' ) && ( is_active_sidebar( 'footer-left' ) || is_active_sidebar( 'footer-middle' ) || is_active_sidebar( 'footer-right' ) ) ) : ?>
 			<div id="fat-footer" class="clearfix">
 				<?php if ( is_active_sidebar( 'footer-left' ) ) { ?>
 					<div class="footer-widget">

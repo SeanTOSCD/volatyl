@@ -42,7 +42,7 @@ function vol_header_element() { ?>
 			}
 
 			// Show site tagline? Always hide on landing page
-			if ( vol_site_tagline_on() && !is_page_template( 'custom-landing.php' ) ) { ?>
+			if ( vol_site_tagline_on() && !is_page_template( 'page_templates/custom-landing.php' ) ) { ?>
 				<h2 class="site-description">
 					<?php echo esc_attr_e( get_bloginfo( 'description' ) ); ?>
 				</h2>

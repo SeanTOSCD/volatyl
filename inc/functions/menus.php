@@ -25,7 +25,7 @@ if ( !function_exists( 'vol_header_menu' ) ) {
 		 *
 		 * @since Volatyl 1.0
 		 */
-		if ( vol_header_menu_on() && !is_page_template( 'custom-landing.php' ) && ( true == has_nav_menu( 'header' ) ) ) { ?>
+		if ( vol_header_menu_on() && !is_page_template( 'page_templates/custom-landing.php' ) && ( true == has_nav_menu( 'header' ) ) ) { ?>
 			<nav id="header-menu-wrap" class="site-navigation header-navigation">
 				<span class="header-menu-toggle"><?php echo $header_menu_toggle; ?></span>
 				<?php wp_nav_menu( array( 'theme_location' => 'header' ) ); ?>
