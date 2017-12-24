@@ -142,13 +142,20 @@ add_action('wp_enqueue_scripts', 'vol_front_scripts', 1);
  * @since Volatyl 1.0
  */
 function vol_back_scripts() {
-	global $wp_version;
+	global $wp_version, $pagenow;
 
 	// register Volatyl Options CSS file based on WP version (new admin styles!!!)
 	if (version_compare($wp_version, '3.8', '>=')) {
 		wp_enqueue_style('theme-options-new', THEME_PATH_URI . '/inc/options/theme-options-new.css');
 	} else {
 		wp_enqueue_style('theme-options', THEME_PATH_URI . '/inc/options/theme-options.css');
+	}
+
+	if ( in_array( $pagenow, array( 'post.php', 'post-new.php' ) ) ) {
+		wp_enqueue_script( 'jquery-ui-tooltip' );
+
+		// Metabox JS
+		wp_enqueue_script( 'theme-meta', THEME_PATH_URI . '/inc/options/theme-meta.js', array( 'jquery' ), THEME_VERSION, true );
 	}
 }
 add_action('admin_enqueue_scripts', 'vol_back_scripts');
