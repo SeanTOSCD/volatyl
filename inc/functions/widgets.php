@@ -33,6 +33,24 @@ function vol_widgets_init() {
 		'before_title'  => '<h4 class="widget-title">',
 		'after_title'   => '</h4>',
 	) );
+	register_sidebar(array(
+		'name' 			=> __( 'Downloads/Store Sidebar 1', 'volatyl' ),
+		'id' 			=> 'download-sidebar-1',
+		'description'   => __( 'This area replaces Sidebar 1 on store related pages.', 'volatyl' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' 	=> '</aside>',
+		'before_title' 	=> '<h4 class="widget-title">',
+		'after_title' 	=> '</h4>',
+	));
+	register_sidebar(array(
+		'name' 			=> __( 'Downloads/Store Sidebar 2', 'volatyl' ),
+		'id' 			=> 'download-sidebar-2',
+		'description'   => __( 'This area replaces Sidebar 2 on store related pages.', 'volatyl' ),
+		'before_widget' => '<aside id="%1$s" class="widget %2$s">',
+		'after_widget' 	=> '</aside>',
+		'before_title' 	=> '<h4 class="widget-title">',
+		'after_title' 	=> '</h4>',
+	));
 
 	// Fat (widgetized) footer
 	register_sidebar( array(

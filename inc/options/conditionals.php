@@ -424,3 +424,13 @@ function vol_page_comments_on() {
 		return false;
 	}
 }
+
+
+/**
+ * Download Comments
+ *
+ * @return bool The option checkbox state
+ */
+function vol_download_comments_on() {
+	return get_theme_mod( 'volatyl_download_comments', 0 ) ? true : false;
+}

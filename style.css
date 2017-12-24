@@ -76,7 +76,8 @@ h2 {
 .site-content h6,
 blockquote p,
 .comment-date,
-.comment-date a {
+.comment-date a,
+.edd-variable-pricing-desc {
 	color: #666;
 }
 
@@ -86,7 +87,8 @@ pre,
 .comment-reply-link,
 .wp-caption p,
 .form-allowed-tags,
-.form-allowed-tags code {
+.form-allowed-tags code,
+.edd-variable-pricing-desc {
 	font-size: .86667em;
 	line-height: 1.6em;
 }
@@ -122,7 +124,8 @@ acronym {
 
 .entry-header h1,
 .entry-header h2,
-.entry-title {
+.entry-title,
+.edd-sidebar-price {
 	margin: 0 0 .33334em;
 }
 
@@ -166,7 +169,8 @@ address,
 	margin: 0 0 1.46667em;
 }
 
-.note {
+.note,
+.edd_has_purchased {
 	background: lightyellow;
 	padding: 1em;
 }
@@ -182,13 +186,15 @@ a:hover {
 a,
 .site-title a:hover,
 .menu a:hover,
-#content .entry-header a:hover {
+#content .entry-header a:hover,
+.product-title:hover {
 	color: #367D98;
 }
 
 .entry-header h1 a,
 .entry-header h2 a,
-.entry-title a {
+.entry-title a,
+.product-title {
 	color: #000;
 	text-decoration: none;
 }
@@ -533,7 +539,8 @@ td {
 }
 
 h1,
-h2 {
+h2,
+.edd-sidebar-price {
 	font-size: 2em;
 	line-height: 1.4em;
 }
@@ -545,7 +552,8 @@ h3 {
 
 h4,
 h5,
-.widget h4.widget-title {
+.widget h4.widget-title,
+.product-title h2 {
 	font-size: 1.2em;
 	line-height: 1.5em;
 }
@@ -897,7 +905,11 @@ select {
 .c2 .sidebar-1,
 .three-col .sidebar-1,
 .css .sidebar-2,
-.ssc .sidebar-2 {
+.ssc .sidebar-2,
+.c2 .download-before-sidebar-1,
+.three-col .download-before-sidebar-1,
+.css .download-before-sidebar-2,
+.ssc .download-before-sidebar-2 {
 	float: left;
 }
 
@@ -906,7 +918,9 @@ select {
 .sc #content,
 .scs #content,
 .scs .sidebar-2,
-.ssc #content {
+.ssc #content,
+.c2 .download-before-sidebar-2,
+.scs .download-before-sidebar-2 {
 	float: right;
 }
 
@@ -920,7 +934,9 @@ select {
 }
 
 .c2 .sidebar-1,
-.c2 .sidebar-2 {
+.c2 .sidebar-2,
+.c2 .download-before-sidebar-1,
+.c2 .download-before-sidebar-2 {
 	width: 50%;
 }
 
@@ -1003,6 +1019,47 @@ select {
 .landing #content,
 .squeeze #content {
 	width: 100%;
+}
+
+
+/* =Store Front Template
+-------------------------------------------------------------- */
+
+.product-container {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	display: box;
+	-webkit-flex-direction: row;
+	-webkit-flex-flow: row wrap;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	align-content: flex-start;
+}
+
+.product-box {
+	display: -webkit-flex;
+	display: flex;
+	position: relative;
+	-webkit-justify-content: space-between;
+	justify-content: space-between;
+	-webkit-flex-flow: column;
+	flex-flow: column nowrap;
+	flex-direction: column;
+
+	padding: 20px;
+	border: 1px solid #e5e5e5;
+	margin-bottom: 1.5em;
+	width: 31%;
+	vertical-align: top;
+}
+
+.product-pagination,
+.tax-download_category .page-header,
+.no-results-found {
+	padding: 20px;
 }
 
 

@@ -17,6 +17,7 @@
 function vol_add_meta_box() {
 	add_meta_box( 'post-layout', __( THEME_NAME . ' Quick Post Settings', 'volatyl' ), 'vol_meta_box', 'post', 'normal', 'high' );
 	add_meta_box( 'page-layout', __( THEME_NAME . ' Quick Page Settings', 'volatyl' ), 'vol_meta_box', 'page', 'normal', 'high' );
+	add_meta_box( 'download-layout', __( THEME_NAME . ' Quick Download Settings', 'volatyl' ), 'vol_meta_box', 'download', 'normal', 'high' ); 
 }
 add_action( 'add_meta_boxes', 'vol_add_meta_box' );
 
@@ -110,7 +111,7 @@ function vol_meta_box( $post ) {
 	</p>
 	<p>
 		<?php
-			// Create sidebars per Page or Post
+			// Create sidebars per Page, Post, or Download
 			foreach ( $new_sidebars as $ns ) { ?>
 				<span class="input-group">
 					<label for="<?php echo $ns['name']; ?>"><?php echo $ns['label']; ?> </label>
@@ -139,7 +140,7 @@ function vol_meta_box( $post ) {
 		}
 }
 
-// pull the posts / pages for custom sidebars
+// pull the posts / pages / downloads for custom sidebars
 function vol_single_sidebar_posts( $meta_key = '' ) {
 
 	// quick check to bail if no key was passed
@@ -153,7 +154,7 @@ function vol_single_sidebar_posts( $meta_key = '' ) {
 		// our query args including the meta key that was passed
 		$args = array(
 			'fields'     => 'ids',
-			'post_type'  => array( 'post', 'page' ),
+			'post_type'  => array( 'post', 'page', 'download' ),
 			'meta_key'   => $meta_key,
 			'meta_value' => 1,
 			'nopaging'   => true

@@ -93,7 +93,7 @@ function volatyl_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'volatyl_design', array(
 		'title'         => THEME_NAME . ' ' . __( 'Design Settings', 'volatyl' ),
 		'description'   => __( 'Structural and visual settings.', 'volatyl' ),
-		'priority'      => 20,
+		'priority'      => 21,
 	) );
 
 	// logo
@@ -157,7 +157,7 @@ function volatyl_customize_register( $wp_customize ) {
 	$wp_customize->add_section( 'volatyl_content', array(
 		'title'         => THEME_NAME . ' ' . __( 'Content Settings', 'volatyl' ),
 		'description'   => __( 'General site content settings.', 'volatyl' ),
-		'priority'      => 20,
+		'priority'      => 22,
 	) );
 
 	// Header elements section
@@ -481,6 +481,40 @@ function volatyl_customize_register( $wp_customize ) {
 		'label'     => __( 'Display Comments on Pages', 'volatyl' ),
 		'section'   => 'volatyl_content',
 		'priority'  => 300,
+		'type'      => 'checkbox',
+	) );
+
+
+	/** ===============
+	 * Volatyl/EDD Settings
+	 */
+	$wp_customize->add_section( 'volatyl_edd_settings', array(
+		'title'       => THEME_NAME . ' ' . __( 'EDD Settings', 'volatyl' ),
+		'description' => __( 'Easy Digital Downloads settings provided by Volatyl', 'volatyl' ),
+		'priority'    => 23,
+	) );
+
+	// Disable EDD styles
+	$wp_customize->add_setting( 'volatyl_disable_edd_styles', array(
+		'default'           => 0,
+		'sanitize_callback' => 'volatyl_sanitize_checkbox'
+	) );
+	$wp_customize->add_control( 'volatyl_disable_edd_styles', array(
+		'label'     => __( 'Disable EDD styles', 'volatyl' ),
+		'section'   => 'volatyl_edd_settings',
+		'priority'  => 10,
+		'type'      => 'checkbox',
+	) );
+
+	// Display comments on EDD downloads
+	$wp_customize->add_setting( 'volatyl_download_comments', array(
+		'default'           => 1,
+		'sanitize_callback' => 'volatyl_sanitize_checkbox'
+	) );
+	$wp_customize->add_control( 'volatyl_download_comments', array(
+		'label'     => __( 'Enable comments on EDD downloads', 'volatyl' ),
+		'section'   => 'volatyl_edd_settings',
+		'priority'  => 20,
 		'type'      => 'checkbox',
 	) );
 }
