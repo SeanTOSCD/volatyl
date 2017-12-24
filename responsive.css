@@ -90,8 +90,8 @@
 	.three-col #sidebars {
 		padding: 0;
 	}
-	.landing #main-content .main,
-	.landing #container #main-content {
+	.vol-landing #main-content .main,
+	.vol-landing #container #main-content {
 		margin: 0 auto;
 	}
 	.product-box {

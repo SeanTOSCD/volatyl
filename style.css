@@ -991,33 +991,37 @@ select {
 /* =Custom Page Templates
 -------------------------------------------------------------- */
 
-.landing .site-header,
-.landing .site-footer,
-.landing #content .entry-header,
-.squeeze #content .entry-header {
+.vol-landing .site-header,
+.vol-landing .site-footer,
+.vol-landing #content .entry-header,
+.vol-squeeze #content .entry-header {
 	text-align: center;
 }
 
-.landing .site-title {
+.vol-landing .site-title {
 	margin-bottom: 0;
 }
 
-.landing #main-content .main,
-.landing #container #main-content {
+.vol-landing #main-content .main,
+.vol-landing #container #main-content,
+.vol-focus #main-content .main,
+.vol-focus #container #main-content {
 	width: 100%;
 	max-width: 745px;
 	margin: 0 auto;
 }
 
-.squeeze #main-content .main,
-.squeeze #main-content {
+.vol-squeeze #main-content .main,
+.vol-squeeze #main-content {
 	width: 100%;
 	max-width: 850px;
 	margin: 0 auto;
 }
 
-.landing #content,
-.squeeze #content {
+.vol-landing #content,
+.vol-squeeze #content,
+.vol-full-width #content,
+.vol-focus #content {
 	width: 100%;
 }
 
