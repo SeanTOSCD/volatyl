@@ -119,9 +119,7 @@ function vol_meta_box( $post ) {
 				<?php
 			}
 		?>
-		<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
-			<?php _e( 'When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl' ); ?>
-		</span>
+		<span class="volatyl-help-tip dashicons dashicons-editor-help" title="<?php esc_attr_e( 'When you select to create a new sidebar, it will not register until you publish the post/page. However, the site-wide, default sidebar content will continue to display until you go to your widgets panel and add widgets to your new sidebar(s).', 'volatyl' ); ?>"></span>
 	</p>
 	<?php
 		// only show the option to remove titles if on the edit PAGE screen
@@ -131,9 +129,7 @@ function vol_meta_box( $post ) {
 					<label for="_singular-title"><?php _e( 'Remove Page Title: ', 'volatyl' ); ?> </label>
 					<input id="_singular-title" name="_singular-title" value="<?php echo $da_title; ?>" size="30" type="checkbox" <?php checked( '1', $da_title, '1' ); ?>>
 				</span>
-				<span style="display: block; color: #8b8b8b; font-style: italic; max-width: 600px; margin-top: 5px;">
-					<?php _e( "Check this option if you would like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep Search Engine Optimization in mind. Your default title is an H1. It's best that you rebuild it somewhere in your content if you use this option.", 'volatyl' ); ?>
-				</span>
+				<span class="volatyl-help-tip dashicons dashicons-editor-help" title="<?php esc_attr_e( "Check this option if you would like to remove the title from your WordPress Page. This is a very useful feature if your page uses the Landing Page or Squeeze Page template. However, you should keep Search Engine Optimization in mind. Your default title is an H1. It's best that you rebuild it somewhere in your content if you use this option.", 'volatyl' ); ?>"></span>
 			</p>
 			<?php
 		}
