@@ -10,7 +10,7 @@
  * handles the WordPress loop for:
  *
  * is_home()
- * is_single()
+ * is_single() & EDD Downloads - 'download' == get_post_type()
  * is_page()
  * is_search()
  * is_archive()
@@ -51,7 +51,7 @@ function vol_content() {
 					vol_after_content_column_home_output();
 
 				// Single posts
-				} elseif ( is_single() && !is_attachment() ) {
+				} elseif ( is_single() && !is_attachment() && ( 'download' != get_post_type() ) ) {
 
 					// vol_before_content_column hook
 					vol_before_content_column_posts_output();
@@ -66,6 +66,15 @@ function vol_content() {
 
 					// vol_after_content_column hook
 					vol_after_content_column_post_output();
+
+				// EDD Download
+				} elseif (!is_search() && 'download' == get_post_type()) {
+
+					// da loop
+					while (have_posts()) {
+						the_post();
+						get_template_part('templates/content', 'download');
+					}
 
 				// Pages
 				} elseif ( is_page() ) {

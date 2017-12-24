@@ -59,6 +59,7 @@ require_once (THEME_FUNCTIONS . '/byline.php');
 require_once (THEME_FUNCTIONS . '/page-nav.php');
 require_once (THEME_FUNCTIONS . '/content.php');
 require_once (THEME_FUNCTIONS . '/body-class.php');
+require_once (THEME_FUNCTIONS . '/edd-functions.php');
 
 
 //  Sets up theme defaults and registers support for various WordPress features
@@ -81,6 +82,9 @@ if (!function_exists('vol_setup')) {
 
 		// Support for Post Thumbnails
 		add_theme_support('post-thumbnails');
+
+		// hard crop store front and taxonomy product images for downloads
+		add_image_size( 'product-image', 580, 360, true );
 
 		// Custom Menu filters
 		$menu_descriptions = apply_filters('menu_descriptions', array(

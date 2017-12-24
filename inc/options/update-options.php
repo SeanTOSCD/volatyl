@@ -59,10 +59,18 @@ function vol_update_options_script() {
 	set_theme_mod( 'volatyl_page_comments', $vol_content['pagecomments'] );
 
 	/**
+	 * Move global settings to new locations
+	 */
+	$vol_edd = get_option( 'vol_edd_options' );
+	set_theme_mod( 'volatyl_disable_edd_styles', $vol_edd['eddstyles'] );
+	set_theme_mod( 'volatyl_download_comments', $vol_edd['downloadcomments'] );
+
+	/**
 	 * Delete the old options
 	 */
 	delete_option( 'vol_structure_options' );
 	delete_option( 'vol_general_options' );
 	delete_option( 'vol_content_options' );
+	delete_option( 'vol_edd_options' );
 }
 add_action( 'after_setup_theme', 'vol_update_options_script' );
