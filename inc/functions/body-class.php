@@ -135,16 +135,10 @@ add_filter( 'body_class', 'vol_singular_body_class' );
  * @since Volatyl 1.2
  */
 function vol_edd_body_classes( $classes ) {
-	global $post;
 
-	// Add .store-item body class for individual download pages
-	if ( 'download' === get_query_var( 'post_type' ) ) {
-		$classes[] = 'store-item';
-	}
-
-	// Add .store-front body class for Store Front page template
-	if ( is_page_template( 'page_templates/custom-store-front.php' ) ) {
-		$classes[] = "store-front";
+	// Add .vol-download-archive body class for download archives
+	if ( is_post_type_archive( 'download' ) || is_tax( 'download_category' ) || is_tax( 'download_tag' ) ) {
+		$classes[] = "vol-download-archive";
 	}
 
 	// return the $classes array

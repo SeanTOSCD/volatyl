@@ -543,6 +543,7 @@ h2,
 .edd-sidebar-price {
 	font-size: 2em;
 	line-height: 1.4em;
+	font-weight: bold;
 }
 
 h3 {
@@ -1021,15 +1022,17 @@ select {
 .vol-landing #content,
 .vol-squeeze #content,
 .vol-full-width #content,
-.vol-focus #content {
+.vol-focus #content,
+.vol-download-archive #content {
 	width: 100%;
 }
 
 
-/* =Store Front Template
+/* =Easy Digital Downloads
 -------------------------------------------------------------- */
 
-.product-container {
+/* [downloads] shortcode */
+.edd_downloads_list {
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -1043,7 +1046,8 @@ select {
 	align-content: flex-start;
 }
 
-.product-box {
+.edd_downloads_list .edd_download {
+	float: none;
 	display: -webkit-flex;
 	display: flex;
 	position: relative;
@@ -1053,17 +1057,71 @@ select {
 	flex-flow: column nowrap;
 	flex-direction: column;
 
-	padding: 20px;
-	border: 1px solid #e5e5e5;
-	margin-bottom: 1.5em;
-	width: 31%;
+	margin-bottom: 1.33334em;
 	vertical-align: top;
 }
 
-.product-pagination,
-.tax-download_category .page-header,
-.no-results-found {
-	padding: 20px;
+.edd_download.flex-grid-cheat {
+	background: transparent !important;
+	padding: 0 !important;
+	border: none !important;
+	height: 1px !important;
+	min-height: 1px !important;
+	margin: 0 !important;
+}
+
+/* shared [downloads] column variation styles */
+.edd_download_title {
+	font-size: 1.2em;
+	line-height: 1.5em;
+}
+
+.edd_download_title a {
+	color: #000;
+	text-decoration: none;
+}
+
+.edd_download_title a:hover {
+	 color: #367D98;
+}
+
+/* 1 column [downloads] */
+.edd_downloads_list.edd_download_columns_1 {
+	width: 100%;
+	max-width: 745px;
+	margin: 0 auto;
+}
+
+.edd_downloads_list.edd_download_columns_1 .edd_download {
+	font-size: 1em;
+}
+
+/* 2 column [downloads] */
+.edd_downloads_list.edd_download_columns_2 .edd_download {
+	width: 48% !important;
+}
+
+/* 3 column [downloads] */
+.edd_downloads_list.edd_download_columns_3 .edd_download {
+	width: 31% !important;
+}
+
+/* 4, 5, 6 column [downloads] - only support up to 4 columns in the Full-width template */
+.edd_downloads_list.edd_download_columns_4 .edd_download,
+.edd_downloads_list.edd_download_columns_5 .edd_download,
+.edd_downloads_list.edd_download_columns_6 .edd_download {
+	width: 23% !important;
+}
+
+/* general [downloads] styles */
+.edd_download .edd_download_inner {
+	position: relative;
+	padding: 0;
+	margin-bottom: 0;
+}
+.edd_download_full_content p:last-child,
+.edd_download_excerpt p:last-child {
+	margin-bottom: 0;
 }
 
 

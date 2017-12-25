@@ -11,8 +11,7 @@
  * and then start from scratch in your child theme's style.css file.
 -------------------------------------------------------------- */
 
-@media screen and (max-width: 768px)
-{
+@media screen and (max-width: 768px) {
 
 	/* =Responsive Menus
 	-------------------------------------------------------------- */
@@ -130,10 +129,26 @@
 		margin-right: 0;
 		width: 100%;
 	}
+
+	/* [downloads] */
+	.edd_downloads_list.edd_download_columns_3 .edd_download,
+	.edd_downloads_list.edd_download_columns_4 .edd_download,
+	.edd_downloads_list.edd_download_columns_5 .edd_download,
+	.edd_downloads_list.edd_download_columns_6 .edd_download {
+		width: 48% !important;
+	}
 }
 
-@media screen and (max-width: 480px)
-{
+@media screen and (max-width: 480px) {
+
+	/* [downloads] */
+	.edd_downloads_list.edd_download_columns_2 .edd_download,
+	.edd_downloads_list.edd_download_columns_3 .edd_download,
+	.edd_downloads_list.edd_download_columns_4 .edd_download,
+	.edd_downloads_list.edd_download_columns_5 .edd_download,
+	.edd_downloads_list.edd_download_columns_6 .edd_download {
+		width: 100% !important;
+	}
 	.product-box {
 		width: 100%;
 	}

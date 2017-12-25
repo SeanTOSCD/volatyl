@@ -1,12 +1,12 @@
 <?php
-/** archive-download.php
+/** taxonomy-download_category.php
  *
  ***** THIS IS A CORE VOLATYL FILE AND SHOULD NOT BE EDITED!
  ***** ALL CUSTOM CODING SHOULD BE DONE IN A CHILD THEME.
  ***** MORE INFORMATION - http://volatylthemes.com/why-child-themes/
  *******************************************************************
  *
- * The purpose of this template is to display download archives as if
+ * The purpose of this template is to display download category archives as if
  * the [downloads] shortcode was being used. That way any style changes
  * applied to the [downloads] shortcode should apply here as well.
  *

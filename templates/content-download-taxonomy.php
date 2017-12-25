@@ -37,16 +37,16 @@
 					</a>
 					<?php if(function_exists('edd_price')) { ?>
 						<div class="product-price">
-							<?php	
+							<?php
 							if (edd_has_variable_prices(get_the_ID())) {
-	
+
 								// if the download has variable prices,
 								// show the first one as a starting price
-								echo $item_info['starting_price'] . ' '; 
+								echo $item_info['starting_price'] . ' ';
 								edd_price(get_the_ID());
 							} elseif ('0' != edd_get_download_price(get_the_ID()) && !edd_has_variable_prices( get_the_ID())) {
-								echo $item_info['price'] . ' '; 
-								edd_price(get_the_ID()); 
+								echo $item_info['price'] . ' ';
+								edd_price(get_the_ID());
 							} else {
 								echo $item_info['free'] . ' ';
 							} ?>
@@ -65,11 +65,11 @@
 			</div>
 			<?php $i+=1; ?>
 		<?php endwhile; ?>
-	</div>		
+	</div>
 	<div class="product-pagination">
 		<?php
-			// need an unlikely integer		
-			$big = 999999999;				
+			// need an unlikely integer
+			$big = 999999999;
 			echo paginate_links(array(
 				'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
 				'current' => max(1, $current_page),

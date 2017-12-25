@@ -27,7 +27,7 @@
  */
 
 function vol_content() {
-	global $options;
+	global $wp_query;
 	?>
 	<div id="content" class="site-content clearfix">
 		<?php
@@ -68,10 +68,10 @@ function vol_content() {
 					vol_after_content_column_post_output();
 
 				// EDD Download
-				} elseif (!is_search() && 'download' == get_post_type()) {
+				} elseif ( !is_search() && is_singular( 'download' ) ) {
 
 					// da loop
-					while (have_posts()) {
+					while ( have_posts() ) {
 						the_post();
 						get_template_part('templates/content', 'download');
 					}
@@ -91,15 +91,22 @@ function vol_content() {
 					get_template_part( 'templates/content', 'search' );
 
 				// Archives including categories, tags, authors, dates, and bears. Oh my!
-				} elseif (is_archive()) {
+				} elseif ( is_archive() ) {
 
-					// vol_before_content_column hook
-					vol_before_content_column_archive_output();
+					if ( is_post_type_archive( 'download' ) || is_tax( 'download_category' ) || is_tax( 'download_tag' ) ) {
 
-					get_template_part( 'templates/content', 'archive' );
+						get_template_part( 'templates/content', 'download-archive' );
 
-					// vol_after_content_column hook
-					vol_after_content_column_archive_output();
+					} else {
+
+						// vol_before_content_column hook
+						vol_before_content_column_archive_output();
+
+						get_template_part( 'templates/content', 'archive' );
+
+						// vol_after_content_column hook
+						vol_after_content_column_archive_output();
+					}
 
 				// Attachment pages
 				} elseif ( is_attachment() ) {
@@ -133,5 +140,5 @@ function vol_content() {
 			}
 		?>
 	</div>
-<?php
+	<?php
 }
