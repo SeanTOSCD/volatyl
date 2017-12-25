@@ -177,6 +177,7 @@ address,
 
 a {
 	text-decoration: underline;
+	outline: 0;
 }
 
 a:hover {
@@ -187,6 +188,7 @@ a,
 .site-title a:hover,
 .menu a:hover,
 #content .entry-header a:hover,
+.edd_download_title a:hover,
 .product-title:hover {
 	color: #367D98;
 }
@@ -331,6 +333,42 @@ th {
 
 td {
 	padding: .53335em;
+}
+
+
+/* =Input Elements
+-------------------------------------------------------------- */
+
+input {
+	font-size: 1em;
+	line-height: 1.6em;
+}
+
+input,
+textarea,
+#comment {
+	padding: .4em;
+	margin: 0 .66667em 0 0;
+}
+
+#comments textarea {
+	margin-right: 0;
+}
+
+input[type="submit"] {
+	background: #367D98;
+	color: #fff;
+	margin: 0;
+	cursor: pointer;
+}
+
+input[type="submit"]:hover,
+.cancel-reply:hover {
+	background: #999;
+}
+
+#searchsubmit {
+	display: none;
 }
 
 
@@ -775,42 +813,6 @@ cite.fn {
 }
 
 
-/* =Input Elements
--------------------------------------------------------------- */
-
-input {
-	font-size: 1em;
-	line-height: 1.6em;
-}
-
-input,
-textarea,
-#comment {
-	padding: .4em;
-	margin: 0 .66667em 0 0;
-}
-
-#comments textarea {
-	margin-right: 0;
-}
-
-input[type="submit"] {
-	background: #367D98;
-	color: #fff;
-	margin: 0;
-	cursor: pointer;
-}
-
-input[type="submit"]:hover,
-.cancel-reply:hover {
-	background: #999;
-}
-
-#searchsubmit {
-	display: none;
-}
-
-
 /* =Media
 -------------------------------------------------------------- */
 
@@ -1079,10 +1081,6 @@ select {
 .edd_download_title a {
 	color: #000;
 	text-decoration: none;
-}
-
-.edd_download_title a:hover {
-	 color: #367D98;
 }
 
 /* 1 column [downloads] */
