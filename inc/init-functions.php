@@ -160,6 +160,9 @@ function vol_back_scripts() {
 
 		// Metabox JS
 		wp_enqueue_script( 'theme-meta', THEME_PATH_URI . '/inc/options/theme-meta.js', array( 'jquery' ), THEME_VERSION, true );
+		wp_register_script( 'theme-meta-ajax', THEME_PATH_URI . '/inc/options/theme-meta-ajax.js', array( 'jquery' ), THEME_VERSION, true );
+		wp_localize_script( 'theme-meta-ajax', 'theme_meta_ajax_url', admin_url( 'admin-ajax.php' ) );
+		wp_enqueue_script( 'theme-meta-ajax' );
 	}
 }
 add_action('admin_enqueue_scripts', 'vol_back_scripts');

@@ -253,18 +253,74 @@ function vol_meta_box_save( $post_id ) {
 	if ( isset( $_POST['_custom-class'] ) )
 		update_post_meta( $post_id, '_custom-class', wp_kses( $_POST['_custom-class'], $allowed ) );
 
+	/*
 	$new_sidebar_1 = isset( $_POST['_create-sidebar-1'] ) ? 1 : 0;
 		update_post_meta( $post_id, '_create-sidebar-1', $new_sidebar_1 );
 
 	$new_sidebar_2 = isset( $_POST['_create-sidebar-2'] ) ? 1 : 0;
 		update_post_meta( $post_id, '_create-sidebar-2', $new_sidebar_2 );
+	*/
 
 	$da_title_ = isset( $_POST['_singular-title'] ) ? 1 : 0;
 		update_post_meta( $post_id, '_singular-title', $da_title_ );
 
 	// delete the transients for custom sidebars regardless of checkbox status
 	// since no checkmark still indicates a change
+	/*
 	delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
 	delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
+	*/
 }
 add_action( 'save_post', 'vol_meta_box_save' );
+
+
+
+function vol_meta_box_save_ajax() {
+
+	switch ( $_REQUEST['a'] ) {
+
+		case 'save_custom_sidebars':
+			$post_id = $_REQUEST['post_id'];
+			$sidebar_1 = $_REQUEST['sidebar_1'];
+			$sidebar_2 = $_REQUEST['sidebar_2'];
+			$new_sidebars_array = array(
+				'_create-sidebar-1' => $sidebar_1,
+				'_create-sidebar-2' => $sidebar_2
+			);
+
+			foreach ( $new_sidebars_array as $meta_key => $meta_value ) {
+
+				// Get the posted data and sanitize it.
+				$new_meta_value = ( isset( $meta_value ) ? 1 : 0 );
+
+				// Get the meta value of the custom field key.
+				$meta_value = get_post_meta( $post_id, $meta_key, true );
+
+				if ( $new_meta_value && '' == $meta_value ) {
+					// If a new meta value was added and there was no previous value, add it.
+					add_post_meta( $post_id, $meta_key, $new_meta_value, true );
+
+				} elseif ( $new_meta_value && $new_meta_value != $meta_value ) {
+					// If the new meta value does not match the old value, update it.
+					update_post_meta( $post_id, $meta_key, $new_meta_value );
+
+				} elseif ( '' == $new_meta_value && $meta_value ) {
+					// If there is no new meta value but an old value exists, delete it.
+					delete_post_meta( $post_id, $meta_key, $meta_value );
+				}
+			}
+
+			// delete the transients for custom sidebars regardless of checkbox status
+			// since no checkmark still indicates a change
+			delete_transient( 'vol_single_sidebar_posts__create-sidebar-1' );
+			delete_transient( 'vol_single_sidebar_posts__create-sidebar-2' );
+
+		break;
+
+		default:
+			print "No action \"".$_POST['a']."\" exist in ".__file__;
+	}
+	die();
+}
+add_action( 'wp_ajax_save_sidebar_meta', 'vol_meta_box_save_ajax', 11 );
+add_action( 'wp_ajax_nopriv_save_sidebar_meta', 'vol_meta_box_save_ajax', 11 );
